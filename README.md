@@ -5,8 +5,8 @@ This theme is a collection of forks and ports of various pieces of artwork for Q
 * Colors: [ekaaty/vinyl-theme](https://github.com/ekaaty/vinyl-theme/tree/main/colors) (native)
 * Cursors: [cz-Aviator](https://github.com/charakterziffer/cursor-toolbox/)
 * GTK themes: [breeze-gtk fork](#) ? [TODO]
-* Kdecoration: Lightly  [rileyaft/Lightly](https://github.com/rileyaft/Lightly), [boehs/Lightly](https://github.com/boehs/Lightly)
-* Kstyle: Lightly [rileyaft/Lightly](https://github.com/rileyaft/Lightly), [boehs/Lightly](https://github.com/boehs/Lightly)
+* Kdecoration: [rileyaft/Lightly](https://github.com/rileyaft/Lightly), [boehs/Lightly](https://github.com/boehs/Lightly)
+* Kstyle: [rileyaft/Lightly](https://github.com/rileyaft/Lightly), [boehs/Lightly](https://github.com/boehs/Lightly)
 * KSplash: [ekaaty/vinyl-theme](https://store.kde.org/p/2118858) (native) [TODO]
 * Icons: [vinceliuice/Fluent-icon-theme](https://github.com/vinceliuice/Fluent-icon-theme) [TODO]
 * Plasma style: [doncsugar/willow-theme](https://github.com/doncsugar/willow-theme) ? [TODO]
