@@ -1,0 +1,20 @@
+#!/usr/bin/env make
+
+PROJECT := Vinyl
+
+clean:
+	@rm -rf $(CURDIR)/pngs
+
+clean-%:
+	@rm -rf $(CURDIR)/pngs  $(CURDIR)/$(PROJECT)-$(shell echo $* | sed 's/[^ _-]*/\u&/g')
+
+render-%: clean-%
+	@$(CURDIR)/render-pngs.py $(CURDIR)/svgs/template-$*.svg
+
+make-%: render-%
+	@themetitle=$(PROJECT)-$(shell echo $* | sed 's/[^ _-]*/\u&/g') $(CURDIR)/make.sh
+
+black: make-black
+white: make-white
+
+#vim: syntax=Makefile

@@ -1,0 +1,6 @@
+[Misc]
+Name=Vinyl
+ConfigPage=kstyle_config/vinylstyleconfig
+Comment=Widget style for Qt Applications
+[KDE]
+WidgetStyle=Vinyl

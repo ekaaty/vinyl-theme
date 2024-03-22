@@ -1,0 +1,6 @@
+File=vinyl.kcfg
+ClassName=StyleConfigData
+NameSpace=Vinyl
+Singleton=true
+Mutators=true
+GlobalEnums=true

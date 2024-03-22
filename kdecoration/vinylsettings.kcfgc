@@ -1,0 +1,6 @@
+File=vinylsettingsdata.kcfg
+ClassName=InternalSettings
+NameSpace=Vinyl
+Singleton=false
+Mutators=true
+GlobalEnums=true
