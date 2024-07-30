@@ -7,8 +7,8 @@ This theme is a collection of forks and ports of various pieces of artwork for Q
 * GTK themes: [breeze-gtk fork](#) ? [TODO]
 * Kdecoration: [rileyaft/Lightly](https://github.com/rileyaft/Lightly), [boehs/Lightly](https://github.com/boehs/Lightly)
 * Kstyle: [rileyaft/Lightly](https://github.com/rileyaft/Lightly), [boehs/Lightly](https://github.com/boehs/Lightly)
-* KSplash: [ekaaty/vinyl-theme](https://store.kde.org/p/2118858) (native) [TODO]
-* Icons: [vinceliuice/Fluent-icon-theme](https://github.com/vinceliuice/Fluent-icon-theme) [TODO]
+* KSplash: [ekaaty/vinyl-theme] (native) [TODO]
+* Icons: [ekaaty/vinyl-theme] (native) [TODO]
 * Plasma style: [doncsugar/willow-theme](https://github.com/doncsugar/willow-theme) ? [TODO]
 * Wallpapers: [ekaaty/vinyl-theme](#) (native) [TODO]
 
@@ -82,7 +82,8 @@ And, finally, to install the files execute the following (will install it to the
 directory):
 
 ```shell
-export PREFIX=/usr/local
+# On non-Fedora systems you can change PREFIX variable to match your KDE instalation
+export PREFIX=/usr
 export DESTDIR=/
 
 cd vinyl-theme
