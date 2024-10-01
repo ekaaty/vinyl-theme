@@ -10,7 +10,7 @@
 
     <!-- shadow -->
     <entry name="ShadowStrength" type = "Int">
-       <default>102</default>
+       <default>77</default>
        <min>25</min>
        <max>255</max>
     </entry>
@@ -24,7 +24,7 @@
           <choice name="ShadowLarge"/>
           <choice name="ShadowVeryLarge"/>
       </choices>
-      <default>ShadowLarge</default>
+      <default>ShadowSmall</default>
     </entry>
 
     <entry name="ShadowColor" type = "Color">
@@ -38,8 +38,8 @@
     
     <!-- corner radius -->
     <entry name="CornerRadius" type = "Int">
-       <default>6</default>
-       <min>1</min>
+       <default>3</default>
+       <min>0</min>
        <max>8</max>
     </entry>
 
@@ -106,7 +106,7 @@
 
     <!-- views -->
     <entry name="ViewDrawFocusIndicator" type="Bool">
-      <default>true</default>
+      <default>false</default>
     </entry>
     
     <entry name="TransparentDolphinView" type="Bool">
@@ -115,7 +115,7 @@
     
     <!-- shadows on widgets -->
     <entry name="WidgetDrawShadow" type="Bool">
-      <default>true</default>
+      <default>false</default>
     </entry>
 
     <!-- tree views -->
@@ -210,7 +210,7 @@
     </entry>
     
     <entry name="ForceOpaque" type="StringList">
-       <default>kscreenlocker,wine,vlc,kdevelop,smplayer,virtualbox,virtualboxvm,obs,kaffeine,kate,kstars,digikam,kdenlive</default>
+       <default>kscreenlocker,wine,vlc,kdevelop,smplayer,virtualbox,virtualboxvm,obs,kaffeine,kate,kstars,digikam,kdenlive,spectacle</default>
     </entry>
 
     <!-- if true, move events are passed to the window manager (e.g. KWin) -->
@@ -238,11 +238,11 @@
 
     <!-- transparency -->
     <entry name="MenuOpacity" type="Int">
-        <default>80</default>
+        <default>90</default>
     </entry>
     
     <entry name="DolphinSidebarOpacity" type="Int">
-        <default>60</default>
+        <default>80</default>
     </entry>
 
   </group>

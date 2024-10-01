@@ -110,13 +110,13 @@
           <string> px</string>
          </property>
          <property name="minimum">
-          <number>1</number>
+          <number>0</number>
          </property>
          <property name="maximum">
           <number>8</number>
          </property>
          <property name="value">
-          <number>6</number>
+          <number>3</number>
          </property>
         </widget>
        </item>
@@ -544,10 +544,10 @@
             <number>1</number>
            </property>
            <property name="pageStep">
-            <number>10</number>
+            <number>5/number>
            </property>
            <property name="value">
-            <number>100</number>
+            <number>90</number>
            </property>
            <property name="orientation">
             <enum>Qt::Horizontal</enum>
@@ -582,10 +582,10 @@
             <number>1</number>
            </property>
            <property name="pageStep">
-            <number>10</number>
+            <number>5/number>
            </property>
            <property name="value">
-            <number>60</number>
+            <number>80</number>
            </property>
            <property name="orientation">
             <enum>Qt::Horizontal</enum>
