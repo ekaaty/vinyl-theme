@@ -24,7 +24,7 @@ add_library(vinyldecoration MODULE
     ${vinyldecoration_config_PART_FORMS_HEADERS})
 
 set_target_properties(vinyldecoration PROPERTIES
-    OUTPUT_NAME org.kde.vinyl
+    OUTPUT_NAME com.ekaaty.vinyl-kwin_decoration
 )
 
 target_link_libraries(vinyldecoration

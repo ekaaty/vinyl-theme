@@ -97,7 +97,7 @@ namespace Vinyl
         StyleConfigData::self()->save();
 
         // emit dbus signal
-        QDBusMessage message( QDBusMessage::createSignal( QStringLiteral( "/VinylStyle" ),  QStringLiteral( "org.kde.Vinyl.Style" ), QStringLiteral( "reparseConfiguration" ) ) );
+        QDBusMessage message( QDBusMessage::createSignal( QStringLiteral( "/VinylStyle" ),  QStringLiteral( "com.ekaaty.vinyl-style" ), QStringLiteral( "reparseConfiguration" ) ) );
         QDBusConnection::sessionBus().send(message);
 
     }

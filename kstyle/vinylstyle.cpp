@@ -189,12 +189,12 @@ namespace Vinyl
         auto dbus = QDBusConnection::sessionBus();
         dbus.connect( QString(),
             QStringLiteral( "/VinylStyle" ),
-            QStringLiteral( "org.kde.Vinyl.Style" ),
+            QStringLiteral( "com.ekaaty.vinyl-style" ),
             QStringLiteral( "reparseConfiguration" ), this, SLOT(configurationChanged()) );
 
         dbus.connect( QString(),
             QStringLiteral( "/VinylDecoration" ),
-            QStringLiteral( "org.kde.Vinyl.Style" ),
+            QStringLiteral( "com.ekaaty.vinyl-style" ),
             QStringLiteral( "reparseConfiguration" ), this, SLOT(configurationChanged()) );
         #if QT_VERSION < 0x050D00 // Check if Qt version < 5.13
         this->addEventFilter(qApp);
