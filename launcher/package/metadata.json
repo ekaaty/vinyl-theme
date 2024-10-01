@@ -1,0 +1,24 @@
+{
+    "KPackageStructure": "Plasma/Applet",
+    "KPlugin": {
+        "Authors": [
+            {
+                "Email": "christian.tosta@gmail.com",
+                "Name": "Christian Tosta"
+            }
+        ],
+	"BugReportUrl": "https://github.com/ekaaty/vinyl-theme/issues",
+        "Category": "Application Launchers",
+        "Description": "Configurable Application Launcher",
+        "EnabledByDefault": true,
+        "Icon": "start-here-kde-symbolic",
+        "Id": "com.ekaaty.vinyl-launcher",
+        "License": "GPL-2.0+",
+        "Name": "Vinyl Launcher",
+        "Website": "https://github.com/ekaaty/vinyl-theme"
+    },
+    "X-Plasma-API-Minimum-Version": "6.0",
+    "X-Plasma-Provides": [
+        "org.kde.plasma.launchermenu"
+    ]
+}

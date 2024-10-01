@@ -1,12 +1,13 @@
 cmake_minimum_required(VERSION 3.16)
+
 project(vinyl)
-set(PROJECT_VERSION "6.0.2")
+
+set(PROJECT_VERSION "6.1.90")
 set(PROJECT_VERSION_MAJOR 6)
 
-
-set(KF6_MIN_VERSION "6.0.0")
-set(KDE_COMPILERSETTINGS_LEVEL "5.82")
-set(QT_MIN_VERSION "6.6.0")
+set(QT_MIN_VERSION "6.7.0")
+set(KF6_MIN_VERSION "6.5.0")
+set(KDE_COMPILERSETTINGS_LEVEL "5.85")
 
 if(NOT PROJECT_SOURCE_DIR STREQUAL PROJECT_BINARY_DIR)
 # Git auto-ignore out-of-source build directory
@@ -24,18 +25,11 @@ set(CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} ${ECM_MODULE_PATH}  ${CMAKE_SOURCE_DI
 set(CMAKE_CXX_STANDARD 20)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
-
 include(CMakePackageConfigHelpers)
 include(ECMInstallIcons)
 include(KDECompilerSettings NO_POLICY_SCOPE)
 include(KDEClangFormat)
 include(KDEGitCommitHooks)
-
-include(GtkUpdateIconCache)
-
-if(WIN32 OR APPLE)
-    set(WITH_DECORATIONS OFF)
-endif()
 
 set(QT_MAJOR_VERSION 6)
 include(KDEInstallDirs6)
@@ -76,15 +70,16 @@ find_package(KF6FrameworkIntegration ${KF6_MIN_VERSION} CONFIG )
 set(VINYL_HAVE_KSTYLE ${KF6FrameworkIntegration_FOUND})
 set(VINYL_HAVE_QTQUICK ${Qt6Quick_FOUND})
 
-
 add_subdirectory(colors)
 add_subdirectory(kstyle kstyle6)
+add_subdirectory(launcher)
 add_subdirectory(libvinylcommon libvinylcommon6)
+add_subdirectory(splash)
 
-    if(WITH_DECORATIONS)
-        find_package(KDecoration2 REQUIRED)
-        add_subdirectory(kdecoration)
-    endif()
+if(WITH_DECORATIONS)
+    find_package(KDecoration2 REQUIRED)
+    add_subdirectory(kdecoration)
+endif()
 
 ki18n_install(po)
 

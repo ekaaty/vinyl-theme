@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="512" height="512" version="1.1" xml:space="preserve" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <defs>
+        <style id="current-color-scheme" type="text/css">
+            .ColorScheme-Text             { color: #7d7d7d; }
+            .ColorScheme-PositiveText     { color: #00aa88; }
+            .ColorScheme-NeutralText      { color: #ff6644; }
+            .ColorScheme-NegativeText     { color: #ff5577; }
+            .ColorScheme-Background       { color: #eff0f1; }
+            .ColorScheme-Highlight        { color: #00aaff; }
+            .ColorScheme-ViewText         { color: #7d7d7d; }
+            .ColorScheme-ViewBackground   { color: #eff0f1; }
+            .ColorScheme-ViewHover        { color: #00aaff; }
+            .ColorScheme-ViewFocus        { color: #00aaff; }
+            .ColorScheme-ButtonText       { color: #7d7d7d; }
+            .ColorScheme-ButtonBackground { color: #eff0f1; }
+            .ColorScheme-ButtonHover      { color: #00aaff; }
+            .ColorScheme-ButtonFocus      { color: #00aaff; }
+        </style>
+        <linearGradient id="a" x1="238.08" x2="301.83" y1="275.12" y2="210.93"
+                        gradientTransform="matrix(3.2002,0,0,3.2,-563.4,-563.26)"
+                        gradientUnits="userSpaceOnUse">
+            <stop stop-opacity="1" offset="0"/>
+            <stop stop-opacity=".5" offset=".5"/>
+        </linearGradient>
+    </defs>
+    <!--rect x="32" y="32" width="448" height="448" rx="224" class="ColorScheme-Highlight" fill="currentColor" stroke-width="0"/-->
+    <rect x="32" y="32" width="448" height="448" rx="224" fill="url(#a)" opacity=".5" stroke-width="0"/>
+</svg>

@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<component>
+    <id>com.ekaaty.vinyl-splash</id>
+    <name>Vinyl</name>
+    <summary>An adaptive Look and Feel for KDE Plasma</summary>
+    <url type="homepage">https://github.com/ekaaty/vinyl-theme</url>
+    <developer id="kde.org">
+        <name>Christian Tosta</name>
+    </developer>
+    <project_license>GPL-2.0+</project_license>
+    <metadata_license>CC0-1.0</metadata_license>
+</component>
