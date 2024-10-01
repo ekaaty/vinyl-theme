@@ -81,12 +81,7 @@ target_link_libraries(vinyl${QT_MAJOR_VERSION}
     KF${QT_MAJOR_VERSION}::WindowSystem
 )
 
-if(QT_MAJOR_VERSION STREQUAL "5")
-    target_link_libraries(vinyl5 KF5::ConfigWidgets)
-    if (VINYL_HAVE_QTQUICK)
-        target_link_libraries(vinyl5 KF5::Kirigami2)
-    endif()
-else()
+if(QT_MAJOR_VERSION STREQUAL "6")
     target_link_libraries(vinyl6 KF6::ColorScheme)
     if (VINYL_HAVE_QTQUICK)
         target_link_libraries(vinyl6 KF6::KirigamiPlatform)

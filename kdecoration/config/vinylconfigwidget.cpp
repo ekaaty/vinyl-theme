@@ -144,7 +144,11 @@ namespace Vinyl
 
         // needed for vinyl style to reload shadows
         {
-            QDBusMessage message( QDBusMessage::createSignal("/VinylDecoration",  "com.ekaaty.vinyl-style", "reparseConfiguration") );
+            QDBusMessage message( QDBusMessage::createSignal(
+				    "/VinylDecoration", 
+				    "com.ekaaty.vinyl-kstyle", 
+				    "reparseConfiguration"
+				) );
             QDBusConnection::sessionBus().send(message);
         }
 

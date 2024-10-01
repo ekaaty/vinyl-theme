@@ -1,4 +1,4 @@
-add_definitions(-DTRANSLATION_DOMAIN="vinyl_kwin_deco")
+add_definitions(-DTRANSLATION_DOMAIN="com.ekaaty.vinyl-kwin_decoration")
 
 ################# configuration #################
 configure_file(config-vinyl.h.cmake ${CMAKE_CURRENT_BINARY_DIR}/config-vinyl.h )
