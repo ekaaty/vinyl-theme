@@ -1,19 +1,71 @@
 # Vinyl Theme for KDE Plasma 6
 
-This theme is a collection of forks and ports of various pieces of artwork for Qt6 and KDE Plasma 6:
+This theme is a collection of libraries and artwork, some was initially forks and ports of various other 
+pieces of code and graphics work for KDE Plasma 6:
 
-* Colors: [ekaaty/vinyl-theme](https://github.com/ekaaty/vinyl-theme/tree/main/colors/) (native)
-* Cursors: [cz-Aviator](https://github.com/charakterziffer/cursor-toolbox/)
-* GTK themes: [TODO]
-* Global theme: [ekaaty/vinyl-theme](https://github.com/ekaaty/vinyl-theme/tree/main/lookandfeel/) (native) [TODO]
-* Icons: [ekaaty/vinyl-theme](https://github.com/ekaaty/vinyl-theme/tree/main/icons/) (native) [TODO]
-* KSplash: [ekaaty/vinyl-theme](https://github.com/ekaaty/vinyl-theme/tree/main/splash/) (native)
-* Kdecoration: [ekaaty/vinyl-theme](https://github.com/ekaaty/vinyl-theme/tree/main/kdecoration/) (native)
-* Kstyle: [ekaaty/vinyl-theme](https://github.com/ekaaty/vinyl-theme/tree/main/kstyle/) (native)
-* Plasma style: [ekaaty/vinyl-theme](https://github.com/ekaaty/vinyl-theme/tree/main/desktoptheme/) (native) [IN-PROGRESS]
-* Wallpapers: [ekaaty/vinyl-theme](https://github.com/ekaaty/vinyl-theme/tree/main/wallpapers/) (native) [TODO]
+>[!NOTE]
+>This software is on development for KDE Plasma version 6 (and related to Qt6) and can't run on previous versions of Plasma.
+
+- [x] Kstyle: [ekaaty/vinyl-theme](https://github.com/ekaaty/vinyl-theme/tree/main/kstyle/) (native)
+- [x] Kdecoration: [ekaaty/vinyl-theme](https://github.com/ekaaty/vinyl-theme/tree/main/kdecoration/) (native)
+- [x] KSplash: [ekaaty/vinyl-theme](https://github.com/ekaaty/vinyl-theme/tree/main/splash/) (native)
+- [x] Cursors: [cz-Aviator](https://github.com/charakterziffer/cursor-toolbox/) by charakterziffer
+- [x] Colors: [ekaaty/vinyl-theme](https://github.com/ekaaty/vinyl-theme/tree/main/colors/) (native)
+- [ ] Plasma style: [ekaaty/vinyl-theme](https://github.com/ekaaty/vinyl-theme/tree/main/desktoptheme/) (native)
+- [ ] Icons: [ekaaty/vinyl-theme](https://github.com/ekaaty/vinyl-theme/tree/main/icons/) (native)
+- [ ] SDDM theme: [kde/sddm-theme](https://invent.kde.org/plasma/plasma-desktop/-/tree/master/sddm-theme) by KDE SIG
+- [ ] Wallpapers: [ekaaty/vinyl-theme](https://github.com/ekaaty/vinyl-theme/tree/main/wallpapers/) (native)
+- [ ] GTK themes: [kde/breeze-gtk](https://github.com/KDE/breeze-gtk) by KDE SIG
+- [ ] Global theme: [ekaaty/vinyl-theme](https://github.com/ekaaty/vinyl-theme/tree/main/lookandfeel/) (native)
+- [ ] Firefox theme: planned
+- [ ] Plymounth theme: planned
+- [ ] Grub2 theme: planned
 
 See [AUTHORS](AUTHORS) file and sub-project folders for more info.
+
+## Installing pre-built binaries
+
+### 1\. Fedora/Nobora
+
+You can install Vinyl nativelly on [Fedora](https://spins.fedoraproject.org/kde/), [Nobara](https://nobaraproject.org) 
+and derivated distros by enabling the [ekaaty/kde-extras](https://copr.fedorainfracloud.org/coprs/ekaaty/kde-extras)
+COPR repository. To enable this repository and install packages run:
+
+```
+sudo dnf copr enable ekaaty/kde-extras
+sudo dnf upgrade
+sudo dnf install vinyl-theme
+```
+### 2\. Kinoite/Bazzite
+
+If you are running Fedora [Kinoite](https://fedoraproject.org/atomic-desktops/kinoite/) or 
+[Bazzite](https://bazzite.gg/), also you can install Vinyl from the 
+[ekaaty/kde-extras](https://copr.fedorainfracloud.org/coprs/ekaaty/kde-extras) COPR repository. 
+To enable this repository and install packages run:
+
+```
+sudo ostree remote add ekaaty-kde-extras \
+  https://download.copr.fedorainfracloud.org/results/ekaaty/kde-extras/fedora-$releasever-$basearch/
+sudo rpm-ostree upgrade
+sudo rpm-ostree install --apply-live vinyl-theme
+```
+## Building the source
+
+### Build Dependencies
+
+You must install at least the following dependencies on your distibution to
+build this theme:
+
+`cmake` `cmake(KDecoration2)` `cmake(KF6ConfigWidgets)` `cmake(KF6Config)` `
+cmake(KF6CoreAddons)` `cmake(KF6Crash)` `cmake(KF6DocTools)` `
+cmake(KF6FrameworkIntegration)` `cmake(KF6GlobalAccel)` `cmake(KF6GuiAddons)` `
+cmake(KF6I18n)` `cmake(KF6IconThemes)` `cmake(KF6KCMUtils)` `cmake(KF6KIO)` `
+cmake(KF6Notifications)` `cmake(KF6Package)` `cmake(KF6WindowSystem)` `
+cmake(KF6KirigamiPlatform)` `cmake(KWayland)` `cmake(KWin)` `cmake(Plasma)` `
+cmake(Qt6Core)` `cmake(Qt6DBus)` `cmake(Qt6Gui)` `cmake(Qt6UiTools)` `
+pkgconfig(epoxy)` `extra-cmake-modules >= 6.6.0` `gcc-c++` `inkscape` `xcursorgen`
+`unzip`
+
 
 ## Building the source
 
@@ -53,9 +105,11 @@ You must install at least the following dependencies on your distibution to buil
 ``xcursorgen``
 ``unzip``
 
-#### 1. Fedora/Nobara and derivatives
+#### 1\. Fedora/Nobara or Kinoite/Bazzite and derivatives
 
-Only Fedora 40+ is supported.
+> [!NOTE]
+> Only systems based on Fedora 40+ is supported. 
+
 Run the following command to install the dependencies:
 
 ```shell
@@ -69,9 +123,12 @@ dnf install 'cmake' \
   'pkgconfig(epoxy)' extra-cmake-modules gcc-c++ inkscape xcursorgen unzip
 ```
 
-#### 2. OpenSUSE Tumbleweed
+#### 2\. OpenSUSE Tumbleweed
 
-Run the following command to install the dependencies (**WARNING**: not verified):
+> [!WARNING]
+> This recipe wasn't verified. It cam fail or produce unwanted results. Please take caution!
+
+Run the following command to install the dependencies:
 
 ```shell
 sudo zypper in --no-recommends \
@@ -88,9 +145,12 @@ sudo zypper in --no-recommends \
   inkscape xcursorgen unzip
 ```
 
-#### 3. Neon/Tuxedo OS
+#### 3\. Neon/Tuxedo OS
 
-Run the following command to install the dependencies (**WARNING**: not verified):
+> [!WARNING]
+> This recipe wasn't verified. It cam fail or produce unwanted results. Please take caution!
+
+Run the following command to install the dependencies:
 
 ```shell
 sudo apt install \
@@ -106,10 +166,11 @@ sudo apt install \
   qt3d5-dev inkscape xcursorgen unzip
 ```
 
-#### 4. Debian/Kubuntu and derivatives
+#### 4\. Debian/Kubuntu and derivatives
 
-Debian and Kubuntu doesn't support KDE Plasma 6 yet. 
-It can be available on Debian 13 (Trixie) and Kubuntu 24.10 (Oracular Oriole).
+>[!IMPORTANT]
+>Debian and Kubuntu doesn't support KDE Plasma 6 yet. 
+>It can be available on Debian 13 (Trixie) and Kubuntu 24.10 (Oracular Oriole).
 
 
 ### Building the source
