@@ -35,7 +35,7 @@
 //__________________________________________
 int main(int argc, char *argv[])
 {
-    KLocalizedString::setApplicationDomain("com.ekaaty.vinyl-kstyle");
+    KLocalizedString::setApplicationDomain("vinyl_style_config");
 
     QApplication app( argc, argv );
     app.setApplicationName( i18n( "Vinyl Settings" ) );

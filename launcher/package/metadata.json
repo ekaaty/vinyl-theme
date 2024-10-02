@@ -15,6 +15,7 @@
         "Id": "com.ekaaty.vinyl-launcher",
         "License": "GPL-2.0+",
         "Name": "Vinyl Launcher",
+	"Version": "6.1.5",
         "Website": "https://github.com/ekaaty/vinyl-theme"
     },
     "X-Plasma-API-Minimum-Version": "6.0",

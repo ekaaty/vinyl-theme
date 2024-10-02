@@ -1,4 +1,4 @@
-add_definitions(-DTRANSLATION_DOMAIN="com.ekaaty.vinyl-kwin_decoration")
+add_definitions(-DTRANSLATION_DOMAIN="vinyl_kwin_deco")
 
 ################# configuration #################
 configure_file(config-vinyl.h.cmake ${CMAKE_CURRENT_BINARY_DIR}/config-vinyl.h )
@@ -24,7 +24,7 @@ add_library(vinyldecoration MODULE
     ${vinyldecoration_config_PART_FORMS_HEADERS})
 
 set_target_properties(vinyldecoration PROPERTIES
-    OUTPUT_NAME com.ekaaty.vinyl-kwin_decoration
+    OUTPUT_NAME org.kde.vinyl
 )
 
 target_link_libraries(vinyldecoration

@@ -1,5 +1,5 @@
 ### configuration plugin
-add_definitions(-DTRANSLATION_DOMAIN="com.ekaaty.vinyl-kstyle")
+add_definitions(-DTRANSLATION_DOMAIN=\"vinyl_style_config\")
 set(kstyle_vinyl_config_PART_SRCS vinylstyleconfig.cpp)
 
 set(kstyle_vinyl_config_PART_SRCS ${kstyle_vinyl_config_PART_SRCS} vinylstyleconfigmodule.cpp)

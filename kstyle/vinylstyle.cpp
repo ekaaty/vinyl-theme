@@ -189,12 +189,12 @@ namespace Vinyl
         auto dbus = QDBusConnection::sessionBus();
         dbus.connect( QString(),
             QStringLiteral( "/VinylStyle" ),
-            QStringLiteral( "com.ekaaty.vinyl-kstyle" ),
+            QStringLiteral( "org.kde.Vinyl.Style" ),
             QStringLiteral( "reparseConfiguration" ), this, SLOT(configurationChanged()) );
 
         dbus.connect( QString(),
             QStringLiteral( "/VinylDecoration" ),
-            QStringLiteral( "com.ekaaty.vinyl-kstyle" ),
+            QStringLiteral( "org.kde.Vinyl.Style" ),
             QStringLiteral( "reparseConfiguration" ), this, SLOT(configurationChanged()) );
         connect(qApp, &QApplication::paletteChanged, this, &Style::configurationChanged);
         // call the slot directly; this initial call will set up things that also

@@ -110,7 +110,7 @@
           <string> px</string>
          </property>
          <property name="minimum">
-          <number>0</number>
+          <number>1</number>
          </property>
          <property name="maximum">
           <number>8</number>
@@ -544,7 +544,7 @@
             <number>1</number>
            </property>
            <property name="pageStep">
-            <number>5/number>
+            <number>10</number>
            </property>
            <property name="value">
             <number>90</number>
@@ -582,7 +582,7 @@
             <number>1</number>
            </property>
            <property name="pageStep">
-            <number>5/number>
+            <number>10</number>
            </property>
            <property name="value">
             <number>80</number>
