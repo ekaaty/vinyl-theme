@@ -1,6 +1,6 @@
 cmake_minimum_required(VERSION 3.16)
-project(vinyl)
 set(PROJECT_VERSION "6.1.6")
+project(vinyl VERSION ${PROJECT_VERSION})
 set(PROJECT_VERSION_MAJOR 6)
 
 set(KF5_MIN_VERSION "5.102.0")
@@ -26,6 +26,18 @@ set(CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} ${ECM_MODULE_PATH}  ${CMAKE_SOURCE_DI
 
 set(CMAKE_CXX_STANDARD 20)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
+
+set(CPACK_GENERATOR "TXZ")
+set(CPACK_SOURCE_GENERATOR "TXZ")
+SET(CPACK_OUTPUT_FILE_PREFIX "${PROJECT_SOURCE_DIR}/dist")
+set(CPACK_SOURCE_PACKAGE_FILE_NAME "${PROJECT_NAME}-${PROJECT_VERSION}")
+set(CPACK_SOURCE_IGNORE_FILES  "\\.git/;.gitignore;bin/;build/;_CPack_Packages/;dist/;wine/;[^-]+\\.tar\\.[abx2]*")
+set(CPACK_VERBATIM_VARIABLES YES)
+configure_file( "${PROJECT_SOURCE_DIR}/cmake/CPackConfig.cmake.in" 
+	        "${PROJECT_BINARY_DIR}/CPackSourceConfig.cmake" 
+                @ONLY)
+set(CPACK_SOURCE_OUTPUT_CONFIG_FILE "${PROJECT_BINARY_DIR}/CPackSourceConfig.cmake")
+include(CPack)
 
 # We need this because we can't include KDECMakeSettings here, because that
 # would need KDEInstallDirs, which we can only include in the qt{5,6} builds
