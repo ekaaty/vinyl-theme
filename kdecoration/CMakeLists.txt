@@ -29,9 +29,9 @@ set_target_properties(vinyldecoration PROPERTIES
 
 target_link_libraries(vinyldecoration
      PUBLIC
-        Qt::Core
-        Qt::Gui
-        Qt::DBus
+        Qt6::Core
+        Qt6::Gui
+        Qt6::DBus
         KDecoration2::KDecoration
      PRIVATE
         vinylcommon6

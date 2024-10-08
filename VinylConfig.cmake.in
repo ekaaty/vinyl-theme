@@ -8,4 +8,4 @@ else()
 endif()
 
 set(VINYL_STYLE_NAME "vinyl")
-#set(VINYL_COLOR_INSTALL_ROOT "@PACKAGE_KDE_INSTALL_FULL_DATADIR@/color-schemes/")
+set(VINYL_COLOR_INSTALL_ROOT "@PACKAGE_KDE_INSTALL_FULL_DATADIR@/color-schemes/")
