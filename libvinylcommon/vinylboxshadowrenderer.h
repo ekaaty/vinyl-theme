@@ -1,25 +1,10 @@
 /*
- * Copyright (C) 2018 Vlad Zahorodnii <vlad.zahorodnii@kde.org>
+ * SPDX-FileCopyrightText: 2018 Vlad Zahorodnii <vlad.zahorodnii@kde.org>
  *
- * This program is free software; you can redistribute it and/or modify
- * it under the terms of the GNU General Public License as published by
- * the Free Software Foundation; either version 2 of the License, or
- * (at your option) any later version.
- *
- * This program is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- * GNU General Public License for more details.
- *
- * You should have received a copy of the GNU General Public License
- * along with this program; if not, write to the Free Software
- * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
+ * SPDX-License-Identifier: GPL-2.0-or-later
  */
 
 #pragma once
-
-// own
-#include "vinylcommon_export.h"
 
 // Qt
 #include <QColor>
@@ -29,8 +14,7 @@
 
 namespace Vinyl
 {
-
-class VINYLCOMMON_EXPORT BoxShadowRenderer
+class BoxShadowRenderer
 {
 public:
     // Compiler generated constructors & destructor are fine.
@@ -46,12 +30,6 @@ public:
      * @param radius The border radius, in pixels.
      **/
     void setBorderRadius(qreal radius);
-
-    /**
-     * Set the device pixel ratio of the resulting shadow texture.
-     * @param dpr The device pixel ratio.
-     **/
-    void setDevicePixelRatio(qreal dpr);
 
     /**
      * Add a shadow.
@@ -91,7 +69,6 @@ public:
 private:
     QSize m_boxSize;
     qreal m_borderRadius = 0.0;
-    qreal m_dpr = 1.0;
 
     struct Shadow {
         QPoint offset;
