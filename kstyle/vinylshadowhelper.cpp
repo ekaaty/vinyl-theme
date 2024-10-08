@@ -236,7 +236,6 @@ namespace Vinyl
         BoxShadowRenderer shadowRenderer;
         shadowRenderer.setBorderRadius(frameRadius);
         shadowRenderer.setBoxSize(boxSize);
-        shadowRenderer.setDevicePixelRatio(dpr);
 
         shadowRenderer.addShadow(params.shadow1.offset, params.shadow1.radius,
             withOpacity(color, params.shadow1.opacity * strength));
@@ -317,7 +316,6 @@ namespace Vinyl
         BoxShadowRenderer shadowRenderer;
         shadowRenderer.setBorderRadius(frameRadius);
         shadowRenderer.setBoxSize(boxSize);
-        shadowRenderer.setDevicePixelRatio(dpr);
 
         shadowRenderer.addShadow(shadow1.offset, shadow1.radius, shadow1.color);
         if (shadow2.radius > 0) 
