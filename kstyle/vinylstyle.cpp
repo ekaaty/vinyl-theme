@@ -2946,7 +2946,7 @@ namespace Vinyl
         if( !flat ) size = expandSize( size, frameWidth );
 
         // make sure there is enough height for the button
-        size.setHeight( qMax( size.height(), int(Metrics::SpinBox_ArrowButtonWidth) ) );
+        size.setHeight( qMax( size.height(), int(Metrics::SpinBox_ArrowButtonWidth) ) + StyleConfigData::buttonSize() );
 
         // add button width and spacing
         size.rwidth() += Metrics::SpinBox_ArrowButtonWidth;
@@ -3034,18 +3034,25 @@ namespace Vinyl
             hasIcon &= (showIconsOnPushButtons() || flat || !hasText );
 
             // text
-            if( hasText ) size = buttonOption->fontMetrics.size( Qt::TextShowMnemonic, buttonOption->text );
+            if( hasText ) {
+                size = buttonOption->fontMetrics.size( Qt::TextShowMnemonic, buttonOption->text );
+	    }
 
             // icon
-            if( hasIcon )
-            {
+            if( hasIcon ) {
                 QSize iconSize = buttonOption->iconSize;
-                if( !iconSize.isValid() ) iconSize = QSize( pixelMetric( PM_SmallIconSize, option, widget ), pixelMetric( PM_SmallIconSize, option, widget ) );
 
-                size.setHeight( qMax( size.height(), iconSize.height() ) );
-                size.rwidth() += iconSize.width();
+		if( !iconSize.isValid() ) {
+		    iconSize = QSize( pixelMetric( PM_SmallIconSize, option, widget ), 
+				      pixelMetric( PM_SmallIconSize, option, widget ) );
+		}
 
-                if( hasText ) size.rwidth() += Metrics::Button_ItemSpacing;
+		size.setHeight( qMax( size.height(), iconSize.height() ) + StyleConfigData::buttonSize() );
+                size.rwidth() += iconSize.width() + StyleConfigData::buttonSize();
+
+		if( hasText ) {
+		    size.rwidth() += Metrics::Button_ItemSpacing;
+		}
             }
 
         }
@@ -3155,7 +3162,7 @@ namespace Vinyl
                 size.rwidth() += leftColumnWidth + rightColumnWidth;
 
                 // make sure height is large enough for icon and arrow
-                size.setHeight( qMax( size.height(), int(Metrics::MenuButton_IndicatorWidth) ) );
+                size.setHeight( qMax( size.height(), int(Metrics::MenuButton_IndicatorWidth) ) + StyleConfigData::buttonSize() );
                 size.setHeight( qMax( size.height(), int(Metrics::CheckBox_Size) ) );
                 size.setHeight( qMax( size.height(), iconWidth ) );
                 return expandSize( size, Metrics::MenuItem_MarginWidth, Metrics::MenuItem_MarginHeight );

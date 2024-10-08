@@ -43,6 +43,10 @@
        <max>8</max>
     </entry>
 
+    <!-- button size -->
+    <entry name="ButtonSize" type="Int">
+        <default>4</default>
+    </entry>
   </group>
 
   <!-- widget style -->
@@ -110,7 +114,7 @@
     </entry>
     
     <entry name="TransparentDolphinView" type="Bool">
-      <default>true</default>
+      <default>false</default>
     </entry>
     
     <!-- shadows on widgets -->
