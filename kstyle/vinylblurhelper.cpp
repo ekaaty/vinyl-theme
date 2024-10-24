@@ -137,7 +137,7 @@ namespace Vinyl
                 // cast to widget and check
                 QWidget* widget(qobject_cast<QWidget*>(object));
 
-                if (!widget)
+                if (!widget || !widget->isWindow())
                     break;
 
                 update(widget);
