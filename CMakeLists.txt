@@ -1,14 +1,14 @@
 cmake_minimum_required(VERSION 3.16)
-set(PROJECT_VERSION "6.1.6")
+set(PROJECT_VERSION "6.2.3")
 project(vinyl VERSION ${PROJECT_VERSION})
 set(PROJECT_VERSION_MAJOR 6)
 
 set(KF5_MIN_VERSION "5.102.0")
-set(KF6_MIN_VERSION "6.5.0")
+set(KF6_MIN_VERSION "6.8.0")
 set(KDE_COMPILERSETTINGS_LEVEL "5.82")
 set(QT5_MIN_VERSION "5.15.2")
-set(QT_MIN_VERSION "6.7.0")
-set(PLASMA_MIN_VERSION "6.1.0")
+set(QT_MIN_VERSION "6.8.0")
+set(PLASMA_MIN_VERSION ${PROJECT_VERSION})
 
 if(NOT PROJECT_SOURCE_DIR STREQUAL PROJECT_BINARY_DIR)
     # Git auto-ignore out-of-source build directory
@@ -31,7 +31,7 @@ set(CPACK_GENERATOR "TXZ")
 set(CPACK_SOURCE_GENERATOR "TXZ")
 SET(CPACK_OUTPUT_FILE_PREFIX "${PROJECT_SOURCE_DIR}/dist")
 set(CPACK_SOURCE_PACKAGE_FILE_NAME "${PROJECT_NAME}-${PROJECT_VERSION}")
-set(CPACK_SOURCE_IGNORE_FILES  "\\.git/;.gitignore;bin/;build/;_CPack_Packages/;dist/;wine/;[^-]+\\.tar\\.[abx2]*")
+set(CPACK_SOURCE_IGNORE_FILES  "\\.git/;.gitignore;build/;_CPack_Packages/;dist/;tmp/;[^-]+\\.tar\\.[abx2]*")
 set(CPACK_VERBATIM_VARIABLES YES)
 configure_file( "${PROJECT_SOURCE_DIR}/cmake/CPackConfig.cmake.in" 
 	        "${PROJECT_BINARY_DIR}/CPackSourceConfig.cmake" 
@@ -233,13 +233,3 @@ kde_clang_format(${ALL_CLANG_FORMAT_SOURCE_FILES})
 kde_configure_git_pre_commit_hook(CHECKS CLANG_FORMAT)
 
 feature_summary(WHAT ALL INCLUDE_QUIET_PACKAGES FATAL_ON_MISSING_REQUIRED_PACKAGES)
-
-# Fedora
-#set(BUILD_QCH "")
-#set(CMAKE_C_FLAGS_RELEASE "")
-#set(CMAKE_Fortran_FLAGS_RELEASE "")
-#set(CMAKE_INSTALL_INCLUDEDIR_kf6 "")
-#set(CMAKE_INSTALL_LIBEXECDIR_kf6 "")
-#set(CMAKE_USE_RELATIVE_PATHS "")
-#set(ECM_MKSPECS_INSTALL_DIR "")
-#set(KDE_INSTALL_QTQUICKIMPORTSDIR "")
