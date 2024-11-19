@@ -12,10 +12,14 @@ set(CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} ${ECM_MODULE_PATH}  ${CMAKE_SOURCE_DI
 find_package(Qt6 ${QT_MIN_VERSION} REQUIRED CONFIG COMPONENTS Core)
 include(KDEInstallDirs6)
 
-install( FILES Vinyl-Dark.colors
-         DESTINATION ${KDE_INSTALL_DATADIR}/color-schemes/
+add_custom_target(clean-all
+    COMMAND cd ${CMAKE_CURRENT_SOURCE_DIR} && grep -vE '^build/' .gitignore | xargs -n1 rm -rf && cd - >/dev/null 2>&1
 )
 
-install( FILES Vinyl-Light.colors
-         DESTINATION ${KDE_INSTALL_DATADIR}/color-schemes/
+install( FILES ${CMAKE_CURRENT_SOURCE_DIR}/src/Vinyl-Dark.colors
+    DESTINATION ${KDE_INSTALL_DATADIR}/color-schemes/
+)
+
+install( FILES ${CMAKE_CURRENT_SOURCE_DIR}/src/Vinyl-Light.colors
+    DESTINATION ${KDE_INSTALL_DATADIR}/color-schemes/
 )
