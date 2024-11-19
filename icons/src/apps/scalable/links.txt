@@ -1,0 +1,9 @@
+file-manager.svg ./org.kde.dolphin.svg
+file-manager.svg ./system-file-manager.svg
+plasmadiscover.svg ./software-properties.svg
+plasma.svg ./start-here-kde-plasma.svg
+plasma.svg ./start-here-kde.svg
+plasma-symbolic.svg ./start-here-kde-symbolic.svg
+start-here-kde-symbolic.svg ./start-here-kde-plasma-symbolic.svg
+utilities-terminal.svg ./terminal.svg
+utilities-terminal.svg ./utilities-x-terminal.svg

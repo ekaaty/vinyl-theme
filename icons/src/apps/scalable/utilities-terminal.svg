@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg version="1.1" viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg">
+ <defs>
+  <style id="current-color-scheme" type="text/css">
+    .ColorScheme-Text             { color: #7d7d7d; }
+    .ColorScheme-Highlight        { color: #00aaff; }
+  </style>
+  <linearGradient id="a" x1="47.554" x2="240.54" y1="149.87" y2="270.16" gradientTransform="matrix(1.34977 0 0 1.38177 -3.14793 -9.4667)" gradientUnits="userSpaceOnUse">
+   <stop class="ColorScheme-Text" stop-color="currentColor" stop-opacity="0" offset=".65"/>
+   <stop class="ColorScheme-Text" stop-color="currentColor" stop-opacity=".05" offset="1"/>
+  </linearGradient>
+ </defs>
+ <rect x="16" y="64" width="480" height="384" ry="16.9218" style="fill:#444"/>
+ <rect x="16" y="64" width="480" height="384" ry="16.9218" style="fill:url(#a)"/>
+ <rect class="ColorScheme-Text" x="16" y="64" width="480" height="384" ry="16.9218" style="fill:none;stroke-width:8;stroke:currentColor;stroke-opacity:.5"/>
+ <path class="ColorScheme-Highlight" d="m258 224v24h-78v-24z" style="fill:currentColor"/>
+ <path class="ColorScheme-Highlight" d="m108.793 183.999-48.7929-63.999h46.8708l49.1292 63.999-49.1292 64.001c-22.0492-2e-3 -24.0065-1e-3 -46.0543 0z" style="fill:currentColor"/>
+</svg>

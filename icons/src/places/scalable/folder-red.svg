@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+<svg width="512" height="512" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:cc="http://creativecommons.org/ns#" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+ <metadata>
+  <rdf:RDF>
+   <cc:Work rdf:about="">
+    <dc:format>image/svg+xml</dc:format>
+    <dc:type rdf:resource="http://purl.org/dc/dcmitype/StillImage"/>
+   </cc:Work>
+  </rdf:RDF>
+ </metadata>
+ <g transform="translate(0 -540.36)">
+  <path d="m101.81 553.25 290.12 0.21824 4.8742 2.1825 2.4007 4.656v244.07l27.426 28.081 0.21825 126.44-6.9112 4.7287-318.28 2.328z" fill="#ff2a2a"/>
+  <path d="m101.81 553.25 290.12 0.21824 4.8742 2.1825 2.4007 4.656v244.07l27.426 28.081 0.21825 126.44-6.9112 4.7287-318.28 2.328z" fill-opacity=".33"/>
+  <path d="m101.81 553.26 110.7 90.743 0.41153 253.09-8.6422 13.169 0.2058 127.78-6.996 3.9095-95.851-76.106z" fill="#ff2a2a"/>
+  <path d="m112.43 959.99 0.582-380.62" fill="none" stroke="#d40000" stroke-linecap="round" stroke-width="2.3046px"/>
+  <path d="m120.14 965.53 0.582-380.62" fill="none" stroke="#d40000" stroke-linecap="round" stroke-width="2.3046px"/>
+ </g>
+</svg>

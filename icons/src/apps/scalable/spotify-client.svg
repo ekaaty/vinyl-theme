@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg version="1.1" viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg" xmlns:cc="http://creativecommons.org/ns#" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+ <metadata>
+  <rdf:RDF>
+   <cc:Work rdf:about="">
+    <dc:format>image/svg+xml</dc:format>
+    <dc:type rdf:resource="http://purl.org/dc/dcmitype/StillImage"/>
+   </cc:Work>
+  </rdf:RDF>
+ </metadata>
+ <defs>
+  <style id="current-color-scheme" type="text/css">
+   .ColorScheme-Text             { color: #ffffff; }
+   .ColorScheme-Highlight        { color: #1ed45f; }
+  </style>
+  <linearGradient id="b" x1="35.117" x2="14.009" y1="8.7775" y2="39.555" gradientTransform="translate(0,16)" gradientUnits="userSpaceOnUse">
+   <stop offset="0"/>
+   <stop opacity="0" offset="1"/>
+  </linearGradient>
+  <linearGradient id="a" x1="35.117" x2="14.009" y1="8.7775" y2="39.555" gradientTransform="matrix(10.9091,0,0,10.9091,-5.81818,-5.8184)" gradientUnits="userSpaceOnUse">
+   <stop opacity="0" style="stop-opacity:0" offset="0"/>
+   <stop style="stop-opacity:.301631" offset="1"/>
+  </linearGradient>
+ </defs>
+ <circle class="ColorScheme-Highlight" cx="256" cy="256" r="240" style="fill:currentColor;"/>
+ <circle cx="256" cy="256" r="240" fill="url(#b)" style="fill:url(#a)"/>
+ <path class="ColorScheme-Text" d="m356.517 352.382c-3.90808 6.4092-12.2978 8.44135-18.7069 4.50731-51.227-31.2906-115.713-38.3771-191.662-21.0251-7.31847 1.66746-14.6138-2.91796-16.2807-10.2391-1.6752-7.3211 2.89201-14.616 10.2286-16.284 83.111-18.9884 154.396-10.8122 211.909 24.3338 6.40921 3.93415 8.44135 12.2978 4.50731 18.7069zm26.7044-59.4077c-4.92415 8.00368-15.3982 10.5309-23.3956 5.60673-58.6462-36.048-148.047-46.4869-217.407-25.4313-8.99629 2.71735-18.4986-2.35266-21.228-11.3335-2.70961-8.9963 2.36302-18.48 11.3433-21.2149 79.2372-24.0426 177.742-12.396 245.095 28.9898 7.99844 4.92415 10.5256 15.3982 5.60149 23.3858zm2.29266-61.8611c-70.319-41.7666-186.338-45.6066-253.473-25.2306-10.7809 3.26968-22.1826-2.8164-25.4488-13.5971-3.26716-10.7862 2.81379-22.1793 13.6026-25.4575 77.0695-23.3957 205.189-18.876 286.146 29.1851 9.71805 5.75521 12.8967 18.2793 7.1387 27.9633-5.73175 9.6971-18.2891 12.8935-27.9557 7.13608z" style="fill:currentColor"/>
+</svg>

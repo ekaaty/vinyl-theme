@@ -1,0 +1,111 @@
+[Icon Theme]
+Name=Vinyl
+
+Comment=Vinyl theme by Ekaaty
+
+# == KDE/Plasma Stuff ==========================================================
+
+DisplayDepth=32
+Example=folder
+FollowsColorScheme=true
+Inherits=breeze,hicolor
+KDE-Extensions=.svg
+
+# == DEFAULTS ==================================================================
+
+# -- Desktop -------------------------------------
+DesktopDefault=48
+DesktopSizes=16,22,32,48,64,96,128,256
+
+# -- Toolbars ------------------------------------
+MainToolbarDefault=22
+MainToolbarSizes=16,22,32,48
+ToolbarDefault=22
+ToolbarSizes=16,22,32,48
+
+# -- Small ---------------------------------------
+SmallDefault=16
+SmallSizes=16,22,32,48
+
+# -- Panels --------------------------------------
+PanelDefault=48
+PanelSizes=16,22,32,48,64,96,128,256
+
+# -- Dialogs -------------------------------------
+DialogDefault=32
+DialogSizes=16,22,32,48,64,128,256
+
+
+# == DIRECTORIES ==============================================================
+
+Directories=actions/16,actions/16@2x,actions/16@3x,actions/22,actions/22@2x,actions/22@3x,actions/24,actions/24@2x,actions/24@3x,actions/32,actions/32@2x,actions/32@3x,actions/48,actions/64,apps/scalable,places/16,places/16@2x,places/16@3x,places/22,places/22@2x,places/22@3x,places/24,places/24@2x,places/24@3x,places/32,places/48,places/64,places/96
+
+# -- Actions -------------------------------------
+[actions/16]
+Context=Actions
+Size=16
+Type=Fixed
+
+[actions/22]
+Context=Actions
+Size=22
+Type=Fixed
+
+[actions/48]
+Context=Actions
+Size=48
+Type=Fixed
+
+[actions/64]
+Context=Actions
+Size=64
+Type=Fixed
+
+
+# -- Places --------------------------------------
+[places/16]
+Context=Places
+Size=16
+Type=Fixed
+
+[places/22]
+Context=Places
+Size=22
+Type=Fixed
+
+[places/24]
+Context=Places
+Size=24
+Type=Fixed
+
+[places/48]
+Context=Places
+Size=48
+Type=Fixed
+
+[places/64]
+Context=Places
+Size=64
+Type=Fixed
+
+[places/96]
+Context=Places
+Size=96
+Type=Fixed
+
+# -- Scalable ------------------------------------
+[apps/scalable]
+Context=Applications
+Size=64
+MinSize=32
+MaxSize=512
+Type=Scalable
+
+[places/scalable]
+Context=Places
+Size=512
+MinSize=112
+MaxSize=512
+Type=Scalable
+
+# kate: syntax=ini

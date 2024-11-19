@@ -1,0 +1,10 @@
+16 ./16@2x
+16 ./16@3x
+22 ./22@2x
+22 ./22@3x
+24 ./24@2x
+24 ./24@3x
+scalable ./32
+scalable ./48
+scalable ./64
+scalable ./96

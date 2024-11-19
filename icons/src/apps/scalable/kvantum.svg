@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg version="1.1" viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg" xmlns:cc="http://creativecommons.org/ns#" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:xlink="http://www.w3.org/1999/xlink">
+ <metadata>
+  <rdf:RDF>
+   <cc:Work rdf:about="">
+    <dc:format>image/svg+xml</dc:format>
+    <dc:type rdf:resource="http://purl.org/dc/dcmitype/StillImage"/>
+   </cc:Work>
+  </rdf:RDF>
+ </metadata>
+ <defs>
+  <linearGradient id="linearGradient979">
+   <stop stop-color="#7f79eb" offset="0"/>
+   <stop stop-color="#214478" offset="1"/>
+  </linearGradient>
+  <linearGradient id="linearGradient981" x1="70.358" x2="85.437" y1="140.04" y2="164.55" gradientTransform="translate(27.75,-112)" gradientUnits="userSpaceOnUse" xlink:href="#linearGradient979"/>
+  <linearGradient id="linearGradient3610" x1="70.832" x2="103.05" y1="173.21" y2="137.46" gradientTransform="translate(26.787,-120.67)" gradientUnits="userSpaceOnUse">
+   <stop offset="0"/>
+   <stop stop-color="#aaa" stop-opacity="0" offset="1"/>
+  </linearGradient>
+  <linearGradient id="linearGradient30708" x1="106.81" x2="133.72" y1="43.014" y2="22.739" gradientUnits="userSpaceOnUse" xlink:href="#linearGradient979"/>
+  <linearGradient id="linearGradient51134" x1="86.65" x2="104.6" y1="23.931" y2="60.241" gradientUnits="userSpaceOnUse" xlink:href="#linearGradient979"/>
+ </defs>
+ <g transform="matrix(9.14218 0 0 9.14218 -745.882 -53.6547)" style="stroke-width:.0289406" aria-label="K V">
+  <path d="m115.84 13.87h-11.25l-11.25 18.853 11.25 21.147 7.5-8.7499-7.6033-13.25z" fill="url(#linearGradient981)" style="fill:url(#linearGradient981);stroke-width:.0289406"/>
+  <path d="m135.84 13.87h-12.5l-11.25 31.25-7.5296 8.75h16.187z" fill="url(#linearGradient30708)" style="fill:url(#linearGradient30708);stroke-width:.0289406"/>
+  <path d="m93.337 13.87h-10v40h10z" fill="url(#linearGradient51134)" stroke-width=".0286616" style="fill:url(#linearGradient51134)"/>
+  <path d="m123.34 13.87-11.25 31.25-7.6035-13.248 11.354-18h-11.25l-11.25 18.852 11.238 21.125-0.0176 0.0215h16.186l15.094-40zm-30 18.854v-18.852h-10v40h10z" fill="url(#linearGradient3610)" opacity=".2" style="fill:url(#linearGradient3610);stroke-width:.0289406"/>
+ </g>
+</svg>

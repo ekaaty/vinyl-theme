@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg version="1.1" viewBox="0 0 512 512" xml:space="preserve" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+   <defs>
+      <style id="current-color-scheme" type="text/css">
+         .ColorScheme-Text             { color: #7d7d7d; }
+         .ColorScheme-PositiveText     { color: #00aa88; }
+         .ColorScheme-NeutralText      { color: #ff6644; }
+         .ColorScheme-NegativeText     { color: #ff5577; }
+         .ColorScheme-Background       { color: #eff0f1; }
+         .ColorScheme-Highlight        { color: #00aaff; }
+         .ColorScheme-ViewText         { color: #7d7d7d; }
+         .ColorScheme-ViewBackground   { color: #eff0f1; }
+         .ColorScheme-ViewHover        { color: #00aaff; }
+         .ColorScheme-ViewFocus        { color: #00aaff; }
+         .ColorScheme-ButtonText       { color: #7d7d7d; }
+         .ColorScheme-ButtonBackground { color: #eff0f1; }
+         .ColorScheme-ButtonHover      { color: #00aaff; }
+         .ColorScheme-ButtonFocus      { color: #00aaff; }
+         .Translucent { opacity:.5; }
+      </style>
+      <linearGradient id="a" x1="241.716" x2="393.104" y1="270.286" y2="119.331" gradientTransform="translate(-.001125 1e-4)" gradientUnits="userSpaceOnUse">
+        <stop style="stop-opacity:.153092" offset=".47063"/>
+        <stop style="stop-opacity:0" offset="1"/>
+      </linearGradient>
+  <linearGradient id="linearGradient19" x1="241.716" x2="393.104" y1="270.286" y2="119.331" gradientTransform="matrix(1.33333 0 0 1.33333 -152.001 -18.6663)" gradientUnits="userSpaceOnUse" xlink:href="#a"/></defs>
+  <g id="c">
+     <rect width="512" height="512" rx="15%" fill="none"/>
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     <rect class="ColorScheme-Text Translucent" x="379.809" y="360.762" width="76.1905" height="76.1905" rx="16.8205" fill="currentColor"/><rect class="ColorScheme-Text Translucent" x="75.0493" y="55.9991" width="76.1905" height="76.1905" rx="16.8205" fill="currentColor"/><rect class="ColorScheme-Highlight" x="56" y="341.715" width="114.286" height="114.286" rx="25.2308" fill="currentColor"/><rect class="ColorScheme-Highlight" x="208.38" y="341.715" width="114.286" height="114.286" rx="25.2308" fill="currentColor"/><rect class="ColorScheme-Highlight" x="56" y="189.334" width="114.286" height="114.286" rx="25.2308" fill="currentColor"/><rect class="ColorScheme-Highlight" x="208.38" y="55.9991" width="247.62" height="247.62" rx="54.6668" fill="currentColor"/><rect x="56" y="341.715" width="114.286" height="114.286" rx="25.2308" fill="url(#a)" style="fill:url(#linearGradient19)"/><rect x="208.38" y="341.715" width="114.286" height="114.286" rx="25.2308" fill="url(#a)" style="fill:url(#linearGradient19)"/><rect x="56" y="189.334" width="114.286" height="114.286" rx="25.2308" fill="url(#a)" style="fill:url(#linearGradient19)"/><rect x="208.38" y="55.9991" width="247.62" height="247.62" rx="54.6668" fill="url(#a)" style="fill:url(#linearGradient19)"/>
+   </g>
+</svg>

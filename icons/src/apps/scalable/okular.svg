@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg version="1.1" viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg">
+ <defs id="gradients">
+  <linearGradient id="linearGradient2920" x1="2.084" x2="6.0587" y1=".84767" y2="6.0176" gradientTransform="matrix(.998317 0 0 .998077 .30072 .26386)" gradientUnits="userSpaceOnUse">
+   <stop offset="0"/>
+   <stop stop-opacity="0" offset="1"/>
+  </linearGradient>
+  <linearGradient id="linearGradient2931" x1="-10.554" x2="-1.5432" y1="-11.451" y2="-.84765" gradientTransform="matrix(.998317 0 0 .998077 -.31147 -.212321)" gradientUnits="userSpaceOnUse">
+   <stop stop-opacity=".40201" offset="0"/>
+   <stop stop-opacity="0" offset="1"/>
+  </linearGradient>
+ </defs>
+ <g transform="matrix(45.3533 0 0 45.3533 -31.9945 -31.9974)" style="stroke-width:.0220491">
+  <rect id="background" transform="scale(-1)" x="-10.8479" y="-11.6419" width="8.99568" height="10.5829" fill="#e74c3c" style="paint-order:stroke fill markers;stroke-width:.022049"/>
+  <rect id="bg-shadow" x="1.8521" y="11.3769" width="8.99568" height=".264577" style="paint-order:stroke fill markers;stroke-width:.022049"/>
+  <rect id="bg-overlay" transform="scale(-1)" x="-10.8479" y="-11.6419" width="8.99568" height="10.5829" fill="url(#linearGradient2931)" style="fill:url(#linearGradient2931);paint-order:stroke fill markers;stroke-width:.022049"/>
+  <rect id="book-side" x="1.8521" y="1.0583" width=".529163" height="10.5829" fill="#232629" style="paint-order:stroke fill markers;stroke-width:.022049"/>
+  <rect id="book-body" x="2.38119" y="11.1119" width="8.46659" height=".264577" fill="#fcfcfc" style="paint-order:stroke fill markers;stroke-width:.022049"/>
+  <path id="capa" d="m10.8479 1.3229c-0.287896 0.118978-0.575852 0.275296-0.863748 0.479894-0.484134 0.344056-0.942668 0.77725-1.37588 1.29968-0.420435 0.509713-0.80272 1.08969-1.14669 1.73958-0.331256 0.637142-0.579712 1.29968-0.74534 1.98777-0.178368 0.688111-0.254617 1.31898-0.229137 1.89238 0.038221 0.560683 0.159078 1.03229 0.362925 1.41458 0.203847 0.382285 0.483954 0.656212 0.840679 0.82187 0.356735 0.165657 0.7774 0.197307 1.26158 0.09537 0.471394-0.101938 0.949118-0.324515 1.43328-0.668571 0.158478-0.113799 0.311676-0.238257 0.462374-0.367615v-1.19969c-0.09503 0.074062-0.191737 0.144598-0.290136 0.210207-0.382215 0.242117-0.75204 0.382195-1.10879 0.420415-0.369475 0.0382295-0.681221-0.0255837-0.936028-0.191238-0.254807-0.165658-0.452434-0.414165-0.592582-0.74547-0.127408-0.331316-0.191208-0.726121-0.191208-1.18488 0-0.471484 0.076252-0.981457 0.229137-1.52938 0.152888-0.547943 0.369705-1.07039 0.649992-1.56738 0.280286-0.509713 0.585812-0.955878 0.917058-1.33818 0.343996-0.395025 0.70086-0.713571 1.07029-0.955678 0.0844-0.056271 0.168437-0.105029 0.252206-0.150738z" fill="#232528" fill-opacity=".6" style="stroke-width:.022049"/>
+  <path id="bookmark-shadow" d="m3.58298 1.0583 2.45647 3.25616 0.0178868 4.37874-3.67615-5.06523v-2.51807z" fill="url(#linearGradient2920)" opacity=".05" style="fill:url(#linearGradient2920);paint-order:stroke fill markers;stroke-width:.022049"/>
+  <g id="bookmark" transform="matrix(.999987 0 0 .999987 2.40165e-5 1.37232e-5)" style="stroke-width:.0220493">
+   <path d="m2.3812 1.0583v2.5135h0.011076l0.59054-0.65477 0.57717 0.65477h0.011842v-2.5135z" fill="#f39c1f" stroke-width=".0223536" style="paint-order:stroke fill markers"/>
+   <path d="m2.4474 1.0583v2.3151h0.00985l0.52492-0.60308 0.51304 0.60308h0.01052v-2.3151z" fill="#fdbc4b" stroke-width=".0202255" style="paint-order:stroke fill markers"/>
+  </g>
+ </g>
+</svg>
