@@ -20,7 +20,7 @@ add_custom_command( OUTPUT
                     COMMAND make -C ${CMAKE_CURRENT_SOURCE_DIR} -j1 -f Makefile.build
 )
 
-add_custom_target( themes
+add_custom_target( cursor-themes
                    ALL make -C ${CMAKE_CURRENT_SOURCE_DIR} -j1 -f Makefile.build black white clean
                    DEPENDS ${CMAKE_CURRENT_SOURCE_DIR}/Vinyl-Black
                    DEPENDS ${CMAKE_CURRENT_SOURCE_DIR}/Vinyl-White
