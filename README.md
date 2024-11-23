@@ -172,6 +172,19 @@ sudo apt install \
 >Debian and Kubuntu doesn't support KDE Plasma 6 yet. 
 >It can be available on Debian 13 (Trixie) and Kubuntu 24.10 (Oracular Oriole).
 
+#### 5\. Arch Linux
+
+The package is available to be installed from the Arch Linux AUR.
+
+https://aur.archlinux.org/packages/vinyl
+
+You can use your favorite Arch AUR helper to install it.
+
+Example.
+
+```shell
+yay -S vinyl
+```
 
 ### Building the source
 
