@@ -24,7 +24,7 @@ target_link_libraries(kcm_vinyldecoration
         Qt6::Core
         Qt6::Gui
         Qt6::DBus
-        KDecoration2::KDecoration
+        KDecoration3::KDecoration
      PRIVATE
         KF6::CoreAddons
         KF6::ConfigWidgets

@@ -16,6 +16,7 @@ if( CMAKE_SOURCE_DIR STREQUAL CMAKE_CURRENT_SOURCE_DIR )
 
   find_package(Qt6 ${QT_MIN_VERSION} REQUIRED CONFIG COMPONENTS
     Core 
+    Core5Compat
     Quick
   )
 

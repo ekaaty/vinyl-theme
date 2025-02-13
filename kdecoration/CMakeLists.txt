@@ -32,7 +32,7 @@ target_link_libraries(vinyldecoration
         Qt6::Core
         Qt6::Gui
         Qt6::DBus
-        KDecoration2::KDecoration
+        KDecoration3::KDecoration
      PRIVATE
         vinylcommon6
         KF6::CoreAddons

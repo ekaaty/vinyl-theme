@@ -103,7 +103,7 @@
         "Name[zh_TW]": "Vinyl"
     },
     "X-KDE-ConfigModule": "kcm_vinyldecoration",
-    "org.kde.kdecoration2": {
+    "org.kde.kdecoration3": {
         "blur": false,
         "recommendedBorderSize": "None"
     }

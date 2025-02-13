@@ -44,7 +44,7 @@ int main(int argc, char *argv[])
     KCMultiDialog dialog;
     dialog.setWindowTitle( i18n( "Vinyl Settings" ) );
     dialog.addModule(KPluginMetaData(QStringLiteral("kstyle_config/vinylstyleconfig")));
-    dialog.addModule(KPluginMetaData(QStringLiteral("org.kde.kdecoration2.kcm/kcm_vinyldecoration.so")));
+    dialog.addModule(KPluginMetaData(QStringLiteral("org.kde.kdecoration3.kcm/kcm_vinyldecoration.so")));
     dialog.show();
 
     foreach( auto child, dialog.findChildren<QAbstractScrollArea*>() )

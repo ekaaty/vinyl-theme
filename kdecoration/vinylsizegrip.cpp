@@ -20,7 +20,7 @@
 
 #include "vinylsizegrip.h"
 
-#include <KDecoration2/DecoratedClient>
+#include <KDecoration3/DecoratedClient>
 
 #include <QPainter>
 #include <QPolygon>
@@ -63,9 +63,9 @@ namespace Vinyl
 
         // connections
         auto c = decoration->client();
-        connect( c, &KDecoration2::DecoratedClient::widthChanged, this, &SizeGrip::updatePosition );
-        connect( c, &KDecoration2::DecoratedClient::heightChanged, this, &SizeGrip::updatePosition );
-        connect( c, &KDecoration2::DecoratedClient::activeChanged, this, &SizeGrip::updateActiveState );
+        connect( c, &KDecoration3::DecoratedClient::widthChanged, this, &SizeGrip::updatePosition );
+        connect( c, &KDecoration3::DecoratedClient::heightChanged, this, &SizeGrip::updatePosition );
+        connect( c, &KDecoration3::DecoratedClient::activeChanged, this, &SizeGrip::updateActiveState );
 
         // show
         show();

@@ -472,7 +472,7 @@ namespace Vinyl
         //* return true if passed widget is a menu title (KMenu::addTitle)
         bool hasAlteredBackground( const QWidget* ) const;
         
-        //* A solution for Qt5's problem with translucent windows
+        //* A solution for Qt5's problem with translucent windows -- still needed
         void setSurfaceFormat(QWidget *w) const;
         void setSurfaceFormat(const QWidget *w) const
         {

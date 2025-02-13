@@ -1,6 +1,6 @@
 import QtQuick
 import QtQuick.Controls as Controls
-import Qt5Compat.GraphicalEffects
+import Qt5Compat.GraphicalEffects // still needed ?
 import org.kde.coreaddons as KCoreAddons
 import org.kde.kirigami as Kirigami
 

@@ -8167,7 +8167,7 @@ namespace Vinyl
     // Taken from Kvantum
     /*
         To make Qt windows translucent, we should set the surface format of
-        their native handles BEFORE they're created but Qt5 windows are
+        their native handles BEFORE they're created but Qt5 (still needed?) windows are
         often polished AFTER they're created, so that setting the attribute
         "WA_TranslucentBackground" in "Style::polish()" would have no effect.
 
