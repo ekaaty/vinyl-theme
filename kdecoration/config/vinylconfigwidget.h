@@ -1,93 +1,65 @@
-#ifndef vinylconfigwidget_h
-#define vinylconfigwidget_h
 //////////////////////////////////////////////////////////////////////////////
 // vinylconfigurationui.h
 // -------------------
 //
-// Copyright (c) 2009 Hugo Pereira Da Costa <hugo.pereira@free.fr>
+// SPDX-FileCopyrightText: 2009 Hugo Pereira Da Costa <hugo.pereira@free.fr>
 //
-// Permission is hereby granted, free of charge, to any person obtaining a copy
-// of this software and associated documentation files (the "Software"), to
-// deal in the Software without restriction, including without limitation the
-// rights to use, copy, modify, merge, publish, distribute, sublicense, and/or
-// sell copies of the Software, and to permit persons to whom the Software is
-// furnished to do so, subject to the following conditions:
-//
-// The above copyright notice and this permission notice shall be included in
-// all copies or substantial portions of the Software.
-//
-// THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-// IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-// FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-// AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-// LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
-// FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS
-// IN THE SOFTWARE.
+// SPDX-License-Identifier: MIT
 //////////////////////////////////////////////////////////////////////////////
 
-#include "config/ui_vinylconfigurationui.h"
+#pragma once
+
+#include "vinyl.h"
 #include "vinylexceptionlistwidget.h"
 #include "vinylsettings.h"
-#include "vinyl.h"
+#include "ui_vinylconfigurationui.h"
 
 #include <KCModule>
 #include <KSharedConfig>
 
-#include <QWidget>
 #include <QSharedPointer>
+#include <QWidget>
 
 namespace Vinyl
 {
+//_____________________________________________
+class ConfigWidget : public KCModule
+{
+    Q_OBJECT
 
-    //_____________________________________________
-    class ConfigWidget: public KCModule
-    {
+public:
+    //* constructor
+    explicit ConfigWidget(QObject *parent, const KPluginMetaData &data, const QVariantList &args);
 
-        Q_OBJECT
+    //* destructor
+    virtual ~ConfigWidget() = default;
 
-        public:
+    //* default
+    void defaults() override;
 
-        //* constructor
-        explicit ConfigWidget(QObject *parent, const KPluginMetaData &data, const QVariantList &args);
+    //* load configuration
+    void load() override;
 
-        //* destructor
-        virtual ~ConfigWidget() = default;
+    //* save configuration
+    void save() override;
 
-        //* default
-        void defaults() override;
+protected Q_SLOTS:
 
-        //* load configuration
-        void load() override;
+    //* update changed state
+    virtual void updateChanged();
 
-        //* save configuration
-        void save() override;
+private:
+    //* ui
+    Ui_VinylConfigurationUI m_ui;
 
-        protected Q_SLOTS:
+    //* kconfiguration object
+    KSharedConfig::Ptr m_configuration;
 
-        //* update changed state
-        virtual void updateChanged();
+    //* internal exception
+    InternalSettingsPtr m_internalSettings;
 
-        protected:
-
-        //* set changed state
-        void setChanged( bool );
-
-        private:
-
-        //* ui
-        Ui_VinylConfigurationUI m_ui;
-
-        //* kconfiguration object
-        KSharedConfig::Ptr m_configuration;
-
-        //* internal exception
-        InternalSettingsPtr m_internalSettings;
-
-        //* changed state
-        bool m_changed;
-
-    };
+    //* changed state
+    bool m_changed;
+};
 
 }
-
-#endif
