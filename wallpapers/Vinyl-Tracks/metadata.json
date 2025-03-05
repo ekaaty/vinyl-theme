@@ -1,0 +1,13 @@
+{
+    "KPlugin": {
+        "Authors": [
+            {
+                "Email": "christian.tosta@gmail.com",
+                "Name": "Christian Tosta"
+            }
+        ],
+        "Id": "NeonTracks",
+        "Name": "Vinyl: Tracks",
+        "License": "CC-BY-SA-4.0"
+    }
+}
