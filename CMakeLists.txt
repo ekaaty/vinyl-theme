@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 3.16)
-set(PROJECT_VERSION "6.3.0")
+set(PROJECT_VERSION "6.3.2")
 project(vinyl VERSION ${PROJECT_VERSION})
 set(PROJECT_VERSION_MAJOR 6)
 
@@ -24,16 +24,17 @@ set(CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} ${ECM_MODULE_PATH}  ${CMAKE_SOURCE_DI
 set(CMAKE_CXX_STANDARD 20)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
+set(CPACK_PACKAGE_VERSION "${PROJECT_VERSION}")
+SET(CPACK_OUTPUT_FILE_PREFIX "${PROJECT_SOURCE_DIR}/dist")
 set(CPACK_GENERATOR "TXZ")
 set(CPACK_SOURCE_GENERATOR "TXZ")
-SET(CPACK_OUTPUT_FILE_PREFIX "${PROJECT_SOURCE_DIR}/dist")
 set(CPACK_SOURCE_PACKAGE_FILE_NAME "${PROJECT_NAME}-${PROJECT_VERSION}")
 set(CPACK_SOURCE_IGNORE_FILES  "\\.git/;.gitignore;build/;_CPack_Packages/;dist/;tmp/;[^-]+\\.tar\\.[abx2]*")
+set(CPACK_SOURCE_OUTPUT_CONFIG_FILE "${PROJECT_BINARY_DIR}/CPackSourceConfig.cmake")
 set(CPACK_VERBATIM_VARIABLES YES)
 configure_file( "${PROJECT_SOURCE_DIR}/cmake/CPackConfig.cmake.in" 
 	        "${PROJECT_BINARY_DIR}/CPackSourceConfig.cmake" 
                 @ONLY)
-set(CPACK_SOURCE_OUTPUT_CONFIG_FILE "${PROJECT_BINARY_DIR}/CPackSourceConfig.cmake")
 include(CPack)
 
 # We need this because we can't include KDECMakeSettings here, because that
@@ -67,11 +68,12 @@ function(build_Qt6)
         find_package(Qt6 ${REQUIRED_QT_VERSION} CONFIG REQUIRED DBus)
         set(HAVE_QTDBUS ${Qt6DBus_FOUND})
 
-	option(WITH_DECORATIONS "Build Vinyl window decorations for KWin" OFF) # Broken for now
+	option(WITH_DECORATIONS "Build Vinyl window decorations for KWin" ON)
 	option(WITH_ICONS "Build Vinyl icon themes" ON)
 	option(WITH_MENULAUNCHER "Build Vinyl menu launcher applet" ON)
+	option(WITH_PLASMA "Build Vinyl plasma theme" ON)
 	option(WITH_SPLASHSCREEN "Build Vinyl splash screen" ON)
-	option(WITH_WALLPAPERS "Install Vinyl default wallpapers" OFF)
+	option(WITH_WALLPAPERS "Install Vinyl default wallpapers" ON)
 
         find_package(KF6FrameworkIntegration ${KF6_MIN_VERSION} CONFIG )
         set_package_properties(KF${QT_MAJOR_VERSION}FrameworkIntegration PROPERTIES
@@ -90,6 +92,7 @@ function(build_Qt6)
         set(WITH_DECORATIONS OFF)
 	set(WITH_ICONS OFF)
 	set(WITH_MENULAUNCHER OFF)
+	set(WITH_PLASMA OFF)
 	set(WITH_SPLASHSCREEN OFF)
         set(WITH_WALLPAPERS OFF)
     endif()
@@ -137,6 +140,11 @@ function(build_Qt6)
         find_package(KF6 ${KF6_MIN_VERSION} REQUIRED COMPONENTS DocTools Package)
         find_package(Plasma ${PLASMA_MIN_VERSION} REQUIRED)
         add_subdirectory(launcher)
+    endif()
+    if(WITH_PLASMA)
+        find_package(KF6 ${KF6_MIN_VERSION} REQUIRED COMPONENTS DocTools Package)
+        find_package(Plasma ${PLASMA_MIN_VERSION} REQUIRED)
+	add_subdirectory(desktoptheme)
     endif()
     if(WITH_SPLASHSCREEN)
         find_package(KF6 ${KF6_MIN_VERSION} REQUIRED COMPONENTS DocTools Package)
