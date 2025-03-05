@@ -604,7 +604,10 @@ namespace Vinyl
 
             // frame width
             case PM_DefaultFrameWidth:
-            if( qobject_cast<const QMenu*>( widget ) ) return StyleConfigData::cornerRadius() > 1 ? 4 : 0;
+            // Vinyl Bug Fix: Korner Bug on Fedora 41 #6
+            // if( qobject_cast<const QMenu*>( widget ) ) return StyleConfigData::cornerRadius() > 1 ? 4 : 0;
+            if( qobject_cast<const QMenu*>( widget ) ) return Metrics::Menu_FrameWidth;
+	    // End Bug fix
             if( qobject_cast<const QLineEdit*>( widget ) ) return Metrics::LineEdit_FrameWidth;
             else if( isQtQuickControl( option, widget ) )
             {

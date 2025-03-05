@@ -45,6 +45,7 @@ namespace Vinyl
 
         // frames
         Frame_FrameWidth = 5,
+        Menu_FrameWidth = 0,
         //Frame_FrameRadius = 6,
 
         // layout
