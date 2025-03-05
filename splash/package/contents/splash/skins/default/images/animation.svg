@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<svg width="512" height="512" version="1.1" xml:space="preserve" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<svg version="1.1" viewBox="0 0 320 320" xml:space="preserve" xmlns="http://www.w3.org/2000/svg">
     <defs>
         <style id="current-color-scheme" type="text/css">
             .ColorScheme-Text             { color: #7d7d7d; }
@@ -17,13 +17,11 @@
             .ColorScheme-ButtonHover      { color: #00aaff; }
             .ColorScheme-ButtonFocus      { color: #00aaff; }
         </style>
-        <linearGradient id="a" x1="238.08" x2="301.83" y1="275.12" y2="210.93"
-                        gradientTransform="matrix(3.2002,0,0,3.2,-563.4,-563.26)"
-                        gradientUnits="userSpaceOnUse">
-            <stop stop-opacity="1" offset="0"/>
+        <linearGradient id="a" x1="238.08" x2="301.83" y1="275.12" y2="210.93" gradientTransform="matrix(2.28586 0 0 2.28571 -425.286 -425.186)" gradientUnits="userSpaceOnUse">
+            <stop offset="0"/>
             <stop stop-opacity=".5" offset=".5"/>
         </linearGradient>
     </defs>
-    <!--rect x="32" y="32" width="448" height="448" rx="224" class="ColorScheme-Highlight" fill="currentColor" stroke-width="0"/-->
-    <rect x="32" y="32" width="448" height="448" rx="224" fill="url(#a)" opacity=".5" stroke-width="0"/>
+    
+    <path d="m160 0c-88.64 0-160 71.36-160 160s71.36 160 160 160 160-71.36 160-160-71.36-160-160-160zm0 40a120 120 0 0 1 120 120 120 120 0 0 1-120 120 120 120 0 0 1-120-120 120 120 0 0 1 120-120z" style="fill:url(#a);opacity:.5"/>
 </svg>
