@@ -12,10 +12,6 @@ set(CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} ${ECM_MODULE_PATH}  ${CMAKE_SOURCE_DI
 find_package(Qt6 ${QT_MIN_VERSION} REQUIRED CONFIG COMPONENTS Core)
 include(KDEInstallDirs6)
 
-install( FILES ${CMAKE_CURRENT_SOURCE_DIR}/src/Vinyl-Dark.colors
-    DESTINATION ${KDE_INSTALL_DATADIR}/color-schemes/
-)
-
-install( FILES ${CMAKE_CURRENT_SOURCE_DIR}/src/Vinyl-Light.colors
+install( DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}/src/
     DESTINATION ${KDE_INSTALL_DATADIR}/color-schemes/
 )
