@@ -31,12 +31,9 @@ from xml.sax import saxutils, make_parser, SAXParseException, handler
 from xml.sax.handler import feature_namespaces
 import os, sys, tempfile, shutil
 
-if not os.path.exists(os.path.realpath('./pngs/24')):
-	os.makedirs(os.path.realpath('./pngs/24'))
-if not os.path.exists(os.path.realpath('./pngs/32')):
-	os.makedirs(os.path.realpath('./pngs/32'))
-if not os.path.exists(os.path.realpath('./pngs/48')):
-	os.makedirs(os.path.realpath('./pngs/48'))
+for size in (24, 32, 48):
+	if not os.path.exists(os.path.realpath('./build/pngs/%d' % size)):
+		os.makedirs(os.path.realpath('./build/pngs/%d' % size))
 
 svgFilename = None
 
@@ -65,12 +62,12 @@ class SVGRect:
 		dbg("New SVGRect: (%s)" % name)
 
 	def renderFromSVG(self, svgFName, sliceFName):
-		output_dir = os.path.realpath('./pngs')
+		output_dir = os.path.realpath('./build/pngs')
 		self.cmd = 'inkscape --export-type=png -w %d -h %d --export-id="%s" --export-filename="%s/%d/%s" "%s" 2>/dev/null'
 		for size in (24, 32, 48):
 			height = size
 			width = size
-			print("Rendering cursor slice: %s" % sliceFName)
+			print("Rendering cursor slice: %s/%d/%s" % (output_dir, size, sliceFName))
 			rc = os.system(self.cmd % (width, height, self.name, output_dir, size, sliceFName, svgFName))
 			if rc > 0:
 				fatalError('ABORTING: Inkscape failed to render the slice.')

@@ -53,11 +53,11 @@ If you edited the *template.svg* make sure the layer *slices* is invisible. Then
 
 The Python file *render-pngs.py* combs through *template.svg* and searches for rectangles on the *slices* layer. It exports the vectors in these areas to PNGs named after the rectangle’s ID. To start rendering use the command
 
-    ./render-pngs.py svgs/template.svg
+    ./render-pngs.py src/svgs/template.svg
 
 Or, if you prefer the black-theme:
 
-    ./render-pngs.py svgs/template-black.svg
+    ./render-pngs.py src/svgs/template-black.svg
 
 This creates the folder *pngs* with all the images – **it may take some time!** You can see that the command is working when the folder “pngs” fills itself with more and more png files. If you want other sizes than 24×24, 32×32 and 48×48 then edit the lines 68, 74 and 75 in *render-pngs.py* before.
 
@@ -69,10 +69,10 @@ The animated cursor of my theme cz-Viator is a rotating windmill. However I’ve
 
 If you’d like to employ one of these, now it’s the right time! Let *render-pngs.py* do it’s work again, only using the preferred spinner file this time (*one* of these lines):
 
-    ./render-pngs.py svgs/spinner-hourglass.svg
-    ./render-pngs.py svgs/spinner-ring.svg
-    ./render-pngs.py svgs/spinner-rotor.svg
-    ./render-pngs.py svgs/spinner-windmill.svg
+    ./render-pngs.py src/svgs/spinner-hourglass.svg
+    ./render-pngs.py src/svgs/spinner-ring.svg
+    ./render-pngs.py src/svgs/spinner-rotor.svg
+    ./render-pngs.py src/svgs/spinner-windmill.svg
 
 … or with the equivalent variant \*-black.svg. The PNGs of the cursors *wait* and *progress* will be overwritten.
 
