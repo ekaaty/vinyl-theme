@@ -18,7 +18,6 @@ dist/
 ecm_uninstall.cmake
 kstyle6/
 libvinylcommon6/
-Makefile
 prefix.sh
 VinylConfig.cmake
 VinylConfigVersion.cmake
