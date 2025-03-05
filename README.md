@@ -11,12 +11,12 @@ pieces of code and graphics work for KDE Plasma 6:
 - [x] KSplash: [ekaaty/vinyl-theme](https://github.com/ekaaty/vinyl-theme/tree/main/splash/) (native)
 - [x] Cursors: [cz-Aviator](https://github.com/charakterziffer/cursor-toolbox/) by charakterziffer
 - [x] Colors: [ekaaty/vinyl-theme](https://github.com/ekaaty/vinyl-theme/tree/main/colors/) (native)
-- [ ] Plasma style: [ekaaty/vinyl-theme](https://github.com/ekaaty/vinyl-theme/tree/main/desktoptheme/) (native)
-- [ ] Icons: [ekaaty/vinyl-theme](https://github.com/ekaaty/vinyl-theme/tree/main/icons/) (native)
-- [ ] SDDM theme: [kde/sddm-theme](https://invent.kde.org/plasma/plasma-desktop/-/tree/master/sddm-theme) by KDE SIG
-- [ ] Wallpapers: [ekaaty/vinyl-theme](https://github.com/ekaaty/vinyl-theme/tree/main/wallpapers/) (native)
-- [ ] GTK themes: [kde/breeze-gtk](https://github.com/KDE/breeze-gtk) by KDE SIG
+- [x] Plasma style: [ekaaty/vinyl-theme](https://github.com/ekaaty/vinyl-theme/tree/main/desktoptheme/) (native)
+- [x] Icons: [ekaaty/vinyl-theme](https://github.com/ekaaty/vinyl-theme/tree/main/icons/) (native)
+- [x] Wallpapers: [ekaaty/vinyl-theme](https://github.com/ekaaty/vinyl-theme/tree/main/wallpapers/) (native)
 - [ ] Global theme: [ekaaty/vinyl-theme](https://github.com/ekaaty/vinyl-theme/tree/main/lookandfeel/) (native)
+- [ ] SDDM theme: [kde/sddm-theme](https://invent.kde.org/plasma/plasma-desktop/-/tree/master/sddm-theme) by KDE SIG
+- [ ] GTK themes: [kde/breeze-gtk](https://github.com/KDE/breeze-gtk) by KDE SIG
 - [ ] Firefox theme: planned
 - [ ] Plymounth theme: planned
 - [ ] Grub2 theme: planned
@@ -25,7 +25,7 @@ See [AUTHORS](AUTHORS) file and sub-project folders for more info.
 
 ## Installing pre-built binaries
 
-### 1\. Fedora/Nobora
+### 1\. Fedora/Nobara
 
 You can install Vinyl nativelly on [Fedora](https://spins.fedoraproject.org/kde/), [Nobara](https://nobaraproject.org) 
 and derivated distros by enabling the [ekaaty/kde-extras](https://copr.fedorainfracloud.org/coprs/ekaaty/kde-extras)
@@ -165,8 +165,8 @@ sudo apt install \
 #### 4\. Debian/Kubuntu and derivatives
 
 >[!IMPORTANT]
->Debian and Kubuntu doesn't support KDE Plasma 6 yet. 
->It can be available on Debian 13 (Trixie) and Kubuntu 24.10 (Oracular Oriole).
+>Debian and Kubuntu LTS doesn't support KDE Plasma 6 yet. 
+>It's available on Debian 13 (Trixie) and Kubuntu 24.10 (Oracular Oriole) but not supports Vinyl yet.
 
 #### 5\. Arch Linux
 
