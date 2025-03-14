@@ -9,11 +9,19 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
 
-      - name: Add KDE Neon Repositories
+      - name: Add KDE Neon Repositories and GPG Key
         run: |
           sudo apt update
           sudo apt install -y software-properties-common
-          sudo add-apt-repository -y "deb http://archive.neon.kde.org/user noble main"
+          
+          # Dodajemy repozytorium KDE Neon
+          echo "deb http://archive.neon.kde.org/user noble main" | sudo tee /etc/apt/sources.list.d/kde-neon.list
+          
+          # Pobieramy i dodajemy klucz GPG
+          sudo mkdir -p /etc/apt/keyrings
+          curl -fsSL 'http://keyserver.ubuntu.com/pks/lookup?op=get&search=0xE6D4736255751E5D' | sudo tee /etc/apt/keyrings/neon-key.asc
+          echo "deb [signed-by=/etc/apt/keyrings/neon-key.asc] http://archive.neon.kde.org/user noble main" | sudo tee /etc/apt/sources.list.d/kde-neon.list
+          
           sudo apt update
 
       - name: Install dependencies
