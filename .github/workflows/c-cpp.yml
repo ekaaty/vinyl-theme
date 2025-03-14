@@ -48,18 +48,28 @@ jobs:
 
       - name: Debug build folder
         run: |
+          echo "==== Lista plików w build/ ===="
           ls -R build/
 
       - name: Collect Vinyl Theme Files
         run: |
           mkdir -p package/vinyl-theme
-          cp -r build/desktoptheme/vinyl-theme/* package/vinyl-theme/ || true
-          cp -r build/cursors package/vinyl-theme/cursors || true
-          cp -r build/icons package/vinyl-theme/icons || true
+          # Kopiowanie folderów, jeśli istnieją
+          [[ -d build/desktoptheme ]] && cp -r build/desktoptheme package/vinyl-theme/ || echo "Brak build/desktoptheme"
+          [[ -d build/cursors ]] && cp -r build/cursors package/vinyl-theme/ || echo "Brak build/cursors"
+          [[ -d build/icons ]] && cp -r build/icons package/vinyl-theme/ || echo "Brak build/icons"
+          [[ -d build/kdecoration ]] && cp -r build/kdecoration package/vinyl-theme/ || echo "Brak build/kdecoration"
+          [[ -d build/kstyle6 ]] && cp -r build/kstyle6 package/vinyl-theme/ || echo "Brak build/kstyle6"
+          [[ -d build/splash ]] && cp -r build/splash package/vinyl-theme/ || echo "Brak build/splash"
+
+      - name: Create ZIP Archive
+        run: |
+          cd package
+          zip -r vinyl-theme.zip vinyl-theme/
 
       - name: Upload compiled theme
         if: success()
         uses: actions/upload-artifact@v4
         with:
           name: vinyl-theme
-          path: package/vinyl-theme/
+          path: package/vinyl-theme.zip
