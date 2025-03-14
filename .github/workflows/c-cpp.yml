@@ -24,7 +24,7 @@ jobs:
           
           sudo apt update
 
-      - name: Install dependencies (without libkdecorations2-dev)
+      - name: Install dependencies (including KDecoration3)
         run: |
           sudo apt install -y \
             git build-essential cmake extra-cmake-modules \
@@ -35,11 +35,12 @@ jobs:
             kf6-kservice-dev kf6-kwindowsystem-dev \
             libx11-dev libplasma-dev qt6-base-dev \
             qt6-declarative-dev qtbase5-dev qtdeclarative5-dev gettext \
-            qt6-svg-dev qt3d5-dev inkscape unzip x11-apps
+            qt6-svg-dev qt3d5-dev inkscape unzip x11-apps \
+            libkdecorations3-dev
 
       - name: Build Vinyl Theme
         run: |
           mkdir build
           cd build
-          cmake .. || echo "CMake failed. Trying alternative build."
-          make -j$(nproc) || echo "Make failed."
+          cmake ..
+          make -j$(nproc)
