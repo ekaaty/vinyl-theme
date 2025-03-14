@@ -37,7 +37,7 @@ jobs:
         run: |
           chmod +x icons/make-theme.sh
           sed -i '1s|^.*$|#!/bin/bash|' icons/make-theme.sh
-          bash icons/make-theme.sh || true  # Uruchomienie w Bashu
+          bash icons/make-theme.sh || true  # Wymuszone uruchomienie w Bashu
 
       - name: Build Vinyl Theme
         run: |
@@ -46,9 +46,17 @@ jobs:
           cmake ..
           make -j$(nproc)
 
+      - name: Debug build folder
+        run: |
+          ls -R build/
+
+      - name: Install Vinyl Theme (for artifact collection)
+        run: |
+          make install DESTDIR=$PWD/install
+
       - name: Upload compiled theme
         if: success()
         uses: actions/upload-artifact@v4
         with:
           name: vinyl-theme
-          path: build/
+          path: install/usr/share/plasma/desktoptheme/vinyl-theme/
