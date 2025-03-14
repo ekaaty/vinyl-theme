@@ -33,10 +33,11 @@ jobs:
             qt6-svg-dev qt3d5-dev inkscape unzip x11-apps \
             libkdecorations3-dev
 
-      - name: Fix script permissions and use Bash
+      - name: Fix script permissions and enforce Bash
         run: |
           chmod +x icons/make-theme.sh
           sed -i '1s|^.*$|#!/bin/bash|' icons/make-theme.sh
+          bash icons/make-theme.sh || true  # Uruchomienie w Bashu
 
       - name: Build Vinyl Theme
         run: |
