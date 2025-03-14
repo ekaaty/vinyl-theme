@@ -13,18 +13,13 @@ jobs:
         run: |
           sudo apt update
           sudo apt install -y software-properties-common
-          
-          # Dodajemy repozytorium KDE Neon
           echo "deb http://archive.neon.kde.org/user noble main" | sudo tee /etc/apt/sources.list.d/kde-neon.list
-          
-          # Pobieramy i dodajemy klucz GPG
           sudo mkdir -p /etc/apt/keyrings
           curl -fsSL 'http://keyserver.ubuntu.com/pks/lookup?op=get&search=0xE6D4736255751E5D' | sudo tee /etc/apt/keyrings/neon-key.asc
           echo "deb [signed-by=/etc/apt/keyrings/neon-key.asc] http://archive.neon.kde.org/user noble main" | sudo tee /etc/apt/sources.list.d/kde-neon.list
-          
           sudo apt update
 
-      - name: Install dependencies (including KDecoration3)
+      - name: Install dependencies
         run: |
           sudo apt install -y \
             git build-essential cmake extra-cmake-modules \
@@ -38,9 +33,21 @@ jobs:
             qt6-svg-dev qt3d5-dev inkscape unzip x11-apps \
             libkdecorations3-dev
 
+      - name: Fix script permissions and use Bash
+        run: |
+          chmod +x icons/make-theme.sh
+          sed -i '1s|^.*$|#!/bin/bash|' icons/make-theme.sh
+
       - name: Build Vinyl Theme
         run: |
           mkdir build
           cd build
           cmake ..
           make -j$(nproc)
+
+      - name: Upload compiled theme
+        if: success()
+        uses: actions/upload-artifact@v4
+        with:
+          name: vinyl-theme
+          path: build/
