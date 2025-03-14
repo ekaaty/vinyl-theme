@@ -24,7 +24,12 @@ jobs:
           
           sudo apt update
 
-      - name: Install dependencies
+      - name: Force install latest version of dependencies
+        run: |
+          sudo apt install -y --allow-downgrades \
+            libkdecorations2-dev libkdecorations2-5v5=4:6.3.3-0zneon+24.04+noble+release+build15
+
+      - name: Install remaining dependencies
         run: |
           sudo apt install -y \
             git build-essential cmake extra-cmake-modules \
@@ -33,7 +38,7 @@ jobs:
             kf6-kcoreaddons-dev kf6-kguiaddons-dev kf6-ki18n-dev \
             kf6-kiconthemes-dev kf6-kirigami2-dev kf6-kpackage-dev \
             kf6-kservice-dev kf6-kwindowsystem-dev \
-            libx11-dev libkdecorations2-dev libplasma-dev qt6-base-dev \
+            libx11-dev libplasma-dev qt6-base-dev \
             qt6-declarative-dev qtbase5-dev qtdeclarative5-dev gettext \
             qt6-svg-dev qt3d5-dev inkscape unzip x11-apps
 
