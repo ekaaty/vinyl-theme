@@ -50,13 +50,16 @@ jobs:
         run: |
           ls -R build/
 
-      - name: Install Vinyl Theme (for artifact collection)
+      - name: Collect Vinyl Theme Files
         run: |
-          make install DESTDIR=$PWD/install
+          mkdir -p package/vinyl-theme
+          cp -r build/desktoptheme/vinyl-theme/* package/vinyl-theme/ || true
+          cp -r build/cursors package/vinyl-theme/cursors || true
+          cp -r build/icons package/vinyl-theme/icons || true
 
       - name: Upload compiled theme
         if: success()
         uses: actions/upload-artifact@v4
         with:
           name: vinyl-theme
-          path: install/usr/share/plasma/desktoptheme/vinyl-theme/
+          path: package/vinyl-theme/
