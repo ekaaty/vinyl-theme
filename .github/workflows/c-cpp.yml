@@ -9,9 +9,15 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
 
-      - name: Setup KDE Neon environment
+      - name: Add KDE Neon Repositories
         run: |
           sudo apt update
+          sudo apt install -y software-properties-common
+          sudo add-apt-repository -y "deb http://archive.neon.kde.org/user noble main"
+          sudo apt update
+
+      - name: Install dependencies
+        run: |
           sudo apt install -y \
             git build-essential cmake extra-cmake-modules \
             kf6-frameworkintegration-dev kf6-kcmutils-dev \
@@ -19,10 +25,9 @@ jobs:
             kf6-kcoreaddons-dev kf6-kguiaddons-dev kf6-ki18n-dev \
             kf6-kiconthemes-dev kf6-kirigami2-dev kf6-kpackage-dev \
             kf6-kservice-dev kf6-kwindowsystem-dev \
-            kirigami2-dev kwayland-dev libx11-dev libkdecorations2-dev \
-            libplasma-dev qt6-base-dev qt6-declarative-dev \
-            qtbase5-dev qtdeclarative5-dev gettext qt6-svg-dev \
-            qt3d5-dev inkscape unzip x11-apps
+            libx11-dev libkdecorations2-dev libplasma-dev qt6-base-dev \
+            qt6-declarative-dev qtbase5-dev qtdeclarative5-dev gettext \
+            qt6-svg-dev qt3d5-dev inkscape unzip x11-apps
 
       - name: Build Vinyl Theme
         run: |
