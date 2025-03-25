@@ -1,0 +1,176 @@
+# Configurable Application Launcher
+# Copyright (C) 2024 Christian Tosta
+# This file is distributed under the same license as the Vinyl Launcher package.
+# Christian Tosta <christian.tosta@gmail.com>, 2024.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Vinyl Launcher 6.1.5\n"
+"Report-Msgid-Bugs-To: https://github.com/ekaaty/vinyl-theme/issues\n"
+"POT-Creation-Date: 2024-10-01 21:34-0300\n"
+"PO-Revision-Date: 2025-03-25 20:46+0100\n"
+"Last-Translator: Heimen Stoffels <vistausss@fastmail.com>\n"
+"Language-Team: \n"
+"Language: nl\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 3.5\n"
+
+#: package/contents/config/config.qml:13
+#, kde-format
+msgid "General"
+msgstr "Algemeen"
+
+#: package/contents/ui/code/tools.js:43
+#, kde-format
+msgid "Remove from Favorites"
+msgstr "Verwijderen uit favorieten"
+
+#: package/contents/ui/code/tools.js:47
+#, kde-format
+msgid "Add to Favorites"
+msgstr "Toevoegen aan favorieten"
+
+#: package/contents/ui/code/tools.js:73
+#, kde-format
+msgid "On All Activities"
+msgstr "Op alle activiteiten"
+
+#: package/contents/ui/code/tools.js:123
+#, kde-format
+msgid "On the Current Activity"
+msgstr "Op de huidige activiteit"
+
+#: package/contents/ui/code/tools.js:137
+#, kde-format
+msgid "Show in Favorites"
+msgstr "Tonen in favorieten"
+
+#: package/contents/ui/ConfigGeneral.qml:43
+#, kde-format
+msgid "Icon:"
+msgstr "Pictogram:"
+
+#: package/contents/ui/ConfigGeneral.qml:124
+#, kde-format
+msgctxt "@item:inmenu Open icon chooser dialog"
+msgid "Choose…"
+msgstr "Kiezen…"
+
+#: package/contents/ui/ConfigGeneral.qml:129
+#, kde-format
+msgctxt "@item:inmenu Reset icon to default"
+msgid "Clear Icon"
+msgstr "Pictogram wissen"
+
+#: package/contents/ui/ConfigGeneral.qml:145
+#, kde-format
+msgid "Icon size:"
+msgstr "Pictogramgrootte:"
+
+#: package/contents/ui/ConfigGeneral.qml:147
+#, kde-format
+msgid "Medium"
+msgstr "Gemiddeld"
+
+#: package/contents/ui/ConfigGeneral.qml:147
+#, kde-format
+msgid "Large"
+msgstr "Groot"
+
+#: package/contents/ui/ConfigGeneral.qml:147
+#, kde-format
+msgid "Huge"
+msgstr "Enorm"
+
+#: package/contents/ui/ConfigGeneral.qml:153
+#, kde-format
+msgid "Show favorites first"
+msgstr "Favorieten bovenaan tonen"
+
+#: package/contents/ui/ConfigGeneral.qml:158
+#, kde-format
+msgid "Menu position"
+msgstr "Menulocatie"
+
+#: package/contents/ui/ConfigGeneral.qml:160
+#, kde-format
+msgid "Default"
+msgstr "Standaard"
+
+#: package/contents/ui/ConfigGeneral.qml:161
+#, kde-format
+msgid "Center"
+msgstr "Midden van scherm"
+
+#: package/contents/ui/ConfigGeneral.qml:162
+#, kde-format
+msgid "Center bottom"
+msgstr "Midden-onderkant van scherm"
+
+#: package/contents/ui/ConfigGeneral.qml:168
+#, kde-format
+msgid "Number of columns"
+msgstr "Aantal kolommen"
+
+#: package/contents/ui/ConfigGeneral.qml:175
+#, kde-format
+msgid "Number of rows"
+msgstr "Aantal rijen"
+
+#: package/contents/ui/main.qml:28
+#, kde-format
+msgid "Edit Applications…"
+msgstr "Programma's bewerken…"
+
+#: package/contents/ui/MenuRepresentation.qml:385
+msgid "Settings"
+msgstr "Instellingen"
+
+#: package/contents/ui/MenuRepresentation.qml:391
+msgid "Personalization"
+msgstr "Vormgeving"
+
+#: package/contents/ui/MenuRepresentation.qml:397
+msgid "Devices and Printers"
+msgstr "Apparaten en printers"
+
+#: package/contents/ui/MenuRepresentation.qml:403
+msgid "Update Software"
+msgstr "Software bijwerken"
+
+#: package/contents/ui/MenuRepresentation.qml:409
+msgid "Help and Support"
+msgstr "Hulp en ondersteuning"
+
+#: package/contents/ui/MenuRepresentation.qml:519
+#, kde-format
+msgid "Exit"
+msgstr "Afsluiten"
+
+#: package/contents/ui/MenuRepresentation.qml:597
+#, kde-format
+msgid "Search this computer ..."
+msgstr "Zoeken op deze computer…"
+
+#: package/contents/ui/MenuRepresentation.qml:712
+#, kde-format
+msgid "My favorite items"
+msgstr "Mijn favoriete items"
+
+#: package/contents/ui/MenuRepresentation.qml:777
+#, kde-format
+msgid "All Apps"
+msgstr "Alle programma's"
+
+#: package/contents/ui/MenuRepresentation.qml:820
+#, kde-format
+msgid "All applications"
+msgstr "Alle programma's"
+
+#: package/contents/ui/MenuRepresentation.qml:884
+#, kde-format
+msgid "Favorites"
+msgstr "Favorieten"
