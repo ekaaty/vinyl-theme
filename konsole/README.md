@@ -1,6 +1,15 @@
 # Konsole Profile and Utilities
 
-## Installing
+## Creating the package tarball
+
+Run the follow in this directory to build a tarball into the dist directory:
+
+```shell
+cmake --fresh -B build -S .
+cmake --build build --target package
+```
+
+## Installing the package tarball
 
 ### For current user only
 1. Extract the binary tarball into your current user data directory ($HOME/.local):
