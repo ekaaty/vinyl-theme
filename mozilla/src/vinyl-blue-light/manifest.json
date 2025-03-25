@@ -1,0 +1,40 @@
+{
+  "manifest_version": 2,
+  "version": "1.0",
+  "name": "Vinyl Blue Light",
+  "theme": {
+    "images": {
+      "additional_backgrounds": [
+        "images/bg-035-ec6e2e3635b86a13a7ebee9a1390e7e7.svg"
+      ]
+    },
+    "properties": {
+      "additional_backgrounds_alignment": [
+        "top"
+      ],
+      "additional_backgrounds_tiling": [
+        "repeat"
+      ]
+    },
+    "colors": {
+      "toolbar": "rgba(27, 145, 213, 0.75)",
+      "toolbar_text": "rgb(30, 30, 30)",
+      "frame": "rgb(248, 248, 248)",
+      "tab_background_text": "rgb(30, 30, 30)",
+      "toolbar_field": "rgba(248, 248, 248, 0.95)",
+      "toolbar_field_text": "rgb(30, 30, 30)",
+      "tab_line": "rgb(27, 145, 213)",
+      "popup": "rgba(248, 248, 248, 0.95)",
+      "popup_text": "rgb(30, 30, 30)",
+      "button_background_active": "rgb(240, 240, 240)",
+      "button_background_hover": "rgb(240, 240, 240)",
+      "ntp_background": "rgba(248, 248, 248, 0.95)",
+      "ntp_text": "rgb(30, 30, 30)",
+      "toolbar_bottom_separator": "rgba(27, 145, 213, 0.9)",
+      "toolbar_field_border": "rgb(248, 248, 248)",
+      "toolbar_field_highlight": "rgb(27, 145, 213)",
+      "toolbar_top_separator": "rgba(27, 145, 213, 0.9)",
+      "tab_loading": "rgb(27, 145, 213)"
+    }
+  }
+}

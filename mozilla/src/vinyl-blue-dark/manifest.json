@@ -1,0 +1,40 @@
+{
+  "manifest_version": 2,
+  "version": "1.0",
+  "name": "Vinyl Blue Dark",
+  "theme": {
+    "images": {
+      "additional_backgrounds": [
+        "images/bg-034-e0dfa84411058d2e5627f19f1ea501ca.svg"
+      ]
+    },
+    "properties": {
+      "additional_backgrounds_alignment": [
+        "top"
+      ],
+      "additional_backgrounds_tiling": [
+        "repeat"
+      ]
+    },
+    "colors": {
+      "toolbar": "rgba(27, 145, 213, 0.75)",
+      "toolbar_text": "rgb(225, 234, 239)",
+      "frame": "rgb(33, 42, 57)",
+      "tab_background_text": "rgb(225, 234, 239)",
+      "toolbar_field": "rgb(50, 59, 73)",
+      "toolbar_field_text": "rgb(225, 234, 239)",
+      "tab_line": "rgb(27, 145, 213)",
+      "popup": "rgba(33, 42, 57, 0.95)",
+      "popup_text": "rgb(225, 234, 239)",
+      "button_background_active": "rgb(50, 59, 73)",
+      "button_background_hover": "rgb(50, 59, 73)",
+      "ntp_background": "rgb(33, 42, 57)",
+      "ntp_text": "rgb(225, 234, 239)",
+      "toolbar_bottom_separator": "rgba(27, 145, 213, 0.9)",
+      "toolbar_field_border": "rgb(33, 42, 57)",
+      "toolbar_field_highlight": "rgb(27, 145, 213)",
+      "toolbar_top_separator": "rgba(27, 145, 213, 0.9)",
+      "tab_loading": "rgb(27, 145, 213)"
+    }
+  }
+}
