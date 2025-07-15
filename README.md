@@ -173,14 +173,14 @@ sudo apt install \
 
 The package is available to be installed from the Arch Linux AUR.
 
-https://aur.archlinux.org/packages/vinyl
+https://aur.archlinux.org/packages/vinyl-git
 
 You can use your favorite Arch AUR helper to install it.
 
 Example.
 
 ```shell
-yay -S vinyl
+yay -S vinyl-git
 ```
 
 ### Building the source
