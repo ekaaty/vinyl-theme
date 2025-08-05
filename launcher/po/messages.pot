@@ -1,14 +1,14 @@
 # Configurable Application Launcher
-# Copyright (C) 2024 Christian Tosta
+# Copyright (C) 2025 Christian Tosta
 # This file is distributed under the same license as the Vinyl Launcher package.
-# Christian Tosta <christian.tosta@gmail.com>, 2024.
+# Christian Tosta <christian.tosta@gmail.com>, 2025.
 #
 #, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: Vinyl Launcher 6.1.5\n"
+"Project-Id-Version: Vinyl Launcher 6.4.3\n"
 "Report-Msgid-Bugs-To: https://github.com/ekaaty/vinyl-theme/issues\n"
-"POT-Creation-Date: 2024-10-01 21:34-0300\n"
+"POT-Creation-Date: 2025-08-05 16:13-0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,159 +17,159 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: package/contents/config/config.qml:13
+#: src/package/contents/config/config.qml:13
 #, kde-format
 msgid "General"
 msgstr ""
 
-#: package/contents/ui/code/tools.js:43
+#: src/package/contents/ui/code/tools.js:43
 #, kde-format
 msgid "Remove from Favorites"
 msgstr ""
 
-#: package/contents/ui/code/tools.js:47
+#: src/package/contents/ui/code/tools.js:47
 #, kde-format
 msgid "Add to Favorites"
 msgstr ""
 
-#: package/contents/ui/code/tools.js:73
+#: src/package/contents/ui/code/tools.js:73
 #, kde-format
 msgid "On All Activities"
 msgstr ""
 
-#: package/contents/ui/code/tools.js:123
+#: src/package/contents/ui/code/tools.js:123
 #, kde-format
 msgid "On the Current Activity"
 msgstr ""
 
-#: package/contents/ui/code/tools.js:137
+#: src/package/contents/ui/code/tools.js:137
 #, kde-format
 msgid "Show in Favorites"
 msgstr ""
 
-#: package/contents/ui/ConfigGeneral.qml:43
+#: src/package/contents/ui/ConfigGeneral.qml:43
 #, kde-format
 msgid "Icon:"
 msgstr ""
 
-#: package/contents/ui/ConfigGeneral.qml:124
+#: src/package/contents/ui/ConfigGeneral.qml:124
 #, kde-format
 msgctxt "@item:inmenu Open icon chooser dialog"
 msgid "Choose…"
 msgstr ""
 
-#: package/contents/ui/ConfigGeneral.qml:129
+#: src/package/contents/ui/ConfigGeneral.qml:129
 #, kde-format
 msgctxt "@item:inmenu Reset icon to default"
 msgid "Clear Icon"
 msgstr ""
 
-#: package/contents/ui/ConfigGeneral.qml:145
+#: src/package/contents/ui/ConfigGeneral.qml:145
 #, kde-format
 msgid "Icon size:"
 msgstr ""
 
-#: package/contents/ui/ConfigGeneral.qml:147
+#: src/package/contents/ui/ConfigGeneral.qml:147
 #, kde-format
 msgid "Medium"
 msgstr ""
 
-#: package/contents/ui/ConfigGeneral.qml:147
+#: src/package/contents/ui/ConfigGeneral.qml:147
 #, kde-format
 msgid "Large"
 msgstr ""
 
-#: package/contents/ui/ConfigGeneral.qml:147
+#: src/package/contents/ui/ConfigGeneral.qml:147
 #, kde-format
 msgid "Huge"
 msgstr ""
 
-#: package/contents/ui/ConfigGeneral.qml:153
+#: src/package/contents/ui/ConfigGeneral.qml:153
 #, kde-format
 msgid "Show favorites first"
 msgstr ""
 
-#: package/contents/ui/ConfigGeneral.qml:158
+#: src/package/contents/ui/ConfigGeneral.qml:158
 #, kde-format
 msgid "Menu position"
 msgstr ""
 
-#: package/contents/ui/ConfigGeneral.qml:160
+#: src/package/contents/ui/ConfigGeneral.qml:160
 #, kde-format
 msgid "Default"
 msgstr ""
 
-#: package/contents/ui/ConfigGeneral.qml:161
+#: src/package/contents/ui/ConfigGeneral.qml:161
 #, kde-format
 msgid "Center"
 msgstr ""
 
-#: package/contents/ui/ConfigGeneral.qml:162
+#: src/package/contents/ui/ConfigGeneral.qml:162
 #, kde-format
 msgid "Center bottom"
 msgstr ""
 
-#: package/contents/ui/ConfigGeneral.qml:168
+#: src/package/contents/ui/ConfigGeneral.qml:168
 #, kde-format
 msgid "Number of columns"
 msgstr ""
 
-#: package/contents/ui/ConfigGeneral.qml:175
+#: src/package/contents/ui/ConfigGeneral.qml:175
 #, kde-format
 msgid "Number of rows"
 msgstr ""
 
-#: package/contents/ui/main.qml:28
+#: src/package/contents/ui/main.qml:28
 #, kde-format
 msgid "Edit Applications…"
 msgstr ""
 
-#: package/contents/ui/MenuRepresentation.qml:385
+#: src/package/contents/ui/MenuRepresentation.qml:385
 msgid "Settings"
 msgstr ""
 
-#: package/contents/ui/MenuRepresentation.qml:391
+#: src/package/contents/ui/MenuRepresentation.qml:391
 msgid "Personalization"
 msgstr ""
 
-#: package/contents/ui/MenuRepresentation.qml:397
+#: src/package/contents/ui/MenuRepresentation.qml:397
 msgid "Devices and Printers"
 msgstr ""
 
-#: package/contents/ui/MenuRepresentation.qml:403
+#: src/package/contents/ui/MenuRepresentation.qml:403
 msgid "Update Software"
 msgstr ""
 
-#: package/contents/ui/MenuRepresentation.qml:409
+#: src/package/contents/ui/MenuRepresentation.qml:409
 msgid "Help and Support"
 msgstr ""
 
-#: package/contents/ui/MenuRepresentation.qml:519
+#: src/package/contents/ui/MenuRepresentation.qml:519
 #, kde-format
 msgid "Exit"
 msgstr ""
 
-#: package/contents/ui/MenuRepresentation.qml:597
+#: src/package/contents/ui/MenuRepresentation.qml:597
 #, kde-format
 msgid "Search this computer ..."
 msgstr ""
 
-#: package/contents/ui/MenuRepresentation.qml:712
+#: src/package/contents/ui/MenuRepresentation.qml:712
 #, kde-format
 msgid "My favorite items"
 msgstr ""
 
-#: package/contents/ui/MenuRepresentation.qml:777
+#: src/package/contents/ui/MenuRepresentation.qml:777
 #, kde-format
 msgid "All Apps"
 msgstr ""
 
-#: package/contents/ui/MenuRepresentation.qml:820
+#: src/package/contents/ui/MenuRepresentation.qml:820
 #, kde-format
 msgid "All applications"
 msgstr ""
 
-#: package/contents/ui/MenuRepresentation.qml:884
+#: src/package/contents/ui/MenuRepresentation.qml:884
 #, kde-format
 msgid "Favorites"
 msgstr ""
