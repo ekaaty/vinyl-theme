@@ -15,7 +15,7 @@ PlasmaComponents.ToolButton {
 
     property int currentIndex: -1
 
-    text: i18nd("plasma-desktop-sddm-theme", "Desktop Session: %1", instantiator.objectAt(currentIndex).text || "")
+    text: i18nd("sddm_theme_com.ekaaty.vinyl-sddm", "Desktop Session: %1", instantiator.objectAt(currentIndex).text || "")
     visible: menu.count > 1
 
     Component.onCompleted: {

@@ -1,0 +1,83 @@
+msgid ""
+msgstr ""
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Qt-Contexts: true\n"
+
+#: ../src/Login.qml:151
+msgctxt "Login|"
+msgid "Log In"
+msgstr "Entrar"
+
+#: ../src/KeyboardButton.qml:19
+#, qt-format
+msgctxt "sddm_theme_com.ekaaty.vinyl-sddm|"
+msgid "Keyboard Layout: %1"
+msgstr "Modelo do Teclado: %1"
+
+#: ../src/Login.qml:86
+msgctxt "sddm_theme_com.ekaaty.vinyl-sddm|"
+msgid "Username"
+msgstr "Usuário"
+
+#: ../src/Login.qml:103
+msgctxt "sddm_theme_com.ekaaty.vinyl-sddm|"
+msgid "Password"
+msgstr "Senha"
+
+#: ../src/Login.qml:145
+msgctxt "sddm_theme_com.ekaaty.vinyl-sddm|"
+msgid "Log In"
+msgstr "Entrar"
+
+#: ../src/Main.qml:197
+msgctxt "sddm_theme_com.ekaaty.vinyl-sddm|"
+msgid "Caps Lock is on"
+msgstr "Caps Lock está ligado"
+
+#: ../src/Main.qml:209 ../src/Main.qml:348
+msgctxt "sddm_theme_com.ekaaty.vinyl-sddm|"
+msgid "Sleep"
+msgstr "Dormir"
+
+#: ../src/Main.qml:215 ../src/Main.qml:354
+msgctxt "sddm_theme_com.ekaaty.vinyl-sddm|"
+msgid "Restart"
+msgstr "Reiniciar"
+
+#: ../src/Main.qml:221 ../src/Main.qml:360
+msgctxt "sddm_theme_com.ekaaty.vinyl-sddm|"
+msgid "Shut Down"
+msgstr "Desligar"
+
+#: ../src/Main.qml:227
+msgctxt "sddm_theme_com.ekaaty.vinyl-sddm|"
+msgid "Other…"
+msgstr "Outro…"
+
+#: ../src/Main.qml:334
+msgctxt "sddm_theme_com.ekaaty.vinyl-sddm|"
+msgid "Type in Username and Password"
+msgstr "Digite seu Usuário e Senha"
+
+#: ../src/Main.qml:366
+msgctxt "sddm_theme_com.ekaaty.vinyl-sddm|"
+msgid "List Users"
+msgstr "Listar Usuários"
+
+#: ../src/Main.qml:440
+msgctxt "sddm_theme_com.ekaaty.vinyl-sddm|"
+msgid "Virtual Keyboard"
+msgstr "Teclado Virtual"
+
+#: ../src/Main.qml:507
+msgctxt "sddm_theme_com.ekaaty.vinyl-sddm|"
+msgid "Login Failed"
+msgstr "Falha de Login"
+
+#: ../src/SessionButton.qml:18
+#, qt-format
+msgctxt "sddm_theme_com.ekaaty.vinyl-sddm|"
+msgid "Desktop Session: %1"
+msgstr "Sessão Desktop: %1"

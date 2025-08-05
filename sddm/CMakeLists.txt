@@ -1,4 +1,5 @@
 cmake_minimum_required(VERSION 3.16)
+set(VINYL_SDDM_THEME_ID "com.ekaaty.vinyl-sddm")
 
 if( CMAKE_SOURCE_DIR STREQUAL CMAKE_CURRENT_SOURCE_DIR )
 project(vinyl-sddm)
@@ -9,13 +10,41 @@ set(SourceFiles
   "${CMAKE_SOURCE_DIR}/CPackLists.txt"
   "${CMAKE_SOURCE_DIR}/src"
 )
-include(CPackLists.txt)
+
+set(KDE_COMPILERSETTINGS_LEVEL "5.82")
+set(KF6_MIN_VERSION "6.7.0")
+set(PLASMA_MIN_VERSION "6.2.0")
+set(QT_MIN_VERSION "6.7.0")
+
+include(cmake/CPackLists.txt)
 else()
 # We are building as part of Main project
 endif()
 
-#set(CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} ${CMAKE_SOURCE_DIR}/cmake)
+find_package(ECM ${KF6_MIN_VERSION} REQUIRED NO_MODULE)
+set(CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} ${ECM_MODULE_PATH} ${CMAKE_SOURCE_DIR}/cmake)
+
+find_package(Qt6 ${QT_MIN_VERSION} REQUIRED CONFIG COMPONENTS 
+  Core 
+  Core5Compat 
+  Quick 
+  QuickControls2 
+  QuickLayouts
+)
+
+find_package(KF6 ${KF6_MIN_VERSION} REQUIRED COMPONENTS 
+  Config 
+  DocTools 
+  I18n 
+)
+
+find_package(Plasma ${PLASMA_MIN_VERSION} REQUIRED)
+
+set(KDE_INSTALL_LOCALEDIR share/locale)
+add_definitions(-DTRANSLATION_DOMAIN=\"sddm_theme_${VINYL_SDDM_THEME_ID}\")
+kdoctools_install(po)
+ki18n_install(po)
 
 install( DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}/src/
-	DESTINATION vinyl/
+	DESTINATION ${VINYL_SDDM_THEME_ID}/
 )
