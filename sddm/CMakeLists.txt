@@ -2,23 +2,23 @@ cmake_minimum_required(VERSION 3.16)
 set(VINYL_SDDM_THEME_ID "com.ekaaty.vinyl-sddm")
 
 if( CMAKE_SOURCE_DIR STREQUAL CMAKE_CURRENT_SOURCE_DIR )
-project(vinyl-sddm)
-string(TIMESTAMP PROJECT_VERSION "%Y%m%d")
-set(SourceFiles 
-  "${CMAKE_SOURCE_DIR}/cmake"
-  "${CMAKE_SOURCE_DIR}/CMakeLists.txt"
-  "${CMAKE_SOURCE_DIR}/CPackLists.txt"
-  "${CMAKE_SOURCE_DIR}/src"
-)
+  project(vinyl-sddm)
+  string(TIMESTAMP PROJECT_VERSION "%Y%m%d")
+  set(SourceFiles
+    "${CMAKE_SOURCE_DIR}/cmake"
+    "${CMAKE_SOURCE_DIR}/CMakeLists.txt"
+    "${CMAKE_SOURCE_DIR}/po"
+    "${CMAKE_SOURCE_DIR}/src"
+  )
 
-set(KDE_COMPILERSETTINGS_LEVEL "5.82")
-set(KF6_MIN_VERSION "6.7.0")
-set(PLASMA_MIN_VERSION "6.2.0")
-set(QT_MIN_VERSION "6.7.0")
+  set(KDE_COMPILERSETTINGS_LEVEL "5.82")
+  set(KF6_MIN_VERSION "6.14.0")
+  set(PLASMA_MIN_VERSION "6.4.0")
+  set(QT_MIN_VERSION "6.8.0")
 
-include(cmake/CPackLists.txt)
+  include(cmake/CPackLists.cmake)
 else()
-# We are building as part of Main project
+  # We are building as part of Main project
 endif()
 
 find_package(ECM ${KF6_MIN_VERSION} REQUIRED NO_MODULE)
