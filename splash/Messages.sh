@@ -29,12 +29,12 @@ find package/ -name \*.qml -o -name \*.js -o -name \*.cpp | sort \
     --package-version="${VERSION}" \
     --copyright-holder="${AUTHOR}" \
     --msgid-bugs-address="${BUG_REPORT_URL}" \
-    -o po/${PACKAGE_TYPE}_${PACKAGE_ID}.pot
+    -o po/template.pot
 
 sed -i \
     -e "s/SOME DESCRIPTIVE TITLE./${DESCRIPTION}/" \
     -e "s/FIRST AUTHOR <EMAIL@ADDRESS>/${AUTHOR} <${EMAIL}>/" \
     -e "s/^#\(.*\)YEAR/#\1${YEAR}/" \
-    po/${PACKAGE_TYPE}_${PACKAGE_ID}.pot
+    po/template.pot
 
 exit $?

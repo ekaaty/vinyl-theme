@@ -6,10 +6,10 @@
 #, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: Vinyl 6.1.5\n"
+"Project-Id-Version: Vinyl 6.4.3\n"
 "Report-Msgid-Bugs-To: https://github.com/ekaaty/vinyl-theme/issues\n"
 "POT-Creation-Date: 2024-10-01 15:20-0300\n"
-"PO-Revision-Date: 2024-10-01 15:22-0300\n"
+"PO-Revision-Date: 2025-08-05 17:55-0300\n"
 "Last-Translator: Christian Tosta <christian.tosta@gmail.com>\n"
 "Language: Brazilian Portuguese\n"
 "MIME-Version: 1.0\n"
