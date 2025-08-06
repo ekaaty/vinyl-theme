@@ -10,9 +10,9 @@
         "Description": "Vinyl Theme",
         "EnabledByDefault": true,
         "Id": "com.ekaaty.vinyl-plasma",
-        "License": "GPLv3+",
+        "License": "GPLv3.0+",
         "Name": "Vinyl",
-        "Version": "6.4.3",
+        "Version": "6.4.3.25.8.6",
         "Website": "https://github.com/ekaaty/vinyl-theme"
     },
     "X-Plasma-API": "6.0"

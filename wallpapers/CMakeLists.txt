@@ -1,8 +1,18 @@
 cmake_minimum_required(VERSION 3.16)
 
+execute_process(
+    COMMAND bash -c
+        "date +%y.%1m.%1d -d \"$(git log -n 1 --pretty=format:%cD 2>/dev/null)\""
+    OUTPUT_VARIABLE PROJECT_DATE
+    OUTPUT_STRIP_TRAILING_WHITESPACE
+)
+
+set(PLASMA_VERSION "6.4.3")
+set(PROJECT_VERSION "${PLASMA_VERSION}.${PROJECT_DATE}")
+
 if(CMAKE_SOURCE_DIR STREQUAL CMAKE_CURRENT_SOURCE_DIR)
     project(vinyl-wallpapers)
-    string(TIMESTAMP PROJECT_VERSION "%Y%m%d")
+    set(PROJECT_VERSION "${PLASMA_VERSION}.${PROJECT_DATE}")
 
     set(PACKAGE_INSTALL_DATADIR ${ROOT_DIRECTORY})
     include(cmake/CPackLists.cmake)
@@ -17,12 +27,14 @@ set(CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} ${ECM_MODULE_PATH} ${CMAKE_SOURCE_DIR
 find_package(Qt6 ${QT_MIN_VERSION} REQUIRED CONFIG COMPONENTS Core)
 include(KDEInstallDirs6)
 
-if(BUILD_STANDALONE)
-install(DIRECTORY Vinyl-Tracks/
-    DESTINATION ./Vinyl-Tracks/
+execute_process(
+    COMMAND sed -i
+        "s/\\(.*Version.*\\):.*/\\1: \"${PROJECT_VERSION}\",/g"
+        ${CMAKE_CURRENT_SOURCE_DIR}/src/Vinyl-Tracks/metadata.json
 )
-else()
-install(DIRECTORY Vinyl-Tracks/
+
+install(DIRECTORY src/Vinyl-Tracks/
     DESTINATION ${PACKAGE_INSTALL_DATADIR}/Vinyl-Tracks/
 )
-endif()
+
+# vim: ts=4:sw=4:sts=4:et

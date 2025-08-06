@@ -11,11 +11,11 @@
 	"Category": "",
         "Description": "An adaptive Look and Feel for KDE Plasma",
         "Id": "com.ekaaty.vinyl-splash",
-        "License": "GPLv2+",
+        "License": "GPLv3.0+",
         "Name": "Vinyl",
-	"Version": "6.1.5",
+	"Version": "6.4.3.25.8.6",
         "Website": "https://github.com/ekaaty/vinyl-theme"
     },
     "Keywords": "Desktop;Workspace;Appearance;Look and Feel;Splash;",
-    "X-Plasma-API-Minimum-Version": "6.0"
+    "X-Plasma-API-Minimum-Version": "6.4.3.25.8.6",
 }

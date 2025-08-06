@@ -8,6 +8,7 @@
         ],
         "Id": "VinylTracks",
         "Name": "Vinyl: Tracks",
-        "License": "CC-BY-SA-4.0"
+	    "Version": "6.4.3.25.8.6",
+        "License": "GPLv3.0+"
     }
 }

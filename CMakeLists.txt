@@ -1,22 +1,15 @@
 cmake_minimum_required(VERSION 3.16)
-project(vinyl VERSION ${PROJECT_VERSION})
+project(vinyl)
 set(PROJECT_VERSION "6.4.3")
-set(PROJECT_VERSION_MAJOR 6)
 
-set(KF6_MIN_VERSION "6.14.0")
+set(KF6_MIN_VERSION "6.13.0")
 set(KDE_COMPILERSETTINGS_LEVEL "5.82")
 set(QT_MIN_VERSION "6.8.0")
 set(PLASMA_MIN_VERSION "6.4.0")
 
-if(NOT PROJECT_SOURCE_DIR STREQUAL PROJECT_BINARY_DIR)
-    # Git auto-ignore out-of-source build directory
-    file(GENERATE OUTPUT .gitignore CONTENT "*")
-endif()
-
 include(GenerateExportHeader)
 include(WriteBasicConfigVersionFile)
 include(FeatureSummary)
-##include(GNUInstallDirs)
 
 find_package(ECM ${KF6_MIN_VERSION} REQUIRED NO_MODULE)
 set(CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} ${ECM_MODULE_PATH}  ${CMAKE_SOURCE_DIR}/cmake)
@@ -24,18 +17,7 @@ set(CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} ${ECM_MODULE_PATH}  ${CMAKE_SOURCE_DI
 set(CMAKE_CXX_STANDARD 20)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
-set(CPACK_PACKAGE_VERSION "${PROJECT_VERSION}")
-SET(CPACK_OUTPUT_FILE_PREFIX "${PROJECT_SOURCE_DIR}/dist")
-set(CPACK_GENERATOR "TXZ")
-set(CPACK_SOURCE_GENERATOR "TXZ")
-set(CPACK_SOURCE_PACKAGE_FILE_NAME "${PROJECT_NAME}-${PROJECT_VERSION}")
-set(CPACK_SOURCE_IGNORE_FILES  "\\.git/;.gitignore;build/;_CPack_Packages/;dist/;tmp/;[^-]+\\.tar\\.[abx2]*")
-set(CPACK_SOURCE_OUTPUT_CONFIG_FILE "${PROJECT_BINARY_DIR}/CPackSourceConfig.cmake")
-set(CPACK_VERBATIM_VARIABLES YES)
-configure_file( "${PROJECT_SOURCE_DIR}/cmake/CPackConfig.cmake.in" 
-	        "${PROJECT_BINARY_DIR}/CPackSourceConfig.cmake" 
-                @ONLY)
-include(CPack)
+include(cmake/CPackLists.cmake)
 
 # We need this because we can't include KDECMakeSettings here, because that
 # would need KDEInstallDirs, which we can only include in the qt{5,6} builds
@@ -68,12 +50,17 @@ function(build_Qt6)
         find_package(Qt6 ${REQUIRED_QT_VERSION} CONFIG REQUIRED DBus)
         set(HAVE_QTDBUS ${Qt6DBus_FOUND})
 
-	option(WITH_DECORATIONS "Build Vinyl window decorations for KWin" ON)
-	option(WITH_ICONS "Build Vinyl icon themes" ON)
-	option(WITH_MENULAUNCHER "Build Vinyl menu launcher applet" ON)
-	option(WITH_PLASMA "Build Vinyl plasma theme" ON)
-	option(WITH_SPLASHSCREEN "Build Vinyl splash screen" ON)
-	option(WITH_WALLPAPERS "Install Vinyl default wallpapers" ON)
+        option(WITH_DECORATIONS "Build Vinyl window decorations for KWin" ON)
+        if(NOT ${WITH_MINIMAL})
+            option(WITH_ICONS "Build Vinyl icon themes" ON)
+            option(WITH_KONSOLE "Build Vinyl Konsole themes" ON)
+            option(WITH_MENULAUNCHER "Build Vinyl menu launcher applet" ON)
+            option(WITH_MOZILLA "Build Vinyl Mozilla Firefox themes" ON)
+            option(WITH_PLASMA "Build Vinyl plasma theme" ON)
+            option(WITH_SDDM "Build Vinyl SDDM theme" ON)
+            option(WITH_SPLASHSCREEN "Build Vinyl splash screen" ON)
+            option(WITH_WALLPAPERS "Install Vinyl default wallpapers" ON)
+        endif()
 
         find_package(KF6FrameworkIntegration ${KF6_MIN_VERSION} CONFIG )
         set_package_properties(KF${QT_MAJOR_VERSION}FrameworkIntegration PROPERTIES
@@ -90,14 +77,17 @@ function(build_Qt6)
         )
     else()
         set(WITH_DECORATIONS OFF)
-	set(WITH_ICONS OFF)
-	set(WITH_MENULAUNCHER OFF)
-	set(WITH_PLASMA OFF)
-	set(WITH_SPLASHSCREEN OFF)
+        set(WITH_ICONS OFF)
+        set(WITH_KONSOLE OFF)
+        set(WITH_MENULAUNCHER OFF)
+        set(WITH_MOZILLA OFF)
+        set(WITH_PLASMA OFF)
+        set(WITH_SDDM OFF)
+        set(WITH_SPLASHSCREEN OFF)
         set(WITH_WALLPAPERS OFF)
     endif()
 
-    find_package(Qt6 ${QT_MIN_VERSION} REQUIRED CONFIG COMPONENTS Widgets)
+    find_package(Qt6 ${QT_MIN_VERSION} REQUIRED CONFIG COMPONENTS Widgets Core)
 
     find_package(KF6 ${KF6_MIN_VERSION} REQUIRED COMPONENTS
         CoreAddons
@@ -136,19 +126,22 @@ function(build_Qt6)
     if (WITH_ICONS)
         add_subdirectory(icons)
     endif()
+    if (WITH_KONSOLE)
+        add_subdirectory(konsole)
+    endif()
     if(WITH_MENULAUNCHER)
-        find_package(KF6 ${KF6_MIN_VERSION} REQUIRED COMPONENTS DocTools Package)
-        find_package(Plasma ${PLASMA_MIN_VERSION} REQUIRED)
         add_subdirectory(launcher)
     endif()
+    if (WITH_MOZILLA)
+        add_subdirectory(mozilla)
+    endif()
     if(WITH_PLASMA)
-        find_package(KF6 ${KF6_MIN_VERSION} REQUIRED COMPONENTS DocTools Package)
-        find_package(Plasma ${PLASMA_MIN_VERSION} REQUIRED)
 	add_subdirectory(desktoptheme)
     endif()
+    if (WITH_SDDM)
+        add_subdirectory(sddm)
+    endif()
     if(WITH_SPLASHSCREEN)
-        find_package(KF6 ${KF6_MIN_VERSION} REQUIRED COMPONENTS DocTools Package)
-        find_package(Plasma ${PLASMA_MIN_VERSION} REQUIRED)
         add_subdirectory(splash)
     endif()
     if (WITH_WALLPAPERS)
@@ -191,15 +184,20 @@ function(build_colors_and_cursors)
     add_subdirectory(cursors)
 endfunction()
 
-build_colors_and_cursors()
+if(NOT ${WITH_MINIMAL})
+    build_colors_and_cursors()
+endif()
 
 # add clang-format target for all our real source files
+find_program(KDE_CLANG_FORMAT_EXECUTABLE clang-format OPTIONAL)
 file(GLOB_RECURSE ALL_CLANG_FORMAT_SOURCE_FILES *.cpp *.h)
+if(${KDE_CLANG_FORMAT_EXECUTABLE})
 kde_clang_format(${ALL_CLANG_FORMAT_SOURCE_FILES})
+endif()
 kde_configure_git_pre_commit_hook(CHECKS CLANG_FORMAT)
 
-add_custom_target(clean-all
-    COMMAND cd ${CMAKE_CURRENT_SOURCE_DIR} && grep -vE '^build/' .gitignore | xargs -n1 rm -rf && cd - >/dev/null 2>&1
-)
+#add_custom_target(clean-all
+#    COMMAND cd ${CMAKE_CURRENT_SOURCE_DIR} && grep -vE '^build/' .gitignore | xargs -n1 rm -rf && cd - >/dev/null 2>&1
+#)
 
 feature_summary(WHAT ALL INCLUDE_QUIET_PACKAGES FATAL_ON_MISSING_REQUIRED_PACKAGES)

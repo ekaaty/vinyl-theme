@@ -13,12 +13,12 @@
         "EnabledByDefault": true,
         "Icon": "start-here-kde-symbolic",
         "Id": "com.ekaaty.vinyl-launcher",
-        "License": "GPL-2.0+",
+        "License": "GPL-3.0+",
         "Name": "Vinyl Launcher",
-	"Version": "6.4.3",
+	"Version": "6.4.3.25.8.6",
         "Website": "https://github.com/ekaaty/vinyl-theme"
     },
-    "X-Plasma-API-Minimum-Version": "6.0",
+    "X-Plasma-API-Minimum-Version": "6.4.3.25.8.6",
     "X-Plasma-Provides": [
         "org.kde.plasma.launchermenu"
     ]

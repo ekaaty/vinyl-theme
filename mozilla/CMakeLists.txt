@@ -1,13 +1,30 @@
 cmake_minimum_required(VERSION 3.16)
 
+execute_process(
+    COMMAND bash -c
+        "date +%y.%1m.%1d -d \"$(git log -n 1 --pretty=format:%cD 2>/dev/null)\""
+    OUTPUT_VARIABLE PROJECT_DATE
+    OUTPUT_STRIP_TRAILING_WHITESPACE
+)
+
+set(PLASMA_VERSION "6.4.3")
+set(PROJECT_VERSION "${PLASMA_VERSION}.${PROJECT_DATE}")
+
 if(CMAKE_SOURCE_DIR STREQUAL CMAKE_CURRENT_SOURCE_DIR)
     project(vinyl-mozilla)
-    string(TIMESTAMP PROJECT_VERSION "%Y%m%d")
+    set(PROJECT_VERSION "${PLASMA_VERSION}.${PROJECT_DATE}")
 
     include(cmake/CPackLists.cmake)
 else()
     # We are building as part of Main project
 endif()
+
+execute_process(
+    COMMAND sed -i
+        "s/\\(.*\"version\".*\\):.*/\\1: \"${PROJECT_VERSION}\",/g"
+        ${CMAKE_CURRENT_SOURCE_DIR}/src/vinyl-blue-dark/manifest.json
+        ${CMAKE_CURRENT_SOURCE_DIR}/src/vinyl-blue-light/manifest.json
+)
 
 add_custom_target(vinyl-blue-dark
     COMMAND cp -a
@@ -39,3 +56,5 @@ install(FILES
         ${CMAKE_BINARY_DIR}/vinyl-blue-light.xpi
     DESTINATION .
 )
+
+# vim: ts=4:sw=4:sts=4:et

@@ -3,10 +3,10 @@
 Vinyl is licensed under GPLv2+ and MIT, but some of their subprojects can be subject of
 other licenses.
 
-The files are idividually licensed under your SPDX-License-Identifier, otherwise if the identifier
-is not defined in file header, it's license is defined by LICENSE files under you parent directories.
-If none licence still found, the file is under MIT license. For resume, a list of files classified by
-you license was provided bellow:
+The files are idividually licensed under your SPDX-License-Identifier, otherwise if the identifier 
+is not defined in file, it's license is defined by their package (see metadata.json) or the LICENSE
+files under their parent directories. If none licence information still found, the file is shared
+under MIT license. For a resume, a list of files classified by their license was provided bellow:
 
 - Files licensed under BSD-3-Clause:
 cmake/GtkUpdateIconCache.cmake

@@ -1,6 +1,6 @@
 {
-  "manifest_version": 2,
-  "version": "6.4.3",
+  "manifest_version": "2",
+  "version": "6.4.3.25.8.6",
   "name": "Vinyl Blue Light",
   "theme": {
     "images": {
