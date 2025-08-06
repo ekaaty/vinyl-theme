@@ -38,4 +38,3 @@ target_link_libraries(vinyldecoration
 install(TARGETS vinyldecoration DESTINATION ${KDE_INSTALL_PLUGINDIR}/${KDECORATION_PLUGIN_DIR})
 
 add_subdirectory(config)
-

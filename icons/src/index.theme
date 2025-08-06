@@ -46,9 +46,59 @@ Context=Actions
 Size=16
 Type=Fixed
 
+[actions/16@2x]
+Context=Actions
+Size=16
+Type=Fixed
+
+[actions/16@3x]
+Context=Actions
+Size=16
+Type=Fixed
+
 [actions/22]
 Context=Actions
 Size=22
+Type=Fixed
+
+[actions/22@2x]
+Context=Actions
+Size=22
+Type=Fixed
+
+[actions/22@3x]
+Context=Actions
+Size=22
+Type=Fixed
+
+[actions/24]
+Context=Actions
+Size=24
+Type=Fixed
+
+[actions/24@2x]
+Context=Actions
+Size=24
+Type=Fixed
+
+[actions/24@3x]
+Context=Actions
+Size=24
+Type=Fixed
+
+[actions/32]
+Context=Actions
+Size=32
+Type=Fixed
+
+[actions/32@2x]
+Context=Actions
+Size=32
+Type=Fixed
+
+[actions/32@3x]
+Context=Actions
+Size=32
 Type=Fixed
 
 [actions/48]
@@ -68,7 +118,27 @@ Context=Places
 Size=16
 Type=Fixed
 
+[places/16@2x]
+Context=Places
+Size=16
+Type=Fixed
+
+[places/16@3x]
+Context=Places
+Size=16
+Type=Fixed
+
 [places/22]
+Context=Places
+Size=22
+Type=Fixed
+
+[places/22@2x]
+Context=Places
+Size=22
+Type=Fixed
+
+[places/22@3x]
 Context=Places
 Size=22
 Type=Fixed
@@ -76,6 +146,21 @@ Type=Fixed
 [places/24]
 Context=Places
 Size=24
+Type=Fixed
+
+[places/24@2x]
+Context=Places
+Size=24
+Type=Fixed
+
+[places/24@3x]
+Context=Places
+Size=24
+Type=Fixed
+
+[places/32]
+Context=Places
+Size=32
 Type=Fixed
 
 [places/48]
@@ -108,4 +193,4 @@ MinSize=112
 MaxSize=512
 Type=Scalable
 
-# kate: syntax=ini
+# kate: syntax=.desktop

@@ -8,7 +8,7 @@ include_directories(${CMAKE_SOURCE_DIR}/libvinylcommon)
 include_directories(${CMAKE_BINARY_DIR}/libvinylcommon)
 
 ################# configuration #################
-configure_file(config-vinyl.h.cmake ${CMAKE_CURRENT_BINARY_DIR}/config-vinyl.h )
+configure_file(config-vinyl.h.cmake ${CMAKE_CURRENT_BINARY_DIR}/config-vinyl.h)
 
 ########### next target ###############
 set(vinyl_PART_SRCS

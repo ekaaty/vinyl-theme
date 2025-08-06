@@ -1,12 +1,12 @@
 cmake_minimum_required(VERSION 3.16)
-set(PROJECT_VERSION "6.3.2")
 project(vinyl VERSION ${PROJECT_VERSION})
+set(PROJECT_VERSION "6.4.3")
 set(PROJECT_VERSION_MAJOR 6)
 
-set(KF6_MIN_VERSION "6.8.0")
+set(KF6_MIN_VERSION "6.14.0")
 set(KDE_COMPILERSETTINGS_LEVEL "5.82")
 set(QT_MIN_VERSION "6.8.0")
-set(PLASMA_MIN_VERSION "6.3.0")
+set(PLASMA_MIN_VERSION "6.4.0")
 
 if(NOT PROJECT_SOURCE_DIR STREQUAL PROJECT_BINARY_DIR)
     # Git auto-ignore out-of-source build directory

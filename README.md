@@ -15,9 +15,9 @@ pieces of code and graphics work for KDE Plasma 6:
 - [x] Konsole: [ekaaty/vinyl-theme](https://github.com/ekaaty/vinyl-theme/tree/main/konsole/) (native)
 - [x] Kstyle: [ekaaty/vinyl-theme](https://github.com/ekaaty/vinyl-theme/tree/main/kstyle/) (native)
 - [x] Plasma style: [ekaaty/vinyl-theme](https://github.com/ekaaty/vinyl-theme/tree/main/desktoptheme/) (native)
+- [x] SDDM theme: [kde/sddm-theme](https://invent.kde.org/plasma/plasma-desktop/-/tree/master/sddm-theme) (native)
 - [x] Wallpapers: [ekaaty/vinyl-theme](https://github.com/ekaaty/vinyl-theme/tree/main/wallpapers/) (native)
 - [ ] Global theme: [ekaaty/vinyl-theme](https://github.com/ekaaty/vinyl-theme/tree/main/lookandfeel/) (native)
-- [ ] SDDM theme: [kde/sddm-theme](https://invent.kde.org/plasma/plasma-desktop/-/tree/master/sddm-theme) by KDE SIG
 - [ ] GTK themes: [kde/breeze-gtk](https://github.com/KDE/breeze-gtk) by KDE SIG
 - [ ] Plymounth theme: planned
 - [ ] Grub2 theme: planned
@@ -50,29 +50,12 @@ sudo ostree remote add ekaaty-kde-extras \
 sudo rpm-ostree upgrade
 sudo rpm-ostree install --apply-live vinyl-theme
 ```
-## Building the source
+## Building from source
 
 ### Build Dependencies
 
 You must install at least the following dependencies on your distibution to
 build this theme:
-
-`cmake` `cmake(KDecoration3)` `cmake(KF6ConfigWidgets)` `cmake(KF6Config)` `
-cmake(KF6CoreAddons)` `cmake(KF6Crash)` `cmake(KF6DocTools)` `
-cmake(KF6FrameworkIntegration)` `cmake(KF6GlobalAccel)` `cmake(KF6GuiAddons)` `
-cmake(KF6I18n)` `cmake(KF6IconThemes)` `cmake(KF6KCMUtils)` `cmake(KF6KIO)` `
-cmake(KF6Notifications)` `cmake(KF6Package)` `cmake(KF6WindowSystem)` `
-cmake(KF6KirigamiPlatform)` `cmake(KWayland)` `cmake(KWin)` `cmake(Plasma)` `
-cmake(Qt6Core)` `cmake(Qt6DBus)` `cmake(Qt6Gui)` `cmake(Qt6UiTools)` `
-pkgconfig(epoxy)` `extra-cmake-modules >= 6.6.0` `gcc-c++` `inkscape` `xcursorgen`
-`unzip`
-
-
-## Building the source
-
-### Build Dependencies
-
-You must install at least the following dependencies on your distibution to build this theme:
 
 ``cmake``
 ``cmake(KDecoration3)``
@@ -96,6 +79,7 @@ You must install at least the following dependencies on your distibution to buil
 ``cmake(KWin)``
 ``cmake(Plasma)``
 ``cmake(Qt6Core)``
+``cmake(Qt6Core5Compat)``
 ``cmake(Qt6DBus)``
 ``cmake(Qt6Gui)``
 ``cmake(Qt6UiTools)``
@@ -109,7 +93,7 @@ You must install at least the following dependencies on your distibution to buil
 #### 1\. Fedora/Nobara or Kinoite/Bazzite and derivatives
 
 > [!NOTE]
-> Only systems based on Fedora 40+ is supported. 
+> Only systems based on Fedora 41+ is supported.
 
 Run the following command to install the dependencies:
 
@@ -120,8 +104,8 @@ dnf install 'cmake' \
   'cmake(KF6GlobalAccel)' 'cmake(KF6GuiAddons)' 'cmake(KF6I18n)' 'cmake(KF6IconThemes)' \
   'cmake(KF6KCMUtils)' 'cmake(KF6KIO)' 'cmake(KF6Notifications)' 'cmake(KF6Package)' \
   'cmake(KF6WindowSystem)' 'cmake(KF6KirigamiPlatform)' 'cmake(KWayland)' 'cmake(KWin)' \
-  'cmake(Plasma)' 'cmake(Qt6Core)' 'cmake(Qt6DBus)' 'cmake(Qt6Gui)' 'cmake(Qt6UiTools)' \
-  'pkgconfig(epoxy)' extra-cmake-modules gcc-c++ inkscape xcursorgen unzip
+  'cmake(Plasma)' 'cmake(Qt6Core)' 'cmake(Qt6Core5Compat)' 'cmake(Qt6DBus)' 'cmake(Qt6Gui)' \
+  'cmake(Qt6UiTools)' 'pkgconfig(epoxy)' extra-cmake-modules gcc-c++ inkscape xcursorgen unzip
 ```
 
 #### 2\. OpenSUSE Tumbleweed
@@ -177,7 +161,7 @@ https://aur.archlinux.org/packages/vinyl-git
 
 You can use your favorite Arch AUR helper to install it.
 
-Example.
+Example:
 
 ```shell
 yay -S vinyl-git

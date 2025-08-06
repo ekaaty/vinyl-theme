@@ -12,7 +12,7 @@
         "Id": "com.ekaaty.vinyl-plasma",
         "License": "GPLv3+",
         "Name": "Vinyl",
-        "Version": "6.7.2",
+        "Version": "6.4.3",
         "Website": "https://github.com/ekaaty/vinyl-theme"
     },
     "X-Plasma-API": "6.0"

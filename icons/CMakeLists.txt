@@ -1,32 +1,14 @@
 cmake_minimum_required(VERSION 3.16)
 
-if( CMAKE_SOURCE_DIR STREQUAL CMAKE_CURRENT_SOURCE_DIR )
-project(vinyl-icons)
-set(BUILD_STANDALONE ON)
-string(TIMESTAMP PROJECT_VERSION "%Y%m%d")
-set(CPACK_PACKAGE_VERSION "${PROJECT_VERSION}")
-SET(CPACK_OUTPUT_FILE_PREFIX "${PROJECT_SOURCE_DIR}/dist")
-set(CPACK_GENERATOR "TGZ")
-set(CPACK_TOPLEVEL_TAG "plasma")
-set(CPACK_INCLUDE_TOPLEVEL_DIRECTORY 0)
-set(CPACK_PACKAGE_FILE_NAME "${PROJECT_NAME}-${PROJECT_VERSION}")
-set(CPACK_IGNORE_FILES  "\\.git/;.gitignore;build/;_CPack_Packages/;dist/;tmp/;[^-]+\\.tar\\.[abx2]*")
-set(CPACK_OUTPUT_CONFIG_FILE "${PROJECT_BINARY_DIR}/CPackConfig.cmake")
-set(CPACK_SOURCE_GENERATOR "TXZ")
-set(CPACK_SOURCE_TOPLEVEL_TAG "plasma-source")
-set(CPACK_SOURCE_PACKAGE_FILE_NAME "${PROJECT_NAME}-${PROJECT_VERSION}.${CPACK_SOURCE_TOPLEVEL_TAG}")
-set(CPACK_SOURCE_IGNORE_FILES  "\\.git/;.gitignore;build/;_CPack_Packages/;dist/;tmp/;[^-]+\\.tar\\.[abx2]*")
-set(CPACK_SOURCE_OUTPUT_CONFIG_FILE "${PROJECT_BINARY_DIR}/CPackSourceConfig.cmake")
-set(CPACK_VERBATIM_VARIABLES YES)
-configure_file( "${PROJECT_SOURCE_DIR}/../cmake/CPackConfig.cmake.in"
-                "${PROJECT_BINARY_DIR}/CPackConfig.cmake"
-                @ONLY)
-configure_file( "${PROJECT_SOURCE_DIR}/../cmake/CPackConfig.cmake.in"
-                "${PROJECT_BINARY_DIR}/CPackSourceConfig.cmake"
-                @ONLY)
-include(CPack)
+if(CMAKE_SOURCE_DIR STREQUAL CMAKE_CURRENT_SOURCE_DIR)
+    project(vinyl-icons)
+    string(TIMESTAMP PROJECT_VERSION "%Y%m%d")
+
+    set(PACKAGE_INSTALL_DATADIR ${ROOT_DIRECTORY})
+    include(cmake/CPackLists.cmake)
 else()
-# We are building as part of Main project
+    # We are building as part of Main project
+    set(PACKAGE_INSTALL_DATADIR ${KDE_INSTALL_DATADIR}/icons)
 endif()
 
 find_package(ECM ${KF6_MIN_VERSION} REQUIRED NO_MODULE)
@@ -36,20 +18,14 @@ find_package(Qt6 ${QT_MIN_VERSION} REQUIRED CONFIG COMPONENTS Core)
 include(KDEInstallDirs6)
 
 add_custom_command(
-  OUTPUT ${CMAKE_CURRENT_SOURCE_DIR}/build/Vinyl
-  COMMAND sh ${CMAKE_CURRENT_SOURCE_DIR}/make-theme.sh
+    OUTPUT ${CMAKE_CURRENT_SOURCE_DIR}/build/Vinyl
+    COMMAND sh ${CMAKE_CURRENT_SOURCE_DIR}/make-theme.sh
 )
 
 add_custom_target(icon-themes ALL
-  DEPENDS ${CMAKE_CURRENT_SOURCE_DIR}/build/Vinyl
+    DEPENDS ${CMAKE_CURRENT_SOURCE_DIR}/build/Vinyl
 )
 
-if(BUILD_STANDALONE)
 install(DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}/build/Vinyl/
-  DESTINATION ./Vinyl
+    DESTINATION ${PACKAGE_INSTALL_DATADIR}/Vinyl/
 )
-else()
-install(DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}/build/Vinyl/
-  DESTINATION ${KDE_INSTALL_DATADIR}/icons/Vinyl/
-)
-endif()
