@@ -19,5 +19,5 @@ if [ "${XDG_CURRENT_DESKTOP}" == "KDE" ]; then
     )
 
    ${__konsoleprofile} \
-        ColorScheme="${_colorScheme:-system}"    
+        ColorScheme="${_colorScheme:-system}"
 fi
