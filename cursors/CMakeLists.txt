@@ -28,14 +28,14 @@ find_package(Qt6 ${QT_MIN_VERSION} REQUIRED CONFIG COMPONENTS Core)
 include(KDEInstallDirs6)
 
 add_custom_command(COMMAND
-        make -C ${CMAKE_CURRENT_SOURCE_DIR} -j1
+        make -C ${CMAKE_CURRENT_SOURCE_DIR} -f Render.make -j1
     OUTPUT
         ${CMAKE_CURRENT_SOURCE_DIR}/Vinyl-Black
         ${CMAKE_CURRENT_SOURCE_DIR}/Vinyl-White
 )
 
 add_custom_target(cursor-themes ALL
-        make -C ${CMAKE_CURRENT_SOURCE_DIR} -j1 black white clean
+        make -C ${CMAKE_CURRENT_SOURCE_DIR} -f Render.make -j1 black white clean
     DEPENDS ${CMAKE_CURRENT_SOURCE_DIR}/Vinyl-Black
     DEPENDS ${CMAKE_CURRENT_SOURCE_DIR}/Vinyl-White
 )
