@@ -27,12 +27,12 @@ if(CMAKE_SOURCE_DIR STREQUAL CMAKE_CURRENT_SOURCE_DIR)
     set(PLASMA_MIN_VERSION "6.4.0")
     set(QT_MIN_VERSION "6.8.0")
 
-    set(PACKAGE_INSTALL_DATADIR ${VINYL_SPLASH_PLUGIN_ID})
+    set(STANDALONE TRUE)
     set(KDE_INSTALL_LOCALEDIR ${VINYL_SPLASH_PLUGIN_ID}/contents/locale)
     include(cmake/CPackLists.cmake)
 else()
     # We are building as part of Main project
-    set(PACKAGE_INSTALL_DATADIR ${KDE_INSTALL_DATADIR}/plasma/look-and-feel)
+    set(STANDALONE FALSE)
     set(KDE_INSTALL_LOCALEDIR ${KDE_INSTALL_DATADIR}/locale)
 endif()
 
@@ -60,13 +60,22 @@ ki18n_install(po)
 
 execute_process(
     COMMAND sed -i
-        "s/\\(.*Version.*\\):.*/\\1: \"${PROJECT_VERSION}\",/g"
+        "s/\\(.*\"Version\".*\\):.*/\\1: \"${PROJECT_VERSION}\",/g"
         ${CMAKE_CURRENT_SOURCE_DIR}/src/package/metadata.json
 )
 
-install(
-    DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}/src/package/contents
-    DESTINATION ${PACKAGE_INSTALL_DATADIR}
-)
+if(NOT STANDALONE)
+    plasma_install_package(
+        src/package
+        ${VINYL_SPLASH_PLUGIN_ID}
+        look-and-feel
+        lookandfeel
+    )
+else()
+    install(
+        DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}/src/package/
+        DESTINATION /${VINYL_SPLASH_PLUGIN_ID}
+    )
+endif()
 
 # vim: ts=4:sw=4:sts=4:et

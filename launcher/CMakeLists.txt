@@ -12,13 +12,14 @@ set(PROJECT_VERSION "${PLASMA_VERSION}.${PROJECT_DATE}")
 set(VINYL_LAUNCHER_PLUGIN_ID "com.ekaaty.vinyl-launcher")
 
 if(CMAKE_SOURCE_DIR STREQUAL CMAKE_CURRENT_SOURCE_DIR)
+    # We are building standalone
     project(vinyl-launcher)
     set(PROJECT_VERSION "${PLASMA_VERSION}.${PROJECT_DATE}")
     set(SourceFiles
-      "${CMAKE_SOURCE_DIR}/cmake"
-      "${CMAKE_SOURCE_DIR}/CMakeLists.txt"
-      "${CMAKE_SOURCE_DIR}/po"
-      "${CMAKE_SOURCE_DIR}/src/package"
+        "${CMAKE_SOURCE_DIR}/cmake"
+        "${CMAKE_SOURCE_DIR}/CMakeLists.txt"
+        "${CMAKE_SOURCE_DIR}/po"
+        "${CMAKE_SOURCE_DIR}/src/package"
     )
 
     set(KDE_COMPILERSETTINGS_LEVEL "5.82")
@@ -26,13 +27,12 @@ if(CMAKE_SOURCE_DIR STREQUAL CMAKE_CURRENT_SOURCE_DIR)
     set(PLASMA_MIN_VERSION "6.4.0")
     set(QT_MIN_VERSION "6.8.0")
 
+    set(STANDALONE TRUE)
+    set(KDE_INSTALL_LOCALEDIR ${VINYL_LAUNCHER_PLUGIN_ID}/contents/locale)
     include(cmake/CPackLists.cmake)
-    set(PACKAGE_INSTALL_DATADIR ${ROOT_DIRECTORY})
-    set(KDE_INSTALL_LOCALEDIR
-        ${PACKAGE_INSTALL_DATADIR}/${VINYL_LAUNCHER_PLUGIN_ID}/contents/locale)
 else()
     # We are building as part of Main project
-    set(PACKAGE_INSTALL_DATADIR ${KDE_INSTALL_DATADIR}/plasma/plasmoids)
+    set(STANDALONE FALSE)
     set(KDE_INSTALL_LOCALEDIR ${KDE_INSTALL_DATADIR}/locale)
 endif()
 
@@ -60,13 +60,20 @@ ki18n_install(po)
 
 execute_process(
     COMMAND sed -i
-        "s/\\(.*Version.*\\):.*/\\1: \"${PROJECT_VERSION}\",/g"
+        "s/\\(.*\"Version\".*\\):.*/\\1: \"${PROJECT_VERSION}\",/g"
         ${CMAKE_CURRENT_SOURCE_DIR}/src/package/metadata.json
 )
 
-install(
-    DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}/src/package/
-    DESTINATION ${PACKAGE_INSTALL_DATADIR}/${VINYL_LAUNCHER_PLUGIN_ID}/
-)
+if(NOT STANDALONE)
+    plasma_install_package(
+        src/package 
+        ${VINYL_LAUNCHER_PLUGIN_ID} 
+    )
+else()
+    install(
+        DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}/src/package/
+        DESTINATION /${VINYL_LAUNCHER_PLUGIN_ID}
+    )
+endif()
 
 # vim: ts=4:sw=4:sts=4:et

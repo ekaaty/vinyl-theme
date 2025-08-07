@@ -7,7 +7,7 @@
                 "Name": "Christian Tosta"
             }
         ],
-	"BugReportUrl": "https://github.com/ekaaty/vinyl-theme/issues",
+        "BugReportUrl": "https://github.com/ekaaty/vinyl-theme/issues",
         "Category": "Application Launchers",
         "Description": "Configurable Application Launcher",
         "EnabledByDefault": true,
@@ -15,10 +15,10 @@
         "Id": "com.ekaaty.vinyl-launcher",
         "License": "GPL-3.0+",
         "Name": "Vinyl Launcher",
-	"Version": "6.4.3.25.8.6",
+        "Version": "6.4.3.25.8.7",
         "Website": "https://github.com/ekaaty/vinyl-theme"
     },
-    "X-Plasma-API-Minimum-Version": "6.4.3.25.8.6",
+    "X-Plasma-API-Minimum-Version": "6.0",
     "X-Plasma-Provides": [
         "org.kde.plasma.launchermenu"
     ]
