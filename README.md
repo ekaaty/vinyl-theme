@@ -6,6 +6,8 @@ pieces of code and graphics work for KDE Plasma 6:
 >[!NOTE]
 >This software is on development for KDE Plasma version 6 (and related to Qt6) and can't run on previous versions of Plasma.
 
+![Desktop showing Dolphin, Vinyl Launcher and Filelight in a purple way](.github/pages/img/screenshot0.webp)
+
 - [x] Colors: [ekaaty/vinyl-theme](https://github.com/ekaaty/vinyl-theme/tree/main/colors/)
 - [x] Cursors: [cz-Aviator](https://github.com/ekaaty/vinyl-theme/tree/main/cursors/)
 - [x] Firefox theme: [ekaaty/vinyl-theme](https://github.com/ekaaty/vinyl-theme/tree/main/mozilla/)
