@@ -33,7 +33,7 @@ if(CMAKE_SOURCE_DIR STREQUAL CMAKE_CURRENT_SOURCE_DIR)
 else()
     # We are building as part of Main project
     set(PACKAGE_INSTALL_DATADIR ${KDE_INSTALL_DATADIR}/plasma/look-and-feel)
-    set(KDE_INSTALL_LOCALEDIR ${CMAKE_INSTALL_PREFIX}/share/locale)
+    set(KDE_INSTALL_LOCALEDIR ${KDE_INSTALL_DATADIR}/locale)
 endif()
 
 find_package(ECM ${KF6_MIN_VERSION} REQUIRED NO_MODULE)

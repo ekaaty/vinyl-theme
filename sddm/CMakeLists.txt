@@ -27,8 +27,13 @@ if( CMAKE_SOURCE_DIR STREQUAL CMAKE_CURRENT_SOURCE_DIR )
     set(QT_MIN_VERSION "6.8.0")
 
     include(cmake/CPackLists.cmake)
+    set(PACKAGE_INSTALL_DATADIR ${ROOT_DIRECTORY})
+    set(KDE_INSTALL_LOCALEDIR 
+        ${PACKAGE_INSTALL_DATADIR}/${VINYL_SDDM_THEME_ID}/locale)
 else()
     # We are building as part of Main project
+    set(PACKAGE_INSTALL_DATADIR ${KDE_INSTALL_DATADIR}/sddm/themes)
+    set(KDE_INSTALL_LOCALEDIR ${KDE_INSTALL_DATADIR}/locale)
 endif()
 
 find_package(ECM ${KF6_MIN_VERSION} REQUIRED NO_MODULE)
@@ -56,7 +61,7 @@ kdoctools_install(po)
 ki18n_install(po)
 
 install( DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}/src/
-	DESTINATION ${VINYL_SDDM_THEME_ID}/
+	DESTINATION ${PACKAGE_INSTALL_DATADIR}/${VINYL_SDDM_THEME_ID}/
 )
 
 # vim: ts=4:sw=4:sts=4:et
