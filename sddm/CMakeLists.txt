@@ -7,7 +7,7 @@ execute_process(
     OUTPUT_STRIP_TRAILING_WHITESPACE
 )
 
-set(PLASMA_VERSION "6.4.3")
+set(PLASMA_VERSION "6.4.4")
 set(PROJECT_VERSION "${PLASMA_VERSION}.${PROJECT_DATE}")
 set(VINYL_SDDM_THEME_ID "com.ekaaty.vinyl-sddm")
 
@@ -23,7 +23,7 @@ if( CMAKE_SOURCE_DIR STREQUAL CMAKE_CURRENT_SOURCE_DIR )
 
     set(KDE_COMPILERSETTINGS_LEVEL "5.82")
     set(KF6_MIN_VERSION "6.13.0")
-    set(PLASMA_MIN_VERSION "6.4.0")
+    set(PLASMA_MIN_VERSION "6.3.0")
     set(QT_MIN_VERSION "6.8.0")
 
     include(cmake/CPackLists.cmake)
