@@ -7,7 +7,7 @@ execute_process(
     OUTPUT_STRIP_TRAILING_WHITESPACE
 )
 
-set(PLASMA_VERSION "6.4.3")
+set(PLASMA_VERSION "6.4.4")
 set(PROJECT_VERSION "${PLASMA_VERSION}.${PROJECT_DATE}")
 set(PROJECT_NAMESPACE com.ekaaty.vinyl-plasma)
 
