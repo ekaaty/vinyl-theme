@@ -1,0 +1,176 @@
+# Configurable Application Launcher
+# Copyright (C) 2025 Christian Tosta
+# This file is distributed under the same license as the Vinyl Launcher package.
+# Christian Tosta <christian.tosta@gmail.com>, 2025.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Vinyl Launcher 6.4.3\n"
+"Report-Msgid-Bugs-To: https://github.com/ekaaty/vinyl-theme/issues\n"
+"POT-Creation-Date: 2025-08-05 16:13-0300\n"
+"PO-Revision-Date: 2025-08-29 00:47+0900\n"
+"Last-Translator: HyeonWol <hyeonwol12345@kakao.com>\n"
+"Language-Team: \n"
+"Language: ko\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 3.6\n"
+
+#: src/package/contents/config/config.qml:13
+#, kde-format
+msgid "General"
+msgstr "일반"
+
+#: src/package/contents/ui/code/tools.js:43
+#, kde-format
+msgid "Remove from Favorites"
+msgstr "책갈피에서 삭제"
+
+#: src/package/contents/ui/code/tools.js:47
+#, kde-format
+msgid "Add to Favorites"
+msgstr "책갈피에 추가"
+
+#: src/package/contents/ui/code/tools.js:73
+#, kde-format
+msgid "On All Activities"
+msgstr "모든 활동에서"
+
+#: src/package/contents/ui/code/tools.js:123
+#, kde-format
+msgid "On the Current Activity"
+msgstr "현재 활동만"
+
+#: src/package/contents/ui/code/tools.js:137
+#, kde-format
+msgid "Show in Favorites"
+msgstr "책갈피에 표시"
+
+#: src/package/contents/ui/ConfigGeneral.qml:43
+#, kde-format
+msgid "Icon:"
+msgstr "아이콘:"
+
+#: src/package/contents/ui/ConfigGeneral.qml:124
+#, kde-format
+msgctxt "@item:inmenu Open icon chooser dialog"
+msgid "Choose…"
+msgstr "선택…"
+
+#: src/package/contents/ui/ConfigGeneral.qml:129
+#, kde-format
+msgctxt "@item:inmenu Reset icon to default"
+msgid "Clear Icon"
+msgstr "기본 아이콘으로 초기화"
+
+#: src/package/contents/ui/ConfigGeneral.qml:145
+#, kde-format
+msgid "Icon size:"
+msgstr "아이콘 크기:"
+
+#: src/package/contents/ui/ConfigGeneral.qml:147
+#, kde-format
+msgid "Medium"
+msgstr "보통"
+
+#: src/package/contents/ui/ConfigGeneral.qml:147
+#, kde-format
+msgid "Large"
+msgstr "크게"
+
+#: src/package/contents/ui/ConfigGeneral.qml:147
+#, kde-format
+msgid "Huge"
+msgstr "아주 크게"
+
+#: src/package/contents/ui/ConfigGeneral.qml:153
+#, kde-format
+msgid "Show favorites first"
+msgstr "즐겨찾기 먼저 표시"
+
+#: src/package/contents/ui/ConfigGeneral.qml:158
+#, kde-format
+msgid "Menu position"
+msgstr "메뉴 위치"
+
+#: src/package/contents/ui/ConfigGeneral.qml:160
+#, kde-format
+msgid "Default"
+msgstr "기본"
+
+#: src/package/contents/ui/ConfigGeneral.qml:161
+#, kde-format
+msgid "Center"
+msgstr "가운데"
+
+#: src/package/contents/ui/ConfigGeneral.qml:162
+#, kde-format
+msgid "Center bottom"
+msgstr "가운데 밑"
+
+#: src/package/contents/ui/ConfigGeneral.qml:168
+#, kde-format
+msgid "Number of columns"
+msgstr "행 개수"
+
+#: src/package/contents/ui/ConfigGeneral.qml:175
+#, kde-format
+msgid "Number of rows"
+msgstr "열 개수"
+
+#: src/package/contents/ui/main.qml:28
+#, kde-format
+msgid "Edit Applications…"
+msgstr "앱 편집…"
+
+#: src/package/contents/ui/MenuRepresentation.qml:385
+msgid "Settings"
+msgstr "설정"
+
+#: src/package/contents/ui/MenuRepresentation.qml:391
+msgid "Personalization"
+msgstr "개인화"
+
+#: src/package/contents/ui/MenuRepresentation.qml:397
+msgid "Devices and Printers"
+msgstr "장치 및 프린터"
+
+#: src/package/contents/ui/MenuRepresentation.qml:403
+msgid "Update Software"
+msgstr "소프트웨어 업데이트"
+
+#: src/package/contents/ui/MenuRepresentation.qml:409
+msgid "Help and Support"
+msgstr "도움말 및 지원"
+
+#: src/package/contents/ui/MenuRepresentation.qml:519
+#, kde-format
+msgid "Exit"
+msgstr "나가기"
+
+#: src/package/contents/ui/MenuRepresentation.qml:597
+#, kde-format
+msgid "Search this computer ..."
+msgstr "이 컴퓨터에서 검색..."
+
+#: src/package/contents/ui/MenuRepresentation.qml:712
+#, kde-format
+msgid "My favorite items"
+msgstr "책갈피"
+
+#: src/package/contents/ui/MenuRepresentation.qml:777
+#, kde-format
+msgid "All Apps"
+msgstr "모든 앱"
+
+#: src/package/contents/ui/MenuRepresentation.qml:820
+#, kde-format
+msgid "All applications"
+msgstr "모든 앱"
+
+#: src/package/contents/ui/MenuRepresentation.qml:884
+#, kde-format
+msgid "Favorites"
+msgstr "책갈피"
