@@ -1,5 +1,7 @@
 #!/usr/bin/env sh 
 
+template=plasma_applet_com.ekaaty.vinyl-launcher
+
 cd ${PWD}
 metadata=$(cat src/package/metadata.json)
 
@@ -29,13 +31,12 @@ find src/package/ -name \*.qml -o -name \*.js -o -name \*.cpp | sort \
     --package-version="${VERSION}" \
     --copyright-holder="${AUTHOR}" \
     --msgid-bugs-address="${BUG_REPORT_URL}" \
-    -o po/template.pot
-    #-o po/${PACKAGE_TYPE}_${PACKAGE_ID}.pot
+    -o po/${template}.pot
 
 sed -i \
     -e "s/SOME DESCRIPTIVE TITLE./${DESCRIPTION}/" \
     -e "s/FIRST AUTHOR <EMAIL@ADDRESS>/${AUTHOR} <${EMAIL}>/" \
     -e "s/^#\(.*\)YEAR/#\1${YEAR}/" \
-    po/template.pot
+    po/${template}.pot
 
 exit $?
