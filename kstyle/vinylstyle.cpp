@@ -4054,6 +4054,7 @@ namespace Vinyl
         auto background (palette.color( QPalette::Base ));
 
         if ( hasAlpha ) {
+            painter->setCompositionMode(QPainter::CompositionMode_Source);
             background.setAlphaF(StyleConfigData::menuOpacity() / 100.0);
         }
 
