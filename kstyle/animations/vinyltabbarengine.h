@@ -1,24 +1,10 @@
-#ifndef vinyltabbarengine_h
-#define vinyltabbarengine_h
+/*
+ * SPDX-FileCopyrightText: 2014 Hugo Pereira Da Costa <hugo.pereira@free.fr>
+ *
+ * SPDX-License-Identifier: GPL-2.0-or-later
+ */
 
-/*************************************************************************
- * Copyright (C) 2014 by Hugo Pereira Da Costa <hugo.pereira@free.fr>    *
- *                                                                       *
- * This program is free software; you can redistribute it and/or modify  *
- * it under the terms of the GNU General Public License as published by  *
- * the Free Software Foundation; either version 2 of the License, or     *
- * (at your option) any later version.                                   *
- *                                                                       *
- * This program is distributed in the hope that it will be useful,       *
- * but WITHOUT ANY WARRANTY; without even the implied warranty of        *
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the         *
- * GNU General Public License for more details.                          *
- *                                                                       *
- * You should have received a copy of the GNU General Public License     *
- * along with this program; if not, write to the                         *
- * Free Software Foundation, Inc.,                                       *
- * 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA .        *
- *************************************************************************/
+#pragma once
 
 #include "vinyl.h"
 #include "vinylbaseengine.h"
@@ -27,72 +13,74 @@
 
 namespace Vinyl
 {
+//* stores tabbar hovered action and timeLine
+class TabBarEngine : public BaseEngine
+{
+    Q_OBJECT
 
-    //* stores tabbar hovered action and timeLine
-    class TabBarEngine: public BaseEngine
+public:
+    //* constructor
+    explicit TabBarEngine(QObject *parent)
+        : BaseEngine(parent)
     {
+    }
 
-        Q_OBJECT
+    //* register tabbar
+    bool registerWidget(QObject *target);
 
-        public:
+    //* true if widget hover state is changed
+    bool updateState(const QObject *object, const QPoint &, AnimationMode, bool);
 
-        //* constructor
-        explicit TabBarEngine( QObject* parent ):
-            BaseEngine( parent )
-        {}
+    //* true if widget is animated
+    bool isAnimated(const QObject *object, const QPoint &point, AnimationMode);
 
-        //* register tabbar
-        bool registerWidget( QWidget* );
+    //* animation opacity
+    qreal opacity(const QObject *object, const QPoint &point, AnimationMode mode)
+    {
+        return isAnimated(object, point, mode) ? data(object, mode).data()->opacity(point) : AnimationData::OpacityInvalid;
+    }
 
-        //* true if widget hover state is changed
-        bool updateState( const QObject*, const QPoint&, AnimationMode, bool );
+    //* enability
+    void setEnabled(bool value) override
+    {
+        BaseEngine::setEnabled(value);
+        _hoverData.setEnabled(value);
+        _focusData.setEnabled(value);
+    }
 
-        //* true if widget is animated
-        bool isAnimated( const QObject* object, const QPoint& point, AnimationMode );
+    //* duration
+    void setDuration(int value) override
+    {
+        BaseEngine::setDuration(value);
+        _hoverData.setDuration(value);
+        _focusData.setDuration(value);
+    }
 
-        //* animation opacity
-        qreal opacity( const QObject* object, const QPoint& point, AnimationMode mode )
-        { return isAnimated( object, point, mode ) ? data( object, mode ).data()->opacity( point ) : AnimationData::OpacityInvalid; }
+public Q_SLOTS:
 
-        //* enability
-        void setEnabled( bool value ) override
-        {
-            BaseEngine::setEnabled( value );
-            _hoverData.setEnabled( value );
-            _focusData.setEnabled( value );
+    //* remove widget from map
+    bool unregisterWidget(QObject *object) override
+    {
+        if (!object) {
+            return false;
         }
-
-        //* duration
-        void setDuration( int value ) override
-        {
-            BaseEngine::setDuration( value );
-            _hoverData.setDuration( value );
-            _focusData.setDuration( value );
+        bool found = false;
+        if (_hoverData.unregisterWidget(object)) {
+            found = true;
         }
-
-        public Q_SLOTS:
-
-        //* remove widget from map
-        bool unregisterWidget( QObject* object ) override
-        {
-            if( !object ) return false;
-            bool found = false;
-            if( _hoverData.unregisterWidget( object ) ) found = true;
-            if( _focusData.unregisterWidget( object ) ) found = true;
-            return found;
+        if (_focusData.unregisterWidget(object)) {
+            found = true;
         }
+        return found;
+    }
 
-        private:
+private:
+    //* returns data associated to widget
+    DataMap<TabBarData>::Value data(const QObject *, AnimationMode);
 
-        //* returns data associated to widget
-        DataMap<TabBarData>::Value data( const QObject*, AnimationMode );
-
-        //* data map
-        DataMap<TabBarData> _hoverData;
-        DataMap<TabBarData> _focusData;
-
-    };
+    //* data map
+    DataMap<TabBarData> _hoverData;
+    DataMap<TabBarData> _focusData;
+};
 
 }
-
-#endif

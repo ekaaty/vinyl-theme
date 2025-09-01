@@ -1,24 +1,10 @@
-#ifndef vinylanimations_h
-#define vinylanimations_h
+/*
+ * SPDX-FileCopyrightText: 2014 Hugo Pereira Da Costa <hugo.pereira@free.fr>
+ *
+ * SPDX-License-Identifier: GPL-2.0-or-later
+ */
 
-/*************************************************************************
- * Copyright (C) 2014 by Hugo Pereira Da Costa <hugo.pereira@free.fr>    *
- *                                                                       *
- * This program is free software; you can redistribute it and/or modify  *
- * it under the terms of the GNU General Public License as published by  *
- * the Free Software Foundation; either version 2 of the License, or     *
- * (at your option) any later version.                                   *
- *                                                                       *
- * This program is distributed in the hope that it will be useful,       *
- * but WITHOUT ANY WARRANTY; without even the implied warranty of        *
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the         *
- * GNU General Public License for more details.                          *
- *                                                                       *
- * You should have received a copy of the GNU General Public License     *
- * along with this program; if not, write to the                         *
- * Free Software Foundation, Inc.,                                       *
- * 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA .        *
- *************************************************************************/
+#pragma once
 
 #include "vinylbusyindicatorengine.h"
 #include "vinyldialengine.h"
@@ -30,133 +16,151 @@
 #include "vinyltoolboxengine.h"
 #include "vinylwidgetstateengine.h"
 
-#include <QObject>
 #include <QList>
+#include <QObject>
 
 namespace Vinyl
 {
+//* stores engines
+class Animations : public QObject
+{
+    Q_OBJECT
 
-    //* stores engines
-    class Animations: public QObject
+public:
+    //* constructor
+    explicit Animations(QObject*);
+
+    //* register animations corresponding to given widget, depending on its type.
+    void registerWidget(QObject *widget) const;
+
+    /** unregister all animations associated to a widget */
+    void unregisterWidget(QObject *widget) const;
+
+    //* enability engine
+    [[nodiscard]] WidgetStateEngine &widgetEnabilityEngine() const
     {
+        return *_widgetEnabilityEngine;
+    }
 
-        Q_OBJECT
+    //* abstractButton engine
+    [[nodiscard]] WidgetStateEngine &widgetStateEngine() const
+    {
+        return *_widgetStateEngine;
+    }
 
-        public:
+    //* editable combobox arrow hover engine
+    [[nodiscard]] WidgetStateEngine &comboBoxEngine() const
+    {
+        return *_comboBoxEngine;
+    }
 
-        //* constructor
-        explicit Animations( QObject* );
+    //* Tool buttons arrow hover engine
+    [[nodiscard]] WidgetStateEngine &toolButtonEngine() const
+    {
+        return *_toolButtonEngine;
+    }
 
-        //* register animations corresponding to given widget, depending on its type.
-        void registerWidget( QWidget* widget ) const;
+    //* item view engine
+    [[nodiscard]] WidgetStateEngine &inputWidgetEngine() const
+    {
+        return *_inputWidgetEngine;
+    }
 
-        /** unregister all animations associated to a widget */
-        void unregisterWidget( QWidget* widget ) const;
+    //* busy indicator
+    [[nodiscard]] BusyIndicatorEngine &busyIndicatorEngine() const
+    {
+        return *_busyIndicatorEngine;
+    }
 
-        //* enability engine
-        WidgetStateEngine& widgetEnabilityEngine() const
-        { return *_widgetEnabilityEngine; }
+    //* header view engine
+    [[nodiscard]] HeaderViewEngine &headerViewEngine() const
+    {
+        return *_headerViewEngine;
+    }
 
-        //* abstractButton engine
-        WidgetStateEngine& widgetStateEngine() const
-        { return *_widgetStateEngine; }
+    //* scrollbar engine
+    [[nodiscard]] ScrollBarEngine &scrollBarEngine() const
+    {
+        return *_scrollBarEngine;
+    }
 
-        //* editable combobox arrow hover engine
-        WidgetStateEngine& comboBoxEngine() const
-        { return *_comboBoxEngine; }
+    //* dial engine
+    [[nodiscard]] DialEngine &dialEngine() const
+    {
+        return *_dialEngine;
+    }
 
-        //* Tool buttons arrow hover engine
-        WidgetStateEngine& toolButtonEngine() const
-        { return *_toolButtonEngine; }
+    //* spinbox engine
+    [[nodiscard]] SpinBoxEngine &spinBoxEngine() const
+    {
+        return *_spinBoxEngine;
+    }
 
-        //* item view engine
-        WidgetStateEngine& inputWidgetEngine() const
-        { return *_inputWidgetEngine; }
+    //* tabbar
+    [[nodiscard]] TabBarEngine &tabBarEngine() const
+    {
+        return *_tabBarEngine;
+    }
 
-        //* busy indicator
-        BusyIndicatorEngine& busyIndicatorEngine() const
-        { return *_busyIndicatorEngine; }
+    //* toolbox
+    [[nodiscard]] ToolBoxEngine &toolBoxEngine() const
+    {
+        return *_toolBoxEngine;
+    }
 
-        //* header view engine
-        HeaderViewEngine& headerViewEngine() const
-        { return *_headerViewEngine; }
+    //* setup engines
+    void setupEngines();
 
-        //* scrollbar engine
-        ScrollBarEngine& scrollBarEngine() const
-        { return *_scrollBarEngine; }
+protected Q_SLOTS:
 
-        //* dial engine
-        DialEngine& dialEngine() const
-        { return *_dialEngine; }
+    //* enregister engine
+    void unregisterEngine(QObject *);
 
-        //* spinbox engine
-        SpinBoxEngine& spinBoxEngine() const
-        { return *_spinBoxEngine; }
+private:
+    //* register new engine
+    void registerEngine(BaseEngine *);
 
-        //* tabbar
-        TabBarEngine& tabBarEngine() const
-        { return *_tabBarEngine; }
+    //* busy indicator
+    BusyIndicatorEngine *_busyIndicatorEngine = nullptr;
 
-        //* toolbox
-        ToolBoxEngine& toolBoxEngine() const
-        { return *_toolBoxEngine; }
+    //* headerview hover effect
+    HeaderViewEngine *_headerViewEngine = nullptr;
 
-        //* setup engines
-        void setupEngines();
+    //* widget enability engine
+    WidgetStateEngine *_widgetEnabilityEngine = nullptr;
 
-        protected Q_SLOTS:
+    //* abstract button engine
+    WidgetStateEngine *_widgetStateEngine = nullptr;
 
-        //* enregister engine
-        void unregisterEngine( QObject* );
-        private:
+    //* editable combobox arrow hover effect
+    WidgetStateEngine *_comboBoxEngine = nullptr;
 
-        //* register new engine
-        void registerEngine( BaseEngine* );
+    //* menu toolbutton arrow hover effect
+    WidgetStateEngine *_toolButtonEngine = nullptr;
 
-        //* busy indicator
-        BusyIndicatorEngine* _busyIndicatorEngine = nullptr;
+    //* item view engine
+    WidgetStateEngine *_inputWidgetEngine = nullptr;
 
-        //* headerview hover effect
-        HeaderViewEngine* _headerViewEngine = nullptr;
+    //* scrollbar engine
+    ScrollBarEngine *_scrollBarEngine = nullptr;
 
-        //* widget enability engine
-        WidgetStateEngine* _widgetEnabilityEngine = nullptr;
+    //* dial engine
+    DialEngine *_dialEngine = nullptr;
 
-        //* abstract button engine
-        WidgetStateEngine* _widgetStateEngine = nullptr;
+    //* spinbox engine
+    SpinBoxEngine *_spinBoxEngine = nullptr;
 
-        //* editable combobox arrow hover effect
-        WidgetStateEngine* _comboBoxEngine = nullptr;
+    //* stacked widget engine
+    StackedWidgetEngine *_stackedWidgetEngine = nullptr;
 
-        //* mennu toolbutton arrow hover effect
-        WidgetStateEngine* _toolButtonEngine = nullptr;
+    //* tabbar engine
+    TabBarEngine *_tabBarEngine = nullptr;
 
-        //* item view engine
-        WidgetStateEngine* _inputWidgetEngine = nullptr;
+    //* toolbar engine
+    ToolBoxEngine *_toolBoxEngine = nullptr;
 
-        //* scrollbar engine
-        ScrollBarEngine* _scrollBarEngine = nullptr;
-
-        //* dial engine
-        DialEngine* _dialEngine = nullptr;
-
-        //* spinbox engine
-        SpinBoxEngine* _spinBoxEngine = nullptr;
-
-        //* stacked widget engine
-        StackedWidgetEngine* _stackedWidgetEngine = nullptr;
-
-        //* tabbar engine
-        TabBarEngine* _tabBarEngine = nullptr;
-
-        //* toolbar engine
-        ToolBoxEngine* _toolBoxEngine = nullptr;
-
-        //* keep list of existing engines
-        QList< BaseEngine::Pointer > _engines;
-
-    };
+    //* keep list of existing engines
+    QList<BaseEngine::Pointer> _engines;
+};
 
 }
-
-#endif

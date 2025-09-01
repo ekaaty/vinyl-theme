@@ -1,7 +1,7 @@
 ################# includes #################
 include_directories(
-  animations
-  debug
+    animations
+    debug
 )
 
 include_directories(${CMAKE_SOURCE_DIR}/libvinylcommon)
@@ -65,7 +65,7 @@ target_link_libraries(vinyl${QT_MAJOR_VERSION}
     Qt${QT_MAJOR_VERSION}::DBus
 )
 
-if( VINYL_HAVE_QTQUICK )
+if(VINYL_HAVE_QTQUICK)
     target_link_libraries(vinyl${QT_MAJOR_VERSION}
         Qt${QT_MAJOR_VERSION}::Quick
         KF${QT_MAJOR_VERSION}::CoreAddons

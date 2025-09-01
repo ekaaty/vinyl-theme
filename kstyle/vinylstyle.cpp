@@ -3514,8 +3514,8 @@ namespace Vinyl
             const bool hasFocus( enabled && ( state & State_HasFocus ) );
 
             // focus takes precedence over mouse over
-            _animations->inputWidgetEngine().updateState( widget, AnimationFocus, hasFocus, AnimationLongDuration );
-            //_animations->inputWidgetEngine().updateState( widget, AnimationHover, mouseOver && !hasFocus );
+            //_animations->inputWidgetEngine().updateState( widget, AnimationFocus, hasFocus, AnimationLongDuration );
+            _animations->inputWidgetEngine().updateState( widget, AnimationHover, mouseOver && !hasFocus );
 
             // retrieve animation mode and opacity
             const AnimationMode mode( _animations->inputWidgetEngine().frameAnimationMode( widget ) );
@@ -3865,8 +3865,8 @@ namespace Vinyl
 
         // update animation state
         // mouse over takes precedence over focus
-        _animations->widgetStateEngine().updateState( widget, AnimationPressed, sunken, AnimationForwardOnly|AnimationLongDuration );
-        //_animations->widgetStateEngine().updateState( widget, AnimationFocus, hasFocus && !mouseOver );
+        //_animations->widgetStateEngine().updateState( widget, AnimationPressed, sunken, AnimationForwardOnly|AnimationLongDuration );
+        _animations->widgetStateEngine().updateState( widget, AnimationFocus, hasFocus && !mouseOver );
 
         const AnimationMode mode( _animations->widgetStateEngine().buttonAnimationMode( widget ) );
         const qreal opacity( _animations->widgetStateEngine().buttonOpacity( widget ) );
@@ -4229,6 +4229,8 @@ namespace Vinyl
         const auto& rect( option->rect );
         const auto& palette( option->palette );
 
+	const QObject *styleObject = widget ? widget : option->styleObject;
+
         // store flags
         const State& state( option->state );
         const bool enabled( state & State_Enabled );
@@ -4240,8 +4242,10 @@ namespace Vinyl
         RadioButtonState radioButtonState( state & State_On ? RadioOn:RadioOff );
 
         // animation state
-        _animations->widgetStateEngine().updateState( widget, AnimationHover, mouseOver );
-        _animations->widgetStateEngine().updateState( widget, AnimationPressed, radioButtonState != RadioOff, AnimationOutBack );
+        _animations->widgetStateEngine().updateState(styleObject, AnimationHover, mouseOver);
+        //_animations->widgetStateEngine().updateState( widget, AnimationHover, mouseOver );
+        _animations->widgetStateEngine().updateState(styleObject, AnimationPressed, radioButtonState != RadioOff);
+        //_animations->widgetStateEngine().updateState( widget, AnimationPressed, radioButtonState != RadioOff, AnimationOutBack );
         if( _animations->widgetStateEngine().isAnimated( widget, AnimationPressed ) ) radioButtonState = RadioAnimated;
         const qreal animation( _animations->widgetStateEngine().opacity( widget, AnimationPressed ) );
 
