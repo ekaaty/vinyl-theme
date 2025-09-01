@@ -6,4 +6,3 @@ target_link_libraries(vinylcommon${QT_MAJOR_VERSION}
     PUBLIC
         Qt${QT_MAJOR_VERSION}::Core
         Qt${QT_MAJOR_VERSION}::Gui)
-

@@ -519,15 +519,15 @@ namespace Vinyl
             return QMargins();
         }
 
-        const QSize boxSize = BoxShadowRenderer::calculateMinimumBoxSize(params.shadow1.radius)
+        const QSizeF boxSize = BoxShadowRenderer::calculateMinimumBoxSize(params.shadow1.radius)
             .expandedTo(BoxShadowRenderer::calculateMinimumBoxSize(params.shadow2.radius));
 
-        const QSize shadowSize = BoxShadowRenderer::calculateMinimumShadowTextureSize(boxSize, params.shadow1.radius, params.shadow1.offset)
+        const QSizeF shadowSize = BoxShadowRenderer::calculateMinimumShadowTextureSize(boxSize, params.shadow1.radius, params.shadow1.offset)
             .expandedTo(BoxShadowRenderer::calculateMinimumShadowTextureSize(boxSize, params.shadow2.radius, params.shadow2.offset));
 
-        const QRect shadowRect(QPoint(0, 0), shadowSize);
+        const QRectF shadowRect(QPoint(0, 0), shadowSize);
 
-        QRect boxRect(QPoint(0, 0), boxSize);
+        QRectF boxRect(QPoint(0, 0), boxSize);
         boxRect.moveCenter(shadowRect.center());
 
         QMargins margins(
