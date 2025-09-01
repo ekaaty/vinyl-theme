@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>609</width>
-    <height>444</height>
+    <width>560</width>
+    <height>446</height>
    </rect>
   </property>
   <property name="sizePolicy">
@@ -16,7 +16,7 @@
     <verstretch>0</verstretch>
    </sizepolicy>
   </property>
-  <layout class="QVBoxLayout" name="verticalLayout_2">
+  <layout class="QVBoxLayout" name="verticalLayout">
    <property name="leftMargin">
     <number>0</number>
    </property>
@@ -34,19 +34,67 @@
      <property name="currentIndex">
       <number>0</number>
      </property>
-     <widget class="QWidget" name="tab">
+
+     <!-- Begin General Page -->
+     <widget class="QWidget" name="generalPage">
       <attribute name="title">
        <string>General</string>
       </attribute>
-      <layout class="QGridLayout" name="gridLayout">
-       <item row="3" column="0" colspan="5">
-        <widget class="QCheckBox" name="_viewDrawFocusIndicator">
+      <layout class="QGridLayout" name="generalGridLayout">
+       <!-- Draw toolbar item separators -->
+       <item row="0" column="0" colspan="5">
+        <widget class="QCheckBox" name="_toolBarDrawItemSeparator">
          <property name="text">
-          <string>Draw focus indicator in lists</string>
+          <string>Draw toolbar item separators</string>
          </property>
         </widget>
        </item>
-       <item row="10" column="2" colspan="2">
+       <!-- Draw widget shadow -->
+       <item row="1" column="0" colspan="5">
+        <widget class="QCheckBox" name="_widgetDrawShadow">
+         <property name="text">
+          <string>Draw widget shadow</string>
+         </property>
+        </widget>
+       </item>
+       <!--Unify konsole tab bar with header area -->
+       <item row="2" column="0" colspan="5">
+        <widget class="QCheckBox" name="_unifiedTabBarKonsole">
+         <property name="text">
+          <string>Unify konsole tab bar with header area</string>
+         </property>
+        </widget>
+       </item>
+       <!-- Horizontal line separator -->
+       <item row="3" column="0" colspan="5">
+        <widget class="Line">
+         <property name="orientation">
+          <enum>Qt::Orientation::Horizontal</enum>
+         </property>
+        </widget>
+       </item>
+       <!-- Windows drag mode label -->
+       <item row="4" column="0" colspan="1">
+        <widget class="QLabel" name="_windowDragLabel">
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+           <horstretch>0</horstretch>
+           <verstretch>0</verstretch>
+          </sizepolicy>
+         </property>
+         <property name="text">
+          <string>W&amp;indows' drag mode:</string>
+         </property>
+         <property name="alignment">
+          <set>Qt::AlignmentFlag::AlignRight|Qt::AlignmentFlag::AlignTrailing|Qt::AlignmentFlag::AlignVCenter</set>
+         </property>
+         <property name="buddy">
+          <cstring>_windowDragMode</cstring>
+         </property>
+        </widget>
+       </item>
+       <!-- Windows drap mode options -->
+       <item row="4" column="2" colspan="2">
         <widget class="QComboBox" name="_windowDragMode">
          <item>
           <property name="text">
@@ -65,40 +113,64 @@
          </item>
         </widget>
        </item>
-       <item row="1" column="0" colspan="3">
-        <widget class="QCheckBox" name="_unifiedTabBarKonsole">
-         <property name="text">
-          <string>Unify konsole tab bar with header area</string>
+       <!-- Horizontal line separator -->
+       <item row="5" column="0" colspan="5">
+        <widget class="Line">
+         <property name="orientation">
+          <enum>Qt::Orientation::Horizontal</enum>
          </property>
         </widget>
        </item>
-       <item row="9" column="4">
-        <spacer name="horizontalSpacer_3">
-         <property name="orientation">
-          <enum>Qt::Horizontal</enum>
+       <!-- Corner radius label -->
+       <item row="6" column="0" colspan="1">
+        <widget class="QLabel" name="_cornerRadiusLabel">
+         <property name="text">
+          <string>Corner radius:</string>
          </property>
-         <property name="sizeHint" stdset="0">
+         <property name="alignment">
+          <set>Qt::AlignmentFlag::AlignRight|Qt::AlignmentFlag::AlignTrailing|Qt::AlignmentFlag::AlignVCenter</set>
+         </property>
+        </widget>
+       </item>
+       <!-- Corner radius spinbox -->
+       <item row="6" column="2" colspan="1">
+        <widget class="QSpinBox" name="_cornerRadius">
+         <property name="suffix">
+          <string> px</string>
+         </property>
+         <property name="minimum">
+          <number>1</number>
+         </property>
+         <property name="maximum">
+          <number>8</number>
+         </property>
+         <property name="value">
+          <number>4</number>
+         </property>
+         <property name="maximumSize">
           <size>
-           <width>65</width>
-           <height>20</height>
+           <width>72</width>
+           <height>40</height>
           </size>
          </property>
-        </spacer>
+        </widget>
        </item>
-       <item row="16" column="0" colspan="4">
-        <spacer name="verticalSpacer">
-         <property name="orientation">
-          <enum>Qt::Vertical</enum>
+       <!-- Button size label -->
+       <item row="7" column="0" colspan="1">
+        <widget class="QLabel" name="_buttonSizeLabel">
+         <property name="layoutDirection">
+          <enum>Qt::LayoutDirection::LeftToRight</enum>
          </property>
-         <property name="sizeHint" stdset="0">
-          <size>
-           <width>20</width>
-           <height>49</height>
-          </size>
+         <property name="text">
+          <string>Button Size:</string>
          </property>
-        </spacer>
+         <property name="alignment">
+          <set>Qt::AlignmentFlag::AlignRight|Qt::AlignmentFlag::AlignTrailing|Qt::AlignmentFlag::AlignVCenter</set>
+         </property>
+        </widget>
        </item>
-       <item row="13" column="2" colspan="2">
+       <!-- Button size slider -->
+       <item row="7" column="2" colspan="2">
         <widget class="QSlider" name="_buttonSize">
          <property name="minimum">
           <number>-2</number>
@@ -113,145 +185,70 @@
           <number>2</number>
          </property>
          <property name="orientation">
-          <enum>Qt::Horizontal</enum>
+          <enum>Qt::Orientation::Horizontal</enum>
          </property>
          <property name="tickPosition">
-          <enum>QSlider::TicksBelow</enum>
+          <enum>QSlider::TickPosition::TicksBelow</enum>
          </property>
          <property name="tickInterval">
           <number>2</number>
          </property>
         </widget>
        </item>
-       <item row="8" column="0">
-        <widget class="QLabel" name="_cornerRadiusLabel">
-         <property name="text">
-          <string>Corner radius:</string>
-         </property>
-         <property name="alignment">
-          <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
-         </property>
-        </widget>
-       </item>
-       <item row="9" column="0">
-        <widget class="QLabel" name="_mnemonicsLabel">
-         <property name="text">
-          <string>&amp;Keyboard accelerators visibility:</string>
-         </property>
-         <property name="alignment">
-          <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
-         </property>
-         <property name="buddy">
-          <cstring>_mnemonicsMode</cstring>
-         </property>
-        </widget>
-       </item>
-       <item row="6" column="0">
-        <widget class="QCheckBox" name="_widgetDrawShadow">
-         <property name="text">
-          <string>Draw widget shadow</string>
-         </property>
-        </widget>
-       </item>
-       <item row="10" column="0">
-        <widget class="QLabel" name="_windowDragLabel">
-         <property name="sizePolicy">
-          <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
-           <horstretch>0</horstretch>
-           <verstretch>0</verstretch>
-          </sizepolicy>
-         </property>
-         <property name="text">
-          <string>W&amp;indows' drag mode:</string>
-         </property>
-         <property name="alignment">
-          <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
-         </property>
-         <property name="buddy">
-          <cstring>_windowDragMode</cstring>
-         </property>
-        </widget>
-       </item>
-       <item row="13" column="0" alignment="Qt::AlignRight">
-        <widget class="QLabel" name="label_2">
-         <property name="layoutDirection">
-          <enum>Qt::LeftToRight</enum>
-         </property>
-         <property name="text">
-          <string>Button Size:</string>
-         </property>
-        </widget>
-       </item>
-       <item row="14" column="2">
-        <widget class="QLabel" name="label_3">
+       <!-- Button size smaller label -->
+       <item row="8" column="2" colspan="1">
+        <widget class="QLabel" name="_buttonSizeSmallerLabel">
          <property name="text">
           <string>Smaller</string>
          </property>
         </widget>
        </item>
-       <item row="2" column="0" colspan="5">
-        <widget class="QCheckBox" name="_toolBarDrawItemSeparator">
-         <property name="text">
-          <string>Draw toolbar item separators</string>
-         </property>
-        </widget>
-       </item>
-       <item row="9" column="2" colspan="2">
-        <widget class="QComboBox" name="_mnemonicsMode">
-         <item>
-          <property name="text">
-           <string>Always Hide Keyboard Accelerators</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>Show Keyboard Accelerators When Needed</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>Always Show Keyboard Accelerators</string>
-          </property>
-         </item>
-        </widget>
-       </item>
-       <item row="8" column="2">
-        <widget class="QSpinBox" name="_cornerRadius">
-         <property name="suffix">
-          <string> px</string>
-         </property>
-         <property name="minimum">
-          <number>1</number>
-         </property>
-         <property name="maximum">
-          <number>8</number>
-         </property>
-         <property name="value">
-          <number>6</number>
-         </property>
-        </widget>
-       </item>
-       <item row="14" column="3" alignment="Qt::AlignRight">
-        <widget class="QLabel" name="label_4">
+       <!-- Button size bigger label -->
+       <item row="8" column="3" colspan="1">
+        <widget class="QLabel" name="_buttonSizeBiggerLabel">
          <property name="text">
           <string>Bigger</string>
          </property>
-        </widget>
-       </item>
-       <item row="0" column="0" colspan="5">
-        <widget class="QCheckBox" name="_tabDrawHighlight">
-         <property name="text">
-          <string>Draw highlight on active tab</string>
+         <property name="alignment">
+          <set>Qt::AlignmentFlag::AlignRight|Qt::AlignmentFlag::AlignTrailing|Qt::AlignmentFlag::AlignVCenter</set>
          </property>
         </widget>
        </item>
+       <!-- Vertical Spacer -->
+       <item row="9" column="0" colspan="5">
+        <spacer>
+         <property name="orientation">
+          <enum>Qt::Orientation::Vertical</enum>
+         </property>
+         <property name="sizeHint" stdset="0">
+          <size>
+           <width>20</width>
+           <height>40</height>
+          </size>
+         </property>
+        </spacer>
+       </item>
       </layout>
-     </widget>
-     <widget class="QWidget" name="tab_2">
+      </widget>
+
+     <!-- Begin Animations Page -->
+     <widget class="QWidget" name="animationsPage">
       <attribute name="title">
        <string>Animations</string>
       </attribute>
-      <layout class="QGridLayout" name="gridLayout_5">
+      <layout class="QGridLayout" name="animationGridLayout">
+       <!-- Animation  enabled checkbox -->
+       <item row="0" column="0" colspan="5">
+        <widget class="QCheckBox" name="_animationsEnabled">
+         <property name="text">
+          <string>Enable animations</string>
+         </property>
+         <property name="enabled">
+          <bool>true</bool>
+         </property>
+        </widget>
+       </item>
+       <!-- Animation dutation label -->
        <item row="1" column="0">
         <widget class="QLabel" name="_animationsDurationLabel">
          <property name="enabled">
@@ -261,13 +258,14 @@
           <string>A&amp;nimations duration:</string>
          </property>
          <property name="alignment">
-          <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+          <set>Qt::AlignmentFlag::AlignRight|Qt::AlignmentFlag::AlignTrailing|Qt::AlignmentFlag::AlignVCenter</set>
          </property>
          <property name="buddy">
           <cstring>_animationsDuration</cstring>
          </property>
         </widget>
        </item>
+       <!-- Animation Duration spinbox -->
        <item row="1" column="1" colspan="2">
         <widget class="QSpinBox" name="_animationsDuration">
          <property name="enabled">
@@ -281,17 +279,11 @@
          </property>
         </widget>
        </item>
-       <item row="0" column="0" colspan="4">
-        <widget class="QCheckBox" name="_animationsEnabled">
-         <property name="text">
-          <string>Enable animations</string>
-         </property>
-        </widget>
-       </item>
-       <item row="1" column="3">
-        <spacer name="horizontalSpacer">
+       <!-- Horizontal spacer -->
+       <item row="1" column="3" colspan="1">
+        <spacer>
          <property name="orientation">
-          <enum>Qt::Horizontal</enum>
+          <enum>Qt::Orientation::Horizontal</enum>
          </property>
          <property name="sizeHint" stdset="0">
           <size>
@@ -301,10 +293,11 @@
          </property>
         </spacer>
        </item>
-       <item row="2" column="0" colspan="4">
-        <spacer name="verticalSpacer_2">
+       <!-- Vertical spacer -->
+       <item row="2" column="0" colspan="5">
+        <spacer>
          <property name="orientation">
-          <enum>Qt::Vertical</enum>
+          <enum>Qt::Orientation::Vertical</enum>
          </property>
          <property name="sizeHint" stdset="0">
           <size>
@@ -316,57 +309,50 @@
        </item>
       </layout>
      </widget>
-     <widget class="QWidget" name="tab_3">
+
+     <!-- Begin Frames Page -->
+     <widget class="QWidget" name="framesPage">
       <attribute name="title">
        <string>Frames</string>
       </attribute>
-      <layout class="QVBoxLayout" name="verticalLayout_3">
-       <item>
-        <widget class="QCheckBox" name="_transparentDolphinView">
-         <property name="text">
-          <string>Transparent Dolphin view</string>
-         </property>
-        </widget>
-       </item>
-       <item>
+      <layout class="QVBoxLayout" name="_framesVerticalLayout">
+       <!-- Draw frame around dockable panels -->
+       <item row="0" column="0" colspan="5">
         <widget class="QCheckBox" name="_dockWidgetDrawFrame">
          <property name="text">
           <string>Draw frame around dockable panels</string>
          </property>
         </widget>
        </item>
-       <item>
+       <!-- Draw frame around page titles -->
+       <item row="1" column="0" colspan="5">
         <widget class="QCheckBox" name="_titleWidgetDrawFrame">
          <property name="text">
           <string>Draw frame around page titles</string>
          </property>
         </widget>
        </item>
-       <item>
-        <widget class="QCheckBox" name="_kTextEditDrawFrame">
-         <property name="text">
-          <string>Draw frame around KTextEdit</string>
-         </property>
-        </widget>
-       </item>
-       <item>
+       <!-- Draw frame around side panels -->
+       <item row="2" column="0" colspan="5">
         <widget class="QCheckBox" name="_sidePanelDrawFrame">
          <property name="text">
           <string>Draw frame around side panels</string>
          </property>
         </widget>
        </item>
-       <item>
-        <widget class="QCheckBox" name="_menuItemDrawThinFocus">
+       <!-- Draw frame around text editors -->
+       <item row="3" column="0" colspan="5">
+        <widget class="QCheckBox" name="_kTextEditDrawFrame">
          <property name="text">
-          <string>Draw a thin line to indicate focus in menus and menubars</string>
+          <string>Draw frame around text editors</string>
          </property>
         </widget>
        </item>
+       <!-- Vertical spacer -->
        <item>
-        <spacer name="verticalSpacer_3">
+        <spacer name="_framesVerticalSpacer">
          <property name="orientation">
-          <enum>Qt::Vertical</enum>
+          <enum>Qt::Orientation::Vertical</enum>
          </property>
          <property name="sizeHint" stdset="0">
           <size>
@@ -378,51 +364,50 @@
        </item>
       </layout>
      </widget>
-     <widget class="QWidget" name="tab_4">
+
+     <!-- Scrollbars Page -->
+     <widget class="QWidget" name="scrollbarsPage">
       <attribute name="title">
        <string>Scrollbars</string>
       </attribute>
-      <layout class="QGridLayout" name="gridLayout_6">
-       <item row="1" column="2">
-        <spacer name="horizontalSpacer_2">
-         <property name="orientation">
-          <enum>Qt::Horizontal</enum>
-         </property>
-         <property name="sizeHint" stdset="0">
-          <size>
-           <width>40</width>
-           <height>20</height>
-          </size>
-         </property>
-        </spacer>
-       </item>
-       <item row="1" column="0">
-        <widget class="QLabel" name="_scrollBarAddLineLabel">
+      <layout class="QGridLayout" name="scroolBarsGridLayout">
+       <item row="0" column="0" colspan="4">
+        <widget class="QCheckBox" name="_renderThinSeperatorBetweenTheScrollBar">
          <property name="text">
-          <string>Bottom arrow button t&amp;ype:</string>
-         </property>
-         <property name="alignment">
-          <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
-         </property>
-         <property name="buddy">
-          <cstring>_scrollBarAddLineButtons</cstring>
+          <string>Render a thin separator between the scrollbar</string>
          </property>
         </widget>
        </item>
-       <item row="0" column="0">
+       <item row="1" column="0" colspan="3">
+        <widget class="Line" name="_scrollBarsHorizontalLine">
+         <property name="orientation">
+          <enum>Qt::Orientation::Horizontal</enum>
+         </property>
+        </widget>
+       </item>
+       <item row="2" column="0" colspan="1">
         <widget class="QLabel" name="_scrollBarSubLineLabel">
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+           <horstretch>0</horstretch>
+           <verstretch>0</verstretch>
+          </sizepolicy>
+         </property>
+         <property name="layoutDirection">
+          <enum>Qt::LayoutDirection::LeftToRight</enum>
+         </property>
          <property name="text">
           <string>&amp;Top arrow button type:</string>
          </property>
          <property name="alignment">
-          <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+          <set>Qt::AlignmentFlag::AlignRight|Qt::AlignmentFlag::AlignTrailing|Qt::AlignmentFlag::AlignVCenter</set>
          </property>
          <property name="buddy">
           <cstring>_scrollBarSubLineButtons</cstring>
          </property>
         </widget>
        </item>
-       <item row="0" column="1">
+       <item row="2" column="1" colspan="1">
         <widget class="QComboBox" name="_scrollBarSubLineButtons">
          <item>
           <property name="text">
@@ -441,7 +426,42 @@
          </item>
         </widget>
        </item>
-       <item row="1" column="1">
+       <item row="2" column="2" colspan="1">
+        <spacer name="_scrollBarsHorizontalSpacer">
+         <property name="orientation">
+          <enum>Qt::Orientation::Horizontal</enum>
+         </property>
+         <property name="sizeHint" stdset="0">
+          <size>
+           <width>40</width>
+           <height>20</height>
+          </size>
+         </property>
+        </spacer>
+       </item>
+       <item row="3" column="0" colspan="1">
+        <widget class="QLabel" name="_scrollBarAddLineLabel">
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+           <horstretch>0</horstretch>
+           <verstretch>0</verstretch>
+          </sizepolicy>
+         </property>
+         <property name="layoutDirection">
+          <enum>Qt::LayoutDirection::LeftToRight</enum>
+         </property>
+         <property name="text">
+          <string>Bottom arrow button t&amp;ype:</string>
+         </property>
+         <property name="alignment">
+          <set>Qt::AlignmentFlag::AlignRight|Qt::AlignmentFlag::AlignTrailing|Qt::AlignmentFlag::AlignVCenter</set>
+         </property>
+         <property name="buddy">
+          <cstring>_scrollBarAddLineButtons</cstring>
+         </property>
+        </widget>
+       </item>
+       <item row="3" column="1" colspan="1">
         <widget class="QComboBox" name="_scrollBarAddLineButtons">
          <item>
           <property name="text">
@@ -460,10 +480,10 @@
          </item>
         </widget>
        </item>
-       <item row="2" column="0" colspan="3">
-        <spacer name="verticalSpacer_4">
+       <item row="4" column="0" colspan="4">
+        <spacer>
          <property name="orientation">
-          <enum>Qt::Vertical</enum>
+          <enum>Qt::Orientation::Vertical</enum>
          </property>
          <property name="sizeHint" stdset="0">
           <size>
@@ -473,61 +493,248 @@
          </property>
         </spacer>
        </item>
-       <item row="2" column="0">
-        <widget class="QCheckBox" name="_renderThinSeperatorBetweenTheScrollBar">
-         <property name="text">
-          <string>Render a thin separator between the scrollbar</string>
-         </property>
-        </widget>
-       </item>
       </layout>
      </widget>
-     <widget class="QWidget" name="tab_5">
+
+     <!-- Transparency Page -->
+     <widget class="QWidget" name="transparencyPage">
       <attribute name="title">
        <string>Transparency</string>
       </attribute>
-      <layout class="QGridLayout" name="gridLayout_2">
-       <item row="1" column="1">
-        <layout class="QHBoxLayout" name="horizontalLayout_2">
+      <layout class="QGridLayout" name="transparencyGridLayout">
+       <!-- Transparent Dolphin view -->
+       <item row="0" column="0">
+        <widget class="QCheckBox" name="_transparentDolphinView">
+         <property name="text">
+          <string>Transparent Dolphin view</string>
+         </property>
+        </widget>
+       </item>
+       <!-- Horizontal line separator -->
+       <item row="1" column="0" colspan="5">
+        <widget class="Line">
+         <property name="orientation">
+          <enum>Qt::Orientation::Horizontal</enum>
+         </property>
+        </widget>
+       </item>
+
+       <!-- Table title -->
+       <item row="2" column="0">
+        <layout class="QHBoxLayout" name="_transparencyHorizontalLayout">
          <item>
-          <widget class="QLabel" name="_menuOpacityTransparentLabel">
-           <property name="text">
-            <string>Transparent</string>
-           </property>
-          </widget>
-         </item>
-         <item>
-          <spacer name="horizontalSpacer_6">
-           <property name="orientation">
-            <enum>Qt::Horizontal</enum>
-           </property>
-           <property name="sizeHint" stdset="0">
-            <size>
-             <width>40</width>
-             <height>20</height>
-            </size>
-           </property>
-          </spacer>
-         </item>
-         <item>
-          <widget class="QLabel" name="_menuOpacityOpaqueLabel">
+          <widget class="QLabel" name="_transparencyTransparentLabel">
            <property name="sizePolicy">
-            <sizepolicy hsizetype="Minimum" vsizetype="Preferred">
+            <sizepolicy hsizetype="Preferred" vsizetype="Maximum">
              <horstretch>0</horstretch>
              <verstretch>0</verstretch>
             </sizepolicy>
            </property>
            <property name="text">
+            <string>Transparent</string>
+           </property>
+           <property name="indent">
+            <number>73</number>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QLabel" name="_transparencyOpaqueLabel">
+           <property name="sizePolicy">
+            <sizepolicy hsizetype="Preferred" vsizetype="Maximum">
+             <horstretch>0</horstretch>
+             <verstretch>0</verstretch>
+            </sizepolicy>
+           </property>
+           <property name="layoutDirection">
+            <enum>Qt::LayoutDirection::LeftToRight</enum>
+           </property>
+           <property name="text">
             <string>Opaque</string>
+           </property>
+           <property name="alignment">
+            <set>Qt::AlignmentFlag::AlignRight|Qt::AlignmentFlag::AlignTrailing|Qt::AlignmentFlag::AlignVCenter</set>
+           </property>
+           <property name="margin">
+            <number>0</number>
+           </property>
+           <property name="indent">
+            <number>93</number>
            </property>
           </widget>
          </item>
         </layout>
        </item>
-       <item row="9" column="1">
-        <spacer name="verticalSpacer_5">
+
+       <!-- Menu -->
+       <item row="3" column="0">
+        <layout class="QHBoxLayout" name="_menuGroupHorizontalLayout_1">
+         <item>
+          <widget class="QLabel" name="_menuOpacityLabel">
+           <property name="text">
+            <string>Menu:</string>
+           </property>
+           <property name="alignment">
+            <set>Qt::AlignmentFlag::AlignCenter</set>
+           </property>
+           <property name="indent">
+            <number>5</number>
+           </property>
+           <property name="buddy">
+            <cstring>_menuOpacity</cstring>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <layout class="QHBoxLayout" name="_menuOpacityHorizontalLayout">
+           <property name="spacing">
+            <number>0</number>
+           </property>
+           <property name="leftMargin">
+            <number>20</number>
+           </property>
+           <item>
+            <widget class="QSlider" name="_menuOpacity">
+             <property name="toolTip">
+              <string>This changes the menu items transparency</string>
+             </property>
+             <property name="minimum">
+              <number>0</number>
+             </property>
+             <property name="maximum">
+              <number>100</number>
+             </property>
+             <property name="singleStep">
+              <number>1</number>
+             </property>
+             <property name="pageStep">
+              <number>10</number>
+             </property>
+             <property name="value">
+              <number>100</number>
+             </property>
+             <property name="orientation">
+              <enum>Qt::Orientation::Horizontal</enum>
+             </property>
+             <property name="invertedAppearance">
+              <bool>false</bool>
+             </property>
+             <property name="invertedControls">
+              <bool>false</bool>
+             </property>
+             <property name="tickPosition">
+              <enum>QSlider::TickPosition::TicksBelow</enum>
+             </property>
+             <property name="tickInterval">
+              <number>10</number>
+             </property>
+            </widget>
+           </item>
+          </layout>
+         </item>
+         <item>
+          <widget class="QSpinBox" name="_menuOpacitySpinBox">
+           <property name="alignment">
+            <set>Qt::AlignmentFlag::AlignCenter</set>
+           </property>
+           <property name="suffix">
+            <string>%</string>
+           </property>
+           <property name="maximum">
+            <number>100</number>
+           </property>
+          </widget>
+         </item>
+        </layout>
+       </item>
+
+       <!-- Sidebar -->
+       <item row="4" column="0">
+        <layout class="QHBoxLayout" name="menuGroupHorizontalLayout_2">
+         <item>
+          <widget class="QLabel" name="_sidebarOpacityLabel">
+           <property name="text">
+            <string>Sidebar:</string>
+           </property>
+           <property name="alignment">
+            <set>Qt::AlignmentFlag::AlignCenter</set>
+           </property>
+           <property name="indent">
+            <number>5</number>
+           </property>
+           <property name="buddy">
+            <cstring>_sidebarOpacity</cstring>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <layout class="QHBoxLayout" name="_sideBarOpacityHorizontalLayout">
+           <property name="spacing">
+            <number>0</number>
+           </property>
+           <property name="leftMargin">
+            <number>10</number>
+           </property>
+           <item>
+            <widget class="QSlider" name="_sidebarOpacity">
+             <property name="toolTip">
+              <string>This changes the Dolphin sidebar transparency</string>
+             </property>
+             <property name="maximum">
+              <number>100</number>
+             </property>
+             <property name="singleStep">
+              <number>1</number>
+             </property>
+             <property name="pageStep">
+              <number>10</number>
+             </property>
+             <property name="value">
+              <number>100</number>
+             </property>
+             <property name="sliderPosition">
+              <number>100</number>
+             </property>
+             <property name="orientation">
+              <enum>Qt::Orientation::Horizontal</enum>
+             </property>
+             <property name="invertedAppearance">
+              <bool>false</bool>
+             </property>
+             <property name="invertedControls">
+              <bool>false</bool>
+             </property>
+             <property name="tickPosition">
+              <enum>QSlider::TickPosition::TicksBelow</enum>
+             </property>
+             <property name="tickInterval">
+              <number>10</number>
+             </property>
+            </widget>
+           </item>
+          </layout>
+         </item>
+         <item>
+          <widget class="QSpinBox" name="_sidebarOpacitySpinBox">
+           <property name="alignment">
+            <set>Qt::AlignmentFlag::AlignCenter</set>
+           </property>
+           <property name="suffix">
+            <string>%</string>
+           </property>
+           <property name="maximum">
+            <number>100</number>
+           </property>
+          </widget>
+         </item>
+        </layout>
+       </item>
+
+       <!-- Vertical spacer -->
+       <item row="5" column="0">
+        <spacer>
          <property name="orientation">
-          <enum>Qt::Vertical</enum>
+          <enum>Qt::Orientation::Vertical</enum>
          </property>
          <property name="sizeHint" stdset="0">
           <size>
@@ -537,126 +744,99 @@
          </property>
         </spacer>
        </item>
-       <item row="1" column="0">
-        <spacer name="horizontalSpacer_5">
-         <property name="orientation">
-          <enum>Qt::Horizontal</enum>
+      </layout>
+     </widget>
+
+     <!-- Accessibility Page -->
+     <widget class="QWidget" name="accessibilityPage">
+      <attribute name="title">
+       <string>Accessibility</string>
+      </attribute>
+      <layout class="QGridLayout" name="accessibilityGridLayout">
+       <!-- Draw focus indicator in lists -->
+       <item row="0" column="0" colspan="5">
+        <widget class="QCheckBox" name="_viewDrawFocusIndicator">
+         <property name="text">
+          <string>Draw focus indicator in lists</string>
          </property>
-         <property name="sizeType">
-          <enum>QSizePolicy::Fixed</enum>
+        </widget>
+       </item>
+       <!-- Draw highlight on active tab -->
+       <item row="1" column="0" colspan="5">
+        <widget class="QCheckBox" name="_tabDrawHighlight">
+         <property name="text">
+          <string>Draw highlight on active tab</string>
+         </property>
+        </widget>
+       </item>
+       <!-- Draw a thin line to indicate focus in menus and menubars -->
+       <item row="2" column="0" colspan="5">
+        <widget class="QCheckBox" name="_menuItemDrawThinFocus">
+         <property name="text">
+          <string>Draw a thin line to indicate focus in menus and menubars</string>
+         </property>
+        </widget>
+       </item>
+        <!-- Horizontal Line -->
+       <item row="3" column="0" colspan="5">
+        <widget class="Line" name="_accessibilityHorizontalLine_1">
+         <property name="orientation">
+          <enum>Qt::Orientation::Horizontal</enum>
+         </property>
+        </widget>
+       </item>
+       <!-- Keyboard accelerators visibility label -->
+       <item row="4" column="0" colspan="1">
+        <widget class="QLabel" name="_mnemonicsLabel">
+         <property name="text">
+          <string>&amp;Keyboard accelerators visibility:</string>
+         </property>
+         <property name="alignment">
+          <set>Qt::AlignmentFlag::AlignRight|Qt::AlignmentFlag::AlignTrailing|Qt::AlignmentFlag::AlignVCenter</set>
+         </property>
+         <property name="buddy">
+          <cstring>_mnemonicsMode</cstring>
+         </property>
+        </widget>
+       </item>
+       <!-- Keyboard accelerators visibility options -->
+       <item row="4" column="2" colspan="2">
+        <widget class="QComboBox" name="_mnemonicsMode">
+         <item>
+          <property name="text">
+           <string>Always Hide Keyboard Accelerators</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>Show Keyboard Accelerators When Needed</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>Always Show Keyboard Accelerators</string>
+          </property>
+         </item>
+        </widget>
+       </item>
+       <!-- Vertical Spacer -->
+       <item row="5" column="0" colspan="5">
+        <spacer>
+         <property name="orientation">
+          <enum>Qt::Orientation::Vertical</enum>
          </property>
          <property name="sizeHint" stdset="0">
           <size>
-           <width>40</width>
-           <height>20</height>
+           <width>20</width>
+           <height>40</height>
           </size>
          </property>
         </spacer>
-       </item>
-       <item row="8" column="0" colspan="2">
-        <spacer name="horizontalSpacer_4">
-         <property name="orientation">
-          <enum>Qt::Horizontal</enum>
-         </property>
-         <property name="sizeType">
-          <enum>QSizePolicy::Preferred</enum>
-         </property>
-         <property name="sizeHint" stdset="0">
-          <size>
-           <width>542</width>
-           <height>20</height>
-          </size>
-         </property>
-        </spacer>
-       </item>
-       <item row="7" column="0" colspan="2">
-        <layout class="QFormLayout" name="formLayout">
-         <property name="topMargin">
-          <number>0</number>
-         </property>
-         <item row="0" column="0">
-          <widget class="QLabel" name="_menuGroupDescription">
-           <property name="text">
-            <string>Menu:</string>
-           </property>
-          </widget>
-         </item>
-         <item row="0" column="1">
-          <widget class="QSlider" name="_menuOpacity">
-           <property name="minimum">
-            <number>0</number>
-           </property>
-           <property name="maximum">
-            <number>100</number>
-           </property>
-           <property name="singleStep">
-            <number>1</number>
-           </property>
-           <property name="pageStep">
-            <number>10</number>
-           </property>
-           <property name="value">
-            <number>90</number>
-           </property>
-           <property name="orientation">
-            <enum>Qt::Horizontal</enum>
-           </property>
-           <property name="invertedAppearance">
-            <bool>false</bool>
-           </property>
-           <property name="invertedControls">
-            <bool>false</bool>
-           </property>
-           <property name="tickPosition">
-            <enum>QSlider::TicksBelow</enum>
-           </property>
-           <property name="tickInterval">
-            <number>10</number>
-           </property>
-          </widget>
-         </item>
-         <item row="1" column="0">
-          <widget class="QLabel" name="label">
-           <property name="text">
-            <string>Sidebars:</string>
-           </property>
-          </widget>
-         </item>
-         <item row="1" column="1">
-          <widget class="QSlider" name="_sidebarOpacity">
-           <property name="maximum">
-            <number>100</number>
-           </property>
-           <property name="singleStep">
-            <number>1</number>
-           </property>
-           <property name="pageStep">
-            <number>10</number>
-           </property>
-           <property name="value">
-            <number>80</number>
-           </property>
-           <property name="orientation">
-            <enum>Qt::Horizontal</enum>
-           </property>
-           <property name="invertedAppearance">
-            <bool>false</bool>
-           </property>
-           <property name="invertedControls">
-            <bool>false</bool>
-           </property>
-           <property name="tickPosition">
-            <enum>QSlider::TicksBelow</enum>
-           </property>
-           <property name="tickInterval">
-            <number>10</number>
-           </property>
-          </widget>
-         </item>
-        </layout>
        </item>
       </layout>
      </widget>
+
+
     </widget>
    </item>
   </layout>
@@ -664,16 +844,27 @@
  <tabstops>
   <tabstop>tabWidget</tabstop>
   <tabstop>_toolBarDrawItemSeparator</tabstop>
-  <tabstop>_mnemonicsMode</tabstop>
+  <tabstop>_widgetDrawShadow</tabstop>
+  <tabstop>_unifiedTabBarKonsole</tabstop>
   <tabstop>_windowDragMode</tabstop>
-  <tabstop>_animationsEnabled</tabstop>
-  <tabstop>_animationsDuration</tabstop>
+  <tabstop>_cornerRadius</tabstop>
+  <tabstop>_buttonSize</tabstop>
   <tabstop>_dockWidgetDrawFrame</tabstop>
   <tabstop>_titleWidgetDrawFrame</tabstop>
   <tabstop>_sidePanelDrawFrame</tabstop>
-  <tabstop>_menuItemDrawThinFocus</tabstop>
+  <tabstop>_kTextEditDrawFrame</tabstop>
+  <tabstop>_renderThinSeperatorBetweenTheScrollBar</tabstop>
   <tabstop>_scrollBarSubLineButtons</tabstop>
   <tabstop>_scrollBarAddLineButtons</tabstop>
+  <tabstop>_transparentDolphinView</tabstop>
+  <tabstop>_menuOpacity</tabstop>
+  <tabstop>_menuOpacitySpinBox</tabstop>
+  <tabstop>_sidebarOpacity</tabstop>
+  <tabstop>_sidebarOpacitySpinBox</tabstop>
+  <tabstop>_viewDrawFocusIndicator</tabstop>
+  <tabstop>_tabDrawHighlight</tabstop>
+  <tabstop>_menuItemDrawThinFocus</tabstop>
+  <tabstop>_mnemonicsMode</tabstop>
  </tabstops>
  <resources/>
  <connections>
