@@ -1,7 +1,7 @@
 # An adaptive Look and Feel for KDE Plasma
 # Copyright (C) 2024 Christian Tosta
 # This file is distributed under the same license as the Vinyl package.
-# Christian Tosta <christian.tosta@gmail.com>, 2024.
+# Christian Tosta <7252968+christiantosta@users.noreply.github.com>, 2024.
 #
 #, fuzzy
 msgid ""

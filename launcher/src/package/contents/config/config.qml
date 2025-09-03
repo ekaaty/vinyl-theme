@@ -1,5 +1,5 @@
 /*
- * SPDX-FileCopyrightText: 2024 Christian Tosta <christian.tosta@gmail.com>
+ * SPDX-FileCopyrightText: 2024 Christian Tosta <7252968+christiantosta@users.noreply.github.com>
  * SPDX-FileCopyrightText: 2014 Eike Hein <hein@kde.org>
  *
  * SPDX-License-Identifier: GPL-2.0-or-later
