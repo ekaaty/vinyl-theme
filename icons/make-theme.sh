@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 set -eu -o pipefail
 
 curdir=$(dirname $(realpath -e ${0}))
