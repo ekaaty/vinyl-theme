@@ -132,7 +132,7 @@ ForegroundPositive=23,221,155
 ForegroundVisited=145,89,165
 
 [General]
-ColorScheme=Vinyl-Green-Light
+ColorScheme=VinylGreenLight
 Name=Vinyl Green Light
 shadeSortColumn=true
 

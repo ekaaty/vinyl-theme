@@ -22,8 +22,8 @@ IntensityEffect=0
 [Colors:Button]
 BackgroundAlternate=50,59,73
 BackgroundNormal=50,59,73
-DecorationFocus=27,145,213
-DecorationHover=27,145,213
+DecorationFocus=117,91,147
+DecorationHover=117,91,147
 ForegroundActive=167,173,255
 ForegroundInactive=255,255,255
 ForegroundLink=58,118,214
@@ -36,8 +36,8 @@ ForegroundVisited=199,120,221
 [Colors:Complementary]
 BackgroundAlternate=36,39,42
 BackgroundNormal=24,32,40
-DecorationFocus=27,145,213
-DecorationHover=27,145,213
+DecorationFocus=117,91,147
+DecorationHover=117,91,147
 ForegroundActive=167,173,255
 ForegroundInactive=255,255,255
 ForegroundLink=58,118,214
@@ -50,8 +50,8 @@ ForegroundVisited=199,120,221
 [Colors:Header]
 BackgroundAlternate=36,39,42
 BackgroundNormal=33,42,57,252
-DecorationFocus=27,145,213
-DecorationHover=27,145,213
+DecorationFocus=117,91,147
+DecorationHover=117,91,147
 ForegroundActive=167,173,255
 ForegroundInactive=255,255,255
 ForegroundLink=58,118,214
@@ -64,8 +64,8 @@ ForegroundVisited=199,120,221
 [Colors:Header][Inactive]
 BackgroundAlternate=48,48,48
 BackgroundNormal=33,42,57,252
-DecorationFocus=27,145,213
-DecorationHover=27,145,213
+DecorationFocus=117,91,147
+DecorationHover=117,91,147
 ForegroundActive=167,173,255
 ForegroundInactive=255,255,255
 ForegroundLink=58,118,214
@@ -77,9 +77,9 @@ ForegroundVisited=199,120,221
 
 [Colors:Selection]
 BackgroundAlternate=110,119,133
-BackgroundNormal=27,145,213
-DecorationFocus=27,145,213
-DecorationHover=27,145,213
+BackgroundNormal=117,91,147
+DecorationFocus=117,91,147
+DecorationHover=117,91,147
 ForegroundActive=167,173,255
 ForegroundInactive=255,255,255
 ForegroundLink=58,118,214
@@ -92,8 +92,8 @@ ForegroundVisited=199,120,221
 [Colors:Tooltip]
 BackgroundAlternate=33,42,57,224
 BackgroundNormal=33,42,57,224
-DecorationFocus=27,145,213
-DecorationHover=27,145,213
+DecorationFocus=117,91,147
+DecorationHover=117,91,147
 ForegroundActive=167,173,255
 ForegroundInactive=255,255,255
 ForegroundLink=58,118,214
@@ -106,8 +106,8 @@ ForegroundVisited=199,120,221
 [Colors:View]
 BackgroundAlternate=33,42,57
 BackgroundNormal=33,42,57
-DecorationFocus=27,145,213
-DecorationHover=27,145,213
+DecorationFocus=117,91,147
+DecorationHover=117,91,147
 ForegroundActive=167,173,255
 ForegroundInactive=255,255,255
 ForegroundLink=58,118,214
@@ -120,8 +120,8 @@ ForegroundVisited=199,120,221
 [Colors:Window]
 BackgroundAlternate=50,59,73
 BackgroundNormal=33,42,57,252
-DecorationFocus=27,145,213
-DecorationHover=27,145,213
+DecorationFocus=117,91,147
+DecorationHover=117,91,147
 ForegroundActive=167,173,255
 ForegroundInactive=255,255,255
 ForegroundLink=58,118,214
@@ -132,8 +132,8 @@ ForegroundPositive=23,221,155
 ForegroundVisited=199,120,221
 
 [General]
-ColorScheme=Vinyl-Blue-Dark
-Name=Vinyl Blue Dark
+ColorScheme=VinylPurpleDark
+Name=Vinyl Purple Dark
 shadeSortColumn=true
 
 [KDE]
