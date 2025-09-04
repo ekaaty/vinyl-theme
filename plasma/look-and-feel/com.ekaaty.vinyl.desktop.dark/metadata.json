@@ -1,0 +1,17 @@
+{
+    "KPackageStructure": "Plasma/LookAndFeel",
+    "KPlugin": {
+        "Authors": [
+            {
+                "Email": "7252968+christiantosta@users.noreply.github.com",
+                "Name": "Ekaaty KDE SIG"
+            }
+        ],
+        "Category": "",
+        "Description": "Vinyl dark theme",
+        "Id": "com.ekaaty.vinyl.desktop.dark",
+        "License": "GPLv2+",
+        "Name": "Vinyl Dark",
+        "Website": "https://github.com/ekaaty/vinyl-theme"
+    }
+}

@@ -1,0 +1,25 @@
+{
+    "KPackageStructure": "Plasma/LayoutTemplate",
+    "KPlugin": {
+        "Authors": [
+            {
+                "Email": "7252968+christiantosta@users.noreply.github.com",
+                "Name": "Christian Tosta"
+            }
+        ],
+        "Category": "",
+        "Description": "Vinyl default bottom panel",
+        "EnabledByDefault": true,
+        "Id": "com.ekaaty.vinyl.desktop.bottomPanel",
+        "License": "LGPLv2+",
+        "Name": "Vinyl Bottom Panel",
+        "ServiceTypes": [
+            "Plasma/LayoutTemplate"
+        ],
+        "Website": "https://github.com/ekaaty/vinyl-theme"
+    },
+    "X-Plasma-ContainmentCategories": [
+        "panel"
+    ],
+    "X-Plasma-Shell": "plasmashell"
+}
