@@ -53,7 +53,7 @@ set(vinyl_PART_SRCS
     vinylwindowmanager.cpp
 )
 
-kconfig_add_kcfg_files(vinyl_PART_SRCS ../kdecoration/vinylsettings.kcfgc)
+kconfig_add_kcfg_files(vinyl_PART_SRCS ${CMAKE_SOURCE_DIR}/kdecoration/vinylsettings.kcfgc)
 kconfig_add_kcfg_files(vinyl_PART_SRCS vinylstyleconfigdata.kcfgc)
 
 add_library(vinyl${QT_MAJOR_VERSION} MODULE ${vinyl_PART_SRCS})

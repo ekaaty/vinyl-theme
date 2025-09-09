@@ -1,5 +1,14 @@
 cmake_minimum_required(VERSION 3.16)
 
+file(STRINGS ${CMAKE_CURRENT_SOURCE_DIR}/.env ENV_FILE)
+foreach(VAR ${ENV_FILE})
+    string(REGEX MATCH "^[^=]*" KEY ${VAR})
+    string(REGEX REPLACE "^[^=]*=" "" VALUE ${VAR})
+    if(NOT DEFINED ${KEY})
+        set(${KEY} ${VALUE})
+    endif()
+endforeach()
+
 execute_process(
     COMMAND bash -c
         "date +%y.%1m.%1d -d \"$(git log -n 1 --pretty=format:%cD 2>/dev/null)\""
@@ -7,7 +16,6 @@ execute_process(
     OUTPUT_STRIP_TRAILING_WHITESPACE
 )
 
-set(PLASMA_VERSION "6.4.4")
 set(PROJECT_VERSION "${PLASMA_VERSION}.${PROJECT_DATE}")
 set(VINYL_LAUNCHER_PLUGIN_ID "com.ekaaty.vinyl-launcher")
 
@@ -21,11 +29,6 @@ if(CMAKE_SOURCE_DIR STREQUAL CMAKE_CURRENT_SOURCE_DIR)
         "${CMAKE_SOURCE_DIR}/po"
         "${CMAKE_SOURCE_DIR}/src/package"
     )
-
-    set(KDE_COMPILERSETTINGS_LEVEL "5.82")
-    set(KF6_MIN_VERSION "6.13.0")
-    set(PLASMA_MIN_VERSION "6.3.0")
-    set(QT_MIN_VERSION "6.8.0")
 
     set(STANDALONE TRUE)
     set(KDE_INSTALL_LOCALEDIR ${VINYL_LAUNCHER_PLUGIN_ID}/contents/locale)

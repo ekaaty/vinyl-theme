@@ -1,5 +1,14 @@
 cmake_minimum_required(VERSION 3.16)
 
+file(STRINGS ${CMAKE_CURRENT_SOURCE_DIR}/.env ENV_FILE)
+foreach(VAR ${ENV_FILE})
+    string(REGEX MATCH "^[^=]*" KEY ${VAR})
+    string(REGEX REPLACE "^[^=]*=" "" VALUE ${VAR})
+    if(NOT DEFINED ${KEY})
+        set(${KEY} ${VALUE})
+    endif()
+endforeach()
+
 execute_process(
     COMMAND bash -c
         "date +%y.%1m.%1d -d \"$(git log -n 1 --pretty=format:%cD 2>/dev/null)\""
@@ -7,7 +16,6 @@ execute_process(
     OUTPUT_STRIP_TRAILING_WHITESPACE
 )
 
-set(PLASMA_VERSION "6.4.4")
 set(PROJECT_VERSION "${PLASMA_VERSION}.${PROJECT_DATE}")
 set(VINYL_SDDM_THEME_ID "com.ekaaty.vinyl-sddm")
 
@@ -20,11 +28,6 @@ if( CMAKE_SOURCE_DIR STREQUAL CMAKE_CURRENT_SOURCE_DIR )
         "${CMAKE_SOURCE_DIR}/po"
         "${CMAKE_SOURCE_DIR}/src"
     )
-
-    set(KDE_COMPILERSETTINGS_LEVEL "5.82")
-    set(KF6_MIN_VERSION "6.13.0")
-    set(PLASMA_MIN_VERSION "6.3.0")
-    set(QT_MIN_VERSION "6.8.0")
 
     include(cmake/CPackLists.cmake)
     set(PACKAGE_INSTALL_DATADIR ${ROOT_DIRECTORY})
@@ -59,6 +62,12 @@ set(KDE_INSTALL_LOCALEDIR share/locale)
 add_definitions(-DTRANSLATION_DOMAIN=\"sddm_theme_${VINYL_SDDM_THEME_ID}\")
 kdoctools_install(po)
 ki18n_install(po)
+
+execute_process(
+    COMMAND sed -i
+        "s/\\(^Version.*\\)=.*/\\1=${PROJECT_VERSION}/g"
+        ${CMAKE_CURRENT_SOURCE_DIR}/src/metadata.desktop
+)
 
 install( DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}/src/
 	DESTINATION ${PACKAGE_INSTALL_DATADIR}/${VINYL_SDDM_THEME_ID}/

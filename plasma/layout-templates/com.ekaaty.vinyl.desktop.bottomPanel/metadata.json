@@ -13,6 +13,7 @@
         "Id": "com.ekaaty.vinyl.desktop.bottomPanel",
         "License": "LGPLv2+",
         "Name": "Vinyl Bottom Panel",
+        "Version": "6.4.5.25.9.9",
         "ServiceTypes": [
             "Plasma/LayoutTemplate"
         ],

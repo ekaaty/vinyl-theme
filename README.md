@@ -8,18 +8,20 @@ pieces of code and graphics work for KDE Plasma 6:
 
 ![Desktop showing Dolphin, Vinyl Launcher and Filelight in a purple way](.github/pages/img/screenshot0.webp)
 
-- [x] Colors: [ekaaty/vinyl-theme](https://github.com/ekaaty/vinyl-theme/tree/main/colors/)
-- [x] Cursors: [cz-Aviator](https://github.com/ekaaty/vinyl-theme/tree/main/cursors/)
-- [x] Firefox theme: [ekaaty/vinyl-theme](https://github.com/ekaaty/vinyl-theme/tree/main/mozilla/)
-- [x] Icons: [ekaaty/vinyl-theme](https://github.com/ekaaty/vinyl-theme/tree/main/icons/)
-- [x] KSplash: [ekaaty/vinyl-theme](https://github.com/ekaaty/vinyl-theme/tree/main/splash/)
-- [x] Kdecoration: [ekaaty/vinyl-theme](https://github.com/ekaaty/vinyl-theme/tree/main/kdecoration/)
-- [x] Konsole: [ekaaty/vinyl-theme](https://github.com/ekaaty/vinyl-theme/tree/main/konsole/)
-- [x] Kstyle: [ekaaty/vinyl-theme](https://github.com/ekaaty/vinyl-theme/tree/main/kstyle/)
+- [x] Application style: [ekaaty/vinyl-theme](https://github.com/ekaaty/vinyl-theme/tree/main/kstyle/)
+- [x] Color schemes: [ekaaty/vinyl-theme](https://github.com/ekaaty/vinyl-theme/tree/main/colors/)
+- [x] Cursor themes: [ekaaty/vinyl-theme](https://github.com/ekaaty/vinyl-theme/tree/main/cursors/)
+- [x] Firefox themes: [ekaaty/vinyl-theme](https://github.com/ekaaty/vinyl-theme/tree/main/mozilla/)
+- [x] Global themes: [ekaaty/vinyl-theme](https://github.com/ekaaty/vinyl-theme/tree/main/plasma/look-and-feel/)
+- [x] Icon themes: [ekaaty/vinyl-theme](https://github.com/ekaaty/vinyl-theme/tree/main/icons/)
+- [x] Konsole profiles: [ekaaty/vinyl-theme](https://github.com/ekaaty/vinyl-theme/tree/main/konsole/)
+- [x] Menu launcher: [ekaaty/vinyl-theme](https://github.com/ekaaty/vinyl-theme/tree/main/launcher/)
+- [x] Plasma layouts: [ekaaty/vinyl-theme](https://github.com/ekaaty/vinyl-theme/tree/main/plasma/layout-templates/)
 - [x] Plasma style: [ekaaty/vinyl-theme](https://github.com/ekaaty/vinyl-theme/tree/main/desktoptheme/)
-- [x] SDDM theme: [kde/sddm-theme](https://invent.kde.org/plasma/plasma-desktop/-/tree/master/sddm-theme)
+- [x] SDDM theme: [kde/sddm-theme](https://github.com/ekaaty/vinyl-theme/tree/main/sddm)
+- [x] Splash screen: [ekaaty/vinyl-theme](https://github.com/ekaaty/vinyl-theme/tree/main/splash/)
 - [x] Wallpapers: [ekaaty/vinyl-theme](https://github.com/ekaaty/vinyl-theme/tree/main/wallpapers/)
-- [ ] Global theme: [ekaaty/vinyl-theme](https://github.com/ekaaty/vinyl-theme/tree/main/lookandfeel/)
+- [x] Window decoration: [ekaaty/vinyl-theme](https://github.com/ekaaty/vinyl-theme/tree/main/kdecoration/)
 - [ ] GTK themes: planned
 - [ ] Plymounth theme: planned
 - [ ] Grub2 theme: planned
@@ -204,7 +206,7 @@ To build only application style and decoration, use:
 
 ```shell
 cd vinyl-theme
-cmake -DWITH_MINIMAL=ON -S . -B build
+cmake -DWITH_APPSTYLE_ONLY=ON -S . -B build
 cmake --build build -j${NPROCS} --verbose
 ```
 

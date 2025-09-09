@@ -17,21 +17,20 @@ execute_process(
 )
 
 set(PROJECT_VERSION "${PLASMA_VERSION}.${PROJECT_DATE}")
-set(VINYL_SPLASH_PLUGIN_ID "com.ekaaty.vinyl-splash")
+set(VINYL_PLUGIN_ID_PREFIX "com.ekaaty.vinyl.desktop")
 
 if(CMAKE_SOURCE_DIR STREQUAL CMAKE_CURRENT_SOURCE_DIR)
     # We are building standalone
-    project(vinyl-splash)
+    project(vinyl-layouts)
     set(PROJECT_VERSION "${PLASMA_VERSION}.${PROJECT_DATE}")
     set(SourceFiles
         "${CMAKE_SOURCE_DIR}/cmake"
         "${CMAKE_SOURCE_DIR}/CMakeLists.txt"
-        "${CMAKE_SOURCE_DIR}/po"
-        "${CMAKE_SOURCE_DIR}/src/package"
+        "${CMAKE_SOURCE_DIR}/${VINYL_PLUGIN_ID_PREFIX}.*"
     )
 
     set(STANDALONE TRUE)
-    set(KDE_INSTALL_LOCALEDIR ${VINYL_SPLASH_PLUGIN_ID}/contents/locale)
+    #set(KDE_INSTALL_LOCALEDIR ${VINYL_PLUGIN_ID_PREFIX}/contents/locale)
     include(cmake/CPackLists.cmake)
 else()
     # We are building as part of Main project
@@ -57,27 +56,27 @@ find_package(KF6 ${KF6_MIN_VERSION} REQUIRED COMPONENTS
 
 find_package(Plasma ${PLASMA_MIN_VERSION} REQUIRED)
 
-add_definitions(-DTRANSLATION_DOMAIN=\"plasma_lookandfeel_${VINYL_SPLASH_PLUGIN_ID}\")
-kdoctools_install(po)
-ki18n_install(po)
+#add_definitions(-DTRANSLATION_DOMAIN=\"plasma_layout_${VINYL_PLUGIN_ID_PREFIX}\")
+#kdoctools_install(po)
+#ki18n_install(po)
 
 execute_process(
     COMMAND sed -i
         "s/\\(.*\"Version\".*\\):.*/\\1: \"${PROJECT_VERSION}\",/g"
-        ${CMAKE_CURRENT_SOURCE_DIR}/src/package/metadata.json
+        ${CMAKE_CURRENT_SOURCE_DIR}/${VINYL_PLUGIN_ID_PREFIX}.bottomPanel/metadata.json
 )
 
 if(NOT STANDALONE)
     plasma_install_package(
-        src/package
-        ${VINYL_SPLASH_PLUGIN_ID}
-        look-and-feel
-        lookandfeel
+        ${VINYL_PLUGIN_ID_PREFIX}.bottomPanel
+        ${VINYL_PLUGIN_ID_PREFIX}.bottomPanel
+        layout-templates
+        layouttemplates
     )
 else()
     install(
-        DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}/src/package/
-        DESTINATION /${VINYL_SPLASH_PLUGIN_ID}
+        DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}/${VINYL_PLUGIN_ID_PREFIX}.bottomPanel/
+        DESTINATION /${VINYL_PLUGIN_ID_PREFIX}.bottomPanel/
     )
 endif()
 
