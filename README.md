@@ -100,11 +100,13 @@ build this theme:
 ``cmake(Qt6Gui)``
 ``cmake(Qt6UiTools)``
 ``pkgconfig(epoxy)``
+``python3dist(cairosvg)``
+``python3dist(lxml)``
 ``extra-cmake-modules >= 6.13.0``
 ``gcc-c++``
-``inkscape``
-``xcursorgen``
+``git``
 ``unzip``
+``xcursorgen``
 
 #### 1\. Fedora/Nobara or Kinoite/Bazzite and derivatives
 
@@ -121,11 +123,13 @@ dnf install 'cmake' \
   'cmake(KF6KCMUtils)' 'cmake(KF6KIO)' 'cmake(KF6Notifications)' 'cmake(KF6Package)' \
   'cmake(KF6WindowSystem)' 'cmake(KF6KirigamiPlatform)' 'cmake(KWayland)' 'cmake(KWin)' \
   'cmake(Plasma)' 'cmake(Qt6Core)' 'cmake(Qt6Core5Compat)' 'cmake(Qt6DBus)' 'cmake(Qt6Gui)' \
-  'cmake(Qt6UiTools)' 'pkgconfig(epoxy)' 'extra-cmake-modules' 'gcc-c++' \
-  'git' 'inkscape' 'xcursorgen' 'unzip'
+  'cmake(Qt6UiTools)' 'pkgconfig(epoxy)' 'python3dist(cairosvg)' 'python3dist(lxml)' \
+  'extra-cmake-modules' 'gcc-c++' 'git' 'xcursorgen' 'unzip'
 ```
 
-#### 2\. OpenSUSE Tumbleweed
+#### 2\. OpenSUSE (Tumbleweed only)
+>[!IMPORTANT]
+>OpenSUSE Leap 15.6 doesn't supports Plasma 6, so you can't build Vinyl for it.
 
 Run the following command to install the dependencies:
 
@@ -137,8 +141,8 @@ sudo zypper in --allow-downgrade --no-recommends 'cmake' \
   'cmake(KF6KCMUtils)' 'cmake(KF6KIO)' 'cmake(KF6Notifications)' 'cmake(KF6Package)' \
   'cmake(KF6WindowSystem)' 'cmake(KF6KirigamiPlatform)' 'cmake(KWayland)' 'cmake(KWin)' \
   'cmake(Plasma)' 'cmake(Qt6Core)' 'cmake(Qt6Core5Compat)' 'cmake(Qt6DBus)' 'cmake(Qt6Gui)' \
-  'cmake(Qt6UiTools)' 'pkgconfig(epoxy)'' 'extra-cmake-modules' 'gcc-c++' \
-  'git' 'inkscape' 'xcursorgen' 'unzip'
+  'cmake(Qt6UiTools)' 'pkgconfig(epoxy)' 'python3-CairoSVG' 'python3-lxml' \
+  'extra-cmake-modules' 'gcc-c++' 'git' 'xcursorgen' 'unzip'
 ```
 
 #### 3\. Debian/Kubuntu or Neon/Tuxedo and derivatives
@@ -157,8 +161,8 @@ sudo apt install 'cmake' \
   'libkf6i18n-dev' 'libkf6iconthemes-dev' 'libkf6kcmutils-dev' 'libkf6kio-dev' \
   'libkf6notifications-dev' 'libkf6package-dev' 'libkf6windowsystem-dev' 'libkirigami-dev' \
   'kirigami2-dev' 'kwayland-dev' 'kwin-dev' 'libplasma-dev' 'qt6-base-dev' 'qt6-5compat-dev' \
-  'libqt6gui6' 'libqt6uitools6' 'libepoxy-dev' 'build-essential' 'git' 'inkscape' \
-  'x11-apps' 'unzip'
+  'libqt6gui6' 'libqt6uitools6' 'libepoxy-dev' 'build-essential' 'git' 'python3-lxml' \
+  'python3-cairosvg' 'x11-apps' 'unzip'
 ```
 
 #### 4\. Arch/Manjaro or CachyOS/Garuda and derivatives
@@ -169,7 +173,18 @@ Run the following command to install the dependencies:
 sudo pacman -Sy --needed 'cmake' \
   'base-devel' 'git' 'cmake' 'extra-cmake-modules' 'git' 'kdecoration' 'qt6-declarative' \
   'kcoreaddons' 'kcmutils' 'kcolorscheme' 'kconfig' 'kguiaddons' 'kiconthemes' 'kwindowsystem' \
-  'kdoctools' 'kpackage' 'frameworkintegration' 'inkscape' 'xorg-xcursorgen' 'gcc' 'unzip'
+  'kdoctools' 'kpackage' 'frameworkintegration' 'python-cairosvg' 'python-lmxl' \
+  'xorg-xcursorgen' 'gcc' 'unzip'
+```
+
+#### 5\. Alpine and derivatives
+
+Run the following command to install the dependencies (not tested):
+
+```shell
+sudo apk -U add 'build-base' 'kconfigwidgets-dev' 'kdecoration-dev' 'kguiaddons-dev' 'ki18n-dev' \
+  'kiconthemes-dev' 'kpackage-dev' 'kwindowsystem-dev' 'extra-cmake-modules' 'git' 'py3-lxml' \
+  'py3-cairosvg'
 ```
 
 ### Building the source

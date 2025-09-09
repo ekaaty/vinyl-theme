@@ -4,13 +4,18 @@ PROJECT := Vinyl
 BUILDDIR := $(CURDIR)/build
 
 clean:
-	@rm -rf $(CURDIR)/build/pngs
+	@rm -rf $(BUILDDIR)/pngs
 
 clean-%: clean
 	@rm -rf $(CURDIR)/$(PROJECT)-$(shell echo $* | sed 's/[^ _-]*/\u&/g;s/[^ _-]*/\u&/g')
 
 render-%: clean-%
-	@$(CURDIR)/svgslice.py $(CURDIR)/src/svgs/template-$*.svg
+	@sizes="24 32 48"; \
+	for s in $${sizes}; do \
+		$(CURDIR)/svgslice.py $(CURDIR)/src/svgs/template-$*.svg \
+			-v -s $${s}x$${s} \
+			-o $(BUILDDIR)/pngs/$${s}; \
+	done;
 
 make-%: render-%
 	name=$(PROJECT)-$(shell echo $* | sed -e 's/[^ _-]*/\u&/g'); \
@@ -23,7 +28,10 @@ make-%: render-%
 		xcursorgen "$${f}" $(BUILDDIR)/$${dir}/cursors/"$${f%.in}" ; \
 	done; \
 	cd $(BUILDDIR)/$${dir}/cursors; \
-	grep -vE "^#" $(CURDIR)/src/links.in | xargs -n2 ln -sfv
+	grep -vE "^#" $(CURDIR)/src/links.in | while read c l; do \
+		echo Making cursor link: $(BUILDDIR)/$${dir}/cursors/$${l} -\> $${c} && \
+		ln -sf $${c} $${l}; \
+	done
 
 black: make-black
 white: make-white
