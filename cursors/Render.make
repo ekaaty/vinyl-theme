@@ -10,7 +10,7 @@ clean-%: clean
 	@rm -rf $(CURDIR)/$(PROJECT)-$(shell echo $* | sed 's/[^ _-]*/\u&/g;s/[^ _-]*/\u&/g')
 
 render-%: clean-%
-	@$(CURDIR)/render-pngs.py $(CURDIR)/src/svgs/template-$*.svg
+	@$(CURDIR)/svgslice.py $(CURDIR)/src/svgs/template-$*.svg
 
 make-%: render-%
 	name=$(PROJECT)-$(shell echo $* | sed -e 's/[^ _-]*/\u&/g'); \
