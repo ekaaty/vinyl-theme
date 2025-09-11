@@ -1,21 +1,10 @@
-/*************************************************************************
- * Copyright (C) 2014 by Hugo Pereira Da Costa <hugo.pereira@free.fr>    *
- *                                                                       *
- * This program is free software; you can redistribute it and/or modify  *
- * it under the terms of the GNU General Public License as published by  *
- * the Free Software Foundation; either version 2 of the License, or     *
- * (at your option) any later version.                                   *
- *                                                                       *
- * This program is distributed in the hope that it will be useful,       *
- * but WITHOUT ANY WARRANTY; without even the implied warranty of        *
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the         *
- * GNU General Public License for more details.                          *
- *                                                                       *
- * You should have received a copy of the GNU General Public License     *
- * along with this program; if not, write to the                         *
- * Free Software Foundation, Inc.,                                       *
- * 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA .        *
- *************************************************************************/
+/* SPDX-FileCopyrightText: 2014 Hugo Pereira Da Costa <hugo.pereira@free.fr>
+ * SPDX-FileCopyrightText: 2016 The Qt Company Ltd.
+ * SPDX-FileCopyrightText: 2021 Noah Davis <noahadvs@gmail.com>
+ * SPDX-FileCopyrightText: 2023 ivan tkachenko <me@ratijas.tk>
+ * SPDX-FileCopyrightText: 2024 Christian Tosta <7252968+christiantosta@users.noreply.github.com>
+ * SPDX-License-Identifier: GPL-2.0-or-later
+ */
 
 #include "vinylstyle.h"
 
@@ -3514,8 +3503,8 @@ namespace Vinyl
             const bool hasFocus( enabled && ( state & State_HasFocus ) );
 
             // focus takes precedence over mouse over
-            _animations->inputWidgetEngine().updateState( widget, AnimationFocus, hasFocus, AnimationLongDuration );
-            //_animations->inputWidgetEngine().updateState( widget, AnimationHover, mouseOver && !hasFocus );
+            //_animations->inputWidgetEngine().updateState( widget, AnimationFocus, hasFocus, AnimationLongDuration );
+            _animations->inputWidgetEngine().updateState( widget, AnimationHover, mouseOver && !hasFocus );
 
             // retrieve animation mode and opacity
             const AnimationMode mode( _animations->inputWidgetEngine().frameAnimationMode( widget ) );
@@ -3865,8 +3854,8 @@ namespace Vinyl
 
         // update animation state
         // mouse over takes precedence over focus
-        _animations->widgetStateEngine().updateState( widget, AnimationPressed, sunken, AnimationForwardOnly|AnimationLongDuration );
-        //_animations->widgetStateEngine().updateState( widget, AnimationFocus, hasFocus && !mouseOver );
+        //_animations->widgetStateEngine().updateState( widget, AnimationPressed, sunken, AnimationForwardOnly|AnimationLongDuration );
+        _animations->widgetStateEngine().updateState( widget, AnimationFocus, hasFocus && !mouseOver );
 
         const AnimationMode mode( _animations->widgetStateEngine().buttonAnimationMode( widget ) );
         const qreal opacity( _animations->widgetStateEngine().buttonOpacity( widget ) );
@@ -4054,6 +4043,7 @@ namespace Vinyl
         auto background (palette.color( QPalette::Base ));
 
         if ( hasAlpha ) {
+            painter->setCompositionMode(QPainter::CompositionMode_Source);
             background.setAlphaF(StyleConfigData::menuOpacity() / 100.0);
         }
 
@@ -4228,6 +4218,8 @@ namespace Vinyl
         const auto& rect( option->rect );
         const auto& palette( option->palette );
 
+	const QObject *styleObject = widget ? widget : option->styleObject;
+
         // store flags
         const State& state( option->state );
         const bool enabled( state & State_Enabled );
@@ -4239,8 +4231,10 @@ namespace Vinyl
         RadioButtonState radioButtonState( state & State_On ? RadioOn:RadioOff );
 
         // animation state
-        _animations->widgetStateEngine().updateState( widget, AnimationHover, mouseOver );
-        _animations->widgetStateEngine().updateState( widget, AnimationPressed, radioButtonState != RadioOff, AnimationOutBack );
+        _animations->widgetStateEngine().updateState(styleObject, AnimationHover, mouseOver);
+        //_animations->widgetStateEngine().updateState( widget, AnimationHover, mouseOver );
+        _animations->widgetStateEngine().updateState(styleObject, AnimationPressed, radioButtonState != RadioOff);
+        //_animations->widgetStateEngine().updateState( widget, AnimationPressed, radioButtonState != RadioOff, AnimationOutBack );
         if( _animations->widgetStateEngine().isAnimated( widget, AnimationPressed ) ) radioButtonState = RadioAnimated;
         const qreal animation( _animations->widgetStateEngine().opacity( widget, AnimationPressed ) );
 

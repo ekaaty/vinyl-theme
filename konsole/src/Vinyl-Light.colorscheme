@@ -8,70 +8,70 @@ Color=238,238,238
 Color=255,255,255
 
 [Color0]
-Color=252,252,252
+Color=39,43,50
 
 [Color0Faint]
-Color=99,104,109
+Color=49,54,59
 
 [Color0Intense]
-Color=192,192,192
+Color=127,140,141
 
 [Color1]
-Color=237,21,21
+Color=210,100,109
 
 [Color1Faint]
-Color=120,50,40
+Color=250,120,130
 
 [Color1Intense]
-Color=192,57,43
+Color=180,86,94
 
 [Color2]
-Color=17,209,22
+Color=152,195,121
 
 [Color2Faint]
-Color=23,162,98
+Color=173,220,136
 
 [Color2Intense]
-Color=28,220,154
+Color=129,165,102
 
 [Color3]
-Color=246,116,0
+Color=228,192,121
 
 [Color3Faint]
-Color=182,86,25
+Color=250,209,132
 
 [Color3Intense]
-Color=253,188,75
+Color=200,167,106
 
 [Color4]
-Color=29,153,243
+Color=98,174,239
 
 [Color4Faint]
-Color=27,102,143
+Color=103,184,250
 
 [Color4Intense]
-Color=61,174,233
+Color=82,147,200
 
 [Color5]
-Color=155,89,182
+Color=199,120,221
 
 [Color5Faint]
-Color=97,74,115
+Color=223,135,250
 
 [Color5Intense]
-Color=142,68,173
+Color=179,108,200
 
 [Color6]
-Color=26,188,156
+Color=85,182,194
 
 [Color6Faint]
-Color=24,108,96
+Color=101,217,230
 
 [Color6Intense]
-Color=22,160,133
+Color=75,160,170
 
 [Color7]
-Color=252,252,252
+Color=171,178,191
 
 [Color7Faint]
 Color=99,104,109
@@ -94,7 +94,7 @@ Blur=true
 ColorRandomization=false
 Description=Vinyl-Light
 FillStyle=Tile
-Opacity=0.9
+Opacity=0.95
 Wallpaper=
 WallpaperFlipType=NoFlip
-WallpaperOpacity=0
+WallpaperOpacity=1

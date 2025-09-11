@@ -1,0 +1,14 @@
+{
+    "KPlugin": {
+        "Authors": [
+            {
+                "Email": "7252968+christiantosta@users.noreply.github.com",
+                "Name": "Christian Tosta"
+            }
+        ],
+        "Id": "VinylTracks",
+        "Name": "Vinyl: Tracks",
+	    "Version": "6.4.5.25.9.9",
+        "License": "GPLv3.0+"
+    }
+}

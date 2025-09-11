@@ -1,14 +1,14 @@
 ################# includes #################
 include_directories(
-  animations
-  debug
+    animations
+    debug
 )
 
 include_directories(${CMAKE_SOURCE_DIR}/libvinylcommon)
 include_directories(${CMAKE_BINARY_DIR}/libvinylcommon)
 
 ################# configuration #################
-configure_file(config-vinyl.h.cmake ${CMAKE_CURRENT_BINARY_DIR}/config-vinyl.h )
+configure_file(config-vinyl.h.cmake ${CMAKE_CURRENT_BINARY_DIR}/config-vinyl.h)
 
 ########### next target ###############
 set(vinyl_PART_SRCS
@@ -53,7 +53,7 @@ set(vinyl_PART_SRCS
     vinylwindowmanager.cpp
 )
 
-kconfig_add_kcfg_files(vinyl_PART_SRCS ../kdecoration/vinylsettings.kcfgc)
+kconfig_add_kcfg_files(vinyl_PART_SRCS ${CMAKE_SOURCE_DIR}/kdecoration/vinylsettings.kcfgc)
 kconfig_add_kcfg_files(vinyl_PART_SRCS vinylstyleconfigdata.kcfgc)
 
 add_library(vinyl${QT_MAJOR_VERSION} MODULE ${vinyl_PART_SRCS})
@@ -65,7 +65,7 @@ target_link_libraries(vinyl${QT_MAJOR_VERSION}
     Qt${QT_MAJOR_VERSION}::DBus
 )
 
-if( VINYL_HAVE_QTQUICK )
+if(VINYL_HAVE_QTQUICK)
     target_link_libraries(vinyl${QT_MAJOR_VERSION}
         Qt${QT_MAJOR_VERSION}::Quick
         KF${QT_MAJOR_VERSION}::CoreAddons

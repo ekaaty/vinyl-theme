@@ -1,0 +1,18 @@
+{
+    "KPackageStructure": "Plasma/LookAndFeel",
+    "KPlugin": {
+        "Authors": [
+            {
+                "Email": "7252968+christiantosta@users.noreply.github.com",
+                "Name": "Ekaaty KDE SIG"
+            }
+        ],
+        "Category": "",
+        "Description": "Vinyl light theme",
+        "Id": "com.ekaaty.vinyl.desktop.light",
+        "License": "GPLv2+",
+        "Name": "Vinyl Light",
+        "Version": "6.4.5.25.9.9",
+        "Website": "https://github.com/ekaaty/vinyl-theme"
+    }
+}

@@ -1,0 +1,89 @@
+# Vinyl SDDM theme
+# Copyright (C) 2025 Ekaaty Artwork Team
+# This file is distributed under the same license as the Vinyl SDDM Theme package.
+# Ekaaty Artwork Team <7252968+christiantosta@users.noreply.github.com>, 2025.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Vinyl SDDM Theme 6.4.3\n"
+"6\n"
+"Report-Msgid-Bugs-To: https://github.com/ekaaty/vinyl-theme/issues\n"
+"POT-Creation-Date: 2025-08-05 19:11-0300\n"
+"PO-Revision-Date: 2025-08-05 19:18-0300\n"
+"Last-Translator: Christian Tosta <7252968+christiantosta@users.noreply.github.com>\n"
+"Language-Team: PT-BR Language Team <pt_BR@li.org>\n"
+"Language: Brazilian Poruguese\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: src/KeyboardButton.qml:19
+#, kde-format
+msgid "Keyboard Layout: %1"
+msgstr "Modelo do Teclado"
+
+#: src/Login.qml:86
+#, kde-format
+msgid "Username"
+msgstr "Nome de Usuário"
+
+#: src/Login.qml:103
+#, kde-format
+msgid "Password"
+msgstr "Senha"
+
+#: src/Login.qml:145 src/Login.qml:151
+#, kde-format
+msgid "Log In"
+msgstr "Login"
+
+#: src/Main.qml:197
+#, kde-format
+msgid "Caps Lock is on"
+msgstr "Caps Lock ligado"
+
+#: src/Main.qml:209 src/Main.qml:348
+#, kde-format
+msgid "Sleep"
+msgstr "Dormir"
+
+#: src/Main.qml:215 src/Main.qml:354
+#, kde-format
+msgid "Restart"
+msgstr "Reiniciar"
+
+#: src/Main.qml:221 src/Main.qml:360
+#, kde-format
+msgid "Shut Down"
+msgstr "DEsligar"
+
+#: src/Main.qml:227
+#, kde-format
+msgid "Other…"
+msgstr "Outro…"
+
+#: src/Main.qml:334
+#, kde-format
+msgid "Type in Username and Password"
+msgstr "Digite seu Nome de Usuário e Senha"
+
+#: src/Main.qml:366
+#, kde-format
+msgid "List Users"
+msgstr "Listar Usuários"
+
+#: src/Main.qml:440
+#, kde-format
+msgid "Virtual Keyboard"
+msgstr "Teclado Virtual"
+
+#: src/Main.qml:507
+#, kde-format
+msgid "Login Failed"
+msgstr "Login Falhou"
+
+#: src/SessionButton.qml:18
+#, kde-format
+msgid "Desktop Session: %1"
+msgstr "Sessão do Desktop"

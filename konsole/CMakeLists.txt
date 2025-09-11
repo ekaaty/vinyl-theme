@@ -1,47 +1,48 @@
 cmake_minimum_required(VERSION 3.16)
 
-if( CMAKE_SOURCE_DIR STREQUAL CMAKE_CURRENT_SOURCE_DIR )
-project(vinyl-konsole)
-string(TIMESTAMP PROJECT_VERSION "%Y%m%d")
-set(CPACK_PACKAGE_VERSION "${PROJECT_VERSION}")
-SET(CPACK_OUTPUT_FILE_PREFIX "${PROJECT_SOURCE_DIR}/dist")
-set(CPACK_GENERATOR "TGZ")
-set(CPACK_TOPLEVEL_TAG "plasma")
-set(CPACK_INCLUDE_TOPLEVEL_DIRECTORY 0)
-set(CPACK_PACKAGE_FILE_NAME "${PROJECT_NAME}-${PROJECT_VERSION}")
-set(CPACK_IGNORE_FILES  "\\.git/;.gitignore;build/;_CPack_Packages/;dist/;tmp/;[^-]+\\.tar\\.[abx2]*")
-set(CPACK_OUTPUT_CONFIG_FILE "${PROJECT_BINARY_DIR}/CPackConfig.cmake")
-set(CPACK_SOURCE_GENERATOR "TXZ")
-set(CPACK_SOURCE_TOPLEVEL_TAG "plasma-source")
-set(CPACK_SOURCE_PACKAGE_FILE_NAME "${PROJECT_NAME}-${PROJECT_VERSION}.${CPACK_SOURCE_TOPLEVEL_TAG}")
-set(CPACK_SOURCE_IGNORE_FILES  "\\.git/;.gitignore;build/;_CPack_Packages/;dist/;tmp/;[^-]+\\.tar\\.[abx2]*")
-set(CPACK_SOURCE_OUTPUT_CONFIG_FILE "${PROJECT_BINARY_DIR}/CPackSourceConfig.cmake")
-set(CPACK_VERBATIM_VARIABLES YES)
-configure_file("${PROJECT_SOURCE_DIR}/../cmake/CPackConfig.cmake.in"
-               "${PROJECT_BINARY_DIR}/CPackConfig.cmake"
-               @ONLY)
-configure_file("${PROJECT_SOURCE_DIR}/../cmake/CPackConfig.cmake.in"
-               "${PROJECT_BINARY_DIR}/CPackSourceConfig.cmake"
-               @ONLY)
-include(CPack)
+file(STRINGS ${CMAKE_CURRENT_SOURCE_DIR}/.env ENV_FILE)
+foreach(VAR ${ENV_FILE})
+    string(REGEX MATCH "^[^=]*" KEY ${VAR})
+    string(REGEX REPLACE "^[^=]*=" "" VALUE ${VAR})
+    if(NOT DEFINED ${KEY})
+        set(${KEY} ${VALUE})
+    endif()
+endforeach()
+
+execute_process(
+    COMMAND bash -c
+        "date +%y.%1m.%1d -d \"$(git log -n 1 --pretty=format:%cD 2>/dev/null)\""
+    OUTPUT_VARIABLE PROJECT_DATE
+    OUTPUT_STRIP_TRAILING_WHITESPACE
+)
+
+set(PROJECT_VERSION "${PLASMA_VERSION}.${PROJECT_DATE}")
+
+if(CMAKE_SOURCE_DIR STREQUAL CMAKE_CURRENT_SOURCE_DIR)
+    project(vinyl-konsole)
+    set(PROJECT_VERSION "${PLASMA_VERSION}.${PROJECT_DATE}")
+
+    set(PACKAGE_INSTALL_DATADIR ${ROOT_DIRECTORY})
+    include(cmake/CPackLists.cmake)
 else()
-# We are building as part of Main project
+    # We are building as part of Main project
+    set(PACKAGE_INSTALL_DATADIR ${KDE_INSTALL_DATADIR})
 endif()
 
 find_package(ECM ${KF6_MIN_VERSION} REQUIRED NO_MODULE)
-set(CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} ${ECM_MODULE_PATH}  ${CMAKE_SOURCE_DIR}/cmake)
+set(CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} ${ECM_MODULE_PATH} ${CMAKE_SOURCE_DIR}/cmake)
 
 find_package(Qt6 ${QT_MIN_VERSION} REQUIRED CONFIG COMPONENTS Core)
 include(KDEInstallDirs6)
 
 install(FILES
-            ${CMAKE_CURRENT_SOURCE_DIR}/src/Vinyl-Dark.colorscheme
-            ${CMAKE_CURRENT_SOURCE_DIR}/src/Vinyl-Light.colorscheme
-        DESTINATION  ${KDE_INSTALL_DATADIR}/konsole/
+        ${CMAKE_CURRENT_SOURCE_DIR}/src/Vinyl-Dark.colorscheme
+        ${CMAKE_CURRENT_SOURCE_DIR}/src/Vinyl-Light.colorscheme
+    DESTINATION ${PACKAGE_INSTALL_DATADIR}/konsole/
 )
 install(FILES ${CMAKE_CURRENT_SOURCE_DIR}/src/Vinyl.profile
-        DESTINATION  ${KDE_INSTALL_DATADIR}/konsole/
+    DESTINATION ${PACKAGE_INSTALL_DATADIR}/konsole/
 )
 install(DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}/src/profile.d/
-        DESTINATION ${KDE_INSTALL_DATADIR}/konsole/profile.d/
+    DESTINATION ${PACKAGE_INSTALL_DATADIR}/konsole/profile.d/
 )

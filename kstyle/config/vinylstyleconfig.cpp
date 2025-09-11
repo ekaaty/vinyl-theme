@@ -61,8 +61,12 @@ namespace Vinyl
         connect( _scrollBarSubLineButtons, SIGNAL(currentIndexChanged(int)), SLOT(updateChanged()) );
         connect( _windowDragMode, SIGNAL(currentIndexChanged(int)), SLOT(updateChanged()) );
         connect( _menuOpacity, &QAbstractSlider::valueChanged, this, &StyleConfig::updateChanged );
-	connect( _buttonSize, &QAbstractSlider::valueChanged, this, &StyleConfig::updateChanged );
+        connect( _menuOpacity, SIGNAL(valueChanged(int)), _menuOpacitySpinBox, SLOT(setValue(int)) );
+        connect( _menuOpacitySpinBox, SIGNAL(valueChanged(int)), _menuOpacity, SLOT(setValue(int)) );
         connect( _sidebarOpacity, &QAbstractSlider::valueChanged, this, &StyleConfig::updateChanged );
+        connect( _sidebarOpacity, SIGNAL(valueChanged(int)), _sidebarOpacitySpinBox, SLOT(setValue(int)) );
+        connect( _sidebarOpacitySpinBox, SIGNAL(valueChanged(int)), _sidebarOpacity, SLOT(setValue(int)) );
+	connect( _buttonSize, &QAbstractSlider::valueChanged, this, &StyleConfig::updateChanged );
         connect( _kTextEditDrawFrame, &QAbstractButton::toggled, this, &StyleConfig::updateChanged );
         connect( _widgetDrawShadow, &QAbstractButton::toggled, this, &StyleConfig::updateChanged );
         connect( _transparentDolphinView, &QAbstractButton::toggled, this, &StyleConfig::updateChanged );
@@ -145,14 +149,13 @@ namespace Vinyl
         else if( _animationsEnabled->isChecked() != StyleConfigData::animationsEnabled() ) modified = true;
         else if( _animationsDuration->value() != StyleConfigData::animationsDuration() ) modified = true;
         else if( _windowDragMode->currentIndex() != StyleConfigData::windowDragMode() ) modified = true;
-        else if( _menuOpacity->value() != StyleConfigData::menuOpacity() ) modified = true;
 	else if( _buttonSize->value() != StyleConfigData::buttonSize() ) modified = true;
-        else if( _sidebarOpacity->value() != StyleConfigData::dolphinSidebarOpacity() ) modified = true;
         else if( _kTextEditDrawFrame->isChecked() != StyleConfigData::kTextEditDrawFrame() ) modified = true;
         else if( _widgetDrawShadow->isChecked() != StyleConfigData::widgetDrawShadow() ) modified = true;
         else if( _transparentDolphinView->isChecked() != StyleConfigData::transparentDolphinView() ) modified = true;
         else if( _cornerRadius->value() != StyleConfigData::cornerRadius() ) modified = true;
-        
+        else if( _menuOpacity->value() != StyleConfigData::menuOpacity() ) { _menuOpacitySpinBox->setValue(_menuOpacity->value()); modified = true; }
+        else if( _sidebarOpacity->value() != StyleConfigData::dolphinSidebarOpacity() ) { _sidebarOpacitySpinBox->setValue(_sidebarOpacity->value()); modified = true; }
 
         emit changed(modified);
 
@@ -178,8 +181,10 @@ namespace Vinyl
         _animationsDuration->setValue( StyleConfigData::animationsDuration() );
         _windowDragMode->setCurrentIndex( StyleConfigData::windowDragMode() );
         _menuOpacity->setValue( StyleConfigData::menuOpacity() );
-	_buttonSize->setValue( StyleConfigData::buttonSize() );
+        _menuOpacitySpinBox->setValue( StyleConfigData::menuOpacity() );
         _sidebarOpacity->setValue( StyleConfigData::dolphinSidebarOpacity() );
+	_sidebarOpacitySpinBox->setValue(StyleConfigData::dolphinSidebarOpacity());
+	_buttonSize->setValue( StyleConfigData::buttonSize() );
         _kTextEditDrawFrame->setChecked( StyleConfigData::kTextEditDrawFrame() );
         _widgetDrawShadow->setChecked( StyleConfigData::widgetDrawShadow() );
         _transparentDolphinView->setChecked( StyleConfigData::transparentDolphinView() );
