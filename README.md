@@ -175,7 +175,7 @@ Run the following command to install the dependencies:
 sudo pacman -Sy --needed 'cmake' \
   'base-devel' 'git' 'cmake' 'extra-cmake-modules' 'git' 'kdecoration' 'qt6-declarative' \
   'kcoreaddons' 'kcmutils' 'kcolorscheme' 'kconfig' 'kguiaddons' 'kiconthemes' 'kwindowsystem' \
-  'kdoctools' 'kpackage' 'frameworkintegration' 'python-cairosvg' 'python-lmxl' \
+  'kdoctools' 'kpackage' 'frameworkintegration' 'python-cairosvg' 'python-lxml' \
   'xorg-xcursorgen' 'gcc' 'unzip'
 ```
 
