@@ -1,61 +1,39 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<!-- Created with Inkscape (http://www.inkscape.org/) -->
-
-<svg
-   width="240"
-   height="120"
-   viewBox="0 0 240 120"
-   version="1.1"
-   id="svg1"
-   sodipodi:docname="block.svg"
-   inkscape:version="1.3.2 (091e20ef0f, 2023-11-25)"
-   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
-   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
-   xmlns:xlink="http://www.w3.org/1999/xlink"
-   xmlns="http://www.w3.org/2000/svg"
-   xmlns:svg="http://www.w3.org/2000/svg"
-   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
-   xmlns:cc="http://creativecommons.org/ns#"
-   xmlns:dc="http://purl.org/dc/elements/1.1/">
-  <sodipodi:namedview
-     id="namedview1"
-     pagecolor="#ffffff"
-     bordercolor="#000000"
-     borderopacity="0.25"
-     inkscape:showpageshadow="2"
-     inkscape:pageopacity="0.0"
-     inkscape:pagecheckerboard="0"
-     inkscape:deskcolor="#d1d1d1"
-     showgrid="true"
-     inkscape:zoom="6.08"
-     inkscape:cx="119.6546"
-     inkscape:cy="68.667763"
-     inkscape:window-width="1597"
-     inkscape:window-height="943"
-     inkscape:window-x="0"
-     inkscape:window-y="0"
-     inkscape:window-maximized="0"
-     inkscape:current-layer="svg1">
-    <inkscape:grid
-       id="grid1"
-       units="px"
-       originx="0"
-       originy="0"
-       spacingx="1"
-       spacingy="1"
-       empcolor="#0099e5"
-       empopacity="0.30196078"
-       color="#0099e5"
-       opacity="0.14901961"
-       empspacing="4"
-       dotted="false"
-       gridanglex="30"
-       gridanglez="30"
-       visible="true" />
-  </sodipodi:namedview>
-  <defs
-     id="defs1">
-    <linearGradient
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg"
+     xmlns:cc="http://web.resource.org/cc/"
+     xmlns:dc="http://purl.org/dc/elements/1.1/"
+     xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+     xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+     xmlns:spdx="http://spdx.org/rdf/terms#"
+     xmlns:xlink="http://www.w3.org/1999/xlink"
+     width="240" height="120"
+     viewBox="0 0 240 120">
+ <sodipodi:namedview
+     inkscape:current-layer="layer1">
+  <inkscape:grid
+     color="#0099e5"
+     opacity=".15"
+     spacingx="1"
+     spacingy="1"
+     units="px"/>
+ </sodipodi:namedview>
+ <metadata>
+  <rdf:RDF>
+   <cc:Work rdf:about="Plasma theme element">
+    <dc:source>https://github.com/ekaaty/vinyl-theme</dc:source>
+    <dc:description>Part of Vinyl Plasma theme</dc:description>
+    <spdx:FileCopyrightText>2025 Ekaaty KDE SIG</spdx:FileCopyrightText>
+    <spdx:LicenseIdentifier>GPL-3.0</spdx:LicenseIdentifier>
+   </cc:Work>
+  </rdf:RDF>
+ </metadata>
+ <defs>
+  <style id="current-color-scheme" type="text/css">
+   .ColorScheme-Background { color: #eff0f1; }
+   .ColorScheme-Text       { color: #7d7d7d; }
+  </style>
+  <linearGradient
        id="shadow-side"
        gradientUnits="userSpaceOnUse">
       <stop
@@ -188,18 +166,6 @@
        gradientUnits="userSpaceOnUse"
        gradientTransform="matrix(0,1.75,-1.75,0,199.25,-178.875)" />
   </defs>
-  <metadata
-     id="metadata1">
-    <rdf:RDF>
-      <cc:Work
-         rdf:about="Plasma theme element">
-        <dc:source>https://github.com/ekaaty/vinyl-theme</dc:source>
-        <dc:description>Part of Vinyl Plasma theme</dc:description>
-        <cc:license
-           rdf:resource="https://opensource.org/licenses/gpl-3-0" />
-      </cc:Work>
-    </rdf:RDF>
-  </metadata>
   <g
      id="shadow-center"
      transform="translate(72, 28)"

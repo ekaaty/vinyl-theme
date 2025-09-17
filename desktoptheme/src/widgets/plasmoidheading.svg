@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg"
+     xmlns:cc="http://web.resource.org/cc/"
+     xmlns:dc="http://purl.org/dc/elements/1.1/"
+     xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+     xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+     xmlns:spdx="http://spdx.org/rdf/terms#"
+     xmlns:xlink="http://www.w3.org/1999/xlink"
+     width="144" height="56"
+     viewBox="0 0 144 56">
+ <sodipodi:namedview
+     inkscape:current-layer="layer1">
+  <inkscape:grid
+     color="#0099e5"
+     opacity=".15"
+     spacingx="1"
+     spacingy="1"
+     units="px"/>
+ </sodipodi:namedview>
+ <metadata>
+  <rdf:RDF>
+   <cc:Work rdf:about="Plasma theme element">
+    <dc:source>https://github.com/ekaaty/vinyl-theme</dc:source>
+    <dc:description>Part of Vinyl Plasma theme</dc:description>
+    <spdx:FileCopyrightText>2025 Ekaaty KDE SIG</spdx:FileCopyrightText>
+    <spdx:LicenseIdentifier>GPL-3.0</spdx:LicenseIdentifier>
+   </cc:Work>
+  </rdf:RDF>
+ </metadata>
+ <defs>
+  <style id="current-color-scheme" type="text/css">
+   .ColorScheme-Background { color: #eff0f1; }
+   .ColorScheme-Text       { color: #7d7d7d; }
+  </style>
+ </defs>
+ <g id="footer" fill="currentColor">
+  <g id="footer-topleft">
+   <path class="ColorScheme-Background" fill="currentColor" d="m67 6v6h-6v-6z" opacity=".15"/>
+   <path class="ColorScheme-Text" fill="currentColor" d="m67 6v1h-4l-2 2e-5v-1l2-2e-5h1z" opacity=".05"/>
+  </g>
+  <g id="footer-top">
+   <path class="ColorScheme-Background" fill="currentColor" transform="matrix(0 -1 -1 0 0 0)" d="m-12-99h6v32h-6z" opacity=".15"/>
+   <path class="ColorScheme-Text" fill="currentColor" transform="matrix(0 -1 -1 0 0 0)" d="m-7-99h1v32h-1z" opacity=".05"/>
+  </g>
+  <g id="footer-topright">
+   <path class="ColorScheme-Background" fill="currentColor" d="m105 12h-6v-6h6z" opacity=".15"/>
+   <path class="ColorScheme-Text" fill="currentColor" d="m105 7h-6v-1h6c0 1-2e-5 0 0 1z" opacity=".05"/>
+  </g>
+  <path id="footer-left" class="ColorScheme-Background" fill="currentColor" transform="scale(-1 1)" d="m-67 12h6v32h-6z" opacity=".15"/>
+  <path id="footer-center" class="ColorScheme-Background" fill="currentColor" transform="scale(1 -1)" d="m67-44h32v32h-32z" opacity=".15"/>
+  <path id="footer-right" class="ColorScheme-Background" fill="currentColor" transform="scale(1 -1)" d="m99-44h6v32h-6z" opacity=".15"/>
+  <path id="footer-bottomleft" class="ColorScheme-Background" fill="currentColor" d="m61 44c0 4 2 6 6 6v-6z" opacity=".15"/>
+  <path id="footer-bottom" class="ColorScheme-Background" fill="currentColor" transform="matrix(0 1 1 0 0 0)" d="m44 67h6v32h-6z" opacity=".15"/>
+  <path id="footer-bottomright" class="ColorScheme-Background" fill="currentColor" d="m99 44v6c4 0 6-2 6-6z" opacity=".15"/>
+ </g>
+ <g id="header">
+  <g id="header-bottomright">
+   <path class="ColorScheme-Background" fill="currentColor" d="m57 44h-6v6h6z" opacity=".15"/>
+   <path class="ColorScheme-Text" fill="currentColor" d="m57 49h-6v1h6c0-1-2e-5 0 0-1z" opacity=".05"/>
+  </g>
+  <g id="header-bottom">
+   <path class="ColorScheme-Background"  fill="currentColor" transform="rotate(90)" d="m44-51h6v32h-6z" opacity=".15"/>
+   <path class="ColorScheme-Text" fill="currentColor" transform="rotate(90)" d="m49-51h1v32h-1z" opacity=".05"/>
+  </g>
+  <g id="header-bottomleft">
+   <path class="ColorScheme-Background"  fill="currentColor" d="m19 50v-6h-6v6z" opacity=".15"/>
+   <path class="ColorScheme-Text" fill="currentColor" d="m19 50v-1h-4l-2-2e-5v1l2 2e-5h1z" fill-rule="evenodd" opacity=".05"/>
+  </g>
+  <path id="header-right" class="ColorScheme-Background" fill="currentColor" d="m51 12h6v32h-6z" opacity=".15"/>
+  <path id="header-center" class="ColorScheme-Background" fill="currentColor" d="m19 12h32v32h-32z" opacity=".15"/>
+  <path id="header-left" class="ColorScheme-Background" fill="currentColor" d="m19 44h-6v-32h6z" opacity=".15"/>
+  <g id="header-topright">
+   <path class="ColorScheme-Background" fill="currentColor" d="m51 6v6h6c0-4-2-6-6-6z" opacity=".15"/>
+  </g>
+  <g id="header-top">
+   <path class="ColorScheme-Background" fill="currentColor" transform="rotate(-90)" d="m-12 19h6v32h-6z" opacity=".15"/>
+  </g>
+  <g id="header-topleft">
+   <path class="ColorScheme-Background" fill="currentColor" d="m13 12h6v-6c-4 0-6 2-6 6z" opacity=".15"/>
+  </g>
+  <path id="hint-top-margin" d="m33 6h4v6h-4z" fill="#800080"/>
+  <path id="hint-bottom-margin" d="m33 44h4v6h-4z" fill="#800080"/>
+  <path id="hint-right-margin" d="m57 26v4h-6v-4z" fill="#800080"/>
+  <path id="hint-left-margin" d="m19 26v4h-6v-4z" fill="#800080"/>
+ </g>
+ <path id="hint-stretch-borders" d="m0 0h5v5h-5z" opacity=".6" fill="#0ff"/>
+</svg>

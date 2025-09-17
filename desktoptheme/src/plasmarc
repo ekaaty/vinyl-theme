@@ -1,13 +1,8 @@
-[Wallpaper]
-defaultWallpaperTheme=Vinyl
-defaultFileSuffix=.png
-defaultWidth=1920
-defaultHeight=1080
-
 [ContrastEffect]
 enabled=true
-contrast=0.2
-saturation=10
+contrast=0.185
+intensity=0.925
+saturation=9.5
 
 [AdaptiveTransparency]
 enabled=true
