@@ -1,27 +1,26 @@
 /*
- * SPDX-FileCopyrightText: 2024 Christian Tosta [Github](https://ur.link/tosta)
- * SPDX-FileCopyrightText: 2024 Adolpho (ZayronXIO) <zayronxio@gmail.com>
- * SPDX-FileCopyrightText: 2021 Ademir (Adhe) <adhemarks@gmail.com>
- * SPDX-FileCopyrightText: 2015 Kai Uwe Broulik <kde@privat.broulik.de>
- * SPDX-FileCopyrightText: 2014 Eike Hein <hein@kde.org>
- *
- * SPDX-License-Identifier: GPL-2.0-or-later
- *
- */
+    SPDX-FileCopyrightText: 2014 Eike Hein <hein@kde.org>
+    SPDX-FileCopyrightText: 2015 Kai Uwe Broulik <kde@privat.broulik.de>
+    SPDX-FileCopyrightText: 2021 Ademir (Adhe) <adhemarks@gmail.com>
+    SPDX-FileCopyrightText: 2024 Adolpho (ZayronXIO) <zayronxio@gmail.com>
+    SPDX-FileCopyrightText: 2024-2025 Christian Tosta
+
+    SPDX-License-Identifier: GPL-2.0-or-later
+*/
 
 import QtQuick
-import QtQuick.Layouts
 import QtQuick.Controls
+import QtQuick.Layouts
 
 import org.kde.draganddrop as DragDrop
 import org.kde.iconthemes as KIconThemes
-import org.kde.kcmutils as KCM
+import org.kde.kcmutils as KCMUtils
 import org.kde.kirigami as Kirigami
 import org.kde.ksvg as KSvg
 import org.kde.plasma.core as PlasmaCore
 import org.kde.plasma.plasmoid
 
-KCM.SimpleKCM {
+KCMUtils.SimpleKCM {
     id: configGeneral
 
     property string cfg_icon: plasmoid.configuration.icon
@@ -59,14 +58,15 @@ KCM.SimpleKCM {
 
                 anchors.fill: parent
 
-                onDragEnter: {
+                onDragEnter: event => {
                     // Cannot use string operations (e.g. indexOf()) on "url" basic type.
-                    var urlString = event.mimeData.url.toString();
+                    const urlString = event.mimeData.url.toString();
 
                     // This list is also hardcoded in KIconDialog.
-                    var extensions = [".png", ".xpm", ".svg", ".svgz"];
-                    containsAcceptableDrag = urlString.indexOf("file:///") === 0 && extensions.some(function (extension) {
-                        return urlString.indexOf(extension) === urlString.length - extension.length; // "endsWith"
+                    const extensions = [".png", ".xpm", ".svg", ".svgz"];
+                    containsAcceptableDrag = urlString.indexOf("file:///") === 0
+                        && extensions.some(function (extension) {
+                            return urlString.indexOf(extension) === urlString.length - extension.length; // "endsWith"
                     });
 
                     if (!containsAcceptableDrag) {
@@ -74,9 +74,11 @@ KCM.SimpleKCM {
                     }
                 }
 
-                onDragLeave: containsAcceptableDrag = false
+                onDragLeave: event => {
+                    containsAcceptableDrag = false
+                }
 
-                onDrop: {
+                onDrop: event => {
                     if (containsAcceptableDrag) {
                         // Strip file:// prefix, we already verified in onDragEnter that we have only local URLs.
                         iconDialog.setCustomButtonImage(event.mimeData.url.toString().substr("file://".length));
@@ -100,7 +102,7 @@ KCM.SimpleKCM {
                 id: previewFrame
                 anchors.centerIn: parent
                 imagePath: Plasmoid.location === PlasmaCore.Types.Vertical || Plasmoid.location === PlasmaCore.Types.Horizontal
-                           ? "widgets/panel-background" : "widgets/background"
+                        ? "widgets/panel-background" : "widgets/background"
                 width: Kirigami.Units.iconSizes.large + fixedMargins.left + fixedMargins.right
                 height: Kirigami.Units.iconSizes.large + fixedMargins.top + fixedMargins.bottom
 
@@ -140,17 +142,19 @@ KCM.SimpleKCM {
             Kirigami.FormData.isSection: true
         }
 
-        ComboBox {
-            id: appsIconSize
-            Kirigami.FormData.label: i18n("Icon size:")
-            Layout.fillWidth: true
-            model: [i18n("Medium"),i18n("Large"), i18n("Huge")]
-            visible: false
-        }
-
         CheckBox {
             id: showFavoritesFirst
             Kirigami.FormData.label: i18n("Show favorites first")
+        }
+
+        ComboBox {
+            id: appsIconSize
+            Kirigami.FormData.label: i18n("Icon Size")
+            model: [
+                i18n("Medium"),
+                i18n("Large"),
+                i18n("Huge")
+            ]
         }
 
         ComboBox {
@@ -159,7 +163,6 @@ KCM.SimpleKCM {
             model: [
                 i18n("Default"),
                 i18n("Center"),
-                i18n("Center bottom"),
             ]
         }
 
@@ -170,7 +173,7 @@ KCM.SimpleKCM {
             to: 5
         }
 
-        SpinBox{
+        SpinBox {
             id: numberRows
             Kirigami.FormData.label: i18n("Number of rows")
             from: 3

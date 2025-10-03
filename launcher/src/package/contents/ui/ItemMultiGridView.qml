@@ -1,24 +1,18 @@
 /*
     SPDX-FileCopyrightText: 2015 Eike Hein <hein@kde.org>
+    SPDX-FileCopyrightText: 2024-2025 Christian Tosta
 
     SPDX-License-Identifier: GPL-2.0-or-later
 */
 
 import QtQuick
 
-import org.kde.ksvg 1.0 as KSvg
+import org.kde.kirigami as Kirigami
 import org.kde.plasma.components as PlasmaComponents
-import org.kde.plasma.extras 2.0 as PlasmaExtras
-import org.kde.kirigami 2.20 as Kirigami
-import org.kde.plasma.private.kicker 0.1 as Kicker
-import org.kde.plasma.plasmoid
+import org.kde.plasma.private.kicker as Kicker
 
 PlasmaComponents.ScrollView {
     id: itemMultiGrid
-
-    //anchors {
-        //top: parent.top
-    //}
 
     width: parent.width
 
@@ -30,13 +24,13 @@ PlasmaComponents.ScrollView {
     signal keyNavDown()
 
     property bool grabFocus: false
+    property int cellSize
+    property int iconSize
+    property int numberCols
 
     property alias model: repeater.model
     property alias count: repeater.count
     property alias flickableItem: flickable
-
-    property int cellWidth
-    property int cellHeight
 
     function subGridAt(index) {
         return repeater.itemAt(index).itemGrid;
@@ -92,10 +86,10 @@ PlasmaComponents.ScrollView {
 
                 delegate: Item {
                     width: itemColumn.width
-                    height: gridView.height + gridViewLabel.height +  Kirigami.Units.largeSpacing * 2
-                    visible:  gridView.count > 0
+                    height: gridView.height + gridViewLabel.height + (Kirigami.Units.largeSpacing * 2)
 
                     property Item itemGrid: gridView
+                    visible: gridView.count > 0
 
                     Kirigami.Heading {
                         id: gridViewLabel
@@ -133,10 +127,11 @@ PlasmaComponents.ScrollView {
                         }
 
                         width: parent.width
-                        height: Math.ceil(count / root.numberCols) * itemMultiGrid.cellHeight
-                        cellWidth: itemMultiGrid.cellWidth
-                        cellHeight: itemMultiGrid.cellHeight
-                        iconSize: root.iconSize
+                        height: Math.ceil(count / itemMultiGrid.numberCols) * itemMultiGrid.cellSize
+                        spacing: itemMultiGrid.spacing
+                        cellWidth: itemMultiGrid.cellSize
+                        cellHeight: itemMultiGrid.cellSize
+                        iconSize: itemMultiGrid.iconSize
 
                         verticalScrollBarPolicy: PlasmaComponents.ScrollBar.AlwaysOff
 
@@ -171,7 +166,7 @@ PlasmaComponents.ScrollView {
                             if (y < flickable.contentY) {
                                 flickable.contentY = y;
                             } else {
-                                y += itemMultiGrid.cellHeight;
+                                y += itemMultiGrid.cellSize;
                                 y -= flickable.contentY;
                                 y -= itemMultiGrid.height;
 
@@ -183,10 +178,12 @@ PlasmaComponents.ScrollView {
 
                         onKeyNavLeft: {
                             itemMultiGrid.keyNavLeft(index);
+                            currentIndex = -1
                         }
 
                         onKeyNavRight: {
                             itemMultiGrid.keyNavRight(index);
+                            currentIndex = -1
                         }
 
                         onKeyNavUp: {
@@ -196,6 +193,7 @@ PlasmaComponents.ScrollView {
                             } else {
                                 itemMultiGrid.keyNavUp();
                             }
+                            currentIndex = -1
                         }
 
                         onKeyNavDown: {
@@ -204,6 +202,7 @@ PlasmaComponents.ScrollView {
                             } else {
                                 itemMultiGrid.keyNavDown();
                             }
+                            currentIndex = -1
                         }
                     }
 

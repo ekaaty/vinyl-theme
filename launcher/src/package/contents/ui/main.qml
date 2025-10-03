@@ -1,19 +1,18 @@
 /*
- * SPDX-FileCopyrightText: 2024 Christian Tosta [Github](https://ur.link/tosta)
- * SPDX-FileCopyrightText: 2013-2015 Eike Hein <hein@kde.org>
- *
- * SPDX-License-Identifier: GPL-3.0-or-later
- */
+    SPDX-FileCopyrightText: 2013-2015 Eike Hein <hein@kde.org>
+    SPDX-FileCopyrightText: 2024-2025 Christian Tosta
+
+    SPDX-License-Identifier: GPL-2.0-or-later
+*/
 
 import QtQuick
 import QtQuick.Layouts
 
 import org.kde.kirigami as Kirigami
 import org.kde.ksvg as KSvg
-import org.kde.plasma.components as PlasmaComponents3
+import org.kde.plasma.components as PlasmaComponents
 import org.kde.plasma.core as PlasmaCore
 import org.kde.plasma.plasmoid
-
 import org.kde.plasma.private.kicker as Kicker
 
 PlasmoidItem {
@@ -21,25 +20,20 @@ PlasmoidItem {
 
     anchors.fill: parent
 
+    // Signals
     signal reset
+    signal modelRefreshed
 
-    Plasmoid.contextualActions: [
-        PlasmaCore.Action {
-            text: i18n("Edit Applications…")
-            icon.name: "kmenuedit"
-            visible: Plasmoid.immutability !== PlasmaCore.Types.SystemImmutable
-            onTriggered: processRunner.runMenuEditor()
-        }
-    ]
-
+    // Representations
     preferredRepresentation: compactRepresentation
-    compactRepresentation: compactRepresentation
-    fullRepresentation: compactRepresentation
+    compactRepresentation: appLauncherRepresentationComponent
+    fullRepresentation: appLauncherRepresentationComponent
 
     // Properties
     property Item dragSource: null
 
     property QtObject globalFavorites: rootModel.favoritesModel
+    property QtObject systemFavorites: rootModel.systemFavoritesModel
 
     // Methods
     function resetDragSource() {
@@ -54,6 +48,12 @@ PlasmoidItem {
         processRunner.runMenuEditor();
     }
 
+    // Events:
+    /*onSystemFavoritesChanged: {
+        systemFavorites.favorites = Plasmoid.configuration.favoriteSystemActions;
+    }*/
+
+    // Connections
     Connections {
         target: globalFavorites
 
@@ -63,14 +63,30 @@ PlasmoidItem {
     }
 
     Connections {
+        target: systemFavorites
+
+        function onFavoritesChanged() {
+            Plasmoid.configuration.favoriteSystemActions = target.favorites;
+        }
+    }
+
+    Connections {
         target: Plasmoid.configuration
 
         function onFavoriteAppsChanged () {
             globalFavorites.favorites = Plasmoid.configuration.favoriteApps;
         }
+
+        function onFavoriteSystemActionsChanged () {
+            systemFavorites.favorites = Plasmoid.configuration.favoriteSystemActions;
+        }
+
+        function onHiddenApplicationsChanged() {
+            rootModel.refresh();
+        }
     }
 
-    Connections {
+    /*Connections {
         target: kicker
 
         function onExpandedChanged(expanded) {
@@ -81,7 +97,7 @@ PlasmoidItem {
                 kicker.reset();
             }
         }
-    }
+    }*/
 
     // Models
     Kicker.RootModel {
@@ -148,6 +164,7 @@ PlasmoidItem {
 
     Kicker.DragHelper {
         id: dragHelper
+        dragIconSize: Kirigami.Units.iconSizes.medium
     }
 
     Kicker.ProcessRunner {
@@ -160,20 +177,8 @@ PlasmoidItem {
 
     // Components
     Component {
-        id: compactRepresentation
-        CompactRepresentation {}
-    }
-
-    Component.onCompleted: {
-        if (Plasmoid.hasOwnProperty("activationTogglesExpanded")) {
-            Plasmoid.activationTogglesExpanded = !kicker.isDash
-        }
-
-        windowSystem.focusIn.connect(enableHideOnWindowDeactivate);
-        kicker.hideOnWindowDeactivate = true;
-
-        dragHelper.dropped.connect(resetDragSource);
-
+        id: appLauncherRepresentationComponent
+        AppLauncherRepresentation {}
     }
 
     KSvg.FrameSvgItem {
@@ -209,7 +214,7 @@ PlasmoidItem {
         imagePath: "dialogs/background"
     }
 
-    PlasmaComponents3.Label {
+    PlasmaComponents.Label {
         id: toolTipDelegate
 
         width: contentWidth
@@ -217,15 +222,39 @@ PlasmoidItem {
 
         property Item toolTip
 
-        text: toolTip ? toolTip.text : ""
+        text: toolTip ? toolTip.mainText : ""
         textFormat: Text.PlainText
     }
 
-    Timer {
+    Plasmoid.contextualActions: [
+        PlasmaCore.Action {
+            text: i18n("Edit Applications…")
+            //icon.name: "kmenuedit"
+            //icon.name: "kmenuedit-symbolic"
+            icon.name: "story-editor"
+            visible: Plasmoid.immutability !== PlasmaCore.Types.SystemImmutable
+            onTriggered: processRunner.runMenuEditor()
+        }
+    ]
+
+    /* Timer {
         id: justOpenedTimer
 
         repeat: false
         interval: 600
-    }
+    } */
 
+    Component.onCompleted: {
+        if (Plasmoid.hasOwnProperty("activationTogglesExpanded")) {
+            Plasmoid.activationTogglesExpanded = false
+            //Plasmoid.activationTogglesExpanded = !kicker.isDash
+        }
+
+        windowSystem.focusIn.connect(enableHideOnWindowDeactivate);
+        kicker.hideOnWindowDeactivate = true;
+
+        rootModel.refreshed.connect(modelRefreshed);
+
+        dragHelper.dropped.connect(resetDragSource);
+    }
 }

@@ -1,9 +1,9 @@
 /*
- * SPDX-FileCopyrightText: 2013 Aurélien Gâteau <agateau@kde.org>
- * SPDX-FileCopyrightText: 2013-2015 Eike Hein <hein@kde.org>
- * SPDX-FileCopyrightText: 2017 Ivan Cukic <ivan.cukic@kde.org>
- *
- * SPDX-License-Identifier: GPL-2.0-or-later
+    SPDX-FileCopyrightText: 2013 Aurélien Gâteau <agateau@kde.org>
+    SPDX-FileCopyrightText: 2013-2015 Eike Hein <hein@kde.org>
+    SPDX-FileCopyrightText: 2017 Ivan Cukic <ivan.cukic@kde.org>
+
+    SPDX-License-Identifier: GPL-2.0-or-later
 */
 
 .pragma library
@@ -36,7 +36,7 @@ function createFavoriteActions(i18n, favoriteModel, favoriteId) {
     }
 
     if (favoriteModel.activities === undefined ||
-        favoriteModel.activities.runningActivities.length <= 1) {
+        favoriteModel.activities.activities.length <= 1) {
         const action = {};
 
         if (favoriteModel.isFavorite(favoriteId)) {
@@ -63,7 +63,7 @@ function createFavoriteActions(i18n, favoriteModel, favoriteId) {
 
         const linkedActivities = favoriteModel.linkedActivitiesFor(favoriteId);
 
-        const activities = favoriteModel.activities.runningActivities;
+        const activities = favoriteModel.activities.activities;
 
         // Adding the item to link/unlink to all activities
 

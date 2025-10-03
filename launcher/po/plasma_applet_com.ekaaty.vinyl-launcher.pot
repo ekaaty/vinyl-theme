@@ -6,9 +6,9 @@
 #, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: Vinyl Launcher 6.4.3\n"
+"Project-Id-Version: Vinyl Launcher 6.4.5.25.10.3\n"
 "Report-Msgid-Bugs-To: https://github.com/ekaaty/vinyl-theme/issues\n"
-"POT-Creation-Date: 2025-08-05 16:13-0300\n"
+"POT-Creation-Date: 2025-10-03 03:03-0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -47,129 +47,118 @@ msgstr ""
 msgid "Show in Favorites"
 msgstr ""
 
-#: src/package/contents/ui/ConfigGeneral.qml:43
+#: src/package/contents/ui/ConfigGeneral.qml:42
 #, kde-format
 msgid "Icon:"
 msgstr ""
 
-#: src/package/contents/ui/ConfigGeneral.qml:124
+#: src/package/contents/ui/ConfigGeneral.qml:126
 #, kde-format
 msgctxt "@item:inmenu Open icon chooser dialog"
 msgid "Choose…"
 msgstr ""
 
-#: src/package/contents/ui/ConfigGeneral.qml:129
+#: src/package/contents/ui/ConfigGeneral.qml:131
 #, kde-format
 msgctxt "@item:inmenu Reset icon to default"
 msgid "Clear Icon"
 msgstr ""
 
-#: src/package/contents/ui/ConfigGeneral.qml:145
-#, kde-format
-msgid "Icon size:"
-msgstr ""
-
 #: src/package/contents/ui/ConfigGeneral.qml:147
-#, kde-format
-msgid "Medium"
-msgstr ""
-
-#: src/package/contents/ui/ConfigGeneral.qml:147
-#, kde-format
-msgid "Large"
-msgstr ""
-
-#: src/package/contents/ui/ConfigGeneral.qml:147
-#, kde-format
-msgid "Huge"
-msgstr ""
-
-#: src/package/contents/ui/ConfigGeneral.qml:153
 #, kde-format
 msgid "Show favorites first"
 msgstr ""
 
-#: src/package/contents/ui/ConfigGeneral.qml:158
+#: src/package/contents/ui/ConfigGeneral.qml:152
 #, kde-format
-msgid "Menu position"
+msgid "Icon Size"
 msgstr ""
 
-#: src/package/contents/ui/ConfigGeneral.qml:160
+#: src/package/contents/ui/ConfigGeneral.qml:154
 #, kde-format
-msgid "Default"
+msgid "Medium"
 msgstr ""
 
-#: src/package/contents/ui/ConfigGeneral.qml:161
+#: src/package/contents/ui/ConfigGeneral.qml:155
 #, kde-format
-msgid "Center"
+msgid "Large"
+msgstr ""
+
+#: src/package/contents/ui/ConfigGeneral.qml:156
+#, kde-format
+msgid "Huge"
 msgstr ""
 
 #: src/package/contents/ui/ConfigGeneral.qml:162
 #, kde-format
-msgid "Center bottom"
+msgid "Menu position"
 msgstr ""
 
-#: src/package/contents/ui/ConfigGeneral.qml:168
+#: src/package/contents/ui/ConfigGeneral.qml:164
+#, kde-format
+msgid "Default"
+msgstr ""
+
+#: src/package/contents/ui/ConfigGeneral.qml:165
+#, kde-format
+msgid "Center"
+msgstr ""
+
+#: src/package/contents/ui/ConfigGeneral.qml:171
 #, kde-format
 msgid "Number of columns"
 msgstr ""
 
-#: src/package/contents/ui/ConfigGeneral.qml:175
+#: src/package/contents/ui/ConfigGeneral.qml:178
 #, kde-format
 msgid "Number of rows"
 msgstr ""
 
-#: src/package/contents/ui/main.qml:28
+#: src/package/contents/ui/main.qml:231
 #, kde-format
 msgid "Edit Applications…"
 msgstr ""
 
-#: src/package/contents/ui/MenuRepresentation.qml:385
+#: src/package/contents/ui/SideBar.qml:57
 msgid "Settings"
 msgstr ""
 
-#: src/package/contents/ui/MenuRepresentation.qml:391
+#: src/package/contents/ui/SideBar.qml:63
 msgid "Personalization"
 msgstr ""
 
-#: src/package/contents/ui/MenuRepresentation.qml:397
+#: src/package/contents/ui/SideBar.qml:69
 msgid "Devices and Printers"
 msgstr ""
 
-#: src/package/contents/ui/MenuRepresentation.qml:403
+#: src/package/contents/ui/SideBar.qml:75
 msgid "Update Software"
 msgstr ""
 
-#: src/package/contents/ui/MenuRepresentation.qml:409
+#: src/package/contents/ui/SideBar.qml:81
 msgid "Help and Support"
 msgstr ""
 
-#: src/package/contents/ui/MenuRepresentation.qml:519
-#, kde-format
-msgid "Exit"
+#: src/package/contents/ui/SideBar.qml:87
+msgid "About this System"
 msgstr ""
 
-#: src/package/contents/ui/MenuRepresentation.qml:597
-#, kde-format
-msgid "Search this computer ..."
-msgstr ""
-
-#: src/package/contents/ui/MenuRepresentation.qml:712
+#: src/package/contents/ui/VinylMenuLauncher.qml:336
 #, kde-format
 msgid "My favorite items"
 msgstr ""
 
-#: src/package/contents/ui/MenuRepresentation.qml:777
-#, kde-format
-msgid "All Apps"
-msgstr ""
-
-#: src/package/contents/ui/MenuRepresentation.qml:820
+#: src/package/contents/ui/VinylMenuLauncher.qml:378
 #, kde-format
 msgid "All applications"
 msgstr ""
 
-#: src/package/contents/ui/MenuRepresentation.qml:884
+#: src/package/contents/ui/VinylMenuLauncher.qml:486
 #, kde-format
 msgid "Favorites"
+msgstr ""
+
+#: src/package/contents/ui/VinylMenuLauncher.qml:490
+#, kde-format
+msgid "All Applications"
 msgstr ""

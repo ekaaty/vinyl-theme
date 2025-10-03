@@ -1,10 +1,9 @@
 /*
- * SPDX-FileCopyrightText: 2024 Christian Tosta [Github](https://ur.link/tosta)
- * SPDX-FileCopyrightText: 2013 Aurélien Gâteau <agateau@kde.org>
- * SPDX-FileCopyrightText: 2014-2015 Eike Hein <hein@kde.org>
- * SPDX-FileCopyrightText: 2024 ivan tkachenko <me@ratijas.tk>
- *
- * SPDX-License-Identifier: GPL-2.0-or-later
+    SPDX-FileCopyrightText: 2013 Aurélien Gâteau <agateau@kde.org>
+    SPDX-FileCopyrightText: 2014-2015 Eike Hein <hein@kde.org>
+    SPDX-FileCopyrightText: 2024 ivan tkachenko <me@ratijas.tk>
+
+    SPDX-License-Identifier: GPL-2.0-or-later
 */
 
 pragma ComponentBehavior: Bound

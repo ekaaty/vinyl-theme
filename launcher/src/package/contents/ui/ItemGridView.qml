@@ -1,8 +1,8 @@
 /*
- * SPDX-FileCopyrightText: 2024 Christian Tosta [Github](https://ur.link/tosta)
- * SPDX-FileCopyrightText: 2015 Eike Hein <hein@kde.org>
- *
- * SPDX-License-Identifier: GPL-2.0-or-later
+    SPDX-FileCopyrightText: 2015 Eike Hein <hein@kde.org>
+    SPDX-FileCopyrightText: 2024-2025 Christian Tosta
+
+    SPDX-License-Identifier: GPL-2.0-or-later
 */
 
 import QtQuick
@@ -25,6 +25,7 @@ FocusScope {
     property bool dragEnabled: true
     property bool dropEnabled: false
     property bool showLabels: true
+    property var view: gridView
 
     property alias currentIndex: gridView.currentIndex
     property alias currentItem: gridView.currentItem
@@ -35,6 +36,7 @@ FocusScope {
     property alias cellWidth: gridView.cellWidth
     property alias cellHeight: gridView.cellHeight
     property alias iconSize: gridView.iconSize
+    property int spacing: 0
 
     property var horizontalScrollBarPolicy: PlasmaComponents.ScrollBar.AlwaysOff
     property var verticalScrollBarPolicy: PlasmaComponents.ScrollBar.AsNeeded
@@ -46,10 +48,8 @@ FocusScope {
     }
 
     onFocusChanged: {
-        if (root.keyEventProxy) {
-            if (!focus && !root.keyEventProxy.activeFocus) {
-                currentIndex = -1;
-            }
+        if (!focus && root.keyEventProxy && !root.keyEventProxy.activeFocus) {
+            currentIndex = -1;
         }
     }
 
@@ -178,6 +178,7 @@ FocusScope {
             focus: true
 
             PlasmaComponents.ScrollBar.horizontal.policy: itemGrid.horizontalScrollBarPolicy
+            PlasmaComponents.ScrollBar.vertical.policy: itemGrid.verticalScrollBarPolicy
 
             GridView {
                 id: gridView
@@ -289,23 +290,38 @@ FocusScope {
                     currentIndex = -1;
                 }
 
-                Keys.onLeftPressed: event => {
-                    if (itemGrid.currentCol() !== 0) {
-                        event.accepted = true;
-                        moveCurrentIndexLeft();
-                    } else {
-                        itemGrid.keyNavLeft();
+                Keys.onPressed: (event) => {
+                    let backArrowKey = (event.key === Qt.Key_Left && Application.layoutDirection === Qt.LeftToRight) ||
+                        (event.key === Qt.Key_Right && Application.layoutDirection === Qt.RightToLeft)
+                    let forwardArrowKey = (event.key === Qt.Key_Right && Application.layoutDirection === Qt.LeftToRight) ||
+                        (event.key === Qt.Key_Left && Application.layoutDirection === Qt.RightToLeft)
+
+                    if (backArrowKey) {
+                        if (itemGrid.currentCol() !== 0) {
+                            // GridView move..() already handles RtL
+                            (event.key === Qt.Key_Left) ? moveCurrentIndexLeft() : moveCurrentIndexRight();
+                        } else {
+                            itemGrid.keyNavLeft();
+                        }
+                        event.accepted = true
+                    } else if (forwardArrowKey) {
+                        var columns = Math.floor(width / cellWidth);
+
+                        if (itemGrid.currentCol() !== columns - 1 && currentIndex !== count -1) {
+                            // GridView move..() already handles RtL
+                            (event.key === Qt.Key_Left) ? moveCurrentIndexLeft() : moveCurrentIndexRight()
+                        } else {
+                            itemGrid.keyNavRight();
+                        }
+                        event.accepted = true
                     }
-                }
 
-                Keys.onRightPressed: event => {
-                    var columns = Math.floor(width / cellWidth);
-
-                    if (itemGrid.currentCol() !== columns - 1 && currentIndex !== count -1) {
-                        event.accepted = true;
-                        moveCurrentIndexRight();
-                    } else {
-                        itemGrid.keyNavRight();
+                    if (event.key === Qt.Key_Enter || event.key === Qt.Key_Return) {
+                        if (gridView.model.trigger) {
+                            gridView.model.trigger(currentIndex, "", null)
+                            root.toggle()
+                        }
+                        event.accepted = true
                     }
                 }
 
@@ -353,7 +369,8 @@ FocusScope {
         MouseArea {
             id: hoverArea
 
-            anchors.fill: parent
+            width:  itemGrid.width - Kirigami.Units.gridUnit
+            height: itemGrid.height
 
             property int pressX: -1
             property int pressY: -1

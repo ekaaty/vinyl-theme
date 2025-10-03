@@ -1,10 +1,8 @@
 /*
- * SPDX-FileCopyrightText: 2024 Christian Tosta [Github](https://ur.link/tosta)
- * SPDX-FileCopyrightText: 2013-2015 Eike Hein <hein@kde.org>
- *
- * SPDX-License-Identifier: GPL-2.0-or-later
- */
+    SPDX-FileCopyrightText: 2024-2025 Christian Tosta
 
+    SPDX-License-Identifier: GPL-2.0-or-later
+*/
 
 pragma ComponentBehavior: Bound
 
@@ -32,11 +30,12 @@ Item {
         Plasmoid.configuration.useCustomButtonImage
         && Plasmoid.configuration.customButtonImage.length != 0
     )
-    property QtObject dashWindow: null
+    property QtObject appLauncher: null
 
-    Plasmoid.status: dashWindow && dashWindow.visible
+    Plasmoid.status: appLauncher && appLauncher.visible
         ? PlasmaCore.Types.RequiresAttentionStatus
         : PlasmaCore.Types.PassiveStatus
+
     Kirigami.Icon {
         id: buttonIcon
 
@@ -48,21 +47,20 @@ Item {
         smooth: true
     }
 
-    MouseArea
-    {
+    MouseArea {
         id: mouseArea
 
         anchors.fill: parent
         hoverEnabled: true
         onClicked: {
-            dashWindow.visible = !dashWindow.visible;
+            appLauncher.visible = !appLauncher.visible;
         }
     }
 
     Component.onCompleted: {
-        dashWindow = Qt.createQmlObject("MenuRepresentation {}", root);
+        appLauncher = Qt.createQmlObject("VinylMenuLauncher {}", root);
         plasmoid.activated.connect(function() {
-            dashWindow.visible = !dashWindow.visible;
+            appLauncher.visible = !appLauncher.visible;
         });
     }
 }

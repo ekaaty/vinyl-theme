@@ -1,7 +1,8 @@
 /*
- * SPDX-FileCopyrightText: 2015 Eike Hein <hein@kde.org>
- *
- * SPDX-License-Identifier: GPL-2.0-or-later
+    SPDX-FileCopyrightText: 2015 Eike Hein <hein@kde.org>
+    SPDX-FileCopyrightText: 2024-2025 Christian Tosta
+
+    SPDX-License-Identifier: GPL-2.0-or-later
 */
 
 import QtQuick
@@ -86,7 +87,16 @@ Item {
 
         color: Kirigami.Theme.textColor
 
-        font.pointSize: Kirigami.Theme.defaultFont.pointSize
+        font.pointSize: {
+            switch(iconSize) {
+                case Kirigami.Units.iconSizes.medium: return 8;
+                case Kirigami.Units.iconSizes.large: return 9;
+                case Kirigami.Units.iconSizes.huge: return 10;
+                default: Kirigami.Theme.defaultFont.pointSize;
+            }
+        }
+
+        //font.pointSize: Kirigami.Theme.defaultFont.pointSize
         text: model?.name ?? model.display ?? ""
         textFormat: Text.PlainText
     }
