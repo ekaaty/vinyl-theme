@@ -446,17 +446,17 @@ Item {
                     ListModel {
                         id: systemActionsModel
                         ListElement {
-                            description: "Shows session exit screen"
+                            description: QT_TR_NOOP("Shows session exit screen")
                             icon:    "arrow-left"
                             command: "qdbus-qt6 org.kde.LogoutPrompt /LogoutPrompt promptAll"
                         }
                         ListElement {
-                            description: "Lock screen"
+                            description: QT_TR_NOOP("Lock screen")
                             icon: "lock"
                             command: "qdbus-qt6 org.kde.screensaver /ScreenSaver Lock"
                         }
                         /*ListElement {
-                            description: "Open Krunner dialog"
+                            description: QT_TR_NOOP("Open Krunner dialog")
                             icon:    "search"
                             command: "qdbus-qt6 org.kde.krunner /App display"
                         }*/
@@ -486,19 +486,10 @@ Item {
                         color: Kirigami.Theme.textColor
                         font.pointSize: Kirigami.Theme.defaultFont.pointSize
 
-                        readonly property string favoritesString: i18nd(
-                            "plasma_applet_com.ekaaty.vinyl-launcher",
-                            "Favorites"
-                        )
-                        readonly property string allAppsString: i18nd(
-                            "plasma_applet_com.ekaaty.vinyl-launcher",
-                            "All Applications"
-                        )
-
                         text: {
                             (root.showFavorites && !root.showAllApps)
-                                ? allAppsString
-                                : favoritesString
+                                ? i18nd(root.i18nDomain, "All applications")
+                                : i18nd(root.i18nDomain, "Favorites")
                         }
 
                         Kirigami.Icon {

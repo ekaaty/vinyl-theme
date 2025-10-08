@@ -39,4 +39,12 @@ sed -i \
     -e "s/^#\(.*\)YEAR/#\1${YEAR}/" \
     po/${template}.pot
 
+
+CURRENT_DATE=$(date +%Y-%m-%d\ %H:%M%z)
+find po/ -name "*.po" | while read f; do
+    echo -n "Updating ${f} "
+    msgmerge --update ${f} po/${template}.pot 
+    sed -i "s/^\"PO-Revision-Date:.*\\\\n\"$/\"PO-Revision-Date: $CURRENT_DATE\\\\n\"/" ${f}
+done
+
 exit $?

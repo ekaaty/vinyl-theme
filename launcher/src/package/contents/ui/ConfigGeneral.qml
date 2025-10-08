@@ -22,6 +22,8 @@ import org.kde.plasma.plasmoid
 
 KCMUtils.SimpleKCM {
     id: configGeneral
+    
+    property string i18nDomain: "plasma_applet_com.ekaaty.vinyl-launcher"
 
     property string cfg_icon: plasmoid.configuration.icon
     property bool cfg_useCustomButtonImage: plasmoid.configuration.useCustomButtonImage
@@ -30,7 +32,7 @@ KCMUtils.SimpleKCM {
     property alias cfg_numberRows: numberRows.value
     property alias cfg_showFavoritesFirst: showFavoritesFirst.checked
     property alias cfg_displayPosition: displayPosition.currentIndex
-    property alias cfg_appsIconSize: appsIconSize.currentIndex
+    property alias cfg_gridIconSize: gridIconSize.currentIndex
 
     Kirigami.FormLayout {
         anchors.left: parent.left
@@ -39,7 +41,7 @@ KCMUtils.SimpleKCM {
         Button {
             id: iconButton
 
-            Kirigami.FormData.label: i18n("Icon:")
+            Kirigami.FormData.label: i18nd(i18nDomain,"Icon")
 
             implicitWidth: previewFrame.width + Kirigami.Units.smallSpacing * 2
             implicitHeight: previewFrame.height + Kirigami.Units.smallSpacing * 2
@@ -144,38 +146,38 @@ KCMUtils.SimpleKCM {
 
         CheckBox {
             id: showFavoritesFirst
-            Kirigami.FormData.label: i18n("Show favorites first")
+            Kirigami.FormData.label: i18nd(i18nDomain,"Show favorites first")
         }
 
         ComboBox {
             id: gridIconSize
-            Kirigami.FormData.label: i18n("Icon size")
+            Kirigami.FormData.label: i18nd(i18nDomain,"Grid icon size")
             model: [
-                i18n("Medium"),
-                i18n("Large"),
-                i18n("Huge")
+                i18nd(i18nDomain,"Medium"),
+                i18nd(i18nDomain,"Large"),
+                i18nd(i18nDomain,"Huge")
             ]
         }
 
         ComboBox {
             id: displayPosition
-            Kirigami.FormData.label: i18n("Menu position")
+            Kirigami.FormData.label: i18nd(i18nDomain,"Menu position")
             model: [
-                i18n("Default"),
-                i18n("Center"),
+                i18nd(i18nDomain,"Default"),
+                i18nd(i18nDomain,"Center"),
             ]
         }
 
         SpinBox {
             id: numberColumns
-            Kirigami.FormData.label: i18n("Number of columns")
+            Kirigami.FormData.label: i18nd(i18nDomain,"Number of columns")
             from: 3
             to: 5
         }
 
         SpinBox {
             id: numberRows
-            Kirigami.FormData.label: i18n("Number of rows")
+            Kirigami.FormData.label: i18nd(i18nDomain,"Number of rows")
             from: 3
             to: 5
         }

@@ -3,13 +3,12 @@
 # This file is distributed under the same license as the Vinyl Launcher package.
 # Christian Tosta <7252968+christiantosta@users.noreply.github.com>, 2025.
 #
-#, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: Vinyl Launcher 6.4.5\n"
 "Report-Msgid-Bugs-To: https://github.com/ekaaty/vinyl-theme/issues\n"
-"POT-Creation-Date: 2025-10-03 03:03-0300\n"
-"PO-Revision-Date: 2025-10-03 03:17-0300\n"
+"POT-Creation-Date: 2025-10-08 10:43-0300\n"
+"PO-Revision-Date: 2025-10-08 10:45-0300\n"
 "Last-Translator: HyeonWol <hyeonwol12345@kakao.com>\n"
 "Language-Team: \n"
 "Language: ko\n"
@@ -48,69 +47,69 @@ msgstr "현재 활동만"
 msgid "Show in Favorites"
 msgstr "책갈피에 표시"
 
-#: src/package/contents/ui/ConfigGeneral.qml:42
+#: src/package/contents/ui/ConfigGeneral.qml:44
 #, kde-format
-msgid "Icon:"
-msgstr "아이콘:"
+msgid "Icon"
+msgstr "아이콘"
 
-#: src/package/contents/ui/ConfigGeneral.qml:126
+#: src/package/contents/ui/ConfigGeneral.qml:128
 #, kde-format
 msgctxt "@item:inmenu Open icon chooser dialog"
 msgid "Choose…"
 msgstr "선택…"
 
-#: src/package/contents/ui/ConfigGeneral.qml:131
+#: src/package/contents/ui/ConfigGeneral.qml:133
 #, kde-format
 msgctxt "@item:inmenu Reset icon to default"
 msgid "Clear Icon"
 msgstr "기본 아이콘으로 초기화"
 
-#: src/package/contents/ui/ConfigGeneral.qml:147
+#: src/package/contents/ui/ConfigGeneral.qml:149
 #, kde-format
 msgid "Show favorites first"
 msgstr "즐겨찾기 먼저 표시"
 
-#: src/package/contents/ui/ConfigGeneral.qml:152
-#, fuzzy, kde-format
-msgid "Icon Size"
-msgstr "아이콘 크기:"
-
 #: src/package/contents/ui/ConfigGeneral.qml:154
+#, kde-format
+msgid "Grid icon size"
+msgstr "격자 아이콘 크기"
+
+#: src/package/contents/ui/ConfigGeneral.qml:156
 #, kde-format
 msgid "Medium"
 msgstr "보통"
 
-#: src/package/contents/ui/ConfigGeneral.qml:155
+#: src/package/contents/ui/ConfigGeneral.qml:157
 #, kde-format
 msgid "Large"
 msgstr "크게"
 
-#: src/package/contents/ui/ConfigGeneral.qml:156
+#: src/package/contents/ui/ConfigGeneral.qml:158
 #, kde-format
 msgid "Huge"
 msgstr "아주 크게"
 
-#: src/package/contents/ui/ConfigGeneral.qml:162
+#: src/package/contents/ui/ConfigGeneral.qml:164
 #, kde-format
 msgid "Menu position"
 msgstr "메뉴 위치"
 
-#: src/package/contents/ui/ConfigGeneral.qml:164
+#: src/package/contents/ui/ConfigGeneral.qml:166
 #, kde-format
 msgid "Default"
 msgstr "기본"
 
-#: src/package/contents/ui/ConfigGeneral.qml:165
+#: src/package/contents/ui/ConfigGeneral.qml:167
 #, kde-format
 msgid "Center"
 msgstr "가운데"
 
-#: src/package/contents/ui/ConfigGeneral.qml:171
+#: src/package/contents/ui/ConfigGeneral.qml:173
 #, kde-format
 msgid "Number of columns"
 msgstr "행 개수"
 
-#: src/package/contents/ui/ConfigGeneral.qml:178
+#: src/package/contents/ui/ConfigGeneral.qml:180
 #, kde-format
 msgid "Number of rows"
 msgstr "열 개수"
@@ -129,8 +128,8 @@ msgid "Personalization"
 msgstr "개인화"
 
 #: src/package/contents/ui/SideBar.qml:69
-msgid "Devices and Printers"
-msgstr "장치 및 프린터"
+msgid "Printers"
+msgstr "프린터"
 
 #: src/package/contents/ui/SideBar.qml:75
 msgid "Update Software"
@@ -144,38 +143,26 @@ msgstr "도움말 및 지원"
 msgid "About this System"
 msgstr "시스템 정보"
 
-#: src/package/contents/ui/VinylMenuLauncher.qml:336
+#: src/package/contents/ui/VinylMenuLauncher.qml:357
 #, kde-format
 msgid "My favorite items"
 msgstr "책갈피"
 
-#: src/package/contents/ui/VinylMenuLauncher.qml:378
+#: src/package/contents/ui/VinylMenuLauncher.qml:388
+#: src/package/contents/ui/VinylMenuLauncher.qml:491
 #, kde-format
 msgid "All applications"
 msgstr "모든 앱"
 
-#: src/package/contents/ui/VinylMenuLauncher.qml:486
+#: src/package/contents/ui/VinylMenuLauncher.qml:449
+msgid "Shows session exit screen"
+msgstr "세션 종료 화면 표시"
+
+#: src/package/contents/ui/VinylMenuLauncher.qml:454
+msgid "Lock screen"
+msgstr "화면 잠금"
+
+#: src/package/contents/ui/VinylMenuLauncher.qml:492
 #, kde-format
 msgid "Favorites"
 msgstr "책갈피"
-
-#: src/package/contents/ui/VinylMenuLauncher.qml:490
-#, fuzzy, kde-format
-msgid "All Applications"
-msgstr "모든 앱"
-
-#, kde-format
-#~ msgid "Center bottom"
-#~ msgstr "가운데 밑"
-
-#, kde-format
-#~ msgid "Exit"
-#~ msgstr "나가기"
-
-#, kde-format
-#~ msgid "Search this computer ..."
-#~ msgstr "이 컴퓨터에서 검색..."
-
-#, kde-format
-#~ msgid "All Apps"
-#~ msgstr "모든 앱"
