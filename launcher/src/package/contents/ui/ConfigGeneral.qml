@@ -148,8 +148,8 @@ KCMUtils.SimpleKCM {
         }
 
         ComboBox {
-            id: appsIconSize
-            Kirigami.FormData.label: i18n("Icon Size")
+            id: gridIconSize
+            Kirigami.FormData.label: i18n("Icon size")
             model: [
                 i18n("Medium"),
                 i18n("Large"),

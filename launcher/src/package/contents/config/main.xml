@@ -7,7 +7,7 @@
 
   <group name="General">
 
-    <entry name="appsIconSize" type="Enum">
+    <entry name="gridIconSize" type="Enum">
       <default>1</default>
     </entry>
 
