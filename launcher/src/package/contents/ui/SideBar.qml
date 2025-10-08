@@ -66,7 +66,7 @@ ColumnLayout {
         }
         ListElement {
             type: "shortcut"
-            label: QT_TR_NOOP("Devices and Printers")
+            label: QT_TR_NOOP("Printers")
             icon: "printer-symbolic"
             command: "xdg-open systemsettings://kcm_printer_manager"
         }
