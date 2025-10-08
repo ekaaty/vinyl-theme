@@ -287,21 +287,42 @@ Item {
                         }
                         Keys.onPressed: (event) => {
                             switch(event.key) {
-                                case Qt.Key_Escape: {
+                                case Qt.Key_Down:
+                                case Qt.Key_Tab:
+                                case Qt.Key_Backtab: {
                                     event.accepted = true;
-                                    if (root.searching) {
-                                        searchField.clear();
-                                    } else {
-                                        root.toggle();
-                                    }
+                                    root.searching ?
+                                        runnerGrid.tryActivate(0, 0) :
+                                        (root.showAllApps ?
+                                            allAppsGrid :
+                                            globalFavoritesGrid
+                                        ).tryActivate(0, 0)
+                                    break;
                                 }
-                                case Qt.Key_Down || Qt.Key_Tab || Qt.Key_Backtab: {
-                                    event.accepted = true;
-                                    if (root.searching) {
-                                        runnerGrid.tryActivate(0,0);
-                                    } else {
-                                        globalFavoritesGrid.tryActivate(0,0);
+                                case Qt.Key_Enter:
+                                case Qt.Key_Return: {
+                                    if (root.searching && runnerGrid.count > 0) {
+                                        event.accepted = true;
+                                        runnerGrid.tryActivate(0, 0);
+                                        Qt.callLater(function() {
+                                            var item = runnerGrid.subGridAt(0).currentItem;
+                                            if (item && item.actionTriggered) {
+                                                item.actionTriggered("");
+                                            }
+                                        });
                                     }
+                                    break;
+                                }
+                                case Qt.Key_Escape: {
+                                    if (root.searching) {
+                                        event.accepted = true;
+                                        searchField.clear();
+                                    }
+                                    break;
+                                }
+                                default: {
+                                    event.accepted = false;
+                                    break;
                                 }
                             }
                         }
@@ -352,17 +373,6 @@ Item {
                             dropEnabled: true
                             focus: true
                             onKeyNavUp: searchField.focus = true
-                            //model: globalFavorites
-                            Keys.onPressed: (event) => {
-                                if (event.modifiers & (Qt.ControlModifier || Qt.ShiftModifier)) {
-                                    searchField.focus = true;
-                                    return
-                                }
-                                if (event.key === Qt.Key_Tab) {
-                                    event.accepted = true;
-                                    searchField.focus = true
-                                }
-                            }
                         }
                     }
 
@@ -395,22 +405,11 @@ Item {
                             dropEnabled: true
                             focus: true
                             onKeyNavUp: searchField.focus = true
-                            //model: rootModel.modelForRow(0)
-                            Keys.onPressed: (event) => {
-                                if (event.modifiers & (Qt.ControlModifier || Qt.ShiftModifier)) {
-                                    searchField.focus = true;
-                                    return
-                                }
-                                if (event.key === Qt.Key_Tab) {
-                                    event.accepted = true;
-                                    searchField.focus = true
-                                }
-                            }
                         }
                     }
 
                     RowLayout { // Runner Grid
-                        id: runnerGrid
+                        id: runnerGridLayout
 
                         Kirigami.Heading {
                             id: dummyHeading
@@ -420,6 +419,7 @@ Item {
                         }
 
                         ItemMultiGridView {
+                            id: runnerGrid
                             Layout.preferredWidth: root.gridViewWidth
                             Layout.minimumWidth: root.gridViewWidth
                             Layout.fillHeight: true
@@ -524,39 +524,32 @@ Item {
 
             }
 
-
             Keys.onPressed: (event) => { // Keyboard Control
-                if (event.modifiers & (Qt.ControlModifier || Qt.ShiftModifier)) {
+                if (event.modifiers & (Qt.ControlModifier | Qt.ShiftModifier)) {
+                    event.accepted = true;
                     searchField.focus = true;
                     return
                 }
 
                 switch(event.key) {
-                    case Qt.Key_Tab: {
-                        event.accepted = true;
-                        searchField.focus = true
-                    }
-                    case Qt.Key_Backspace: {
-                        event.accepted = true;
-                        root.searching ?
-                            searchField.backspace() :
-                            searchField.focus = true
-                    }
                     case Qt.Key_Escape: {
                         event.accepted = true;
-                        root.searching ?
-                            searchField.clear() :
-                        root.toggle()
+                        root.toggle();
+                        break;
+                    }
+                    case Qt.Key_Slash: {
+                        event.accepted = true;
+                        searchField.focus = true
+                        break;
                     }
                     default: {
-                        event.accepted = true
                         if (event.text !== "" && event.key !== Qt.Key_Escape) {
                             event.accepted = true;
                         }
+                        break;
                     }
                 }
             }
-
         }
 
         Component.onCompleted: {
