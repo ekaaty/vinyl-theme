@@ -446,15 +446,20 @@ Item {
                     ListModel {
                         id: systemActionsModel
                         ListElement {
-                            description: "Shows shutdown screen"
-                            icon:    "system-shutdown"
+                            description: "Shows session exit screen"
+                            icon:    "arrow-left"
                             command: "qdbus-qt6 org.kde.LogoutPrompt /LogoutPrompt promptAll"
                         }
                         ListElement {
+                            description: "Lock screen"
+                            icon: "lock"
+                            command: "qdbus-qt6 org.kde.screensaver /ScreenSaver Lock"
+                        }
+                        /*ListElement {
                             description: "Open Krunner dialog"
                             icon:    "search"
                             command: "qdbus-qt6 org.kde.krunner /App display"
-                        }
+                        }*/
                     }
 
                     ButtonGroup {
