@@ -1,17 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<svg version="1.1" viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg" xmlns:cc="http://creativecommons.org/ns#" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:xlink="http://www.w3.org/1999/xlink">
+<svg inkscape:version="1.4.2 (ebf0e940d0, 2025-05-08)" sodipodi:docname="virt-manager.svg" version="1.1" viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg" xmlns:cc="http://creativecommons.org/ns#" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd">
+ <sodipodi:namedview bordercolor="#000000" borderopacity="0.25" inkscape:current-layer="logo" inkscape:cx="233.98526" inkscape:cy="255.37101" inkscape:deskcolor="#d1d1d1" inkscape:pagecheckerboard="0" inkscape:pageopacity="0.0" inkscape:showpageshadow="2" inkscape:window-height="1008" inkscape:window-maximized="1" inkscape:window-width="1920" inkscape:window-x="0" inkscape:window-y="0" inkscape:zoom="0.79492188" pagecolor="#ffffff"/>
  <defs id="defs">
-  <linearGradient id="c" x1="7.0735" x2="31.1694" y1="44.6061" y2="30.5091" gradientUnits="userSpaceOnUse">
-   <stop style="stop-opacity:.202988" offset="0"/>
-   <stop style="stop-opacity:0" offset="1"/>
+  <linearGradient id="c" x1="7.0735" x2="31.169" y1="44.606" y2="30.509" gradientUnits="userSpaceOnUse">
+   <stop stop-opacity=".3957" offset="0"/>
+   <stop stop-opacity="0" offset="1"/>
   </linearGradient>
-  <linearGradient id="b" x1="56.927" x2="32.8311" y1="44.6061" y2="30.5091" gradientUnits="userSpaceOnUse">
-   <stop style="stop-opacity:.201768" offset="0"/>
-   <stop style="stop-opacity:0" offset="1"/>
+  <linearGradient id="b" x1="56.927" x2="32.831" y1="44.606" y2="30.509" gradientUnits="userSpaceOnUse">
+   <stop stop-opacity=".20238" offset="0"/>
+   <stop stop-opacity="0" offset="1"/>
   </linearGradient>
-  <linearGradient id="a" x1="32.0003" x2="32.0003" y1="8" y2="29.2874" gradientUnits="userSpaceOnUse">
-   <stop style="stop-opacity:.202549" offset="0"/>
-   <stop style="stop-opacity:0" offset="1"/>
+  <linearGradient id="a" x1="19.537" x2="32" y1="13.342" y2="29.287" gradientUnits="userSpaceOnUse">
+   <stop stop-opacity=".40003" offset="0"/>
+   <stop stop-opacity="0" offset="1"/>
   </linearGradient>
  </defs>
  <metadata>
@@ -22,12 +23,12 @@
    </cc:Work>
   </rdf:RDF>
  </metadata>
- <g id="logo" transform="matrix(9.62821 0 0 9.58313 -52.1051 -50.6651)">
-  <path d="m7.0735 20.3133v24.2928l24.0959 11.3949v-25.4919z" style="fill:#5b2f86"/>
-  <path d="m56.927 20.3133-24.0959 10.1958v25.4919l24.0959-11.3949z" style="fill:#dac024"/>
-  <path d="m32.0003 8-24.9268 10.6844 24.9268 10.603 24.9267-10.6291z" style="fill:#837f86"/>
-  <path d="m7.0735 20.3133v24.2928l24.0959 11.3949v-25.4919z" style="fill:url(#c)"/>
-  <path d="m56.927 20.3133-24.0959 10.1958v25.4919l24.0959-11.3949z" style="fill:url(#b)"/>
-  <path d="m32.0003 8-24.9268 10.6844 24.9268 10.603 24.9267-10.6291z" style="fill:url(#a)"/>
+ <g id="logo" transform="matrix(9.6282 0 0 9.5831 -52.105 -50.665)">
+  <path d="m7.0735 20.313v24.293l24.096 11.395v-25.492z" fill="#5b2f86"/>
+  <path d="m56.927 20.313-24.096 10.196v25.492l24.096-11.395z" fill="#dac024"/>
+  <path d="m32 8-24.927 10.684 24.927 10.603 24.927-10.629z" fill="#837f86"/>
+  <path d="m7.0735 20.313v24.293l24.096 11.395v-25.492z" fill="url(#c)"/>
+  <path d="m56.927 20.313-24.096 10.196v25.492l24.096-11.395z" fill="url(#b)"/>
+  <path d="m32 8-24.927 10.684 24.927 10.603 24.927-10.629z" fill="url(#a)"/>
  </g>
 </svg>
