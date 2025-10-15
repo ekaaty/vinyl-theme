@@ -173,7 +173,7 @@ Run the following command to install the dependencies:
 
 ```shell
 sudo pacman -Sy --needed 'cmake' \
-  'base-devel' 'git' 'cmake' 'extra-cmake-modules' 'git' 'kdecoration' 'qt6-declarative' \
+  'base-devel' 'git' 'cmake' 'extra-cmake-modules' 'git' 'kdecoration' 'kdeplasma-addons' 'qt6-declarative' \
   'kcoreaddons' 'kcmutils' 'kcolorscheme' 'kconfig' 'kguiaddons' 'kiconthemes' 'kwindowsystem' \
   'kdoctools' 'kpackage' 'frameworkintegration' 'python-cairosvg' 'python-lxml' \
   'xorg-xcursorgen' 'gcc' 'unzip'
