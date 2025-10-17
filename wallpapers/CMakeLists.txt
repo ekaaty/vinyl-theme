@@ -33,16 +33,16 @@ find_package(ECM ${KF6_MIN_VERSION} REQUIRED NO_MODULE)
 set(CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} ${ECM_MODULE_PATH} ${CMAKE_SOURCE_DIR}/cmake)
 
 find_package(Qt6 ${QT_MIN_VERSION} REQUIRED CONFIG COMPONENTS Core)
-include(KDEInstallDirs6)
+#include(KDEInstallDirs6)
 
 execute_process(
     COMMAND sed -i
         "s/\\(.*Version.*\\):.*/\\1: \"${PROJECT_VERSION}\",/g"
-        ${CMAKE_CURRENT_SOURCE_DIR}/src/Vinyl-Tracks/metadata.json
+        ${CMAKE_CURRENT_SOURCE_DIR}/src/Vinyl-Stripes/metadata.json
 )
 
-install(DIRECTORY src/Vinyl-Tracks/
-    DESTINATION ${PACKAGE_INSTALL_DATADIR}/Vinyl-Tracks/
+install(DIRECTORY src/Vinyl-Stripes/
+    DESTINATION ${PACKAGE_INSTALL_DATADIR}/Vinyl-Stripes/
 )
 
 # vim: ts=4:sw=4:sts=4:et
