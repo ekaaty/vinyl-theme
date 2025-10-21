@@ -54,7 +54,7 @@ Item {
         property int numberCols: Plasmoid.configuration.numberColumns
 
         property int iconSize: {
-            switch(Plasmoid.configuration.appsIconSize) {
+            switch(Plasmoid.configuration.gridIconSize) {
                 case 0:  return Kirigami.Units.iconSizes.medium; // 32
                 case 1:  return Kirigami.Units.iconSizes.large;  // 48
                 case 2:  return Kirigami.Units.iconSizes.huge;   // 64
