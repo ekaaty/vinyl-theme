@@ -1,195 +1,212 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<svg version="1.0" viewBox="0 0 12 118" xmlns="http://www.w3.org/2000/svg" xmlns:cc="http://creativecommons.org/ns#" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:xlink="http://www.w3.org/1999/xlink">
- <defs>
-  <style id="current-color-scheme" type="text/css">.ColorScheme-Text {
-        color:#31363b;
-        stop-color:#31363b;
-      }
-      .ColorScheme-Background {
-        color:#eff0f1;
-        stop-color:#eff0f1;
-      }
-      .ColorScheme-Highlight {
-        color:#3daee9;
-        stop-color:#3daee9;
-      }
-      .ColorScheme-ViewText {
-        color:#31363b;
-        stop-color:#31363b;
-      }
-      .ColorScheme-ViewBackground {
-        color:#fcfcfc;
-        stop-color:#fcfcfc;
-      }
-      .ColorScheme-ViewHover {
-        color:#93cee9;
-        stop-color:#93cee9;
-      }
-      .ColorScheme-ViewFocus{
-        color:#3daee9;
-        stop-color:#3daee9;
-      }
-      .ColorScheme-ButtonText {
-        color:#31363b;
-        stop-color:#31363b;
-      }
-      .ColorScheme-ButtonBackground {
-        color:#eff0f1;
-        stop-color:#eff0f1;
-      }
-      .ColorScheme-ButtonHover {
-        color:#93cee9;
-        stop-color:#93cee9;
-      }
-      .ColorScheme-ButtonFocus{
-        color:#3daee9;
-        stop-color:#3daee9;
-      }</style>
-  <linearGradient id="edge">
-   <stop style="stop-color:#fff" offset="0"/>
-   <stop style="stop-color:#fff;stop-opacity:0" offset="1"/>
-  </linearGradient>
-  <radialGradient id="radialGradient994" cx="212.318" cy="94.3182" r="6.13637" gradientTransform="translate(0 9.22219e-5)" gradientUnits="userSpaceOnUse" xlink:href="#linearGradient992"/>
-  <linearGradient id="linearGradient992">
-   <stop offset="0"/>
-   <stop style="stop-opacity:0" offset="1"/>
-  </linearGradient>
-  <radialGradient id="radialGradient1067" cx="28.5" cy="-79.5833" r="2.5" gradientTransform="matrix(-2.4,0,0,-2.4,97.4,-267)" gradientUnits="userSpaceOnUse" xlink:href="#cornerShadow"/>
-  <linearGradient id="cornerShadow">
-   <stop offset="0"/>
-   <stop offset=".833333"/>
-   <stop style="stop-opacity:0" offset="1"/>
-  </linearGradient>
-  <linearGradient id="linearGradient1061" x1="43" x2="43" y1="-76" y2="-75" gradientTransform="translate(4.06843e-8 5)" gradientUnits="userSpaceOnUse" xlink:href="#linearGradient992"/>
-  <linearGradient id="linearGradient1588" x1="95" x2="95" y1="-70" y2="-64" gradientTransform="translate(-51,-45)" gradientUnits="userSpaceOnUse" xlink:href="#edge"/>
-  <radialGradient id="radialGradient7352" cx="28.5" cy="-79.5833" r="2.5" gradientTransform="matrix(2.4,0,0,-2.4,-8.4,-267)" gradientUnits="userSpaceOnUse" xlink:href="#cornerShadow"/>
-  <radialGradient id="radialGradient1095-7" cx="44.5" cy="-74.4318" r="21.5" gradientTransform="matrix(1 0 0 1.25581 0 19.4725)" gradientUnits="userSpaceOnUse">
-   <stop style="stop-color:#ff9310" offset="0"/>
-   <stop style="stop-color:#ff9310;stop-opacity:0" offset="1"/>
-  </radialGradient>
- </defs>
+<svg xmlns="http://www.w3.org/2000/svg"
+     xmlns:cc="http://web.resource.org/cc/"
+     xmlns:dc="http://purl.org/dc/elements/1.1/"
+     xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+     xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+     xmlns:spdx="http://spdx.org/rdf/terms#"
+     xmlns:xlink="http://www.w3.org/1999/xlink"
+     width="252" height="42"
+     viewBox="0 0 252 42">
+ <sodipodi:namedview
+     inkscape:current-layer="layer1">
+  <inkscape:grid
+     color="#0099e5"
+     opacity=".15"
+     spacingx="1"
+     spacingy="1"
+     units="px"/>
+ </sodipodi:namedview>
  <metadata>
   <rdf:RDF>
-   <cc:Work rdf:about="">
-    <dc:format>image/svg+xml</dc:format>
-    <dc:type rdf:resource="http://purl.org/dc/dcmitype/StillImage"/>
+   <cc:Work rdf:about="Plasma theme element">
+    <dc:source>https://github.com/ekaaty/vinyl-theme</dc:source>
+    <dc:description>Part of Vinyl Plasma theme</dc:description>
+    <spdx:FileCopyrightText>2025 Ekaaty KDE SIG</spdx:FileCopyrightText>
+    <spdx:LicenseIdentifier>GPL-3.0</spdx:LicenseIdentifier>
    </cc:Work>
   </rdf:RDF>
  </metadata>
- <g transform="translate(-24,-2)">
-  <rect x="-20" width="20" height="20" style="fill:#b3b3b3;opacity:.5"/>
-  <g id="normal-top" transform="matrix(1 0 0 .75 -1 -.5)" style="opacity:.5">
-   <use transform="translate(0,22)" width="100%" height="100%" xlink:href="#invisibleMarginTop"/>
-  </g>
-  <use id="normal-center" transform="matrix(.1875 0 0 .1875 .625 18.375)" width="600" height="600" xlink:href="#normalBase"/>
-  <g id="normal-bottom" transform="matrix(1 0 0 .75 -1 5.5)" style="opacity:.5">
-   <use transform="translate(0,29)" width="100%" height="100%" xlink:href="#invisibleMarginBottom"/>
-  </g>
-  <use id="south-normal-top" transform="translate(21,1)" width="600" height="600" xlink:href="#normal-top"/>
-  <use id="south-normal-center" transform="translate(21)" width="600" height="600" xlink:href="#normal-center"/>
-  <use id="south-normal-bottom" transform="translate(21,-1)" width="600" height="600" xlink:href="#normal-bottom"/>
-  <rect id="invisibleMarginLeft" x="2" y="-8" width="4" height="2" style="fill:#fff;opacity:.003;stroke-width:.436439"/>
-  <rect id="invisibleMarginRight" x="14" y="-8" width="4" height="2" style="fill:#fff;opacity:.003;stroke-width:.471403"/>
-  <rect id="invisibleMarginTop" x="9" y="-20" width="2" height="4" style="fill:#fff;opacity:.003;stroke-width:.471404"/>
-  <rect id="invisibleMarginBottom" x="9" y="-15" width="2" height="4" style="fill:#fff;opacity:.003;stroke-width:.4714"/>
-  <rect id="normal-hint-left-margin" x="-48.1" y="27" width=".1" height="2" style="color-rendering:auto;color:#000000;fill:#f99133;image-rendering:auto;isolation:auto;mix-blend-mode:normal;shape-rendering:auto;solid-color:#000000"/>
-  <rect id="normal-hint-right-margin" x="-27" y="27" width=".1" height="2" style="color-rendering:auto;color:#000000;fill:#f99133;image-rendering:auto;isolation:auto;mix-blend-mode:normal;shape-rendering:auto;solid-color:#000000"/>
-  <rect id="normal-hint-top-margin" transform="rotate(90)" x="12" y="37" width="8" height="2" style="color-rendering:auto;color:#000000;fill:#f99133;image-rendering:auto;isolation:auto;mix-blend-mode:normal;shape-rendering:auto;solid-color:#000000"/>
-  <rect id="normal-hint-bottom-margin" transform="rotate(90)" x="36" y="37" width="8" height="2" style="color-rendering:auto;color:#000000;fill:#f99133;image-rendering:auto;isolation:auto;mix-blend-mode:normal;shape-rendering:auto;solid-color:#000000"/>
-  <use id="south-focus-top" transform="translate(21,19)" width="100%" height="100%" xlink:href="#normal-top"/>
-  <use id="south-focus-bottom" transform="translate(21,21)" width="100%" height="100%" xlink:href="#normal-bottom"/>
-  <use id="south-focus-center" transform="matrix(.25 0 0 .25 25.25 65)" width="100%" height="100%" xlink:href="#focusBase"/>
-  <use id="south-minimized-top" transform="translate(21,39)" width="100%" height="100%" xlink:href="#normal-top"/>
-  <use id="south-minimized-bottom" transform="translate(21,41)" width="100%" height="100%" xlink:href="#normal-bottom"/>
-  <use id="south-minimized-center" transform="matrix(.25 0 0 .25 19.5 82.5)" width="100%" height="100%" xlink:href="#minimizedBase"/>
-  <use id="south-hover-top" transform="translate(21,59)" width="100%" height="100%" xlink:href="#normal-top"/>
-  <use id="south-hover-bottom" transform="translate(21,61)" width="100%" height="100%" xlink:href="#normal-bottom"/>
-  <use id="south-hover-center" transform="matrix(.25 0 0 .25 22 84.5)" width="100%" height="100%" xlink:href="#hoverBase"/>
-  <use id="south-attention-top" transform="translate(21,79)" width="100%" height="100%" xlink:href="#normal-top"/>
-  <use id="south-attention-bottom" transform="translate(21,81)" width="100%" height="100%" xlink:href="#normal-bottom"/>
-  <use id="south-attention-center" transform="matrix(.25 0 0 .25 23 142)" width="100%" height="100%" xlink:href="#attentionBase"/>
-  <use id="south-progress-top" transform="translate(21,99)" width="100%" height="100%" xlink:href="#normal-top"/>
-  <use id="south-progress-bottom" transform="translate(21,101)" width="100%" height="100%" xlink:href="#normal-bottom"/>
-  <use id="south-progress-center" transform="matrix(.25 0 0 .25 -7 171.75)" width="100%" height="100%" xlink:href="#progressBase"/>
-  <rect x="-20" y="20" width="20" height="20" style="fill:#b3b3b3;opacity:.5"/>
-  <rect x="-20" y="40" width="20" height="20" style="fill:#b3b3b3;opacity:.5"/>
-  <rect x="-20" y="60" width="20" height="20" style="fill:#b3b3b3;opacity:.5"/>
-  <rect x="-20" y="80" width="20" height="20" style="fill:#b3b3b3;opacity:.5"/>
-  <rect x="-20" y="100" width="20" height="20" style="fill:#b3b3b3;opacity:.5"/>
-  <rect width="20" height="20" style="fill:#b3b3b3;opacity:.5"/>
-  <use id="north-normal-top" transform="translate(14)" width="100%" height="100%" xlink:href="#south-normal-top"/>
-  <use id="north-normal-center" transform="translate(14)" width="100%" height="100%" xlink:href="#south-normal-center"/>
-  <use id="north-normal-bottom" transform="translate(14)" width="100%" height="100%" xlink:href="#south-normal-bottom"/>
-  <use id="north-focus-top" transform="translate(14)" width="100%" height="100%" xlink:href="#south-focus-top"/>
-  <use id="north-focus-bottom" transform="translate(14)" width="100%" height="100%" xlink:href="#south-focus-bottom"/>
-  <use id="north-focus-center" transform="translate(14)" width="100%" height="100%" xlink:href="#south-focus-center"/>
-  <use id="north-minimized-top" transform="translate(14)" width="100%" height="100%" xlink:href="#south-minimized-top"/>
-  <use id="north-minimized-bottom" transform="translate(14)" width="100%" height="100%" xlink:href="#south-minimized-bottom"/>
-  <use id="north-minimized-center" transform="translate(14)" width="100%" height="100%" xlink:href="#south-minimized-center"/>
-  <use id="north-hover-top" transform="translate(14)" width="100%" height="100%" xlink:href="#south-hover-top"/>
-  <use id="north-hover-bottom" transform="translate(14)" width="100%" height="100%" xlink:href="#south-hover-bottom"/>
-  <use id="north-hover-center" transform="translate(14)" width="100%" height="100%" xlink:href="#south-hover-center"/>
-  <use id="north-attention-top" transform="translate(14)" width="100%" height="100%" xlink:href="#south-attention-top"/>
-  <use id="north-attention-bottom" transform="translate(14)" width="100%" height="100%" xlink:href="#south-attention-bottom"/>
-  <use id="north-attention-center" transform="translate(14)" width="100%" height="100%" xlink:href="#south-attention-center"/>
-  <use id="north-progress-top" transform="translate(14)" width="100%" height="100%" xlink:href="#south-progress-top"/>
-  <use id="north-progress-bottom" transform="translate(14)" width="100%" height="100%" xlink:href="#south-progress-bottom"/>
-  <use id="north-progress-center" transform="translate(14)" width="100%" height="100%" xlink:href="#south-progress-center"/>
-  <rect x="70" y="-6.00001" width="59" height="41" style="opacity:.171932;stroke-width:1.00858"/>
-  <g id="group-expander-bottom" transform="matrix(1.22222 0 0 1.22222 -168 -110.778)">
-   <rect x="189.818" y="85.7273" width="34.3636" height="21.2727" style="opacity:.003;stroke-width:1.22474"/>
-   <g id="g1011" transform="translate(3.27272)">
-    <path class="ColorScheme-Text" d="m212.318 88.1818a6.13636 6.13636 0 0 0-6.13637 6.13636 6.13636 6.13636 0 0 0 6.13637 6.13636 6.13636 6.13636 0 0 0 6.13637-6.13636 6.13636 6.13636 0 0 0-6.13637-6.13636z" style="fill:url(#radialGradient994);opacity:.5"/>
-    <path d="m212.318 89a4.5 4.5 0 0 0-4.5 4.5 4.5 4.5 0 0 0 4.5 4.5 4.5 4.5 0 0 0 4.5-4.5 4.5 4.5 0 0 0-4.5-4.5z" style="opacity:.25"/>
-    <path class="ColorScheme-Background" d="m212.318 89.8182a3.68182 3.68182 0 0 0-3.68182 3.68182 3.68182 3.68182 0 0 0 3.68182 3.68182 3.68182 3.68182 0 0 0 3.68182-3.68182 3.68182 3.68182 0 0 0-3.68182-3.68182z" style="fill:currentColor"/>
-    <path d="m212.318 89.8182a3.68182 3.68182 0 0 0-3.68182 3.68182 3.68182 3.68182 0 0 0 3.68182 3.68182 3.68182 3.68182 0 0 0 3.68182-3.68182 3.68182 3.68182 0 0 0-3.68182-3.68182z" style="fill-opacity:.996078;fill:#0bc60b;opacity:.95"/>
-    <path class="ColorScheme-Background" d="m211.494 91.0455 9.7e-4 1.63063-1.63462 0.01145 7e-3 1.62609 1.63908 0.0091-6e-3 1.63431 1.62575-5e-3 7e-3 -1.63162 1.63976-2.7e-5v-1.63288h-1.64636l0.0204-1.64208z" style="opacity:.5"/>
-    <path class="ColorScheme-Text" d="m211.903 91.4546 9.7e-4 1.63063-1.63474 0.01145 7e-3 0.807899 1.6392 0.0091-6e-3 1.63432 0.8077-5e-3 7e-3 -1.63162 1.63951-2.7e-5v-0.814687h-1.64611l0.0204-1.64208z" style="fill:#fff"/>
+ <defs>
+  <style id="current-color-scheme" type="text/css">
+   .ColorScheme-Background   { color: #eff0f1; }
+   .ColorScheme-Highlight    { color: #00aaff; }
+   .ColorScheme-NeutralText  { color: #f67400; }
+   .ColorScheme-PositiveText { color: #27ae60; }
+   .ColorScheme-Text         { color: #7d7d7d; }
+  </style>
+ </defs>
+ <g inkscape:groupmode="layer" inkscape:label="RESOURCES">
+  <g id="taskbutton" transform="translate(-95,-87)" sodipodi:insensitive="true">
+   <g id="taskbutton-center">
+    <rect x="100" y="48" width="32" height="32" opacity=".8"/>
    </g>
-   <rect x="204.545" y="103.727" width="4.90909" height="2.45455" rx="1.22727" ry="1.22727" style="fill:#fff;opacity:.003;stroke-linejoin:round;stroke-width:2.77699"/>
+   <g id="taskbutton-topleft" fill="currentColor">
+    <path class="ColorScheme-Background" d="m98 45a1 1 0 0 0-1 1v2h3v-3h-1z" opacity=".8"/>
+    <path class="ColorScheme-Background" d="m98 44a2 2 0 0 0-2 2v2h1v-2a1 1 0 0 1 1-1h2v-1z"/>
+    <path class="ColorScheme-Background" d="m95 43v5h1v-2a2 2 0 0 1 2-2h2v-1h-4z" opacity="0"/>
+   </g>
+   <g id="taskbutton-topright" fill="currentColor">
+    <path class="ColorScheme-Background" d="m135 46a1 1 0 0 0-1-1h-2v3h3v-1z" opacity=".8"/>
+    <path class="ColorScheme-Background" d="m136 46a2 2 0 0 0-2-2h-2v1h2a1 1 0 0 1 1 1v2h1z"/>
+    <path class="ColorScheme-Background" d="m132 43v1h2a2 2 0 0 1 1.9824 1.7383 2 2 0 0 1 0.0176 0.26172v2h1v-5h-1z" opacity="0"/>
+   </g>
+   <g id="taskbutton-bottomright" fill="currentColor">
+    <path class="ColorScheme-Background" d="m134 83a1 1 0 0 0 1-1v-2h-3v3h1z" opacity=".8"/>
+    <path class="ColorScheme-Background" d="m134 84a2 2 0 0 0 2-2v-2h-1v2a1 1 0 0 1-1 1h-2v1z"/>
+    <path class="ColorScheme-Background" d="m137 85v-5h-1v2a2 2 0 0 1-2 2h-2v1h4z" opacity="0"/>
+   </g>
+   <g id="taskbutton-bottomleft" fill="currentColor">
+    <path class="ColorScheme-Background" d="m97 82a1 1 0 0 0 1 1h2v-3h-3v1z" opacity=".8"/>
+    <path class="ColorScheme-Background" d="m96 82a2 2 0 0 0 2 2h2v-1h-2a1 1 0 0 1-1-1v-2h-1z"/>
+    <path class="ColorScheme-Background" d="m95 85v-5h1v2a2 2 0 0 0 2 2h2v1h-4z" opacity="0"/>
+   </g>
+   <g id="taskbutton-top" fill="currentColor">
+    <rect class="ColorScheme-Background" x="100" y="45" width="32" height="3" opacity=".8"/>
+    <rect class="ColorScheme-Background" x="100" y="44" width="32" height="1"/>
+    <rect class="ColorScheme-Background" x="100" y="43" width="32" height="1" opacity="0"/>
+   </g>
+   <g id="taskbutton-left" fill="currentColor">
+    <rect class="ColorScheme-Background" x="97" y="48" width="3" height="32" opacity=".8"/>
+    <rect class="ColorScheme-Background" x="96" y="48" width="1" height="32"/>
+    <rect class="ColorScheme-Background" x="95" y="48" width="1" height="32" opacity="0"/>
+   </g>
+   <g id="taskbutton-right" fill="currentColor">
+    <rect class="ColorScheme-Background" x="132" y="48" width="3" height="32" opacity=".8"/>
+    <rect class="ColorScheme-Background" x="135" y="48" width="1" height="32"/>
+    <rect class="ColorScheme-Background" x="136" y="48" width="1" height="32" opacity="0"/>
+   </g>
+   <g id="taskbutton-bottom" fill="currentColor">
+    <rect class="ColorScheme-Background" x="100" y="80" width="32" height="3" opacity=".8"/>
+    <rect class="ColorScheme-Background" x="100" y="83" width="32" height="1"/>
+    <rect class="ColorScheme-Background" x="100" y="84" width="32" height="1" opacity="0"/>
+   </g>
   </g>
-  <g id="group-expander-top" transform="translate(38 -11)">
-   <rect x="68" y="3.00001" width="42" height="45" style="opacity:.003;stroke-width:1.96931"/>
-   <use transform="matrix(1.22222 0 0 1.22222 -164 -74.7778)" width="100%" height="100%" xlink:href="#g1011"/>
+  <g inkscape:label="statuses" sodipodi:insensitive="true">
+   <rect id="status-progress" class="ColorScheme-PositiveText" x="-20" y="20" width="16" height="2" ry="1" fill="currentColor"/>
+   <rect id="status-attention" class="ColorScheme-NeutralText" x="-20" y="16" width="16" height="2" ry="1" fill="currentColor"/>
+   <rect id="status-focus" class="ColorScheme-Highlight" x="-20" y="12" width="16" height="2" ry="1" fill="currentColor"/>
+   <rect id="status-hover" class="ColorScheme-Highlight" x="-20" y="8" width="16" height="2" ry="1" fill="currentColor" opacity=".6"/>
+   <rect id="status-normal" class="ColorScheme-Text" x="-16" y="4" width="12" height="2" ry="1" fill="currentColor" opacity=".33"/>
+   <rect id="status-minimized" class="ColorScheme-Text" x="-10" width="6" height="2" ry="1" fill="currentColor" opacity=".33"/>
   </g>
-  <use id="minimizedBase" transform="translate(0,-92)" width="100%" height="100%" xlink:href="#normalBase"/>
-  <g id="focusBase" transform="translate(-24,-45)">
-   <rect x="19" y="-116" width="51" height="46" style="opacity:.003"/>
-   <path transform="translate(-51,-45)" d="m79-71c-3.324 0-6 2.676-6 6v34c0 3.324 2.676 6 6 6h33c3.324 0 6-2.676 6-6v-34c0-3.324-2.676-6-6-6zm0 1h33c2.77 0 5 2.23 5 5v34c0 2.77-2.23 5-5 5h-33c-2.77 0-5-2.23-5-5v-34c0-2.77 2.23-5 5-5z" style="opacity:.1;stroke-linejoin:round;stroke-width:7.71589"/>
-   <rect x="29" y="-71" width="31" height="1" style="fill:url(#linearGradient1061);opacity:.25;stroke-linejoin:round;stroke-width:3.2"/>
-   <path d="m22-76v6h7v-1h-1c-2.77 0-5-2.23-5-5z" style="fill:url(#radialGradient1067);opacity:.25;stroke-linejoin:round;stroke-width:4.27618"/>
-   <path d="m67-76v6h-7v-1h1c2.77 0 5-2.23 5-5z" style="fill:url(#radialGradient7352);opacity:.25;stroke-linejoin:round;stroke-width:4.27618"/>
-   <rect class="ColorScheme-Background" x="23" y="-115" width="43" height="44" rx="5" ry="5" style="fill:currentColor;opacity:.25"/>
-   <rect x="23" y="-115" width="43" height="44" rx="5" ry="5" style="fill:#fff;opacity:.15;stroke-linejoin:round;stroke-width:7.71589"/>
-   <path transform="translate(47,53)" d="m-19-168c-2.77 0-5 2.23-5 5v34c0 2.77 2.23 5 5 5h33c2.77 0 5-2.23 5-5v-34c0-2.77-2.23-5-5-5zm0 1h33c2.216 0 4 1.784 4 4v34c0 2.216-1.784 4-4 4h-33c-2.216 0-4-1.784-4-4v-34c0-2.216 1.784-4 4-4z" style="fill:#fff;opacity:.05;stroke-linejoin:round;stroke-width:7.71589"/>
-   <path d="m28-115c-2.77 0-5 2.23-5 5v1h1v-1c0-2.216 1.784-4 4-4h33c2.216 0 4 1.784 4 4v1h1v-1c0-2.77-2.23-5-5-5z" style="fill:url(#linearGradient1588);opacity:.1;stroke-linejoin:round;stroke-width:7.71589"/>
-   <rect class="ColorScheme-Highlight" x="37" y="-75" width="15" height="3" rx="1.5" ry="1.48182" style="fill:currentColor;stroke-linejoin:round;stroke-width:5.54256"/>
+  <g id="expander" transform="translate(-99.495,-96.998)" sodipodi:insensitive="true">
+   <path d="m87.495 121a5.4999 5.4999 0 0 0-5.4999 5.4999 5.4999 5.4999 0 0 0 5.4999 5.4999 5.4999 5.4999 0 0 0 5.4999-5.4999 5.4999 5.4999 0 0 0-5.4999-5.4999z" opacity=".25"/>
+   <path class="ColorScheme-Highlight" d="m87.495 122a4.4999 4.4999 0 0 0-4.4999 4.4999 4.4999 4.4999 0 0 0 4.4999 4.4999 4.4999 4.4999 0 0 0 4.4999-4.4999 4.4999 4.4999 0 0 0-4.4999-4.4999z" fill="currentColor"/>
+   <path d="m86.493 123.5 0.0012 1.9929-1.9978 0.014 0.0086 1.9874 2.0033 0.0111-0.0073 1.9974 1.9871-6e-3 0.0086-1.9941 2.0042-3e-5v-1.9957h-2.0122l0.02493-2.007z" opacity=".25"/>
+   <path d="m86.982 124 0.0012 1.9929-1.9979 0.014 0.0086 0.98742 2.0034 0.0111-0.0073 1.9974 0.98717-6e-3 0.0086-1.9941 2.0038-3e-5v-0.99572h-2.0119l0.02493-2.007z" fill="#fff"/>
   </g>
-  <g id="normalBase" transform="translate(-24,1)">
-   <rect x="19" y="-116" width="51" height="46" style="opacity:.003"/>
-   <rect class="ColorScheme-Text" x="41" y="-75" width="7" height="3" rx="1.5" ry="1.5" style="fill:currentColor;opacity:.5;stroke-linejoin:round;stroke-width:3.78629"/>
+ </g>
+ <g inkscape:groupmode="layer" inkscape:highlight-color="#48a1eb" inkscape:label="ELEMENTS">
+  <g transform="translate(210,2e-5)" inkscape:label="progress" sodipodi:insensitive="true">
+   <use transform="translate(-95,-43)" opacity=".16" inkscape:label="progress-bottomright" xlink:href="#taskbutton-bottomright"/>
+   <g transform="translate(-95,-43)" fill="currentColor" inkscape:label="progress-bottom">
+    <rect x="100" y="80" width="32" height="3" opacity=".128"/>
+    <rect class="ColorScheme-Background" x="100" y="83" width="32" height="1" opacity=".16"/>
+    <rect class="ColorScheme-Background" x="100" y="84" width="32" height="1" opacity="0"/>
+    <use transform="translate(130,60.5)" opacity=".33" inkscape:label="use85" xlink:href="#status-progress"/>
+   </g>
+   <use transform="translate(-95,-43)" opacity=".16" inkscape:label="progress-bottomleft" xlink:href="#taskbutton-bottomleft"/>
+   <use transform="translate(-95,-43)" opacity=".16" inkscape:label="progress-right" xlink:href="#taskbutton-right"/>
+   <use transform="translate(-95,-43)" opacity=".16" inkscape:label="progress-center" xlink:href="#taskbutton-center"/>
+   <use transform="translate(-95,-43)" opacity=".16" inkscape:label="progress-left" xlink:href="#taskbutton-left"/>
+   <use transform="translate(-95,-43)" opacity=".16" inkscape:label="progress-topright" xlink:href="#taskbutton-topright"/>
+   <use transform="translate(-95,-43)" opacity=".16" inkscape:label="progress-top" xlink:href="#taskbutton-top"/>
+   <use transform="translate(-95,-43)" opacity=".16" inkscape:label="progress-topleft" xlink:href="#taskbutton-topleft"/>
   </g>
-  <g id="attentionBase" transform="translate(-24,-137)">
-   <rect x="19" y="-116" width="51" height="46" style="opacity:.003"/>
-   <path transform="translate(-51,-45)" d="m79-71c-3.324 0-6 2.676-6 6v34c0 3.324 2.676 6 6 6h33c3.324 0 6-2.676 6-6v-34c0-3.324-2.676-6-6-6zm0 1h33c2.77 0 5 2.23 5 5v34c0 2.77-2.23 5-5 5h-33c-2.77 0-5-2.23-5-5v-34c0-2.77 2.23-5 5-5z" style="fill:#663400;opacity:.2;stroke-linejoin:round;stroke-width:7.71589"/>
-   <rect x="29" y="-71" width="31" height="1" style="fill:url(#linearGradient1061);opacity:.25;stroke-linejoin:round;stroke-width:3.2"/>
-   <path d="m22-76v6h7v-1h-1c-2.77 0-5-2.23-5-5z" style="fill:url(#radialGradient1067);opacity:.25;stroke-linejoin:round;stroke-width:4.27618"/>
-   <path d="m67-76v6h-7v-1h1c2.77 0 5-2.23 5-5z" style="fill:url(#radialGradient7352);opacity:.25;stroke-linejoin:round;stroke-width:4.27618"/>
-   <rect class="ColorScheme-Background" x="23" y="-115" width="43" height="44" rx="5" ry="5" style="fill:currentColor;opacity:.25"/>
-   <rect x="23" y="-115" width="43" height="44" rx="5" ry="5" style="fill:#ff8f14;opacity:.35"/>
-   <path transform="translate(47,53)" d="m-19-168c-2.77 0-5 2.23-5 5v34c0 2.77 2.23 5 5 5h33c2.77 0 5-2.23 5-5v-34c0-2.77-2.23-5-5-5zm0 1h33c2.216 0 4 1.784 4 4v34c0 2.216-1.784 4-4 4h-33c-2.216 0-4-1.784-4-4v-34c0-2.216 1.784-4 4-4z" style="fill:#fff;opacity:.05;stroke-linejoin:round;stroke-width:7.71589"/>
-   <path d="m28-115c-2.77 0-5 2.23-5 5v1h1v-1c0-2.216 1.784-4 4-4h33c2.216 0 4 1.784 4 4v1h1v-1c0-2.77-2.23-5-5-5z" style="fill:url(#linearGradient1588);opacity:.1;stroke-linejoin:round;stroke-width:7.71589"/>
-   <rect class="ColorScheme-NeutralText" x="37" y="-75" width="15" height="3" rx="1.5" ry="1.48182" style="fill:#ff8f14;stroke-linejoin:round;stroke-width:5.54256"/>
-   <rect x="23" y="-115" width="43" height="44" rx="5" ry="5" style="fill:url(#radialGradient1095-7);opacity:.25;stroke-linejoin:round;stroke-width:7.71589"/>
+  <g transform="translate(168,2e-5)" inkscape:label="attention" sodipodi:insensitive="true">
+   <use transform="translate(-95,-43)" opacity=".16" inkscape:label="attention-bottomright" xlink:href="#taskbutton-bottomright"/>
+   <g transform="translate(-95,-43)" fill="currentColor" inkscape:label="attention-bottom">
+    <rect x="100" y="80" width="32" height="3" opacity=".128"/>
+    <rect class="ColorScheme-Background" x="100" y="83" width="32" height="1" opacity=".16"/>
+    <rect class="ColorScheme-Background" x="100" y="84" width="32" height="1" opacity="0"/>
+    <use transform="translate(130,64.5)" xlink:href="#status-attention"/>
+   </g>
+   <use transform="translate(-95,-43)" opacity=".16" inkscape:label="attention-bottomleft" xlink:href="#taskbutton-bottomleft"/>
+   <use transform="translate(-95,-43)" opacity=".16" inkscape:label="attention-right" xlink:href="#taskbutton-right"/>
+   <use transform="translate(-95,-43)" opacity=".16" inkscape:label="attention-center" xlink:href="#taskbutton-center"/>
+   <use transform="translate(-95,-43)" opacity=".16" inkscape:label="attention-left" xlink:href="#taskbutton-left"/>
+   <use transform="translate(-95,-43)" opacity=".16" inkscape:label="attention-topright" xlink:href="#taskbutton-topright"/>
+   <use transform="translate(-95,-43)" opacity=".16" inkscape:label="attention-top" xlink:href="#taskbutton-top"/>
+   <use transform="translate(-95,-43)" opacity=".16" inkscape:label="attention-topleft" xlink:href="#taskbutton-topleft"/>
   </g>
-  <g id="hoverBase" transform="translate(-9,1)">
-   <use transform="translate(60,-1)" width="100%" height="100%" xlink:href="#focusBase"/>
-   <rect class="ColorScheme-Highlight" x="71" y="-121" width="19" height="3" rx="1.5" ry="1.5" style="fill:currentColor;stroke-width:1.05719"/>
+  <g id="focus" transform="translate(126,2e-5)" sodipodi:insensitive="true">
+   <use id="focus-bottomright" transform="translate(-95,-43)" opacity=".16" xlink:href="#taskbutton-bottomright"/>
+   <g id="focus-bottom" transform="translate(-95,-43)" fill="currentColor">
+    <rect x="100" y="80" width="32" height="3" opacity=".128"/>
+    <rect class="ColorScheme-Background" x="100" y="83" width="32" height="1" opacity=".16"/>
+    <rect class="ColorScheme-Background" x="100" y="84" width="32" height="1" opacity="0"/>
+    <use transform="translate(130,68.5)" xlink:href="#status-focus"/>
+   </g>
+   <use id="focus-bottomleft" transform="translate(-95,-43)" opacity=".16" xlink:href="#taskbutton-bottomleft"/>
+   <use id="focus-right" transform="translate(-95,-43)" opacity=".16" xlink:href="#taskbutton-right"/>
+   <use id="focus-center" transform="translate(-95,-43)" opacity=".16" xlink:href="#taskbutton-center"/>
+   <use id="focus-left" transform="translate(-95,-43)" opacity=".16" xlink:href="#taskbutton-left"/>
+   <use id="focus-topright" transform="translate(-95,-43)" opacity=".16" xlink:href="#taskbutton-topright"/>
+   <use id="focus-top" transform="translate(-95,-43)" opacity=".16" xlink:href="#taskbutton-top"/>
+   <use id="focus-topleft" transform="translate(-95,-43)" opacity=".16" xlink:href="#taskbutton-topleft"/>
   </g>
-  <g id="progressBase" transform="translate(-24,-183)">
-   <rect x="19" y="-116" width="51" height="46" style="opacity:.003"/>
-   <rect class="ColorScheme-Text" x="23" y="-115" width="43" height="44" rx="5" ry="5" style="opacity:0"/>
-   <rect x="23" y="-115" width="43" height="44" rx="5" ry="5" style="fill:#10ff11;opacity:.25"/>
+  <g id="hover" transform="translate(84,2e-5)" sodipodi:insensitive="true">
+   <use id="hover-bottomright" transform="translate(-95,-43)" opacity=".16" xlink:href="#taskbutton-bottomright"/>
+   <g id="hover-bottom" transform="translate(-95,-43)" fill="currentColor">
+    <rect class="ColorScheme-Background" x="100" y="80" width="32" height="3" opacity=".128"/>
+    <rect class="ColorScheme-Background" x="100" y="83" width="32" height="1" opacity=".16"/>
+    <rect class="ColorScheme-Background" x="100" y="84" width="32" height="1" opacity="0"/>
+    <use transform="translate(130,72.5)" inkscape:label="use54" xlink:href="#status-hover"/>
+   </g>
+   <use id="hover-bottomleft" transform="translate(-95,-43)" opacity=".16" xlink:href="#taskbutton-bottomleft"/>
+   <use id="hover-right" transform="translate(-95,-43)" opacity=".16" xlink:href="#taskbutton-right"/>
+   <use id="hover-center" transform="translate(-95,-43)" opacity=".16" xlink:href="#taskbutton-center"/>
+   <use id="hover-left" transform="translate(-95,-43)" opacity=".16" xlink:href="#taskbutton-left"/>
+   <use id="hover-topright" transform="translate(-95,-43)" opacity=".16" xlink:href="#taskbutton-topright"/>
+   <use id="hover-top" transform="translate(-95,-43)" opacity=".16" xlink:href="#taskbutton-top"/>
+   <use id="hover-topleft" transform="translate(-95,-43)" opacity=".16" xlink:href="#taskbutton-topleft"/>
+  </g>
+  <g id="normal" transform="translate(42)" sodipodi:insensitive="true">
+   <use id="normal-bottomright" transform="translate(-95,-43)" opacity=".08" xlink:href="#taskbutton-bottomright"/>
+   <g id="normal-bottom" transform="translate(-95,-43)">
+    <rect class="ColorScheme-Background" x="100" y="80" width="32" height="3" opacity=".064"/>
+    <rect class="ColorScheme-Background" x="100" y="83" width="32" height="1" opacity=".08"/>
+    <rect class="ColorScheme-Background" x="100" y="84" width="32" height="1" opacity="0"/>
+    <use transform="translate(128,76.5)" xlink:href="#status-normal"/>
+   </g>
+   <use id="normal-bottomleft" transform="translate(-95,-43)" opacity=".08" xlink:href="#taskbutton-bottomleft"/>
+   <use id="normal-right" transform="translate(-95,-43)" opacity=".08" xlink:href="#taskbutton-right"/>
+   <use id="normal-center" transform="translate(-95,-43)" opacity=".08" xlink:href="#taskbutton-center"/>
+   <use id="normal-left" transform="translate(-95,-43)" opacity=".08" xlink:href="#taskbutton-left"/>
+   <use id="normal-topright" transform="translate(-95,-43)" opacity=".08" xlink:href="#taskbutton-topright"/>
+   <use id="normal-top" transform="translate(-95,-43)" opacity=".08" xlink:href="#taskbutton-top"/>
+   <use id="normal-topleft" transform="translate(-95,-43)" opacity=".08" xlink:href="#taskbutton-topleft"/>
+   <rect id="normal-hint-bottom-margin" x="20.5" y="41" width="1" height="1" fill="#f0f"/>
+   <rect id="normal-hint-right-margin" x="41" y="20.5" width="1" height="1" fill="#f0f"/>
+   <rect id="normal-hint-left-margin" y="20.5" width="1" height="1" fill="#f0f"/>
+   <rect id="normal-hint-top-margin" x="20.5" width="1" height="1" fill="#f0f"/>
+  </g>
+  <g id="minimized" sodipodi:insensitive="true">
+   <use id="minimized-bottomright" transform="translate(-95,-43)" opacity=".08" xlink:href="#taskbutton-bottomright"/>
+   <g id="minimized-bottom" transform="translate(-95,-43)" fill="currentColor">
+    <rect class="ColorScheme-Background" x="100" y="80" width="32" height="3" opacity=".064"/>
+    <rect class="ColorScheme-Background" x="100" y="83" width="32" height="1" opacity=".08"/>
+    <rect class="ColorScheme-Background" x="100" y="84" width="32" height="1" opacity="0"/>
+    <use transform="translate(125,80.5)" xlink:href="#status-minimized"/>
+   </g>
+   <use id="minimized-bottomleft" transform="translate(-95,-43)" opacity=".08" xlink:href="#taskbutton-bottomleft"/>
+   <use id="minimized-right" transform="translate(-95,-43)" opacity=".08" xlink:href="#taskbutton-right"/>
+   <use id="minimized-center" transform="translate(-95,-43)" opacity=".08" xlink:href="#taskbutton-center"/>
+   <use id="minimized-left" transform="translate(-95,-43)" opacity=".08" xlink:href="#taskbutton-left"/>
+   <use id="minimized-topright" transform="translate(-95,-43)" opacity=".08" xlink:href="#taskbutton-topright"/>
+   <use id="minimized-top" transform="translate(-95,-43)" opacity=".08" xlink:href="#taskbutton-top"/>
+   <use id="minimized-topleft" transform="translate(-95,-43)" opacity=".08" xlink:href="#taskbutton-topleft"/>
+  </g>
+  <g id="group-expander-bottom" transform="matrix(1.2222 0 0 1.2222 -190 -44.778)" sodipodi:insensitive="true">
+   <rect x="189.82" y="72.636" width="34.364" height="34.364" opacity=".003"/>
+   <rect x="204.54" y="103.73" width="4.9091" height="2.4546" rx="1.2273" ry="1.2273" opacity="0"/>
+   <use transform="matrix(.81818 0 0 .81818 225.41 69.364)" xlink:href="#expander"/>
+  </g>
+  <g id="group-expander-top" transform="translate(16 -95)" sodipodi:insensitive="true">
+   <rect x="26" y="51" width="42" height="42" opacity="0"/>
+   <use transform="translate(69.5 47)" xlink:href="#expander"/>
   </g>
  </g>
 </svg>

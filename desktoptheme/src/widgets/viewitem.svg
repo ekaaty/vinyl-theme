@@ -31,89 +31,89 @@
  <defs>
   <style id="current-color-scheme" type="text/css">
     .ColorScheme-ButtonBackground { color:#343434; }
-    .ColorScheme-Highlight { color:#4285f4; }
-    .ColorScheme-Text { color:#dfdfdf; }
+    .ColorScheme-Highlight        { color:#4285f4; }
+    .ColorScheme-Text             { color:#dfdfdf; }
   </style>
  </defs>
  <g transform="translate(-6 -6)" inkscape:label="selected+hover">
   <path id="selected+hover-center" class="ColorScheme-Highlight" d="m194 14v48h48v-48z" fill="currentColor" opacity=".5"/>
-  <g id="selected+hover-left" transform="matrix(1 0 0 3.001 3.8571 -2476.4)">
+  <g id="selected+hover-left" transform="matrix(1 0 0 3.001 3.8571 -2476.4)" opacity=".55">
    <path class="ColorScheme-Highlight" d="m186.14 829.86v15.995h4v-15.995z" fill="currentColor"/>
   </g>
-  <g id="selected+hover-topleft" transform="translate(3.8571 -815.87)">
+  <g id="selected+hover-topleft" transform="translate(3.8571 -815.87)" opacity=".55">
    <path class="ColorScheme-Highlight" d="m186.14 829.87h4v-4h-1.4688c-1.405 0-2.5312 1.1159-2.5312 2.5312z" fill="currentColor"/>
   </g>
-  <g id="selected+hover-top" transform="matrix(.36658 0 0 1 124.29 -815.85)">
+  <g id="selected+hover-top" transform="matrix(.36658 0 0 1 124.29 -815.85)" opacity=".55">
    <path class="ColorScheme-Highlight" d="m190.17 825.85v4h130.94v-4z" fill="currentColor"/>
   </g>
-  <g id="selected+hover-topright" transform="translate(-79.143 -815.85)">
+  <g id="selected+hover-topright" transform="translate(-79.143 -815.85)" opacity=".55">
    <path class="ColorScheme-Highlight" d="m321.14 825.85v4h4v-1.4688c0-1.405-1.1159-2.5312-2.5312-2.5312z" fill="currentColor"/>
   </g>
-  <g id="selected+hover-right" transform="matrix(1 0 0 3 -79.143 -2475.6)">
+  <g id="selected+hover-right" transform="matrix(1 0 0 3 -79.143 -2475.6)" opacity=".55">
    <path class="ColorScheme-Highlight" d="m325.14 829.85v16h-4v-16z" fill="currentColor"/>
   </g>
-  <g id="selected+hover-bottomright" transform="rotate(180 216.07 445.93)">
+  <g id="selected+hover-bottomright" transform="rotate(180 216.07 445.93)" opacity=".55">
    <path class="ColorScheme-Highlight" d="m186.14 829.87h4v-4h-1.4688c-1.405 0-2.5312 1.1159-2.5312 2.5312z" fill="currentColor"/>
   </g>
-  <g id="selected+hover-bottom" transform="matrix(-.36658 0 0 -1 311.72 891.86)">
+  <g id="selected+hover-bottom" transform="matrix(-.36658 0 0 -1 311.72 891.86)" opacity=".55">
    <path class="ColorScheme-Highlight" d="m190.2 825.86v4h130.94v-4z" fill="currentColor"/>
   </g>
-  <g id="selected+hover-bottomleft" transform="rotate(180 257.57 445.93)">
+  <g id="selected+hover-bottomleft" transform="rotate(180 257.57 445.93)" opacity=".55">
    <path class="ColorScheme-Highlight" d="m321.14 825.87v4h4v-1.4688c0-1.405-1.1159-2.5312-2.5312-2.5312z" fill="currentColor"/>
   </g>
  </g>
  <g transform="translate(-6 -6)" inkscape:label="selected">
   <path id="selected-center" class="ColorScheme-Highlight" d="m134 14v48h48v-48z" fill="currentColor" opacity=".5"/>
-  <g id="selected-left" transform="matrix(.99967 0 0 3 -56.082 -2475.6)">
+  <g id="selected-left" transform="matrix(.99967 0 0 3 -56.082 -2475.6)" opacity=".525">
    <path class="ColorScheme-Highlight" d="m186.14 829.86v16h4.0013v-16z" fill="currentColor"/>
   </g>
-  <g id="selected-topleft" transform="translate(-56.143 -815.86)">
+  <g id="selected-topleft" transform="translate(-56.143 -815.86)" opacity=".525">
    <path class="ColorScheme-Highlight" d="m186.14 829.86h4v-4h-1.4688c-1.405 0-2.5312 1.1159-2.5312 2.5312z" fill="currentColor"/>
   </g>
-  <g id="selected-top" transform="matrix(.36658 0 0 1 64.298 -815.86)">
+  <g id="selected-top" transform="matrix(.36658 0 0 1 64.298 -815.86)" opacity=".525">
    <path class="ColorScheme-Highlight" d="m190.14 825.86v4h130.94v-4z" fill="currentColor"/>
   </g>
-  <g id="selected-topright" transform="translate(-139.14 -815.86)">
+  <g id="selected-topright" transform="translate(-139.14 -815.86)" opacity=".525">
    <path class="ColorScheme-Highlight" d="m321.14 825.86v4h4v-1.4688c0-1.405-1.1159-2.5312-2.5312-2.5312z" fill="currentColor"/>
   </g>
-  <g id="selected-right" transform="matrix(1 0 0 3 -139.14 -2475.6)">
+  <g id="selected-right" transform="matrix(1 0 0 3 -139.14 -2475.6)" opacity=".525">
    <path class="ColorScheme-Highlight" d="m325.14 829.86v16h-4v-16z" fill="currentColor"/>
   </g>
-  <g id="selected-bottomright" transform="rotate(180 186.07 445.93)">
+  <g id="selected-bottomright" transform="rotate(180 186.07 445.93)" opacity=".525">
    <path class="ColorScheme-Highlight" d="m186.14 829.86h4v-4h-1.4688c-1.405 0-2.5312 1.1159-2.5312 2.5312z" fill="currentColor"/>
   </g>
-  <g id="selected-bottom" transform="matrix(-.36641 0 0 -.99955 251.67 891.49)">
+  <g id="selected-bottom" transform="matrix(-.36641 0 0 -.99955 251.67 891.49)" opacity=".525">
    <path class="ColorScheme-Highlight" d="m190.14 825.86v4.0018h131v-4.0018z" fill="currentColor"/>
   </g>
-  <g id="selected-bottomleft" transform="rotate(180 227.57 445.93)">
+  <g id="selected-bottomleft" transform="rotate(180 227.57 445.93)" opacity=".525">
    <path class="ColorScheme-Highlight" d="m321.14 825.86v4h4v-1.4688c0-1.405-1.1159-2.5312-2.5312-2.5312z" fill="currentColor"/>
   </g>
  </g>
  <g transform="translate(-6 -6)" inkscape:label="hover">
   <path id="hover-center" class="ColorScheme-Highlight" d="m74 14v48h48v-48z" fill="currentColor" opacity=".5"/>
-  <g id="hover-left" transform="matrix(1 0 0 3.001 -116.14 -2476.4)">
-   <path class="ColorScheme-Highlight" d="m186.14 829.86v15.995h4v-15.995z" fill="currentColor" opacity=".525"/>
+  <g id="hover-left" transform="matrix(1 0 0 3.001 -116.14 -2476.4)" opacity=".5">
+   <path class="ColorScheme-Highlight" d="m186.14 829.86v15.995h4v-15.995z" fill="currentColor" opacity="1"/>
   </g>
-  <g id="hover-topleft" transform="translate(-116.14 -815.85)">
-   <path class="ColorScheme-Highlight" d="m186.14 829.85h4v-4h-1.4688c-1.405 0-2.5312 1.1159-2.5312 2.5312z" fill="currentColor" opacity=".525"/>
+  <g id="hover-topleft" transform="translate(-116.14 -815.85)" opacity=".5">
+   <path class="ColorScheme-Highlight" d="m186.14 829.85h4v-4h-1.4688c-1.405 0-2.5312 1.1159-2.5312 2.5312z" fill="currentColor" opacity="1"/>
   </g>
-  <g id="hover-top" transform="matrix(.36658 0 0 1 4.288 -815.85)">
-   <path class="ColorScheme-Highlight" d="m190.17 825.85v4h130.94v-4z" fill="currentColor" opacity=".525"/>
+  <g id="hover-top" transform="matrix(.36658 0 0 1 4.288 -815.85)" opacity=".5">
+   <path class="ColorScheme-Highlight" d="m190.17 825.85v4h130.94v-4z" fill="currentColor" opacity="1"/>
   </g>
-  <g id="hover-topright" transform="translate(-199.14 -815.85)">
-   <path class="ColorScheme-Highlight" d="m321.14 825.85v4h4v-1.4688c0-1.405-1.1159-2.5312-2.5312-2.5312z" fill="currentColor" opacity=".525"/>
+  <g id="hover-topright" transform="translate(-199.14 -815.85)" opacity=".5">
+   <path class="ColorScheme-Highlight" d="m321.14 825.85v4h4v-1.4688c0-1.405-1.1159-2.5312-2.5312-2.5312z" fill="currentColor" opacity="1"/>
   </g>
-  <g id="hover-right" transform="matrix(1 0 0 3 -199.14 -2475.6)">
-   <path class="ColorScheme-Highlight" d="m325.14 829.85v16h-4v-16z" fill="currentColor" opacity=".525"/>
+  <g id="hover-right" transform="matrix(1 0 0 3 -199.14 -2475.6)" opacity=".5">
+   <path class="ColorScheme-Highlight" d="m325.14 829.85v16h-4v-16z" fill="currentColor" opacity="1"/>
   </g>
-  <g id="hover-bottomright" transform="rotate(180 156.07 445.93)">
-   <path class="ColorScheme-Highlight" d="m186.14 829.86h4v-4h-1.4688c-1.405 0-2.5312 1.1159-2.5312 2.5312z" fill="currentColor" opacity=".525"/>
+  <g id="hover-bottomright" transform="rotate(180 156.07 445.93)" opacity=".5">
+   <path class="ColorScheme-Highlight" d="m186.14 829.86h4v-4h-1.4688c-1.405 0-2.5312 1.1159-2.5312 2.5312z" fill="currentColor" opacity="1"/>
   </g>
-  <g id="hover-bottom" transform="matrix(-.36658 0 0 -1 191.72 891.87)">
-   <path class="ColorScheme-Highlight" d="m190.2 825.87v4h130.94v-4z" fill="currentColor" opacity=".525"/>
+  <g id="hover-bottom" transform="matrix(-.36658 0 0 -1 191.72 891.87)" opacity=".5">
+   <path class="ColorScheme-Highlight" d="m190.2 825.87v4h130.94v-4z" fill="currentColor" opacity="1"/>
   </g>
-  <g id="hover-bottomleft" transform="rotate(180 197.57 445.93)">
-   <path class="ColorScheme-Highlight" d="m321.14 825.86v4h4v-1.4688c0-1.405-1.1159-2.5312-2.5312-2.5312z" fill="currentColor" opacity=".525"/>
+  <g id="hover-bottomleft" transform="rotate(180 197.57 445.93)" opacity=".5">
+   <path class="ColorScheme-Highlight" d="m321.14 825.86v4h4v-1.4688c0-1.405-1.1159-2.5312-2.5312-2.5312z" fill="currentColor" opacity="1"/>
   </g>
  </g>
  <g transform="translate(-6 -6)" inkscape:label="normal">
@@ -121,11 +121,9 @@
   <path id="normal-left" d="m10 14v48h4v-48z" opacity=".001"/>
   <path id="normal-topleft" d="m10 14h4v-4h-1.4688c-1.405 0-2.5312 1.1159-2.5312 2.5312z" opacity=".001"/>
   <path id="normal-top" d="m14 10v4h48v-4z" opacity=".001"/>
-  <g>
-   <path id="normal-topright" d="m62 10v4h4v-1.4687c0-1.405-1.1159-2.5313-2.5313-2.5313z" opacity=".001"/>
-   <path id="normal-right" d="m66 14v48h-4v-48z" opacity=".001"/>
-   <path id="normal-bottomright" d="m66 62h-4v4h1.4687c1.405 0 2.5313-1.1159 2.5313-2.5312z" opacity=".001"/>
-  </g>
+  <path id="normal-topright" d="m62 10v4h4v-1.4687c0-1.405-1.1159-2.5313-2.5313-2.5313z" opacity=".001"/>
+  <path id="normal-right" d="m66 14v48h-4v-48z" opacity=".001"/>
+  <path id="normal-bottomright" d="m66 62h-4v4h1.4687c1.405 0 2.5313-1.1159 2.5313-2.5312z" opacity=".001"/>
   <path id="normal-bottom" d="m62 66v-4h-48v4z" opacity=".001"/>
   <path id="normal-bottomleft" d="m14 66v-4h-4v1.4688c0 1.405 1.1159 2.5312 2.5312 2.5312z" opacity=".001"/>
  </g>
