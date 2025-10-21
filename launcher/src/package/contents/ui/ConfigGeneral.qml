@@ -33,6 +33,7 @@ KCMUtils.SimpleKCM {
     property alias cfg_showFavoritesFirst: showFavoritesFirst.checked
     property alias cfg_displayPosition: displayPosition.currentIndex
     property alias cfg_gridIconSize: gridIconSize.currentIndex
+    property alias cfg_menuStyle: menuStyleChooser.currentIndex
 
     Kirigami.FormLayout {
         anchors.left: parent.left
@@ -182,5 +183,13 @@ KCMUtils.SimpleKCM {
             to: 5
         }
 
+        ComboBox {
+            id: menuStyleChooser
+            Kirigami.FormData.label: i18nd(i18nDomain, "Menu Style")
+            model: [
+                i18nd(i18nDomain, "Vinyl"),
+                //i18nd(i18nDomain, "Dash"),
+            ]
+        }
     }
 }
