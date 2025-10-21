@@ -1,0 +1,222 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="96" height="64" inkscape:output_extension="org.inkscape.output.svgz.inkscape" inkscape:version="1.4.2 (ebf0e940d0, 2025-05-08)" sodipodi:docname="scrollbar.svg" sodipodi:version="0.32" version="1.0" xmlns="http://www.w3.org/2000/svg" xmlns:cc="http://creativecommons.org/ns#" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd" xmlns:xlink="http://www.w3.org/1999/xlink">
+ <sodipodi:namedview id="base" width="48px" height="48px" bordercolor="#666666" borderopacity="1.0" gridtolerance="13" inkscape:current-layer="layer1" inkscape:cx="0.38800897" inkscape:cy="34.144789" inkscape:deskcolor="#eff0f1" inkscape:document-rotation="0" inkscape:document-units="px" inkscape:grid-bbox="true" inkscape:guide-bbox="true" inkscape:pagecheckerboard="0" inkscape:pageopacity="1" inkscape:pageshadow="2" inkscape:showpageshadow="2" inkscape:window-height="1008" inkscape:window-maximized="1" inkscape:window-width="1920" inkscape:window-x="0" inkscape:window-y="0" inkscape:zoom="3.86589" objecttolerance="9" pagecolor="#eff0f1" showgrid="true" showguides="true">
+  <inkscape:grid color="#0000ff" opacity=".019608" empcolor="#0000ff" empopacity="0.03921569" empspacing="5" enabled="true" originx="0" originy="0" snapvisiblegridlinesonly="true" spacingx="1" spacingy="1" type="xygrid" units="px" visible="true"/>
+  <sodipodi:guide inkscape:locked="false" orientation="0,1" position="0,64"/>
+  <sodipodi:guide inkscape:locked="false" orientation="0,1" position="0,48"/>
+  <sodipodi:guide inkscape:locked="false" orientation="0,1" position="0,32"/>
+  <sodipodi:guide inkscape:locked="false" orientation="1,0" position="0,64"/>
+  <sodipodi:guide inkscape:locked="false" orientation="1,0" position="16,64"/>
+  <sodipodi:guide inkscape:locked="false" orientation="1,0" position="32,64"/>
+  <sodipodi:guide inkscape:locked="false" orientation="1,0" position="48,64"/>
+  <sodipodi:guide inkscape:locked="false" orientation="1,0" position="64,64"/>
+  <sodipodi:guide inkscape:locked="false" orientation="1,0" position="80,64"/>
+  <sodipodi:guide inkscape:locked="false" orientation="1,0" position="96,64"/>
+  <sodipodi:guide inkscape:locked="false" orientation="0,1" position="0,0"/>
+  <sodipodi:guide inkscape:locked="false" orientation="0,1" position="0,16"/>
+ </sodipodi:namedview>
+ <defs>
+  <style id="current-color-scheme" type="text/css">.ColorScheme-Text {
+        color:#31363b;
+        stop-color:#31363b;
+      }
+      .ColorScheme-Background {
+        color:#eff0f1;
+        stop-color:#eff0f1;
+      }
+      .ColorScheme-Highlight {
+        color:#3daee9;
+        stop-color:#3daee9;
+      }
+      .ColorScheme-ViewText {
+        color:#31363b;
+        stop-color:#31363b;
+      }
+      .ColorScheme-ViewBackground {
+        color:#fcfcfc;
+        stop-color:#fcfcfc;
+      }
+      .ColorScheme-ViewHover {
+        color:#93cee9;
+        stop-color:#93cee9;
+      }
+      .ColorScheme-ViewFocus{
+        color:#3daee9;
+        stop-color:#3daee9;
+      }
+      .ColorScheme-ButtonText {
+        color:#31363b;
+        stop-color:#31363b;
+      }
+      .ColorScheme-ButtonBackground {
+        color:#eff0f1;
+        stop-color:#eff0f1;
+      }
+      .ColorScheme-ButtonHover {
+        color:#93cee9;
+        stop-color:#93cee9;
+      }
+      .ColorScheme-ButtonFocus{
+        color:#3daee9;
+        stop-color:#3daee9;
+      }</style>
+ </defs>
+ <metadata>
+  <rdf:RDF>
+   <cc:Work rdf:about="">
+    <dc:format>image/svg+xml</dc:format>
+    <dc:type rdf:resource="http://purl.org/dc/dcmitype/StillImage"/>
+   </cc:Work>
+   <cc:Work rdf:about="">
+    <dc:format>image/svg+xml</dc:format>
+    <dc:type rdf:resource="http://purl.org/dc/dcmitype/StillImage"/>
+   </cc:Work>
+  </rdf:RDF>
+ </metadata>
+ <g inkscape:groupmode="layer" inkscape:label="Layer 1">
+  <rect id="hint-scrollbar-size" x="-12" y="-13" width="12" height="12" rx="0" ry="12" style="fill:#4e9a06"/>
+  <rect id="hint-stretch-center" x="-10" y="-19.077" width="2.0329" height="2.0771" rx="0" ry="2.0771" style="fill:#4e9a06"/>
+  <rect x="-32" width="32" height="32" style="fill:none;stroke:#000"/>
+  <rect id="invisibleMarginLeft" x="-31" y="8" width="6" height="6" style="fill:#fff;opacity:.003"/>
+  <rect id="invisibleMarginTop" x="-24" y="1" width="6" height="6" style="fill:#fff;opacity:.003"/>
+  <rect id="invisibleMarginTopLeft" x="-31" y="1" width="6" height="6" style="fill:#fff;opacity:.003"/>
+  <use id="slider-center" transform="translate(37,5)" width="48" height="98" xlink:href="#sliderCenter"/>
+  <g id="slider-left">
+   <use transform="translate(37,5)" width="48" height="98" xlink:href="#invisibleMarginLeft"/>
+   <use transform="translate(37 5)" width="48" height="98" xlink:href="#sliderSideLeft"/>
+  </g>
+  <g id="slider-topleft">
+   <use transform="translate(37,5)" width="48" height="98" xlink:href="#invisibleMarginTopLeft"/>
+   <use transform="translate(37 5)" width="48" height="98" xlink:href="#sliderCorner"/>
+  </g>
+  <g id="slider-top">
+   <use transform="translate(37 5)" width="48" height="98" xlink:href="#invisibleMarginTop"/>
+   <use transform="translate(37,5)" width="48" height="98" xlink:href="#sliderSideTop"/>
+  </g>
+  <g id="slider-right" transform="matrix(-1 0 0 1 32 -2e-6)">
+   <use transform="translate(37,5)" width="48" height="98" xlink:href="#invisibleMarginLeft"/>
+   <use transform="translate(37 5)" width="48" height="98" xlink:href="#sliderSideLeft"/>
+  </g>
+  <g id="slider-topright" transform="matrix(-1 0 0 1 32 -2e-6)">
+   <use transform="translate(37,5)" width="48" height="98" xlink:href="#invisibleMarginTopLeft"/>
+   <use transform="translate(37 5)" width="48" height="98" xlink:href="#sliderCorner"/>
+  </g>
+  <use id="slider-bottomleft" transform="matrix(1,0,0,-1,0,32)" width="48" height="98" xlink:href="#slider-topleft"/>
+  <use id="slider-bottom" transform="matrix(1,0,0,-1,0,32)" width="48" height="98" xlink:href="#slider-top"/>
+  <g id="slider-bottomright" transform="rotate(180,16,16)">
+   <use transform="translate(37,5)" width="48" height="98" xlink:href="#invisibleMarginTopLeft"/>
+   <use transform="translate(37 5)" width="48" height="98" xlink:href="#sliderCorner"/>
+  </g>
+  <g id="sliderCenter">
+   <rect class="ColorScheme-Text" x="-24" y="8" width="6" height="6" style="fill-rule:evenodd;fill:currentColor;opacity:.35"/>
+  </g>
+  <g id="sliderSideLeft">
+   <rect class="ColorScheme-Text" x="-27" y="8" width="2" height="6" style="fill-rule:evenodd;fill:currentColor;opacity:.35"/>
+  </g>
+  <g id="sliderCorner">
+   <g transform="matrix(-.75 0 0 .75 -18.25 1.75)">
+    <path class="ColorScheme-Text" d="m9 4.3333v2.6667h2.6667c0-1.4773-1.1893-2.6667-2.6667-2.6667z" style="fill:currentColor;opacity:.35" inkscape:connector-curvature="0"/>
+   </g>
+  </g>
+  <g id="sliderSideTop">
+   <rect class="ColorScheme-Text" transform="rotate(90)" x="5" y="18" width="2" height="6" style="fill-rule:evenodd;fill:currentColor;opacity:.35"/>
+  </g>
+  <rect id="sliderMCenter" class="ColorScheme-ViewFocus" x="-24" y="25" width="6" height="6" style="fill-rule:evenodd;fill:currentColor"/>
+  <rect id="sliderMSideLeft" class="ColorScheme-ViewFocus" x="-29" y="25" width="4" height="6" style="fill-rule:evenodd;fill:currentColor"/>
+  <g id="sliderMCorner">
+   <path class="ColorScheme-ViewFocus" d="m-25 20v4h-4c0-2.216 1.784-4 4-4z" style="fill:currentColor;stroke-width:1.3333" inkscape:connector-curvature="0"/>
+  </g>
+  <rect id="sliderMSideTop" class="ColorScheme-ViewFocus" transform="rotate(90)" x="20" y="18" width="4" height="6" style="fill-rule:evenodd;fill:currentColor"/>
+  <use id="mouseover-slider-center" transform="translate(69,-12)" width="48" height="98" xlink:href="#sliderMCenter"/>
+  <g id="mouseover-slider-left">
+   <use transform="translate(69,5)" width="48" height="98" xlink:href="#invisibleMarginLeft"/>
+   <use transform="translate(69,-12)" width="48" height="98" xlink:href="#sliderMSideLeft"/>
+  </g>
+  <g id="mouseover-slider-topleft">
+   <use transform="translate(69,5)" width="48" height="98" xlink:href="#invisibleMarginTopLeft"/>
+   <use transform="translate(69,-12)" width="48" height="98" xlink:href="#sliderMCorner"/>
+  </g>
+  <g id="mouseover-slider-top">
+   <use transform="translate(69,5)" width="48" height="98" xlink:href="#invisibleMarginTop"/>
+   <use transform="translate(69,-12)" width="48" height="98" xlink:href="#sliderMSideTop"/>
+  </g>
+  <use id="mouseover-slider-right" transform="matrix(-1,0,0,1,96,0)" width="48" height="98" xlink:href="#mouseover-slider-left"/>
+  <use id="mouseover-slider-topright" transform="matrix(-1,0,0,1,96,0)" width="48" height="98" xlink:href="#mouseover-slider-topleft"/>
+  <use id="mouseover-slider-bottomleft" transform="matrix(1,0,0,-1,0,32)" width="48" height="98" xlink:href="#mouseover-slider-topleft"/>
+  <use id="mouseover-slider-bottom" transform="matrix(1,0,0,-1,0,32)" width="48" height="98" xlink:href="#mouseover-slider-top"/>
+  <use id="mouseover-slider-bottomright" transform="rotate(180,48,16)" width="48" height="98" xlink:href="#mouseover-slider-topleft"/>
+  <rect id="sliderPCenter" class="ColorScheme-ViewFocus" x="-7" y="25" width="6" height="6" style="fill-rule:evenodd;fill:currentColor"/>
+  <rect id="sliderPSideLeft" class="ColorScheme-ViewFocus" x="-12" y="25" width="4" height="6" style="fill-rule:evenodd;fill:currentColor"/>
+  <g id="sliderPCorner">
+   <path class="ColorScheme-ViewFocus" d="m-8 20v4h-4c0-2.216 1.784-4 4-4z" style="fill:currentColor" inkscape:connector-curvature="0"/>
+  </g>
+  <rect id="sliderPSideTop" class="ColorScheme-ViewFocus" transform="rotate(90)" x="20" y="1" width="4" height="6" style="fill-rule:evenodd;fill:currentColor"/>
+  <use id="sunken-slider-center" transform="translate(84,-12)" width="48" height="98" xlink:href="#sliderPCenter"/>
+  <g id="sunken-slider-left">
+   <use transform="translate(101,5)" width="48" height="98" xlink:href="#invisibleMarginLeft"/>
+   <use transform="translate(84,-12)" width="48" height="98" xlink:href="#sliderPSideLeft"/>
+  </g>
+  <g id="sunken-slider-topleft">
+   <use transform="translate(101,5)" width="48" height="98" xlink:href="#invisibleMarginTopLeft"/>
+   <use transform="translate(84,-12)" width="48" height="98" xlink:href="#sliderPCorner"/>
+  </g>
+  <g id="sunken-slider-top">
+   <use transform="translate(101,5)" width="48" height="98" xlink:href="#invisibleMarginTop"/>
+   <use transform="translate(84,-12)" width="48" height="98" xlink:href="#sliderPSideTop"/>
+  </g>
+  <use id="sunken-slider-right" transform="matrix(-1,0,0,1,160,0)" width="48" height="98" xlink:href="#sunken-slider-left"/>
+  <use id="sunken-slider-topright" transform="matrix(-1,0,0,1,160,0)" width="48" height="98" xlink:href="#sunken-slider-topleft"/>
+  <use id="sunken-slider-bottomleft" transform="matrix(1,0,0,-1,0,32)" width="48" height="98" xlink:href="#sunken-slider-topleft"/>
+  <use id="sunken-slider-bottom" transform="matrix(1,0,0,-1,0,32)" width="48" height="98" xlink:href="#sunken-slider-top"/>
+  <use id="sunken-slider-bottomright" transform="rotate(180,80,16)" width="48" height="98" xlink:href="#sunken-slider-topleft"/>
+  <rect x="-32" y="32" width="32" height="32" style="fill:none;stroke:#000"/>
+  <rect id="backgroundVCenter" class="ColorScheme-Text" x="-24" y="40" width="6" height="6" style="fill-rule:evenodd;fill:currentColor;opacity:.25"/>
+  <rect id="backgroundVSideLeft" class="ColorScheme-Text" x="-29" y="40" width="4" height="6" style="fill-rule:evenodd;fill:currentColor;opacity:.25"/>
+  <g id="backgroundVCorner">
+   <path class="ColorScheme-Text" d="m-25 35v4h-4c0-2.216 1.784-4 4-4z" style="fill:currentColor;opacity:.25;stroke-width:2" inkscape:connector-curvature="0"/>
+  </g>
+  <rect id="backgroundVSideTop" class="ColorScheme-Text" transform="rotate(90)" x="35" y="18" width="4" height="6" style="fill-rule:evenodd;fill:currentColor;opacity:.25"/>
+  <rect id="backgroundHCenter" class="ColorScheme-Text" x="-24" y="57" width="6" height="6" style="fill-rule:evenodd;fill:currentColor;opacity:.25"/>
+  <rect id="backgroundBSideLeft" class="ColorScheme-Text" x="-29" y="57" width="4" height="6" style="fill-rule:evenodd;fill:currentColor;opacity:.25"/>
+  <g id="backgroundHCorner">
+   <path class="ColorScheme-Text" d="m-25 52v4h-4c0-2.216 1.784-4 4-4z" style="fill:currentColor;opacity:.25" inkscape:connector-curvature="0"/>
+  </g>
+  <rect id="backgroundHSideTop" class="ColorScheme-Text" transform="rotate(90)" x="52" y="18" width="4" height="6" style="fill-rule:evenodd;fill:currentColor;opacity:.25"/>
+  <use id="background-vertical-center" transform="translate(37,5)" width="48" height="98" xlink:href="#backgroundVCenter"/>
+  <g id="background-vertical-left" transform="translate(0,1)">
+   <use transform="translate(37,36)" width="48" height="98" xlink:href="#invisibleMarginLeft"/>
+   <use transform="translate(37,4)" width="48" height="98" xlink:href="#backgroundVSideLeft"/>
+  </g>
+  <g id="background-vertical-topleft" transform="translate(0,1)">
+   <use transform="translate(37,36)" width="48" height="98" xlink:href="#invisibleMarginTopLeft"/>
+   <use transform="translate(37,4)" width="48" height="98" xlink:href="#backgroundVCorner"/>
+  </g>
+  <g id="background-vertical-top" transform="translate(0,1)">
+   <use transform="translate(37,36)" width="48" height="98" xlink:href="#invisibleMarginTop"/>
+   <use transform="translate(37,4)" width="48" height="98" xlink:href="#backgroundVSideTop"/>
+  </g>
+  <use id="background-vertical-right" transform="matrix(-1,0,0,1,32,0)" width="48" height="98" xlink:href="#background-vertical-left"/>
+  <use id="background-vertical-topright" transform="matrix(-1,0,0,1,32,0)" width="48" height="98" xlink:href="#background-vertical-topleft"/>
+  <use id="background-vertical-bottomleft" transform="matrix(1,0,0,-1,0,96)" width="48" height="98" xlink:href="#background-vertical-topleft"/>
+  <use id="background-vertical-bottom" transform="matrix(1,0,0,-1,0,96)" width="48" height="98" xlink:href="#background-vertical-top"/>
+  <use id="background-vertical-bottomright" transform="rotate(180,16,48)" width="48" height="98" xlink:href="#background-vertical-topleft"/>
+  <use id="background-horizontal-center" transform="translate(69,-12)" width="48" height="98" xlink:href="#backgroundHCenter"/>
+  <g id="background-horizontal-left">
+   <use transform="translate(69,37)" width="48" height="98" xlink:href="#invisibleMarginLeft"/>
+   <use transform="translate(69,-12)" width="48" height="98" xlink:href="#backgroundBSideLeft"/>
+  </g>
+  <g id="background-horizontal-topleft">
+   <use transform="translate(69,37)" width="48" height="98" xlink:href="#invisibleMarginTopLeft"/>
+   <use transform="translate(69,-12)" width="48" height="98" xlink:href="#backgroundHCorner"/>
+  </g>
+  <g id="background-horizontal-top">
+   <use transform="translate(69,37)" width="48" height="98" xlink:href="#invisibleMarginTop"/>
+   <use transform="translate(69,-12)" width="48" height="98" xlink:href="#backgroundHSideTop"/>
+  </g>
+  <use id="background-horizontal-right" transform="matrix(-1,0,0,1,96,0)" width="48" height="98" xlink:href="#background-horizontal-left"/>
+  <use id="background-horizontal-topright" transform="matrix(-1,0,0,1,96,0)" width="48" height="98" xlink:href="#background-horizontal-topleft"/>
+  <use id="background-horizontal-bottomleft" transform="matrix(1,0,0,-1,0,96)" width="48" height="98" xlink:href="#background-horizontal-topleft"/>
+  <use id="background-horizontal-bottom" transform="matrix(1,0,0,-1,0,96)" width="48" height="98" xlink:href="#background-horizontal-top"/>
+  <use id="background-horizontal-bottomright" transform="rotate(180,48,48)" width="48" height="98" xlink:href="#background-horizontal-topleft"/>
+ </g>
+</svg>
