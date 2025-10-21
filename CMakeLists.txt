@@ -1,6 +1,14 @@
 cmake_minimum_required(VERSION 3.16)
-project(vinyl)
-set(PROJECT_VERSION "6.4.5")
+
+# Get version
+file(READ "${CMAKE_SOURCE_DIR}/VERSION" VER_RAW)
+string(STRIP ${VER_RAW} VER)
+
+project(
+    vinyl
+    DESCRIPTION "A theme for KDE Plasma"
+    VERSION ${VER}
+)
 
 set(KF6_MIN_VERSION "6.13.0")
 set(KDE_COMPILERSETTINGS_LEVEL "5.82")
@@ -167,6 +175,7 @@ function(build_Qt6)
     include(ECMSetupVersion)
     ecm_setup_version(${PROJECT_VERSION} VARIABLE_PREFIX VINYL
         PACKAGE_VERSION_FILE "${CMAKE_CURRENT_BINARY_DIR}/VinylConfigVersion.cmake"
+        VERSION_HEADER "${CMAKE_CURRENT_BINARY_DIR}/kstyle6/config/vinylstyleversion.h"
     )
     set(CMAKECONFIG_INSTALL_DIR "${KDE_INSTALL_CMAKEPACKAGEDIR}/Vinyl")
 
