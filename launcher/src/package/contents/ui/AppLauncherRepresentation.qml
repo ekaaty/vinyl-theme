@@ -30,7 +30,34 @@ Item {
         Plasmoid.configuration.useCustomButtonImage
         && Plasmoid.configuration.customButtonImage.length != 0
     )
-    property QtObject appLauncher: null
+    property var appLauncher: null
+    property string menuStyle: Plasmoid.configuration.menuStyle
+    readonly property var menuSources: [
+        "VinylMenuLauncher.qml", // menuStyle = 0 (Fallback)
+        "DashBoardLauncher.qml", // menuStyle = 1
+    ]
+
+    function loadAppLauncher() {
+        var menuIndex = (
+                root.menuStyle < 0 ||
+                root.menuStyle >= root.menuSources.length
+            ) ? 0 : root.menuStyle
+
+        var componentPath = root.menuSources[menuIndex];
+        var component = Qt.createComponent(componentPath);
+
+        if (component.status === Component.Ready) {
+            if (root.appLauncher !== null) {
+                root.appLauncher.destroy();
+            }
+            root.appLauncher = null;
+            root.appLauncher = component.createObject(root);
+        } else if (component.status === Component.Error) {
+            console.error("Error loading component:", component.errorString());
+        }
+    }
+
+    onMenuStyleChanged: loadAppLauncher()
 
     Plasmoid.status: appLauncher && appLauncher.visible
         ? PlasmaCore.Types.RequiresAttentionStatus
@@ -58,7 +85,7 @@ Item {
     }
 
     Component.onCompleted: {
-        appLauncher = Qt.createQmlObject("VinylMenuLauncher {}", root);
+        loadAppLauncher();
         plasmoid.activated.connect(function() {
             appLauncher.visible = !appLauncher.visible;
         });

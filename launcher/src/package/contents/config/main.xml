@@ -6,6 +6,9 @@
   <kcfgfile name=""/>
 
   <group name="General">
+    <entry name="menuStyle" type="Enum">
+      <default>0</default>
+    </entry>
 
     <entry name="gridIconSize" type="Enum">
       <default>1</default>

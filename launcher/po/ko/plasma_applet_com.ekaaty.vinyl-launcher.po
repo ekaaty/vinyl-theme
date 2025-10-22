@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Vinyl Launcher 6.4.5\n"
 "Report-Msgid-Bugs-To: https://github.com/ekaaty/vinyl-theme/issues\n"
-"POT-Creation-Date: 2025-10-08 10:43-0300\n"
-"PO-Revision-Date: 2025-10-08 10:45-0300\n"
+"POT-Creation-Date: 2025-10-21 08:11-0300\n"
+"PO-Revision-Date: 2025-10-21 08:11-0300\n"
 "Last-Translator: HyeonWol <hyeonwol12345@kakao.com>\n"
 "Language-Team: \n"
 "Language: ko\n"
@@ -47,72 +47,82 @@ msgstr "현재 활동만"
 msgid "Show in Favorites"
 msgstr "책갈피에 표시"
 
-#: src/package/contents/ui/ConfigGeneral.qml:44
+#: src/package/contents/ui/ConfigGeneral.qml:45
 #, kde-format
 msgid "Icon"
 msgstr "아이콘"
 
-#: src/package/contents/ui/ConfigGeneral.qml:128
+#: src/package/contents/ui/ConfigGeneral.qml:129
 #, kde-format
 msgctxt "@item:inmenu Open icon chooser dialog"
 msgid "Choose…"
 msgstr "선택…"
 
-#: src/package/contents/ui/ConfigGeneral.qml:133
+#: src/package/contents/ui/ConfigGeneral.qml:134
 #, kde-format
 msgctxt "@item:inmenu Reset icon to default"
 msgid "Clear Icon"
 msgstr "기본 아이콘으로 초기화"
 
-#: src/package/contents/ui/ConfigGeneral.qml:149
+#: src/package/contents/ui/ConfigGeneral.qml:150
 #, kde-format
 msgid "Show favorites first"
 msgstr "즐겨찾기 먼저 표시"
 
-#: src/package/contents/ui/ConfigGeneral.qml:154
+#: src/package/contents/ui/ConfigGeneral.qml:155
 #, kde-format
 msgid "Grid icon size"
 msgstr "격자 아이콘 크기"
 
-#: src/package/contents/ui/ConfigGeneral.qml:156
+#: src/package/contents/ui/ConfigGeneral.qml:157
 #, kde-format
 msgid "Medium"
 msgstr "보통"
 
-#: src/package/contents/ui/ConfigGeneral.qml:157
+#: src/package/contents/ui/ConfigGeneral.qml:158
 #, kde-format
 msgid "Large"
 msgstr "크게"
 
-#: src/package/contents/ui/ConfigGeneral.qml:158
+#: src/package/contents/ui/ConfigGeneral.qml:159
 #, kde-format
 msgid "Huge"
 msgstr "아주 크게"
 
-#: src/package/contents/ui/ConfigGeneral.qml:164
+#: src/package/contents/ui/ConfigGeneral.qml:165
 #, kde-format
 msgid "Menu position"
 msgstr "메뉴 위치"
 
-#: src/package/contents/ui/ConfigGeneral.qml:166
+#: src/package/contents/ui/ConfigGeneral.qml:167
 #, kde-format
 msgid "Default"
 msgstr "기본"
 
-#: src/package/contents/ui/ConfigGeneral.qml:167
+#: src/package/contents/ui/ConfigGeneral.qml:168
 #, kde-format
 msgid "Center"
 msgstr "가운데"
 
-#: src/package/contents/ui/ConfigGeneral.qml:173
+#: src/package/contents/ui/ConfigGeneral.qml:174
 #, kde-format
 msgid "Number of columns"
 msgstr "행 개수"
 
-#: src/package/contents/ui/ConfigGeneral.qml:180
+#: src/package/contents/ui/ConfigGeneral.qml:181
 #, kde-format
 msgid "Number of rows"
 msgstr "열 개수"
+
+#: src/package/contents/ui/ConfigGeneral.qml:188
+#, kde-format
+msgid "Menu Style"
+msgstr ""
+
+#: src/package/contents/ui/ConfigGeneral.qml:190
+#, kde-format
+msgid "Vinyl"
+msgstr ""
 
 #: src/package/contents/ui/main.qml:231
 #, kde-format

@@ -55,7 +55,7 @@ find_package(KF6 ${KF6_MIN_VERSION} REQUIRED COMPONENTS
     I18n
 )
 
-find_package(Plasma ${PLASMA_MIN_VERSION} REQUIRED)
+#find_package(Plasma ${PLASMA_MIN_VERSION} REQUIRED)
 
 add_definitions(-DTRANSLATION_DOMAIN=\"plasma_applet_${VINYL_LAUNCHER_PLUGIN_ID}\")
 kdoctools_install(po)

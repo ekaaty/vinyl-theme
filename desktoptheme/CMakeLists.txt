@@ -34,7 +34,7 @@ find_package(ECM ${KF6_MIN_VERSION} REQUIRED NO_MODULE)
 set(CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} ${ECM_MODULE_PATH} ${CMAKE_SOURCE_DIR}/cmake)
 
 find_package(Qt6 ${QT_MIN_VERSION} REQUIRED CONFIG COMPONENTS Core)
-include(KDEInstallDirs6)
+#include(KDEInstallDirs6)
 
 execute_process(
     COMMAND sed -i
