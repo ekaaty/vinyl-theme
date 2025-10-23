@@ -837,7 +837,7 @@ namespace Vinyl
 
         }
 
-        _dragInProgress = true;
+        _dragInProgress = window->startSystemMove();
 
     }
 
