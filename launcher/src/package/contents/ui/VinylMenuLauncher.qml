@@ -15,7 +15,7 @@ import org.kde.plasma.extras as PlasmaExtras
 import org.kde.plasma.plasmoid
 
 import org.kde.plasma.private.kicker as Kicker
-import org.kde.plasma.private.quicklaunch
+//import org.kde.plasma.private.quicklaunch
 
 import org.kde.plasma.plasma5support as P5Support // Needed by datasource
 
@@ -202,7 +202,7 @@ Item {
 
             focus: true
 
-            Logic { id: logic }
+            //Logic { id: logic }
 
             OpacityAnimator {
                 id: animation1;
