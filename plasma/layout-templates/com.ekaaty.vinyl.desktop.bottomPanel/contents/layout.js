@@ -28,11 +28,11 @@ panel.addWidget("org.kde.plasma.marginsseparator")
 panel.addWidget("org.kde.plasma.showdesktop")
 
 /* ColorScheme switcher */
-var colorswitcher = panel.addWidget("com.github.heqro.day-night-switcher")
+/*var colorswitcher = panel.addWidget("com.github.heqro.day-night-switcher")
 colorswitcher.currentConfigGroup = ["General"]
 colorswitcher.writeConfig("iconA", "weather-clear-night-symbolic")
 colorswitcher.writeConfig("iconB", "whitebalance-symbolic")
-colorswitcher.writeConfig("checked", "true")
+colorswitcher.writeConfig("checked", "true")*/
 
 panel.addWidget("org.kde.plasma.panelspacer")
 panel.addWidget("org.kde.plasma.marginsseparator")
