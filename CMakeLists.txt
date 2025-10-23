@@ -1,6 +1,14 @@
 cmake_minimum_required(VERSION 3.16)
-project(vinyl)
-set(PROJECT_VERSION "6.4.5")
+
+# Get version
+file(READ "${CMAKE_SOURCE_DIR}/VERSION" _VERSION_RAW)
+string(STRIP ${_VERSION_RAW} _VERSION)
+
+project(
+    vinyl
+    DESCRIPTION "A theme suite for KDE Plasma"
+    VERSION ${_VERSION}
+)
 
 set(KF6_MIN_VERSION "6.13.0")
 set(KDE_COMPILERSETTINGS_LEVEL "5.82")
