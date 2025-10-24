@@ -227,6 +227,13 @@
           </size>
          </property>
         </spacer>
+      </item>
+      <item row="10" column="4">
+        <widget class="QLabel" name="_versionLabel">
+         <property name="text">
+          <string>VERSION</string>
+         </property>
+        </widget>
        </item>
       </layout>
       </widget>

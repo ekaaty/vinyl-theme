@@ -23,6 +23,7 @@
 #include "../vinyl.h"
 #include "../config-vinyl.h"
 #include "vinylstyleconfigdata.h"
+#include "vinylstyleversion.h"
 
 #include <QDBusMessage>
 #include <QDBusConnection>
@@ -66,7 +67,7 @@ namespace Vinyl
         connect( _sidebarOpacity, &QAbstractSlider::valueChanged, this, &StyleConfig::updateChanged );
         connect( _sidebarOpacity, SIGNAL(valueChanged(int)), _sidebarOpacitySpinBox, SLOT(setValue(int)) );
         connect( _sidebarOpacitySpinBox, SIGNAL(valueChanged(int)), _sidebarOpacity, SLOT(setValue(int)) );
-	connect( _buttonSize, &QAbstractSlider::valueChanged, this, &StyleConfig::updateChanged );
+        connect( _buttonSize, &QAbstractSlider::valueChanged, this, &StyleConfig::updateChanged );
         connect( _kTextEditDrawFrame, &QAbstractButton::toggled, this, &StyleConfig::updateChanged );
         connect( _widgetDrawShadow, &QAbstractButton::toggled, this, &StyleConfig::updateChanged );
         connect( _transparentDolphinView, &QAbstractButton::toggled, this, &StyleConfig::updateChanged );
@@ -93,7 +94,7 @@ namespace Vinyl
         StyleConfigData::setAnimationsDuration( _animationsDuration->value() );
         StyleConfigData::setWindowDragMode( _windowDragMode->currentIndex() );
         StyleConfigData::setMenuOpacity( _menuOpacity->value() );
-	StyleConfigData::setButtonSize( _buttonSize->value() );
+        StyleConfigData::setButtonSize( _buttonSize->value() );
         StyleConfigData::setDolphinSidebarOpacity( _sidebarOpacity->value() );
         StyleConfigData::setKTextEditDrawFrame( _kTextEditDrawFrame->isChecked() );
         StyleConfigData::setWidgetDrawShadow( _widgetDrawShadow->isChecked() );
@@ -103,10 +104,10 @@ namespace Vinyl
         StyleConfigData::self()->save();
 
         // emit dbus signal
-        QDBusMessage message( QDBusMessage::createSignal( 
-				QStringLiteral( "/VinylStyle" ),  
-				QStringLiteral( "org.kde.Vinyl.Style" ), 
-				QStringLiteral( "reparseConfiguration" ) ) );
+        QDBusMessage message( QDBusMessage::createSignal(
+                                QStringLiteral( "/VinylStyle" ),  
+                                QStringLiteral( "org.kde.Vinyl.Style" ), 
+                                QStringLiteral( "reparseConfiguration" ) ) );
         QDBusConnection::sessionBus().send(message);
 
     }
@@ -149,7 +150,7 @@ namespace Vinyl
         else if( _animationsEnabled->isChecked() != StyleConfigData::animationsEnabled() ) modified = true;
         else if( _animationsDuration->value() != StyleConfigData::animationsDuration() ) modified = true;
         else if( _windowDragMode->currentIndex() != StyleConfigData::windowDragMode() ) modified = true;
-	else if( _buttonSize->value() != StyleConfigData::buttonSize() ) modified = true;
+        else if( _buttonSize->value() != StyleConfigData::buttonSize() ) modified = true;
         else if( _kTextEditDrawFrame->isChecked() != StyleConfigData::kTextEditDrawFrame() ) modified = true;
         else if( _widgetDrawShadow->isChecked() != StyleConfigData::widgetDrawShadow() ) modified = true;
         else if( _transparentDolphinView->isChecked() != StyleConfigData::transparentDolphinView() ) modified = true;
@@ -183,13 +184,13 @@ namespace Vinyl
         _menuOpacity->setValue( StyleConfigData::menuOpacity() );
         _menuOpacitySpinBox->setValue( StyleConfigData::menuOpacity() );
         _sidebarOpacity->setValue( StyleConfigData::dolphinSidebarOpacity() );
-	_sidebarOpacitySpinBox->setValue(StyleConfigData::dolphinSidebarOpacity());
-	_buttonSize->setValue( StyleConfigData::buttonSize() );
+        _sidebarOpacitySpinBox->setValue(StyleConfigData::dolphinSidebarOpacity());
+        _buttonSize->setValue( StyleConfigData::buttonSize() );
         _kTextEditDrawFrame->setChecked( StyleConfigData::kTextEditDrawFrame() );
         _widgetDrawShadow->setChecked( StyleConfigData::widgetDrawShadow() );
         _transparentDolphinView->setChecked( StyleConfigData::transparentDolphinView() );
         _cornerRadius->setValue( StyleConfigData::cornerRadius() );
-
+        _versionLabel->setText(VINYL_VERSION_STRING);
 
     }
 
