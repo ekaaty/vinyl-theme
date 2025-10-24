@@ -175,6 +175,7 @@ function(build_Qt6)
     include(ECMSetupVersion)
     ecm_setup_version(${PROJECT_VERSION} VARIABLE_PREFIX VINYL
         PACKAGE_VERSION_FILE "${CMAKE_CURRENT_BINARY_DIR}/VinylConfigVersion.cmake"
+	VERSION_HEADER "${CMAKE_CURRENT_BINARY_DIR}/kstyle6/config/vinylstyleversion.h"
     )
     set(CMAKECONFIG_INSTALL_DIR "${KDE_INSTALL_CMAKEPACKAGEDIR}/Vinyl")
 
