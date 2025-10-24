@@ -55,7 +55,9 @@ find_package(KF6 ${KF6_MIN_VERSION} REQUIRED COMPONENTS
     I18n
 )
 
-#find_package(Plasma ${PLASMA_MIN_VERSION} REQUIRED)
+if(NOT STANDALONE)
+    find_package(Plasma ${PLASMA_MIN_VERSION} REQUIRED)
+endif()
 
 add_definitions(-DTRANSLATION_DOMAIN=\"plasma_applet_${VINYL_LAUNCHER_PLUGIN_ID}\")
 kdoctools_install(po)
@@ -70,7 +72,9 @@ execute_process(
 if(NOT STANDALONE)
     plasma_install_package(
         src/package 
-        ${VINYL_LAUNCHER_PLUGIN_ID} 
+        ${VINYL_LAUNCHER_PLUGIN_ID}
+        plasmoids
+        applet
     )
 else()
     install(
