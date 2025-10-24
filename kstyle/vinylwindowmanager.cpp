@@ -80,7 +80,7 @@
 
 #if VINYL_HAVE_QTQUICK
 // needed to enable dragging from QQuickWindows
-#include <QQuickItem>
+#include <QQuickRenderControl>
 #include <QQuickWindow>
 #endif
 
@@ -270,7 +270,7 @@ namespace Vinyl
     void WindowManager::registerWidget( QWidget* widget )
     {
 
-        if( isBlackListed( widget ) || isDragable( widget ) )
+        if( isBlackListed( widget ) || isDragable( widget ) || widget->inherits("QQuickWidget") )
         {
 
             /*
@@ -384,20 +384,22 @@ namespace Vinyl
     void WindowManager::timerEvent( QTimerEvent* event )
     {
 
-        if( event->timerId() == _dragTimer.timerId() )
-        {
-
-            _dragTimer.stop();
-            if( _target ) startDrag( _target.data()->window()->windowHandle(), _globalDragPoint );
-            #if VINYL_HAVE_QTQUICK
-            else if( _quickTarget ) startDrag( _quickTarget.data()->window(), _globalDragPoint );
-            #endif
-
-        } else {
-
-            return QObject::timerEvent( event );
-
+       if (event->timerId() == _dragTimer.timerId()) {
+        _dragTimer.stop();
+        setLocked(false);
+        if (_target) {
+            startDrag(_target.data()->window()->windowHandle());
         }
+#if VINYL_HAVE_QTQUICK
+        else if (_quickTarget) {
+            _quickTarget.data()->ungrabMouse();
+            startDrag(_quickTarget.data()->window());
+        }
+#endif
+        resetDrag();
+    } else {
+        return QObject::timerEvent(event);
+    }
 
     }
 
@@ -406,59 +408,107 @@ namespace Vinyl
     {
 
         // cast event and check buttons/modifiers
-        auto mouseEvent = static_cast<QMouseEvent*>( event );
-        if (mouseEvent->source() != Qt::MouseEventNotSynthesized)
-        { return false; }
-        if( !( mouseEvent->modifiers() == Qt::NoModifier && mouseEvent->button() == Qt::LeftButton ) )
-        { return false; }
-
-        // check lock
-        if( isLocked() ) return false;
-        else setLocked( true );
-
-        #if VINYL_HAVE_QTQUICK
-        // check QQuickItem - we can immediately start drag, because QQuickWindow's contentItem
-        // only receives mouse events that weren't handled by children
-        if( auto item = qobject_cast<QQuickItem*>( object ) )
-        {
-            _quickTarget = item;
-            _dragPoint = mouseEvent->pos();
-            _globalDragPoint = mouseEvent->globalPos();
-
-            if( _dragTimer.isActive() ) _dragTimer.stop();
-            _dragTimer.start( _dragDelay, this );
-
-            return true;
-        }
-        #endif
-
-        // cast to widget
-        auto widget = static_cast<QWidget*>( object );
-
-        // check if widget can be dragged from current position
-        if( isBlackListed( widget ) || !canDrag( widget ) ) return false;
-
-        // retrieve widget's child at event position
-        auto position( mouseEvent->pos() );
-        auto child = widget->childAt( position );
-        if( !canDrag( widget, child, position ) ) return false;
-
-        // save target and drag point
-        _target = widget;
-        _dragPoint = position;
-        _globalDragPoint = mouseEvent->globalPos();
-        _dragAboutToStart = true;
-
-        // send a move event to the current child with same position
-        // if received, it is caught to actually start the drag
-        auto localPoint( _dragPoint );
-        if( child ) localPoint = child->mapFrom( widget, localPoint );
-        else child = widget;
-        QMouseEvent localMouseEvent( QEvent::MouseMove, localPoint, Qt::LeftButton, Qt::LeftButton, Qt::NoModifier );
-        qApp->sendEvent( child, &localMouseEvent );
-
-        // never eat event
+    auto mouseEvent = static_cast<QMouseEvent *>(event);
+    if (mouseEvent->source() != Qt::MouseEventNotSynthesized) {
         return false;
+    }
+    if (!(mouseEvent->modifiers() == Qt::NoModifier && mouseEvent->button() == Qt::LeftButton)) {
+        return false;
+    }
+
+    // If we are in a QQuickWidget we don't want to ever do dragging from a qwidget in the
+    // hyerarchy, but only from an internal item, if any. If any event handler will manage
+    // the event, we don't want the drag to start
+    if (object->inherits("QQuickWidget")) {
+        _eventInQQuickWidget = true;
+        event->setAccepted(false);
+        return false;
+    } else {
+        _eventInQQuickWidget = false;
+    }
+
+    // check lock
+    if (isLocked()) {
+        return false;
+    } else {
+        setLocked(true);
+    }
+
+#if VINYL_HAVE_QTQUICK
+    // check QQuickItem - we can immediately start drag, because QQuickWindow's contentItem
+    // only receives mouse events that weren't handled by children
+    if (auto item = qobject_cast<QQuickItem *>(object)) {
+        _quickTarget = item;
+        _dragPoint = mouseEvent->pos();
+        _globalDragPoint =
+#if QT_VERSION >= QT_VERSION_CHECK(6, 0, 0)
+            mouseEvent->globalPosition().toPoint();
+#else
+            mouseEvent->globalPos();
+#endif
+
+        if (_dragTimer.isActive()) {
+            _dragTimer.stop();
+        }
+        _dragTimer.start(_dragDelay, this);
+
+        return true;
+    }
+#endif
+
+    if (_eventInQQuickWidget) {
+        event->setAccepted(true);
+        return false;
+    }
+    _eventInQQuickWidget = false;
+
+    // cast to widget
+    auto widget = static_cast<QWidget *>(object);
+
+    // check if widget can be dragged from current position
+    if (isBlackListed(widget) || !canDrag(widget)) {
+        return false;
+    }
+
+    // retrieve widget's child at event position
+    auto position(mouseEvent->pos());
+    auto child = widget->childAt(position);
+    if (!canDrag(widget, child, position)) {
+        return false;
+    }
+
+    // save target and drag point
+    _target = widget;
+    _dragPoint = position;
+    _globalDragPoint =
+#if QT_VERSION >= QT_VERSION_CHECK(6, 0, 0)
+        mouseEvent->globalPosition().toPoint();
+#else
+        mouseEvent->globalPos();
+#endif
+    _dragAboutToStart = true;
+
+    // send a move event to the current child with same position
+    // if received, it is caught to actually start the drag
+    auto localPoint(_dragPoint);
+    if (child) {
+        localPoint = child->mapFrom(widget, localPoint);
+    } else {
+        child = widget;
+    }
+    QMouseEvent localMouseEvent(QEvent::MouseMove,
+                                localPoint,
+#if QT_VERSION >= QT_VERSION_CHECK(6, 4, 0)
+                                QCursor::pos(),
+#endif
+                                Qt::NoButton,
+                                Qt::LeftButton,
+                                Qt::NoModifier);
+    localMouseEvent.setTimestamp(mouseEvent->timestamp());
+    qApp->sendEvent(child, &localMouseEvent);
+
+    // never eat event
+    return false;
 
     }
 
@@ -817,27 +867,31 @@ namespace Vinyl
     }
 
     //____________________________________________________________
-    void WindowManager::startDrag( QWindow* window, const QPoint& position )
+    void WindowManager::startDrag( QWindow* window )
     {
 
-        if( !( enabled() && window ) ) return;
-        if( QWidget::mouseGrabber() ) return;
+        if (!(enabled() && window)) {
+        return;
+    }
+    if (QWidget::mouseGrabber()) {
+        return;
+    }
 
-        // ungrab pointer
-        if( useWMMoveResize() )
-        {
-
-            if( Helper::isX11() ) startDragX11( window, position );
-            else if( Helper::isWayland() ) startDragWayland( window, position );
-
-        } else if( !_cursorOverride ) {
-
-            qApp->setOverrideCursor( Qt::SizeAllCursor );
-            _cursorOverride = true;
-
+#if VINYL_HAVE_QTQUICK
+    if (_quickTarget) {
+        if (QQuickWindow *qw = qobject_cast<QQuickWindow *>(window)) {
+            QWindow *renderWindow = QQuickRenderControl::renderWindowFor(qw);
+            if (renderWindow) {
+                _dragInProgress = renderWindow->startSystemMove();
+            } else {
+                _dragInProgress = window->startSystemMove();
+            }
         }
-
+    } else
+#endif
+    {
         _dragInProgress = window->startSystemMove();
+    }
 
     }
 
