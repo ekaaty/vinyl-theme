@@ -4042,12 +4042,16 @@ namespace Vinyl
         //auto background( _helper->frameBackgroundColor( palette ) );
         auto background (palette.color( QPalette::Base ));
 
+	painter->save();
+
         if ( hasAlpha ) {
             painter->setCompositionMode(QPainter::CompositionMode_Source);
             background.setAlphaF(StyleConfigData::menuOpacity() / 100.0);
         }
 
         _helper->renderMenuFrame( painter, option->rect, background, outline, hasAlpha );
+
+	painter->restore();
 
         return true;
 
