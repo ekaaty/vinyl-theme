@@ -2990,24 +2990,23 @@ namespace Vinyl
     }
 
     //______________________________________________________________
-    QSize Style::pushButtonSizeFromContents( const QStyleOption* option, const QSize& contentsSize, const QWidget* widget ) const
+    QSize Style::pushButtonSizeFromContents(const QStyleOption* option, const QSize& contentsSize, const QWidget* widget) const
     {
-
         // cast option and check
-        const auto buttonOption( qstyleoption_cast<const QStyleOptionButton*>( option ) );
-        if( !buttonOption ) return contentsSize;
+        const auto buttonOption(qstyleoption_cast<const QStyleOptionButton*>(option));
+        if (!buttonOption) {
+            return contentsSize;
+        }
 
         // output
         QSize size;
 
         // check text and icon
-        const bool hasText( !buttonOption->text.isEmpty() );
-        const bool flat( buttonOption->features & QStyleOptionButton::Flat );
-        bool hasIcon( !buttonOption->icon.isNull() );
+        const bool hasText(!buttonOption->text.isEmpty());
+        const bool flat(buttonOption->features & QStyleOptionButton::Flat);
+        bool hasIcon(!buttonOption->icon.isNull());
 
-        if( !( hasText||hasIcon ) )
-        {
-
+        if (!( hasText||hasIcon)) {
             /*
             no text nor icon is passed.
             assume custom button and use contentsSize as a starting point
@@ -3015,7 +3014,6 @@ namespace Vinyl
             size = contentsSize;
 
         } else {
-
             /*
             rather than trying to guess what Qt puts into its contents size calculation,
             we recompute the button size entirely, based on button option
@@ -3023,49 +3021,54 @@ namespace Vinyl
             */
 
             // update has icon to honour showIconsOnPushButtons, when possible
-            hasIcon &= (showIconsOnPushButtons() || flat || !hasText );
+            hasIcon &= (showIconsOnPushButtons() || flat || !hasText);
 
             // text
-            if( hasText ) {
-                size = buttonOption->fontMetrics.size( Qt::TextShowMnemonic, buttonOption->text );
-	    }
-
-            // icon
-            if( hasIcon ) {
-                QSize iconSize = buttonOption->iconSize;
-
-		if( !iconSize.isValid() ) {
-		    iconSize = QSize( pixelMetric( PM_SmallIconSize, option, widget ), 
-				      pixelMetric( PM_SmallIconSize, option, widget ) );
-		}
-
-		size.setHeight( qMax( size.height(), iconSize.height() ) + StyleConfigData::buttonSize() );
-                size.rwidth() += iconSize.width() + StyleConfigData::buttonSize();
-
-		if( hasText ) {
-		    size.rwidth() += Metrics::Button_ItemSpacing;
-		}
+            if (hasText) {
+                size = buttonOption->fontMetrics.size(Qt::TextShowMnemonic, buttonOption->text);
             }
 
+            // icon
+            if (hasIcon) {
+                QSize iconSize = buttonOption->iconSize;
+
+                if (!iconSize.isValid()) {
+                    iconSize = QSize(pixelMetric(PM_SmallIconSize, option, widget),
+                                     pixelMetric(PM_SmallIconSize, option, widget));
+                }
+
+                size.setHeight(qMax(size.height(), iconSize.height()));
+                size.rwidth() += iconSize.width();
+
+                if (hasText) {
+                    size.rwidth() += Metrics::Button_ItemSpacing;
+                }
+            }
         }
 
         // menu
         const bool hasMenu( buttonOption->features & QStyleOptionButton::HasMenu );
-        if( hasMenu )
-        {
+        if (hasMenu) {
             size.rwidth() += Metrics::MenuButton_IndicatorWidth;
-            if( hasText||hasIcon ) size.rwidth() += Metrics::Button_ItemSpacing;
+            if (hasText||hasIcon) {
+                size.rwidth() += Metrics::Button_ItemSpacing;
+            }
         }
 
         // expand with buttons margin
-        size = expandSize( size, Metrics::Button_MarginWidth );
+        size = expandSize(size, Metrics::Button_MarginWidth);
 
         // make sure buttons have a minimum width
-        if( hasText )
-        { size.setWidth( qMax( size.width(), int( Metrics::Button_MinWidth ) ) ); }
+        if (hasText) {
+            size.setWidth(qMax(size.width(), int(Metrics::Button_MinWidth)));
+        }
+
+        // add padding to button from StyleConfigData
+        size.rwidth() += StyleConfigData::buttonSize();
+        size.rheight() += int(StyleConfigData::buttonSize() / 2);
 
         // finally add frame margins
-        return expandSize( size, Metrics::Frame_FrameWidth );
+        return expandSize(size, Metrics::Frame_FrameWidth);
 
     }
 
@@ -7167,6 +7170,7 @@ namespace Vinyl
             if( sunken && !flat && !editable ) arrowRect.translate( 1, 1 );
 
             // render
+	    arrowRect.translate(-3, 0);
             _helper->renderArrow( painter, arrowRect, arrowColor, ArrowDown );
 
         }
