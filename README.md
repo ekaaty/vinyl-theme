@@ -8,21 +8,21 @@ pieces of code and graphics work for KDE Plasma 6:
 
 ![Desktop showing Dolphin, Vinyl Launcher and Filelight in a purple way](.github/pages/img/screenshot0.webp)
 
-- [x] Application style: [ekaaty/vinyl-theme](https://github.com/ekaaty/vinyl-theme/tree/main/kstyle/)
-- [x] Color schemes: [ekaaty/vinyl-theme](https://github.com/ekaaty/vinyl-theme/tree/main/colors/)
-- [x] Cursor themes: [ekaaty/vinyl-theme](https://github.com/ekaaty/vinyl-theme/tree/main/cursors/)
-- [x] Firefox themes: [ekaaty/vinyl-theme](https://github.com/ekaaty/vinyl-theme/tree/main/mozilla/)
-- [x] Global themes: [ekaaty/vinyl-theme](https://github.com/ekaaty/vinyl-theme/tree/main/plasma/look-and-feel/)
-- [x] Icon themes: [ekaaty/vinyl-theme](https://github.com/ekaaty/vinyl-theme/tree/main/icons/)
-- [x] Konsole profiles: [ekaaty/vinyl-theme](https://github.com/ekaaty/vinyl-theme/tree/main/konsole/)
-- [x] Menu launcher: [ekaaty/vinyl-theme](https://github.com/ekaaty/vinyl-theme/tree/main/launcher/)
-- [x] Plasma layouts: [ekaaty/vinyl-theme](https://github.com/ekaaty/vinyl-theme/tree/main/plasma/layout-templates/)
-- [x] Plasma style: [ekaaty/vinyl-theme](https://github.com/ekaaty/vinyl-theme/tree/main/desktoptheme/)
-- [x] SDDM theme: [kde/sddm-theme](https://github.com/ekaaty/vinyl-theme/tree/main/sddm)
-- [x] Splash screen: [ekaaty/vinyl-theme](https://github.com/ekaaty/vinyl-theme/tree/main/splash/)
-- [x] Wallpapers: [ekaaty/vinyl-theme](https://github.com/ekaaty/vinyl-theme/tree/main/wallpapers/)
-- [x] Window decoration: [ekaaty/vinyl-theme](https://github.com/ekaaty/vinyl-theme/tree/main/kdecoration/)
-- [ ] GTK themes: planned
+- [x] Application style: [vinyl-theme/kstyle](https://github.com/ekaaty/vinyl-theme/tree/main/kstyle/)
+- [x] Color schemes: [vinyl-theme/colors](https://github.com/ekaaty/vinyl-theme/tree/main/colors/)
+- [x] Cursor themes: [vinyl-theme/cursors](https://github.com/ekaaty/vinyl-theme/tree/main/cursors/)
+- [x] Firefox themes: [vinyl-theme/mozilla](https://github.com/ekaaty/vinyl-theme/tree/main/mozilla/)
+- [x] Global themes: [vinyl-theme/plasma/look-and-feel](https://github.com/ekaaty/vinyl-theme/tree/main/plasma/look-and-feel/)
+- [x] Icon themes: [vinyl-theme/icons](https://github.com/ekaaty/vinyl-theme/tree/main/icons/)
+- [x] Konsole profiles: [vinyl-theme/konsole](https://github.com/ekaaty/vinyl-theme/tree/main/konsole/)
+- [x] Menu launcher: [vinyl-theme/launcher](https://github.com/ekaaty/vinyl-theme/tree/main/launcher/)
+- [x] Plasma layouts: [vinyl-theme/plasma/layout-templates](https://github.com/ekaaty/vinyl-theme/tree/main/plasma/layout-templates/)
+- [x] Plasma style: [vinyl-theme/desktoptheme](https://github.com/ekaaty/vinyl-theme/tree/main/desktoptheme/)
+- [x] SDDM theme: [sddm-theme/sddm](https://github.com/ekaaty/vinyl-theme/tree/main/sddm)
+- [x] Splash screen: [vinyl-theme/splash](https://github.com/ekaaty/vinyl-theme/tree/main/splash/)
+- [x] Wallpapers: [vinyl-theme/wallpapers](https://github.com/ekaaty/vinyl-theme/tree/main/wallpapers/)
+- [x] Window decoration: [vinyl-theme/kdecoration](https://github.com/ekaaty/vinyl-theme/tree/main/kdecoration/)
+- [ ] GTK themes: external ([Fluent-compact](https://store.kde.org/p/1477941/))
 - [ ] Plymounth theme: planned
 - [ ] Grub2 theme: planned
 
@@ -65,7 +65,8 @@ You can use your favorite Arch AUR helper to install it.
 Example:
 
 ```shell
-yay -S vinyl-git
+yay -Syu
+yay -S --nedded base-devel vinyl-git
 ```
 
 ## Building from source (manual build)
@@ -110,10 +111,7 @@ build this theme:
 ``unzip``
 ``xcursorgen``
 
-#### 1\. Fedora/Nobara or Kinoite/Bazzite and derivatives
-
-> [!NOTE]
-> Only systems based on Fedora 41+ is supported.
+#### 1\. Fedora derivatives (Nobara/Kinoite/Bazzite and others)
 
 Run the following command to install the dependencies:
 
@@ -147,11 +145,11 @@ sudo zypper in --allow-downgrade --no-recommends 'cmake' \
   'extra-cmake-modules' 'gcc-c++' 'git' 'xcursorgen' 'unzip'
 ```
 
-#### 3\. Debian/Kubuntu or Neon/Tuxedo and derivatives
+#### 3\. Debian and derivatives (Kubuntu/Neon/Tuxedo OS and others)
 
 >[!IMPORTANT]
 >Kubuntu 24.04 LTS doesn't support KDE Plasma 6 yet. Otherwise it's available on Kubuntu 24.10+
-> and current versions of Debian (Trixie), KDE Neon and Tuxedo OS.
+>and current versions of Debian (Trixie), KDE Neon and Tuxedo OS.
 
 If you're running Plasma 6 on one of supported distributions, run the following command to install
 the dependencies:
@@ -167,7 +165,7 @@ sudo apt install 'cmake' \
   'python3-cairosvg' 'x11-apps' 'unzip'
 ```
 
-#### 4\. Arch/Manjaro or CachyOS/Garuda and derivatives
+#### 4\. Arch and derivatives (Manjaro/EndeavourOS/CachyOS/Garuda and others)
 
 Run the following command to install the dependencies:
 
@@ -199,7 +197,7 @@ export NPROCS=$(grep -c proc /proc/cpuinfo)
 
 cd vinyl-theme
 cmake -S . -B build
-cmake --build build -j${NPROCS} --verbose
+cmake --build build -j${NPROCS}
 ```
 
 To build only application style and decoration, use:
@@ -207,8 +205,10 @@ To build only application style and decoration, use:
 ```shell
 cd vinyl-theme
 cmake -DWITH_APPSTYLE_ONLY=ON -S . -B build
-cmake --build build -j${NPROCS} --verbose
+cmake --build build -j${NPROCS}
 ```
+>[!NOTE]
+>To debug the setup install, please use "-j1 --verbose | tee build.log" instead of "-j${NPROCS}"
 
 ### Installing the built files
 
