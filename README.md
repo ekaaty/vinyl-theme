@@ -41,7 +41,7 @@ sudo dnf copr enable ekaaty/kde-extras
 sudo dnf upgrade
 sudo dnf install vinyl-theme
 ```
-### 2\. Kinoite/Bazzite
+### 2\. Kinoite/Bazzite (and other Fedora based immutable)
 
 If you are running Fedora [Kinoite](https://fedoraproject.org/atomic-desktops/kinoite/) or 
 [Bazzite](https://bazzite.gg/), also you can install Vinyl from the 
@@ -55,7 +55,7 @@ sudo rpm-ostree upgrade
 sudo rpm-ostree install --apply-live vinyl-theme
 ```
 
-### 3\. Arch/Manjaro or CachyOS/Garuda and derivatives
+### 3\. Arch and derivatives (Manjaro/EndeavourOS/CachyOS/Garuda)
 
 The package is available to be installed from the Arch Linux AUR.
 
@@ -111,7 +111,7 @@ build this theme:
 ``unzip``
 ``xcursorgen``
 
-#### 1\. Fedora derivatives (Nobara/Kinoite/Bazzite and others)
+#### 1\. Fedora and derivatives (Nobara/Kinoite/Bazzite and others)
 
 Run the following command to install the dependencies:
 
