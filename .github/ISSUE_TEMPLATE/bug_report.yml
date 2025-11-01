@@ -13,49 +13,30 @@ body:
       label: Describe the bug
       description: A clear and concise description of what the bug is.
       placeholder: "A clear and concise description helps us understand what the bug is."
-      value: "Describe what the bug is using a clear and concise description."
-    validations:
-      required: true
-  - type: dropdown
-    id: version-vinyl-release
-    attributes:
-      label: Vinyl theme version
-      description: Which version of the Vinyl theme are you using?
-      options:
-        - 6.5.0
-        - 6.4.5
-        - 6.4.4
-        - 6.4.3
-      default: 0
     validations:
       required: true
   - type: textarea
-    id: version-vinyl-git
+    id: version-vinyl-release
     attributes:
-      label: Vinyl theme version from git
-      description: Provide the git details here
-      placeholder: "git main branch - with commit id"
-      value: "If applicable specify the branch and the commit id"
+      label: Vinyl theme version
+      description: State the Vinyl theme version where you are encountering an issue.
+      placeholder: ".e.g. vinyl-theme 6.5.0"
     validations:
-      required: false
+      required: true
   - type: textarea
     id: version-plasma
     attributes:
       label: Plasma version
       description: Which version of Plasma are you using?
-      placeholder: "Plasma 6.5.0"
-      value: "Plasma 6.5.0"
+      placeholder: "e.g. Plasma 6.5.0"
     validations:
       required: true
-  - type: dropdown
+  - type: textarea
     id: version-qt
     attributes:
       label: Qt version
-      description: Which version of QT are you using?
-      options:
-        - "6.10"
-        - "6.9"
-      default: 0
+      description: Which version of Qt are you using?
+      placeholder: "e.g. Qt 6.9"
     validations:
       required: true
   - type: textarea
@@ -63,8 +44,7 @@ body:
     attributes:
       label: Add screenshot
       description: If applicable add screenshots to help explain the problem.
-      placeholder: Tell us what you see!
-      value: "Adding screenshots help explain the problem."
+      placeholder: Adding screenshots help explain the problem.
     validations:
       required: true
   - type: textarea
@@ -73,7 +53,6 @@ body:
       label: Which distribution are you using ?
       description: Linux distribution in use ?
       placeholder: ".e.g Arch Linux"
-      value: ".e.g Arch Linux"
     validations:
       required: true
   - type: textarea
@@ -82,7 +61,6 @@ body:
       label: Which color-scheme are you using ?
       description: The color-scheme in use
       placeholder: "Provide the name of the color-scheme, and if applicable a link to download the color-scheme"
-      value: ".e.g Breeze Dark"
     validations:
       required: true
   - type: dropdown
@@ -112,7 +90,6 @@ body:
     attributes:
       label: Add any other context about the bug here
       description: Add any other context about the bug here
-      placeholder: "Additional information"
-      value: "Additional information"
+      placeholder: "Additional information which is relevant about the bug"
     validations:
       required: false
