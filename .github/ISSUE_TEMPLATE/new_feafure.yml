@@ -12,17 +12,6 @@ body:
     attributes:
       label: Describe the new feature
       description: A clear and concise description of the new feature.
-      placeholder: "A clear and concise description of the new feature."
-      value: "Adding clear information helps describe what new feature you would like added"
+      placeholder: "Adding clear information helps describe what new feature you would like added, if applicable add screenshots"
     validations:
       required: true
-  - type: textarea
-    id: what-new-feat-screenshot  
-    attributes:
-      label: Add screenshots to describe the new feature
-      description: If applicable add screenshots to help explain the new feature
-      placeholder: Tell us how this new feature would look like
-      value: "Adding screenshots help describe how the new feature would look."
-    validations:
-      required: false
-
