@@ -1,25 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <svg width="512" height="512" version="1.1" viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg">
  <style id="current-color-scheme" type="text/css">
-   .ColorScheme-Text { color: #7d7d7d; }
-   .ColorScheme-PositiveText { color:#00aa88; }
-   .ColorScheme-NeutralText { color: #ff6644;}
-   .ColorScheme-NegativeText { color:#ff5577; }
-   .ColorScheme-Background { color: #eff0f1; }
-   .ColorScheme-Highlight { color: #00aaff; }
-   .ColorScheme-ViewText { color: #7d7d7d; }
-   .ColorScheme-ViewBackground { color: #eff0f1; }
-   .ColorScheme-ViewHover { color: #00aaff; }
-   .ColorScheme-ViewFocus { color: #00aaff; }
-   .ColorScheme-ButtonText { color: #7d7d7d; }
-   .ColorScheme-ButtonBackground { color: #eff0f1; }
-   .ColorScheme-ButtonHover { color: #00aaff; }
-   .ColorScheme-ButtonFocus { color: #00aaff; }
    .hidden { color: transparent; opacity: 0; }
  </style>
  <g id="start-here-ekaaty" transform="scale(10.667)">
   <rect id="size" class="hidden" width="48" height="48" fill="none"/>
-  <path id="frame" class="ColorScheme-Highlight" d="m5.953 3.3749c-1.4283 0-2.5781 1.1498-2.5781 2.5781v36.093c0 1.4283 1.1498 2.5781 2.5781 2.5781h36.093c1.4283 0 2.5781-1.1498 2.5781-2.5781v-36.093c0-1.4283-1.1498-2.5781-2.5781-2.5781zm2.5781 10.313h5.1562l7.7342 10.313-7.7342 10.313h-5.1562l7.7342-10.313zm13.052 0h4.8339v20.624h-4.8339zm12.728 0h5.1562l-7.7342 10.313 7.7342 10.313h-5.1562l-7.7342-10.313zm-23.203 7.7342a2.5781 2.5781 0 0 1 2.5781 2.5781 2.5781 2.5781 0 0 1-2.5781 2.5781 2.5781 2.5781 0 0 1-2.5781-2.5781 2.5781 2.5781 0 0 1 2.5781-2.5781z" fill="currentColor"/>
-  <path id="ek" class="ColorScheme-Background" d="m8.5316 13.687 7.7342 10.313-7.7342 10.313h5.1562l7.7342-10.313-7.7342-10.313zm13.052 0v20.624h4.8339v-20.624zm12.728 0-7.7342 10.313 7.7342 10.313h5.1562l-7.7342-10.313 7.7342-10.313zm-23.203 7.7342a2.5781 2.5781 0 0 0-2.5781 2.5781 2.5781 2.5781 0 0 0 2.5781 2.5781 2.5781 2.5781 0 0 0 2.5781-2.5781 2.5781 2.5781 0 0 0-2.5781-2.5781z" fill="#fff"/>
+  <path id="frame" d="m5.953 3.3749c-1.4283 0-2.5781 1.1498-2.5781 2.5781v36.093c0 1.4283 1.1498 2.5781 2.5781 2.5781h36.093c1.4283 0 2.5781-1.1498 2.5781-2.5781v-36.093c0-1.4283-1.1498-2.5781-2.5781-2.5781zm2.5781 10.313h5.1562l7.7342 10.313-7.7342 10.313h-5.1562l7.7342-10.313zm13.052 0h4.8339v20.624h-4.8339zm12.728 0h5.1562l-7.7342 10.313 7.7342 10.313h-5.1562l-7.7342-10.313zm-23.203 7.7342a2.5781 2.5781 0 0 1 2.5781 2.5781 2.5781 2.5781 0 0 1-2.5781 2.5781 2.5781 2.5781 0 0 1-2.5781-2.5781 2.5781 2.5781 0 0 1 2.5781-2.5781z" fill="#697921"/>
+  <path id="ek" d="m8.5316 13.687 7.7342 10.313-7.7342 10.313h5.1562l7.7342-10.313-7.7342-10.313zm13.052 0v20.624h4.8339v-20.624zm12.728 0-7.7342 10.313 7.7342 10.313h5.1562l-7.7342-10.313 7.7342-10.313zm-23.203 7.7342a2.5781 2.5781 0 0 0-2.5781 2.5781 2.5781 2.5781 0 0 0 2.5781 2.5781 2.5781 2.5781 0 0 0 2.5781-2.5781 2.5781 2.5781 0 0 0-2.5781-2.5781z" fill="#fff"/>
  </g>
 </svg>
