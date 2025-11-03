@@ -59,19 +59,21 @@ sudo rpm-ostree install --apply-live vinyl-theme
 
 The package is available to be installed from the Arch Linux AUR.
 
-https://aur.archlinux.org/packages/vinyl-git
+https://aur.archlinux.org/packages/vinyl
+
+This package uses the viny-theme code from the latest release tag.
 
 You can use your favorite Arch AUR helper to install it.
 Example:
 
 ```shell
 yay -Syu
-yay -S --nedded base-devel vinyl-git
+yay -S --needed base-devel vinyl
 ```
 > [!NOTE]
 > Please do not report any issues with the AUR package in this repository.
 
-Instead either use the AUR comment system / https://github.com/DeltaCopy/vinyl-git-aur/issues
+Instead either use the AUR comment system / https://github.com/DeltaCopy/vinyl-aur-ci/issues
 
 
 ## Building from source (manual build)
