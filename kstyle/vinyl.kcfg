@@ -38,14 +38,14 @@
     
     <!-- corner radius -->
     <entry name="CornerRadius" type = "Int">
-       <default>3</default>
-       <min>1</min>
-       <max>8</max>
+       <default>4</default>
+       <min>0</min>
+       <max>16</max>
     </entry>
 
     <!-- button size -->
     <entry name="ButtonSize" type="Int">
-        <default>2</default>
+        <default>6</default>
     </entry>
   </group>
 
@@ -184,7 +184,7 @@
           <choice name="WD_MINIMAL" />
           <choice name="WD_FULL" />
       </choices>
-      <default>WD_FULL</default>
+      <default>WD_MINIMAL</default>
     </entry>
 
     <!--

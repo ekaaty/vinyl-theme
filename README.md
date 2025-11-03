@@ -68,6 +68,11 @@ Example:
 yay -Syu
 yay -S --nedded base-devel vinyl-git
 ```
+> [!NOTE]
+> Please do not report any issues with the AUR package in this repository.
+
+Instead either use the AUR comment system / https://github.com/DeltaCopy/vinyl-git-aur/issues
+
 
 ## Building from source (manual build)
 
