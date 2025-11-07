@@ -16,7 +16,7 @@ import org.kde.plasma.plasmoid
 
 import org.kde.plasma.private.kicker as Kicker
 //import org.kde.plasma.private.quicklaunch
-
+import org.kde.plasma.workspace.dbus as DBus // Needed to call DBus methods
 import org.kde.plasma.plasma5support as P5Support // Needed by datasource
 
 Item {
@@ -83,6 +83,8 @@ Item {
         property int layoutFixedHeight: (cellSize * (numberRows + 2)) +
                                         (2.0 * Kirigami.Units.largeSpacing)
 
+        // catch dbus reply
+        property DBus.DBusPendingReply pendingReply
 
         // Events
         onVisibleChanged: {
@@ -191,6 +193,14 @@ Item {
 
         function toggle() {
             root.visible = !root.visible;
+        }
+
+        function dbusAsyncCall(service, path, member) {
+            root.pendingReply = DBus.SessionBus.asyncCall({
+                "service": service,
+                "path": path,
+                "member": member
+            });
         }
 
         FocusScope {
@@ -448,12 +458,18 @@ Item {
                         ListElement {
                             description: QT_TR_NOOP("Shows session exit screen")
                             icon:    "arrow-left"
-                            command: "qdbus-qt6 org.kde.LogoutPrompt /LogoutPrompt promptAll"
+                            //command: "qdbus-qt6 org.kde.LogoutPrompt /LogoutPrompt promptAll"
+                            service: "org.kde.LogoutPrompt"
+                            path: "/LogoutPrompt"
+                            member: "promptAll"
                         }
                         ListElement {
                             description: QT_TR_NOOP("Lock screen")
                             icon: "lock"
-                            command: "qdbus-qt6 org.kde.screensaver /ScreenSaver Lock"
+                            //command: "qdbus-qt6 org.kde.screensaver /ScreenSaver Lock"
+                            service: "org.kde.screensaver"
+                            path: "/ScreenSaver"
+                            member: "Lock"
                         }
                         /*ListElement {
                             description: QT_TR_NOOP("Open Krunner dialog")
