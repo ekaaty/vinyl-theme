@@ -16,7 +16,7 @@ import org.kde.plasma.plasmoid
 
 import org.kde.plasma.private.kicker as Kicker
 //import org.kde.plasma.private.quicklaunch
-import org.kde.plasma.workspace.dbus as DBus // Needed to call DBus methods
+import org.kde.plasma.workspace.dbus as DBus
 import org.kde.plasma.plasma5support as P5Support // Needed by datasource
 
 Item {
@@ -458,7 +458,6 @@ Item {
                         ListElement {
                             description: QT_TR_NOOP("Shows session exit screen")
                             icon:    "arrow-left"
-                            //command: "qdbus-qt6 org.kde.LogoutPrompt /LogoutPrompt promptAll"
                             service: "org.kde.LogoutPrompt"
                             path: "/LogoutPrompt"
                             member: "promptAll"
@@ -466,16 +465,10 @@ Item {
                         ListElement {
                             description: QT_TR_NOOP("Lock screen")
                             icon: "lock"
-                            //command: "qdbus-qt6 org.kde.screensaver /ScreenSaver Lock"
                             service: "org.kde.screensaver"
                             path: "/ScreenSaver"
                             member: "Lock"
                         }
-                        /*ListElement {
-                            description: QT_TR_NOOP("Open Krunner dialog")
-                            icon:    "search"
-                            command: "qdbus-qt6 org.kde.krunner /App display"
-                        }*/
                     }
 
                     ButtonGroup {

@@ -164,8 +164,8 @@ KCMUtils.SimpleKCM {
             id: displayPosition
             Kirigami.FormData.label: i18nd(i18nDomain,"Menu position")
             model: [
-                i18nd(i18nDomain,"Default"),
-                i18nd(i18nDomain,"Center"),
+                i18nd(i18nDomain,"Aligned with the icon"),
+                i18nd(i18nDomain,"Centered"),
             ]
         }
 
