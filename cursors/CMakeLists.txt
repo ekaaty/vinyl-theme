@@ -33,7 +33,6 @@ find_package(ECM ${KF6_MIN_VERSION} REQUIRED NO_MODULE)
 set(CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} ${ECM_MODULE_PATH} ${CMAKE_SOURCE_DIR}/cmake)
 
 find_package(Qt6 ${QT_MIN_VERSION} REQUIRED CONFIG COMPONENTS Core)
-include(KDEInstallDirs6)
 
 add_custom_command(COMMAND
         make -C ${CMAKE_CURRENT_SOURCE_DIR} -f Render.make -j1
