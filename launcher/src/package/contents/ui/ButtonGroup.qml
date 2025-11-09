@@ -110,7 +110,8 @@ Rectangle {
                     buttonTooltip.visible = false
                 }
                 onClicked: {
-                    executable.exec(command)
+			        //executable.exec(command)
+			        root.dbusAsyncCall(service, path, member)
                 }
             }
         }
