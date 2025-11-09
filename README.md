@@ -15,9 +15,9 @@ pieces of code and graphics work for KDE Plasma 6:
 - [x] Global themes: [vinyl-theme/plasma/look-and-feel](https://github.com/ekaaty/vinyl-theme/tree/main/plasma/look-and-feel/)
 - [x] Icon themes: [vinyl-theme/icons](https://github.com/ekaaty/vinyl-theme/tree/main/icons/)
 - [x] Konsole profiles: [vinyl-theme/konsole](https://github.com/ekaaty/vinyl-theme/tree/main/konsole/)
-- [x] Menu launcher: [vinyl-theme/launcher](https://github.com/ekaaty/vinyl-theme/tree/main/launcher/)
+- [x] Menu launcher: [vinyl-theme/plasma/plasmoids/launcher](https://github.com/ekaaty/vinyl-theme/tree/main/plasma/plasmoids/launcher/)
 - [x] Plasma layouts: [vinyl-theme/plasma/layout-templates](https://github.com/ekaaty/vinyl-theme/tree/main/plasma/layout-templates/)
-- [x] Plasma style: [vinyl-theme/desktoptheme](https://github.com/ekaaty/vinyl-theme/tree/main/desktoptheme/)
+- [x] Plasma style: [vinyl-theme/plasma/desktoptheme](https://github.com/ekaaty/vinyl-theme/tree/main/plasma/desktoptheme/)
 - [x] SDDM theme: [sddm-theme/sddm](https://github.com/ekaaty/vinyl-theme/tree/main/sddm)
 - [x] Splash screen: [vinyl-theme/splash](https://github.com/ekaaty/vinyl-theme/tree/main/splash/)
 - [x] Wallpapers: [vinyl-theme/wallpapers](https://github.com/ekaaty/vinyl-theme/tree/main/wallpapers/)
@@ -59,19 +59,21 @@ sudo rpm-ostree install --apply-live vinyl-theme
 
 The package is available to be installed from the Arch Linux AUR.
 
-https://aur.archlinux.org/packages/vinyl-git
+https://aur.archlinux.org/packages/vinyl
+
+This package uses the viny-theme code from the latest release tag.
 
 You can use your favorite Arch AUR helper to install it.
 Example:
 
 ```shell
 yay -Syu
-yay -S --nedded base-devel vinyl-git
+yay -S --needed base-devel vinyl
 ```
 > [!NOTE]
 > Please do not report any issues with the AUR package in this repository.
 
-Instead either use the AUR comment system / https://github.com/DeltaCopy/vinyl-git-aur/issues
+Instead either use the AUR comment system / https://github.com/DeltaCopy/vinyl-aur-ci/issues
 
 
 ## Building from source (manual build)

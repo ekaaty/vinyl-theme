@@ -1,16 +1,16 @@
 set(SourceEnvFiles
     "colors/.env"
     "cursors/.env"
-    "desktoptheme/.env"
     "icons/.env"
     "konsole/.env"
-    "launcher/.env"
     "mozilla/.env"
+    "plasma/desktoptheme/.env"
+    "plasma/layout-templates/.env"
+    "plasma/look-and-feel/.env"
+    "plasma/plasmoids/launcher/.env"
     "sddm/.env"
     "splash/.env"
     "wallpapers/.env"
-    "plasma/layout-templates/.env"
-    "plasma/look-and-feel/.env"
 )
 
 foreach(ENV_FILE ${SourceEnvFiles})
