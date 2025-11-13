@@ -69,14 +69,12 @@ jobs:
     with:
       cache-file-path: ${{ needs.vinyl-theme-ci.outputs.artifact }}
       version: ${{ needs.vinyl-theme-ci.outputs.VERSION }}
-
   kubuntu:
     needs: vinyl-theme-ci
     uses: ./.github/workflows/kubuntu.yml
     with:
       cache-file-path: ${{ needs.vinyl-theme-ci.outputs.artifact }}
       version: ${{ needs.vinyl-theme-ci.outputs.VERSION }}
-
   release:
     uses: ./.github/workflows/release.yml
     needs: ["archlinux", "fedora", "opensuse-tumbleweed", "kde-neon", "kubuntu"]
