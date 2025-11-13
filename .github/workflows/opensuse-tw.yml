@@ -18,7 +18,7 @@ jobs:
     container: opensuse/tumbleweed:latest
     steps:
       - name: Checkout local
-        uses: actions/checkout@v4.2.0
+        uses: actions/checkout@v5
         with:
           repository: ${{ github.repository }}
           sparse-checkout: .github/assets/fedora/vinyl.spec
