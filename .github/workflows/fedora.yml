@@ -1,0 +1,74 @@
+# Fedora 40,41, latest
+# Build Vinyl from release tag and publish .rpm package
+on:
+  workflow_call:
+    inputs:
+      cache-file-path:
+        required: true
+        type: string
+      version:
+        required: true
+        type: string
+      containers:
+        required: true
+        type: string
+env:
+  SPEC_FILE: $GITHUB_WORKSPACE/.github/assets/fedora/vinyl.spec
+jobs:
+  build:
+    strategy:
+      max-parallel: 3
+      matrix:
+        image: ${{ fromJson(inputs.containers) }}
+    runs-on: ubuntu-24.04
+    container: ${{ matrix.image }}
+    steps:
+      - name: Checkout local
+        uses: actions/checkout@v5
+        with:
+          repository: ${{ github.repository }}
+          sparse-checkout: .github/assets/fedora/vinyl.spec
+      - name: Update tag version inside spec file
+        run: sed -i "s/.*%define release_tag.*/%define release_tag ${{ inputs.version }}/" ${{ env.SPEC_FILE }}
+      - uses: actions/cache/restore@v4
+        id: cache
+        with:
+          key: ${{ runner.os }}-v${{ inputs.version }}-${{ hashFiles(inputs.cache-file-path) }}
+          path: ${{ inputs.cache-file-path }}
+          fail-on-cache-miss: true
+      - name: Install dependencies
+        run: |
+          sudo dnf install -y -q git rpmdevtools rpmlint dnf install 'cmake' \
+            'cmake(KDecoration3)' 'cmake(KF6ConfigWidgets)' 'cmake(KF6Config)' 'cmake(KF6CoreAddons)' \
+            'cmake(KF6Crash)' 'cmake(KF6DocTools)' 'cmake(KF6FrameworkIntegration)' \
+            'cmake(KF6GlobalAccel)' 'cmake(KF6GuiAddons)' 'cmake(KF6I18n)' 'cmake(KF6IconThemes)' \
+            'cmake(KF6KCMUtils)' 'cmake(KF6KIO)' 'cmake(KF6Notifications)' 'cmake(KF6Package)' \
+            'cmake(KF6WindowSystem)' 'cmake(KF6KirigamiPlatform)' 'cmake(KWayland)' 'cmake(KWin)' \
+            'cmake(Plasma)' 'cmake(Qt6Core)' 'cmake(Qt6Core5Compat)' 'cmake(Qt6DBus)' 'cmake(Qt6Gui)' \
+            'cmake(Qt6UiTools)' 'pkgconfig(epoxy)' 'python3dist(cairosvg)' 'python3dist(lxml)' \
+            'extra-cmake-modules' 'gcc-c++' 'git' 'xcursorgen' 'unzip' 'fdupes'
+      - name: Create rpm tree
+        run: rpmdev-setuptree
+      - name: Move tarball asset to rpm build sources location
+        run: |
+          mv ${{ inputs.cache-file-path }} $HOME/rpmbuild/SOURCES/vinyl-${{ inputs.version }}.tar.gz
+          ls -lart $HOME/rpmbuild/SOURCES
+      - name: Move rpm specfile to specs
+        run: mv ${{ env.SPEC_FILE }} $HOME/rpmbuild/SPECS/
+      - name: Build rpm binary package
+        run: |
+          cd $HOME/rpmbuild/SPECS
+          rpmbuild -bb vinyl.spec
+          rpm_file=$(find $HOME/rpmbuild/RPMS/x86_64 -name "*.rpm*" ! -name "*src*" ! -name "*debug*")
+          echo "rpm_file = $rpm_file"
+          source /etc/os-release
+          echo "Version ID = $VERSION_ID"
+          publish_filename=vinyl-theme-${{ inputs.version }}.fc$VERSION_ID.x86_64.rpm
+          mv $rpm_file $GITHUB_WORKSPACE/$publish_filename
+          echo "ARTIFACT=$publish_filename" >> "$GITHUB_ENV"
+      - name: Upload artifact
+        uses: actions/upload-artifact@v5
+        with:
+          name: ${{ env.ARTIFACT }}
+          path: ${{ env.ARTIFACT }}
+          retention-days: 1
