@@ -1,14 +1,5 @@
 %bcond_with git
-
-%bcond decoration	1
-#bcond desktoptheme	1
-#bcond icons		1
-#bcond konsole		1
-#bcond launcher		1
-%bcond mozilla		0
-#bcond splash		1
-#bcond sddm		1
-#bcond wallpapers	1
+%bcond mozilla 0
 
 %global srcname	vinyl
 
@@ -19,7 +10,7 @@
 %endif
 
 Name:           %{srcname}-theme
-Version:        6.4.5
+Version:        6.5.2
 Release:        1%{?git:+git~%{gitrev}}%{?dist}
 Summary:        A modern style for qt applications
 
@@ -32,9 +23,7 @@ Source0:        %url/archive/v%{version}/%{srcname}-%{version}.tar.xz
 %endif
 
 BuildRequires:  cmake
-%if %{with decoration}
 BuildRequires:  cmake(KDecoration3)
-%endif
 BuildRequires:  cmake(KF6ConfigWidgets)
 BuildRequires:  cmake(KF6Config)
 BuildRequires:  cmake(KF6CoreAddons)
@@ -73,19 +62,25 @@ Provides:       Plasma(ColorScheme-Vinyl-Light)
 Provides:       Plasma(CursorTheme-Vinyl-Black)
 Provides:       Plasma(CursorTheme-Vinyl-White)
 Provides:       Plasma(DesktopTheme-Vinyl)
-Provides:       Plasma(KonsoleTheme-Vinyl)
+Provides:       Plasma(GlobalTheme-Vinyl-Dark)
+Provides:       Plasma(GlobalTheme-Vinyl-Light)
 Provides:       Plasma(IconTheme-Vinyl)
+Provides:       Plasma(KonsoleTheme-Vinyl)
+Provides:       Plasma(LayoutTemplates-Vinyl)
 Provides:       Plasma(MenuLauncher-Vinyl)
-Provides:       Mozilla(FirefoxTheme-Vinyl-Dark)
-Provides:       Mozilla(FirefoxTheme-Vinyl-Light)
 Provides:       Plasma(SDDMTheme-Vinyl)
 Provides:       Plasma(Splash-Vinyl)
 Provides:       Plasma(WidgetStyle-Vinyl)
 Provides:       Plasma(Wallpapers-Vinyl)
 Provides:       Plasma(WindowDecoration-Vinyl)
 
+%if %{with mozilla}
+Provides:       Mozilla(FirefoxTheme-Vinyl-Dark)
+Provides:       Mozilla(FirefoxTheme-Vinyl-Light)
+%endif
+
 # Prevent issue github #29 on Fedora
-Requires:       qt6qml(org.kde.plasma.private.quicklaunch)
+Requires:       kdeplasma-addons
 
 %description
 Vinyl is a fork of Lightly (a Breeze fork) theme style that aims to be
@@ -130,19 +125,15 @@ done
 
 # Application style
 %{_bindir}/vinyl-settings6
-#{_datadir}/applications/vinylstyleconfig.desktop
-#{_datadir}/icons/hicolor/scalable/apps/vinyl-settings.svg*
 %{_datadir}/kstyle/themes/vinyl.themerc
 %{_qt6_plugindir}/kstyle_config/vinylstyleconfig.so
 %{_qt6_plugindir}/styles/vinyl6.so
 %{_libdir}/cmake/Vinyl/
 
 # Window Decoration
-%if %{with decoration}
 %{_qt6_plugindir}/org.kde.kdecoration3/org.kde.vinyl.so
 %{_qt6_plugindir}/org.kde.kdecoration3.kcm/kcm_vinyldecoration.so
 %{_datadir}/applications/kcm_vinyldecoration.desktop
-%endif
 
 # Colors
 %{_datadir}/color-schemes/Vinyl*Dark.colors
@@ -150,12 +141,12 @@ done
 
 # Splash
 %{_datadir}/locale/*/*/plasma_lookandfeel_*.vinyl-splash.mo
-%{_datadir}/metainfo/*.vinyl-splash.appdata.xml
+#{_datadir}/metainfo/*.vinyl-splash.appdata.xml
 %{_datadir}/plasma/look-and-feel/*vinyl-splash/
 
 # Launcher
 %{_datadir}/locale/*/*/plasma_applet_*.vinyl-launcher.mo
-%{_datadir}/metainfo/*.vinyl-launcher.appdata.xml
+#{_datadir}/metainfo/*.vinyl-launcher.appdata.xml
 %{_datadir}/plasma/plasmoids/*vinyl-launcher/
 
 # Cursors
@@ -178,12 +169,12 @@ done
 
 # Layout Templates
 %{_datadir}/plasma/layout-templates/*
-%{_datadir}/metainfo/*.vinyl.desktop.bottomPanel.appdata.xml
+#{_datadir}/metainfo/*.vinyl.desktop.bottomPanel.appdata.xml
 
 # Global Themes
 %{_datadir}/plasma/look-and-feel/*vinyl.desktop.*
-%{_datadir}/metainfo/*.vinyl.desktop.dark.appdata.xml
-%{_datadir}/metainfo/*.vinyl.desktop.light.appdata.xml
+#{_datadir}/metainfo/*.vinyl.desktop.dark.appdata.xml
+#{_datadir}/metainfo/*.vinyl.desktop.light.appdata.xml
 
 # Mozilla Firefox Themes
 %if %{with mozilla}
@@ -198,6 +189,35 @@ done
 %{_datadir}/wallpapers/Vinyl*
 
 %changelog
+* Sun Nov 09 2025 Christian Tosta <7252968+christiantosta@users.noreply.github.com> - 6.5.2-1
+- new release: v6.5.2
+- launcher: fixed session icons (#47)
+
+* Mon Nov 03 2025 Christian Tosta <7252968+christiantosta@users.noreply.github.com> - 6.5.1-1
+- new release: v6.5.1
+- icons: use original Ekaaty colors
+- kstyle:
+ - fixed gwenview border radius (#32)
+ - fixed drag and drop (#37)
+ - adjusted widget default sizes
+
+* Thu Oct 23 2025 Christian Tosta <7252968+christiantosta@users.noreply.github.com> - 6.5.0-1
+- new release: v6.5.0
+- desktoptheme:
+  - appearance enhancements and fixes
+- icons:
+  - fixed firefox icons
+  - fixed virt-manager icon
+- launcher:
+  - refactored based on current Kicker
+  - added support for menu variants
+  - fix crash in Plasma 6.5.0
+- look-and-feel:
+  - disabled day/night switch applet
+- wallpapers:
+  - removed Vinyl:Tracks
+  - added Vinyl:Stripes
+
 * Tue Sep 09 2025 Christian Tosta <7252968+christiantosta@users.noreply.github.com> - 6.4.5-1
 - new release: v6.4.5
 - colors: added green, orange, red and yellow variants
