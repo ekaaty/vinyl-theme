@@ -1,0 +1,51 @@
+# Kubuntu
+# Requires a custom docker container
+# The Dockerfile is inside .github/assets/docker/kubuntu
+# Build dependencies are moved into the docker container deltacopy/kubuntu:0.3
+# extra ones can be added to this workflow
+
+on:
+  workflow_call:
+    inputs:
+      cache-file-path:
+        required: true
+        type: string
+      version:
+        required: true
+        type: string
+jobs:
+  build:
+    runs-on: ubuntu-24.04
+    container: deltacopy/kubuntu:0.3
+    steps:
+      - name: Checkout local
+        uses: actions/checkout@v5
+        with:
+          repository: ${{ github.repository }}
+          sparse-checkout: |
+            .github/assets/debian/build-package.sh
+      - name: Run update
+        run: apt update -y
+      - uses: actions/cache/restore@v4
+        id: cache
+        with:
+          key: ${{ runner.os }}-v${{ inputs.version }}-${{ hashFiles(inputs.cache-file-path) }}
+          path: ${{ inputs.cache-file-path }}
+          fail-on-cache-miss: true
+      - name: Run dist dist-upgrade
+        run: apt dist-upgrade -y
+      - name: Build package
+        run: |
+          mv $GITHUB_WORKSPACE/.github/assets/debian/build-package.sh $GITHUB_WORKSPACE
+          chmod +x build-package.sh
+          ./build-package.sh ${{ inputs.cache-file-path }} ${{ inputs.version }}
+          deb_file=$(find . -name "*.deb*")
+          publish_filename=vinyl-theme-${{ inputs.version }}_kubuntu_amd64.deb
+          test ! -z $deb_file && mv $deb_file $GITHUB_WORKSPACE/$publish_filename
+          echo "ARTIFACT=$publish_filename" >> "$GITHUB_ENV"
+      - name: Upload artifact
+        uses: actions/upload-artifact@v5
+        with:
+          name: ${{ env.ARTIFACT }}
+          path: ${{ env.ARTIFACT }}
+          retention-days: 1
