@@ -2,11 +2,11 @@
 # Description: Builds Vinyl theme from https://github.com/ekaaty/vinyl-theme
 
 # basic info
-pkgname="vinyl-theme"
+pkgname="${pkgname}"
 pkgver=${version}
 pkgrel=1
 pkgdesc="Vinyl Theme for KDE Plasma 6"
-url="https://github.com/ekaaty/vinyl-theme"
+url="${repository}"
 arch=('x86_64' 'aarch64')
 license=("GPL-2.0-or-later")
 build_dir="build_kf6"
