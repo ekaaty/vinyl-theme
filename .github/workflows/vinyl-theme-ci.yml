@@ -5,7 +5,7 @@ on:
     tags:
       - "v*"
 env:
-  REPOSITORY: https://github.com/deltacopy/vinyl-theme
+  REPOSITORY: https://github.com/ekaaty/vinyl-theme
   PACKAGE_NAME: vinyl-theme
 jobs:
   vinyl-theme-ci:
