@@ -10,6 +10,9 @@ on:
       repository:
         required: true
         type: string
+      package_name:
+        required: true
+        type: string
 env:
   PKGBUILD: $GITHUB_WORKSPACE/.github/assets/archlinux/PKGBUILD.template
   BUILD_DIR: /var/tmp/build
@@ -45,6 +48,8 @@ jobs:
           mkdir ${{ env.BUILD_DIR }}
           cp ${{ env.PKGBUILD }} ${{ env.BUILD_DIR }}/PKGBUILD
           sed -i 's/${version}/'${{ inputs.version }}'/' ${{ env.BUILD_DIR }}/PKGBUILD
+          sed -i 's|${repository}|'${{ inputs.repository }}'|' ${{ env.BUILD_DIR }}/PKGBUILD
+          sed -i 's/${pkgname}/'${{ inputs.package_name }}'/' ${{ env.BUILD_DIR }}/PKGBUILD
           sha256sum_vinyl=$(curl -Ls ${{ inputs.repository }}/archive/refs/tags/v${{ inputs.version }}.tar.gz | sha256sum | awk {'print $1'})
           sed -i 's/${sha256sums}/'${sha256sum_vinyl}'/' ${{ env.BUILD_DIR }}/PKGBUILD
       - name: Change permissions of build directory

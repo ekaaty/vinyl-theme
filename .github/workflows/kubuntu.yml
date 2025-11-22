@@ -3,7 +3,6 @@
 # The Dockerfile is inside .github/assets/docker/kubuntu
 # Build dependencies are moved into the docker container deltacopy/kubuntu:0.3
 # extra ones can be added to this workflow
-
 on:
   workflow_call:
     inputs:
@@ -13,17 +12,19 @@ on:
       version:
         required: true
         type: string
+      package_name:
+        required: true
+        type: string
+env:
+  KUBUNTU_RELEASE: "25.10"
 jobs:
   build:
     runs-on: ubuntu-24.04
     container: deltacopy/kubuntu:0.3
+    defaults:
+      run:
+        shell: bash
     steps:
-      - name: Checkout local
-        uses: actions/checkout@v5
-        with:
-          repository: ${{ github.repository }}
-          sparse-checkout: |
-            .github/assets/debian/build-package.sh
       - name: Run update
         run: apt update -y
       - uses: actions/cache/restore@v4
@@ -34,16 +35,38 @@ jobs:
           fail-on-cache-miss: true
       - name: Run dist dist-upgrade
         run: apt dist-upgrade -y
-      - name: Build package
+      - name: Extract tarball
+        run: tar xf ${{ inputs.cache-file-path }}
+      - name: Build source
         run: |
-          mv $GITHUB_WORKSPACE/.github/assets/debian/build-package.sh $GITHUB_WORKSPACE
-          chmod +x build-package.sh
-          ./build-package.sh ${{ inputs.cache-file-path }} ${{ inputs.version }}
-          deb_file=$(find . -name "*.deb*")
-          publish_filename=vinyl-theme-${{ inputs.version }}_kubuntu_amd64.deb
-          test ! -z $deb_file && mv $deb_file $GITHUB_WORKSPACE/$publish_filename
+          # Patch icons CMakeLists to use bash execution since it fails with set: Illegal option -o pipefail on debian hosts
+          sed -i s/'COMMAND sh ${CMAKE_CURRENT_SOURCE_DIR}\/make-theme.sh/COMMAND bash ${CMAKE_CURRENT_SOURCE_DIR}\/make-theme.sh/' "${{ inputs.package_name }}-${{ inputs.version }}/icons/CMakeLists.txt"
+          cat "${{ inputs.package_name }}-${{ inputs.version }}/icons/CMakeLists.txt"
+
+          # Patch cursors/Render.make it generates the index.theme file with invalid '-e [Index Theme]' to the index.theme
+          sed -i s/'echo -e/echo/' "${{ inputs.package_name }}-${{ inputs.version }}/cursors/Render.make"
+
+          cmake_opts=(
+            -B ${{ inputs.package_name }}-${{ inputs.version }}/build
+            -S ${{ inputs.package_name }}-${{ inputs.version }}
+            -DBUILD_DEBS=ON
+          )
+          echo "${cmake_opts[@]}"
+          cmake "${cmake_opts[@]}" && cmake --build ${{ inputs.package_name }}-${{ inputs.version }}/build -j$(nproc) && echo "Build completed!" || echo "Build failed!" || exit 1
+      - name: Build DEB package
+        id: step_build
+        run: |
+          cd ${{ inputs.package_name }}-${{ inputs.version }}/build; cpack -G DEB -V -DCPACK_THREADS=$(nproc)
+          artifact=$GITHUB_WORKSPACE/${{ inputs.package_name }}-${{ inputs.version }}/dist/${{ inputs.package_name }}-${{ inputs.version }}_amd64.deb
+          publish_filename="${{ inputs.package_name }}-${{ inputs.version }}_kubuntu-${{ env.KUBUNTU_RELEASE }}_amd64.deb"
+          echo "Moving file to $GITHUB_WORKSPACE/$publish_filename"
+          mv $artifact $GITHUB_WORKSPACE/$publish_filename
           echo "ARTIFACT=$publish_filename" >> "$GITHUB_ENV"
-      - name: Upload artifact
+          SHA256SUM=$(sha256sum $GITHUB_WORKSPACE/$publish_filename | awk '{ print $1 }')
+          echo "ARTIFACT = $publish_filename | SHA256SUM = $SHA256SUM"
+          echo "SHA256SUM=$SHA256SUM" >> "$GITHUB_ENV"
+      - name: Publish DEB
+        if: ${{ env.SHA256SUM != '' }}
         uses: actions/upload-artifact@v5
         with:
           name: ${{ env.ARTIFACT }}

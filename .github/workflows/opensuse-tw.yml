@@ -1,6 +1,5 @@
 # openSUSE Tumbleweed
 # Build Vinyl from release tag and publish .rpm package
-
 on:
   workflow_call:
     inputs:
@@ -10,21 +9,15 @@ on:
       version:
         required: true
         type: string
-env:
-  SPEC_FILE: $GITHUB_WORKSPACE/.github/assets/fedora/vinyl.spec
+      package_name:
+        required: true
+        type: string
 jobs:
   build:
     runs-on: ubuntu-24.04
     container: opensuse/tumbleweed:latest
     steps:
-      - name: Checkout local
-        uses: actions/checkout@v5
-        with:
-          repository: ${{ github.repository }}
-          sparse-checkout: .github/assets/fedora/vinyl.spec
-      - name: Update tag version inside spec file
-        run: sed -i "s/.*%define release_tag.*/%define release_tag ${{ inputs.version }}/" ${{ env.SPEC_FILE }}
-      - name: Install build dependencies
+      - name: Install dependencies
         run: |
           zypper in -y --allow-downgrade --no-recommends 'cmake' \
             'cmake(KDecoration3)' 'cmake(KF6ConfigWidgets)' 'cmake(KF6Config)' 'cmake(KF6CoreAddons)' \
@@ -42,24 +35,31 @@ jobs:
           key: ${{ runner.os }}-v${{ inputs.version }}-${{ hashFiles(inputs.cache-file-path) }}
           path: ${{ inputs.cache-file-path }}
           fail-on-cache-miss: true
-      - name: Create rpm tree
-        run: rpmdev-setuptree
-      - name: Move tarball asset to rpm build sources location
+      - name: Extract tarball
+        run: tar xf ${{ inputs.cache-file-path }}
+      - name: Build source
         run: |
-          mv ${{ inputs.cache-file-path }} $HOME/rpmbuild/SOURCES/vinyl-${{ inputs.version }}.tar.gz
-          ls -lart $HOME/rpmbuild/SOURCES
-      - name: Move rpm specfile to specs
-        run: mv ${{ env.SPEC_FILE }} $HOME/rpmbuild/SPECS/
-      - name: Build rpm binary package
+          cmake_opts=(
+            -B ${{ inputs.package_name }}-${{ inputs.version }}/build
+            -S ${{ inputs.package_name }}-${{ inputs.version }}
+            -DBUILD_RPMS=ON
+          )
+          echo "${cmake_opts[@]}"
+          cmake "${cmake_opts[@]}" && cmake --build ${{ inputs.package_name }}-${{ inputs.version }}/build -j$(nproc) && echo "Build completed!" || echo "Build failed!" || exit 1
+      - name: Build RPM package
+        id: step_build
         run: |
-          cd $HOME/rpmbuild/SPECS
-          rpmbuild -bb vinyl.spec
-          rpm_file=$(find $HOME/rpmbuild/RPMS/x86_64 -name "*.rpm*" ! -name "*src*" ! -name "*debug*")
-          echo "rpm_file = $rpm_file"
-          publish_filename=vinyl-theme-${{ inputs.version }}.openSUSE-tumbleweed.x86_64.rpm
-          mv $rpm_file $GITHUB_WORKSPACE/$publish_filename
-          echo "ARTIFACT=$publish_filename" >> "$GITHUB_ENV" 
-      - name: Upload artifact
+          cd ${{ inputs.package_name }}-${{ inputs.version }}/build; cpack -G RPM -V -DCPACK_THREADS=$(nproc)
+          artifact=$GITHUB_WORKSPACE/${{ inputs.package_name }}-${{ inputs.version }}/dist/${{ inputs.package_name }}-${{ inputs.version }}.x86_64.rpm
+          publish_filename=${{ inputs.package_name }}-${{ inputs.version }}.openSUSE-tumbleweed.x86_64.rpm
+          echo "Moving file to $GITHUB_WORKSPACE/$publish_filename"
+          mv $artifact $GITHUB_WORKSPACE/$publish_filename
+          echo "ARTIFACT=$publish_filename" >> "$GITHUB_ENV"
+          SHA256SUM=$(sha256sum $GITHUB_WORKSPACE/$publish_filename | awk '{ print $1 }')
+          echo "ARTIFACT = $publish_filename | SHA256SUM = $SHA256SUM"
+          echo "SHA256SUM=$SHA256SUM" >> "$GITHUB_ENV"
+      - name: Publish RPM
+        if: ${{ env.SHA256SUM != '' }}
         uses: actions/upload-artifact@v5
         with:
           name: ${{ env.ARTIFACT }}
