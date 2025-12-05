@@ -66,6 +66,7 @@ execute_process(
 )
 
 if(NOT STANDALONE)
+    find_package(Plasma REQUIRED)
     plasma_install_package(
         ${VINYL_PLUGIN_ID_PREFIX}.dark
         ${VINYL_PLUGIN_ID_PREFIX}.dark

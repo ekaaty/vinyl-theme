@@ -66,6 +66,7 @@ execute_process(
 )
 
 if(NOT STANDALONE)
+    find_package(Plasma REQUIRED) 
     plasma_install_package(
         src/package
         ${VINYL_SPLASH_PLUGIN_ID}
