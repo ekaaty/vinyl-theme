@@ -56,8 +56,6 @@ find_package(KF6 ${KF6_MIN_VERSION} REQUIRED COMPONENTS
     I18n 
 )
 
-find_package(Plasma ${PLASMA_MIN_VERSION} REQUIRED)
-
 set(KDE_INSTALL_LOCALEDIR share/locale)
 add_definitions(-DTRANSLATION_DOMAIN=\"sddm_theme_${VINYL_SDDM_THEME_ID}\")
 kdoctools_install(po)
