@@ -10,7 +10,7 @@
 %endif
 
 Name:           %{srcname}-theme
-Version:        6.5.2
+Version:        6.5.3
 Release:        1%{?git:+git~%{gitrev}}%{?dist}
 Summary:        A modern style for qt applications
 
@@ -189,6 +189,11 @@ done
 %{_datadir}/wallpapers/Vinyl*
 
 %changelog
+* Fri Dec 05 2025 Christian Tosta <7252968+christiantosta@users.noreply.github.com> - 6.5.3-1
+- new release: v6.5.3
+- cmake: fixes for extra modules >= 6.20.0
+- launcher: fixed issue with panel autohide (#53)
+
 * Sun Nov 09 2025 Christian Tosta <7252968+christiantosta@users.noreply.github.com> - 6.5.2-1
 - new release: v6.5.2
 - launcher: fixed session icons (#47)
