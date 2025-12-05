@@ -1,0 +1,74 @@
+# Kubuntu
+# Requires a custom docker container
+# The Dockerfile is inside .github/assets/docker/kubuntu
+# Build dependencies are moved into the docker container deltacopy/kubuntu:0.3
+# extra ones can be added to this workflow
+on:
+  workflow_call:
+    inputs:
+      cache-file-path:
+        required: true
+        type: string
+      version:
+        required: true
+        type: string
+      package_name:
+        required: true
+        type: string
+env:
+  KUBUNTU_RELEASE: "25.10"
+jobs:
+  build:
+    runs-on: ubuntu-24.04
+    container: deltacopy/kubuntu:0.3
+    defaults:
+      run:
+        shell: bash
+    steps:
+      - name: Run update
+        run: apt update -y
+      - uses: actions/cache/restore@v4
+        id: cache
+        with:
+          key: ${{ runner.os }}-v${{ inputs.version }}-${{ hashFiles(inputs.cache-file-path) }}
+          path: ${{ inputs.cache-file-path }}
+          fail-on-cache-miss: true
+      - name: Run dist dist-upgrade
+        run: apt dist-upgrade -y
+      - name: Extract tarball
+        run: tar xf ${{ inputs.cache-file-path }}
+      - name: Build source
+        run: |
+          # Patch icons CMakeLists to use bash execution since it fails with set: Illegal option -o pipefail on debian hosts
+          sed -i s/'COMMAND sh ${CMAKE_CURRENT_SOURCE_DIR}\/make-theme.sh/COMMAND bash ${CMAKE_CURRENT_SOURCE_DIR}\/make-theme.sh/' "${{ inputs.package_name }}-${{ inputs.version }}/icons/CMakeLists.txt"
+          cat "${{ inputs.package_name }}-${{ inputs.version }}/icons/CMakeLists.txt"
+
+          # Patch cursors/Render.make it generates the index.theme file with invalid '-e [Index Theme]' to the index.theme
+          sed -i s/'echo -e/echo/' "${{ inputs.package_name }}-${{ inputs.version }}/cursors/Render.make"
+
+          cmake_opts=(
+            -B ${{ inputs.package_name }}-${{ inputs.version }}/build
+            -S ${{ inputs.package_name }}-${{ inputs.version }}
+            -DBUILD_DEBS=ON
+          )
+          echo "${cmake_opts[@]}"
+          cmake "${cmake_opts[@]}" && cmake --build ${{ inputs.package_name }}-${{ inputs.version }}/build -j$(nproc) && echo "Build completed!" || echo "Build failed!" || exit 1
+      - name: Build DEB package
+        id: step_build
+        run: |
+          cd ${{ inputs.package_name }}-${{ inputs.version }}/build; cpack -G DEB -V -DCPACK_THREADS=$(nproc)
+          artifact=$GITHUB_WORKSPACE/${{ inputs.package_name }}-${{ inputs.version }}/dist/${{ inputs.package_name }}-${{ inputs.version }}_amd64.deb
+          publish_filename="${{ inputs.package_name }}-${{ inputs.version }}_kubuntu-${{ env.KUBUNTU_RELEASE }}_amd64.deb"
+          echo "Moving file to $GITHUB_WORKSPACE/$publish_filename"
+          mv $artifact $GITHUB_WORKSPACE/$publish_filename
+          echo "ARTIFACT=$publish_filename" >> "$GITHUB_ENV"
+          SHA256SUM=$(sha256sum $GITHUB_WORKSPACE/$publish_filename | awk '{ print $1 }')
+          echo "ARTIFACT = $publish_filename | SHA256SUM = $SHA256SUM"
+          echo "SHA256SUM=$SHA256SUM" >> "$GITHUB_ENV"
+      - name: Publish DEB
+        if: ${{ env.SHA256SUM != '' }}
+        uses: actions/upload-artifact@v5
+        with:
+          name: ${{ env.ARTIFACT }}
+          path: ${{ env.ARTIFACT }}
+          retention-days: 1
