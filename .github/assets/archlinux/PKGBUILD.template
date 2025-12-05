@@ -1,0 +1,69 @@
+# Maintainer: DeltaCopy <7x0bb03yq@mozmail.com>
+# Description: Builds Vinyl theme from https://github.com/ekaaty/vinyl-theme
+
+# basic info
+pkgname="${pkgname}"
+pkgver=${version}
+pkgrel=1
+pkgdesc="Vinyl Theme for KDE Plasma 6"
+url="${repository}"
+arch=('x86_64' 'aarch64')
+license=("GPL-2.0-or-later")
+build_dir="build_kf6"
+
+makedepends=(
+  'cmake'
+  'extra-cmake-modules>=6.13.0'
+  'python'
+  'python-cairosvg'
+  'python-lxml'
+  'xorg-xcursorgen'
+)
+
+options=(!emptydirs !debug)
+
+source=(
+    "${url}/archive/refs/tags/v${version}.tar.gz"
+)
+
+sha256sums=('${sha256sums}')
+
+depends=(
+  'kdecoration'
+  'qt6-declarative'
+  'kcoreaddons'
+  'kcmutils'
+  'kcolorscheme'
+  'kconfig'
+  'kguiaddons'
+  'kiconthemes'
+  'kwindowsystem'
+  'kdoctools'
+  'kpackage'
+  'frameworkintegration'
+  'libplasma>=6.3.0'
+)
+
+depends=("${depends[@]}")
+
+conflicts=("vinyl-git")
+
+provides=("vinyl")
+
+build() (
+  local cmake_options=(
+    -B $build_dir
+    -S "$pkgname-${pkgver}"
+    -DBUILD_TESTING=OFF
+    -Wno-dev
+  )
+
+  cmake "${cmake_options[@]}"
+
+  cmake --build $build_dir
+)
+
+package() (
+  DESTDIR="$pkgdir" cmake --install $build_dir --prefix /usr
+  rm -rf "$pkgdir/usr/lib/cmake"
+)
