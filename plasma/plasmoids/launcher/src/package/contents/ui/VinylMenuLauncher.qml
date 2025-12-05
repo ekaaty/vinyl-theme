@@ -22,9 +22,7 @@ import org.kde.plasma.plasma5support as P5Support // Needed by datasource
 Item {
     id: applet
 
-    onVisibleChanged: {
-        root.visible = !root.visible
-    }
+    onVisibleChanged: { root.visible = visible }
 
     PlasmaExtras.Menu {
         id: contextMenu
@@ -95,10 +93,11 @@ Item {
                 x = pos.x;
                 y = pos.y;
                 reset();
-                animation1.start()
+                animation1.start();
                 searchField.focus = true;
             } else {
-                rootItem.opacity = 0
+                rootItem.opacity = 0;
+		applet.visible = false;
             }
         }
 
@@ -566,3 +565,5 @@ Item {
     }
 
 }
+
+// vim: ts=2:sw=2:sts=2:et

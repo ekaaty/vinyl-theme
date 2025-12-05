@@ -54,8 +54,6 @@ find_package(KF6 ${KF6_MIN_VERSION} REQUIRED COMPONENTS
     I18n
 )
 
-find_package(Plasma ${PLASMA_MIN_VERSION} REQUIRED)
-
 #add_definitions(-DTRANSLATION_DOMAIN=\"plasma_lookandfeel_${VINYL_PLUGIN_ID_PREFIX}\")
 #kdoctools_install(po)
 #ki18n_install(po)
@@ -68,6 +66,7 @@ execute_process(
 )
 
 if(NOT STANDALONE)
+    find_package(Plasma REQUIRED)
     plasma_install_package(
         ${VINYL_PLUGIN_ID_PREFIX}.dark
         ${VINYL_PLUGIN_ID_PREFIX}.dark
