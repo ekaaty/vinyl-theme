@@ -58,8 +58,8 @@ Item {
     }
 
     onMenuStyleChanged: loadAppLauncher()
-
-    Plasmoid.status: appLauncher && appLauncher.visible
+    
+    Plasmoid.status: plasmoid.expanded
         ? PlasmaCore.Types.RequiresAttentionStatus
         : PlasmaCore.Types.PassiveStatus
 
@@ -81,6 +81,7 @@ Item {
         hoverEnabled: true
         onClicked: {
             appLauncher.visible = !appLauncher.visible;
+            plasmoid.expanded = appLauncher.visible;
         }
     }
 
@@ -88,6 +89,9 @@ Item {
         loadAppLauncher();
         plasmoid.activated.connect(function() {
             appLauncher.visible = !appLauncher.visible;
+            plasmoid.expanded = appLauncher.visible;
         });
     }
 }
+
+// vim: ts=2:sw=2:sts=2:et
