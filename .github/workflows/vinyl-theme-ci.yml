@@ -1,0 +1,89 @@
+# Build Vinyl theme and publish release
+name: Vinyl theme build & release
+on:
+  push:
+    tags:
+      - "v*"
+env:
+  REPOSITORY: https://github.com/ekaaty/vinyl-theme
+  PACKAGE_NAME: vinyl-theme
+jobs:
+  vinyl-theme-ci:
+    runs-on: ubuntu-24.04
+    outputs:
+      VERSION: ${{ steps.step_get_artifact.outputs.VERSION }}
+      ARTIFACT: ${{ steps.step_get_artifact.outputs.ARTIFACT }}
+      REPOSITORY: ${{ steps.step_get_artifact.outputs.REPOSITORY }}
+      PACKAGE_NAME: ${{ steps.step_get_artifact.outputs.PACKAGE_NAME }}
+    steps:
+      - name: Checkout local
+        uses: actions/checkout@v5
+      - name: Install build dependencies
+        run: sudo apt-get install git -y -qq
+      - name: Get latest Vinyl release tag
+        id: step_getlatest_tag
+        uses: ./.github/actions/latest-tag
+      - name: Download tag artifact
+        id: step_get_artifact
+        run: |
+          curl -L $REPOSITORY/archive/refs/tags/${{ env.LATEST_TAG }}.tar.gz --output vinyl-${{ env.LATEST_TAG }}.tar.gz
+          echo "ARTIFACT=vinyl-${{ env.LATEST_TAG }}.tar.gz" >> "$GITHUB_OUTPUT"
+          echo "REPOSITORY=$REPOSITORY" >> "$GITHUB_OUTPUT"
+          echo "PACKAGE_NAME=$PACKAGE_NAME" >> "$GITHUB_OUTPUT" 
+          # use the tag name but remove the 'v' for the artifact name to publish
+          tagname=$(echo ${{ env.LATEST_TAG }} | sed 's/v//')
+          echo "VERSION=$tagname" >> "$GITHUB_OUTPUT"
+      - uses: actions/cache/save@v4
+        id: cache
+        with:
+          path: ${{ steps.step_get_artifact.outputs.ARTIFACT }}
+          key: ${{ runner.os }}-v${{ steps.step_get_artifact.outputs.VERSION }}-${{ hashFiles(steps.step_get_artifact.outputs.ARTIFACT) }}
+      - name: Save version
+        run: echo ${{ steps.step_get_artifact.outputs.VERSION }} > VERSION
+      - name: Upload version
+        uses: actions/upload-artifact@v5
+        with:
+          name: VERSION
+          path: VERSION
+          retention-days: 1
+  archlinux:
+    needs: vinyl-theme-ci
+    uses: ./.github/workflows/archlinux.yml
+    with:
+      version: ${{ needs.vinyl-theme-ci.outputs.VERSION }}
+      repository: ${{ needs.vinyl-theme-ci.outputs.REPOSITORY }}
+      package_name: ${{ needs.vinyl-theme-ci.outputs.PACKAGE_NAME }}
+  fedora:
+    needs: vinyl-theme-ci
+    uses: ./.github/workflows/fedora.yml
+    with:
+      cache-file-path: ${{ needs.vinyl-theme-ci.outputs.artifact }}
+      version: ${{ needs.vinyl-theme-ci.outputs.VERSION }}
+      containers: "['fedora:41','fedora:42','fedora:43']"
+      package_name: ${{ needs.vinyl-theme-ci.outputs.PACKAGE_NAME }}
+  opensuse-tumbleweed:
+    needs: vinyl-theme-ci
+    uses: ./.github/workflows/opensuse-tw.yml
+    with:
+      cache-file-path: ${{ needs.vinyl-theme-ci.outputs.artifact }}
+      version: ${{ needs.vinyl-theme-ci.outputs.VERSION }}
+      package_name: ${{ needs.vinyl-theme-ci.outputs.PACKAGE_NAME }}
+  kde-neon:
+    needs: vinyl-theme-ci
+    uses: ./.github/workflows/neon.yml
+    with:
+      cache-file-path: ${{ needs.vinyl-theme-ci.outputs.artifact }}
+      version: ${{ needs.vinyl-theme-ci.outputs.VERSION }}
+      package_name: ${{ needs.vinyl-theme-ci.outputs.PACKAGE_NAME }}
+  kubuntu:
+    needs: vinyl-theme-ci
+    uses: ./.github/workflows/kubuntu.yml
+    with:
+      cache-file-path: ${{ needs.vinyl-theme-ci.outputs.artifact }}
+      version: ${{ needs.vinyl-theme-ci.outputs.VERSION }}
+      package_name: ${{ needs.vinyl-theme-ci.outputs.PACKAGE_NAME }}
+  release:
+    uses: ./.github/workflows/release.yml
+    needs: ["archlinux", "fedora", "opensuse-tumbleweed", "kde-neon", "kubuntu"]
+   
+    
