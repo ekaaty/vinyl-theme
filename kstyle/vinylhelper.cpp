@@ -1119,13 +1119,11 @@ namespace Vinyl
         QColor background (state == CheckOn ? palette.color( QPalette::Highlight ) : palette.color( QPalette::Button ));
         if( isInMenu ) background = background.lighter(115);
 
-        // float and sunken effect
-        if( sunken ) {
-            frameRect.translate(1, 1);
-            background = background.darker(115);
-        }
-        else if( state == CheckOn || (state == CheckOff && mouseOver) ) frameRect.translate(-1, -1);
-        
+	// float and sunken effect
+	if (sunken) { 
+	    // do nothing 
+	}
+
         if( state == CheckOff)
         {
             // shadow
@@ -1286,9 +1284,10 @@ namespace Vinyl
         QRectF frameRect( rect );
         frameRect.adjust( Metrics::Frame_FrameWidth - 1, Metrics::Frame_FrameWidth - 1, - Metrics::Frame_FrameWidth + 1, -Metrics::Frame_FrameWidth + 1 );
 
-        // float and sunken effect
-        if( sunken ) frameRect.translate( 1, 1 );
-        else if( state == RadioOn || (state == RadioOff && mouseOver) ) frameRect.translate(-1, -1);
+	// float and sunken effect
+	if (sunken) { 
+	    // do nothing 
+	}
 
         // mark
         if( state == RadioOn )
