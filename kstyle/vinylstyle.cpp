@@ -2910,10 +2910,10 @@ namespace Vinyl
         if( !flat ) size = expandSize( size, frameWidth );
 
         // make sure there is enough height for the button
-        size.setHeight( qMax( size.height(), int(Metrics::MenuButton_IndicatorWidth) ) );
+        size.setHeight( qMax( size.height(), int(Metrics::MenuButton_IndicatorWidth) ) + StyleConfigData::buttonSize() );
 
         // add button width and spacing
-        size.rwidth() += Metrics::MenuButton_IndicatorWidth+2;
+        size.rwidth() += Metrics::MenuButton_IndicatorWidth;
         size.rwidth() += Metrics::Button_ItemSpacing;
 
         return size;
@@ -2938,7 +2938,7 @@ namespace Vinyl
         if( !flat ) size = expandSize( size, frameWidth );
 
         // make sure there is enough height for the button
-        size.setHeight( qMax( size.height(), int(Metrics::SpinBox_ArrowButtonWidth) ) + StyleConfigData::buttonSize() );
+        size.setHeight( qMax( size.height() - int(Metrics::SpinBox_FrameWidth), int(Metrics::SpinBox_ArrowButtonWidth) ) + StyleConfigData::buttonSize() );
 
         // add button width and spacing
         size.rwidth() += Metrics::SpinBox_ArrowButtonWidth;
@@ -3065,7 +3065,7 @@ namespace Vinyl
 
         // add padding to button from StyleConfigData
         size.rwidth() += StyleConfigData::buttonSize();
-        size.rheight() += int(StyleConfigData::buttonSize() / 2);
+        size.rheight() += StyleConfigData::buttonSize();
 
         // finally add frame margins
         return expandSize(size, Metrics::Frame_FrameWidth);
@@ -3514,9 +3514,9 @@ namespace Vinyl
             const qreal opacity( _animations->inputWidgetEngine().frameOpacity( widget ) );
 
             // render
-            const auto &background = palette.color( QPalette::Base );
-            const auto outline( palette.color( QPalette::Highlight ) );
-            _helper->renderLineEdit( painter, rect, background, outline, hasFocus, mouseOver, enabled, windowActive, mode, opacity );
+            //const auto &background = palette.color( QPalette::Base );
+            //const auto outline( palette.color( QPalette::Highlight ) );
+            _helper->renderLineEdit( painter, rect, palette, hasFocus, mouseOver, enabled, windowActive, mode, opacity );
 
         }
 

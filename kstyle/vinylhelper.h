@@ -1,25 +1,10 @@
 #ifndef vinyl_helper_h
 #define vinyl_helper_h
 
-/*************************************************************************
- * Copyright (C) 2014 by Hugo Pereira Da Costa <hugo.pereira@free.fr>    *
- *                                                                       *
- * This program is free software; you can redistribute it and/or modify  *
- * it under the terms of the GNU General Public License as published by  *
- * the Free Software Foundation; either version 2 of the License, or     *
- * (at your option) any later version.                                   *
- *                                                                       *
- * This program is distributed in the hope that it will be useful,       *
- * but WITHOUT ANY WARRANTY; without even the implied warranty of        *
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the         *
- * GNU General Public License for more details.                          *
- *                                                                       *
- * You should have received a copy of the GNU General Public License     *
- * along with this program; if not, write to the                         *
- * Free Software Foundation, Inc.,                                       *
- * 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA .        *
- *************************************************************************/
-
+/* SPDX-FileCopyrightText: 2014 Hugo Pereira Da Costa <hugo.pereira@free.fr>
+ * SPDX-FileCopyrightText: 2026 Christian Tosta <7252968+christiantosta@users.noreply.github.com>
+ * SPDX-License-Identifier: GPL-2.0-or-later
+ */
 
 #include "vinyl.h"
 #include "vinylstyleconfigdata.h"
@@ -34,6 +19,7 @@
 #include <QPainterPath>
 #include <QIcon>
 #include <QWidget>
+#include <QStyleOption>
 
 namespace Vinyl
 {
@@ -94,7 +80,7 @@ namespace Vinyl
         { return active ? _activeTitleBarTextColor:_inactiveTitleBarTextColor; }
 
         //* frame outline color, using animations
-        QColor frameOutlineColor( const QPalette&, bool mouseOver = false, bool hasFocus = false, qreal opacity = AnimationData::OpacityInvalid, AnimationMode = AnimationNone ) const;
+        QColor frameOutlineColor( const QPalette&, bool mouseOver = false, bool hasFocus = false, qreal opacity = AnimationData::OpacityInvalid, AnimationMode = AnimationNone, int strength = -1 ) const;
 
 
         //* hover outline color, using animations
@@ -172,7 +158,7 @@ namespace Vinyl
         
         //* outline for widgets
         void renderOutline(QPainter* painter, const QRectF& rect, const int radius, const int outlineStrength ) const;
-        
+
         //* shadow for widgets
         void renderBoxShadow(QPainter*, const QRect&, const int xOffset, const int yOffset, const int size, const QColor& color, const int cornerRadius, const bool active, TileSet::Tiles = TileSet::Ring ) const;
         
@@ -185,8 +171,8 @@ namespace Vinyl
         //* shadow for ellipses
         void renderEllipseShadow( QPainter*, const QRectF&, QColor color, const int size, const float param1, const float param2, const int xOffset, const int yOffset, const bool outline = false, const int outlineStrength = 0 ) const;
         
-        //* top outline highlight in dark themes
-        void topHighlight( QPainter*, const QRectF&, const int radius, const QColor& color = QColor(255, 255, 255, 20) ) const;
+        //* outline highlight in dark themes
+        void widgetOutline( QPainter*, const QRectF&, const int radius, const QColor& color = QColor(255, 255, 255, 20) ) const;
         
         //* button frame
         void renderButtonFrame( QPainter*, const QRect&, const QColor& color, const QPalette& palette, const bool focus, const bool sunken, const bool mouseOver, const bool enabled, const bool windowActive, const AnimationMode mode = AnimationNone, const qreal opacity = AnimationData::OpacityInvalid ) const;
@@ -207,7 +193,7 @@ namespace Vinyl
         void renderSeparator( QPainter*, const QRect&, const QColor&, bool vertical = false ) const;
         
         //* line edit
-        void renderLineEdit( QPainter*, const QRect&, const QColor& background, const QColor& outline, const bool hasFocus, const bool mouseOver, const bool enabled, const bool windowActive, const AnimationMode mode, const qreal opacity ) const;
+        void renderLineEdit( QPainter*, const QRect&, const QPalette& palette, const bool hasFocus, const bool mouseOver, const bool enabled, const bool windowActive, const AnimationMode mode, const qreal opacity ) const;
         
         //* group box
         void renderGroupBox( QPainter*, const QRect&, const QColor& color, const bool mouseOver ) const;
@@ -299,7 +285,7 @@ namespace Vinyl
         //* frame radius
         qreal frameRadius( const int penWidth = PenWidth::NoPen, const qreal bias = 0 ) const
         { return qMax( StyleConfigData::cornerRadius() - (0.5 * penWidth) + bias, 0.0 ); }
-        
+
         //* frame radius with new pen width
         constexpr qreal frameRadiusForNewPenWidth( const qreal oldRadius, const int penWidth ) const
         { return qMax( oldRadius - (0.5 * penWidth), 0.0 ); }

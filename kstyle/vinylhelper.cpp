@@ -1,21 +1,7 @@
-/*************************************************************************
- * Copyright (C) 2014 by Hugo Pereira Da Costa <hugo.pereira@free.fr>    *
- *                                                                       *
- * This program is free software; you can redistribute it and/or modify  *
- * it under the terms of the GNU General Public License as published by  *
- * the Free Software Foundation; either version 2 of the License, or     *
- * (at your option) any later version.                                   *
- *                                                                       *
- * This program is distributed in the hope that it will be useful,       *
- * but WITHOUT ANY WARRANTY; without even the implied warranty of        *
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the         *
- * GNU General Public License for more details.                          *
- *                                                                       *
- * You should have received a copy of the GNU General Public License     *
- * along with this program; if not, write to the                         *
- * Free Software Foundation, Inc.,                                       *
- * 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA .        *
- *************************************************************************/
+/* SPDX-FileCopyrightText: 2014 Hugo Pereira Da Costa <hugo.pereira@free.fr>
+ * SPDX-FileCopyrightText: 2026 Christian Tosta <7252968+christiantosta@users.noreply.github.com>
+ * SPDX-License-Identifier: GPL-2.0-or-later
+ */
 
 #include "vinylhelper.h"
 
@@ -93,39 +79,27 @@ namespace Vinyl
     }
 
     //____________________________________________________________________
-    QColor Helper::frameOutlineColor( const QPalette& palette, bool mouseOver, bool hasFocus, qreal opacity, AnimationMode mode ) const
+    QColor Helper::frameOutlineColor(const QPalette& palette, bool mouseOver,
+                                     bool hasFocus, qreal opacity,
+                                     AnimationMode mode, int strength) const
     {
+        QColor outline = palette.color(QPalette::WindowText);
+        const qreal baseAlpha = (strength >= 0)
+            ? (qreal)strength / 255.0 : 0.20;
 
-        QColor outline( KColorUtils::mix( palette.color( QPalette::Window ), palette.color( QPalette::WindowText ), 0.25 ) );
-        //QColor outline( palette.color( QPalette::QPalette::AlternateBase ) );
+        if (mode == AnimationFocus || hasFocus) {
+            outline = focusColor(palette);
+        } else if (mode == AnimationHover || mouseOver) {
+            outline = hoverColor(palette);
+        }
 
-        // focus takes precedence over hover
-        if( mode == AnimationFocus )
-        {
-
-            const QColor focus( focusColor( palette ) );
-            const QColor hover( hoverColor( palette ) );
-
-            if( mouseOver ) outline = KColorUtils::mix( hover, focus, opacity );
-            else outline = KColorUtils::mix( outline, focus, opacity );
-
-        } else if( hasFocus ) {
-
-            outline = focusColor( palette );
-
-        } else if( mode == AnimationHover ) {
-
-            const QColor hover( hoverColor( palette ) );
-            outline = KColorUtils::mix( outline, hover, opacity );
-
-        } else if( mouseOver ) {
-
-            outline = hoverColor( palette );
-
+        if (mode != AnimationNone && opacity > 0) {
+            outline.setAlphaF(baseAlpha + (opacity * (1.0 - baseAlpha)));
+        } else {
+            outline.setAlphaF((hasFocus || mouseOver) ? 1.0 : baseAlpha);
         }
 
         return outline;
-
     }
 
     //____________________________________________________________________
@@ -609,7 +583,7 @@ namespace Vinyl
             painter->setPen(Qt::NoPen);
 
     }
-    
+
     //______________________________________________________________________________
     void Helper::renderBoxShadow(
         QPainter* painter, const QRect& rect, const int xOffset, const int yOffset, const int size, const QColor& color, const int cornerRadius, const bool active, TileSet::Tiles tiles) const
@@ -664,24 +638,25 @@ namespace Vinyl
     }
     
     //______________________________________________________________________________
-    void Helper::topHighlight( QPainter* painter, const QRectF& rect, const int radius, const QColor& color ) const
+    void Helper::widgetOutline(QPainter* painter, const QRectF& rect,
+                               const int radius, const QColor& color) const
     {
-        QPixmap pixmap = QPixmap(rect.width(), rect.height());
-        pixmap.fill( Qt::transparent );
-        QPainter p( &pixmap );
-        
-        p.setRenderHint( QPainter::Antialiasing );
-        
-        p.setPen( Qt::NoPen );
-        p.setBrush( color );
-        p.drawRoundedRect( QRect( 0, 0, rect.width(), rect.height() ), radius, radius );
-        
-        p.setCompositionMode(QPainter::CompositionMode_DestinationOut);
-        p.setBrush( Qt::black );
-        p.drawRoundedRect( QRect( 1, 1, rect.width() - 2, rect.height() - 2 ), radius, radius );
+        QPixmap pixmap(rect.size().toSize());
+        pixmap.fill(Qt::transparent);
+        QPainter p(&pixmap);
 
-        painter->drawPixmap( QRect( rect.x(), rect.y(), rect.width(), rect.height() ), pixmap );
-        
+        p.setRenderHint(QPainter::Antialiasing);
+
+        p.setPen(Qt::NoPen);
+        p.setBrush(color);
+        p.drawRoundedRect(pixmap.rect(), radius, radius);
+
+        p.setCompositionMode(QPainter::CompositionMode_DestinationOut);
+        p.setBrush(Qt::black);
+        p.drawRoundedRect(pixmap.rect().adjusted(1, 1, -1, -1), radius, radius);
+        p.end();
+
+        painter->drawPixmap(rect.topLeft(), pixmap);
     }
 
     //______________________________________________________________________________
@@ -730,7 +705,7 @@ namespace Vinyl
         // render
         painter->drawRoundedRect( frameRect, radius, radius );
 
-        if( isDarkTheme( palette ) && enabled ) topHighlight( painter, frameRect, StyleConfigData::cornerRadius() );
+        if( isDarkTheme( palette ) && enabled ) widgetOutline( painter, frameRect, StyleConfigData::cornerRadius() );
         
         // pressed animation
         if (mode == AnimationPressed){
@@ -910,154 +885,46 @@ namespace Vinyl
     }
     
     //______________________________________________________________________________
-    void Helper::renderLineEdit(
-        QPainter* painter, const QRect& rect,
-        const QColor& background, const QColor& outline, const bool hasFocus, const bool mouseOver, bool enabled, const bool windowActive, const AnimationMode mode, const qreal opacity ) const
+    void Helper::renderLineEdit(QPainter* painter, const QRect& rect,
+                                const QPalette& palette, const bool hasFocus,
+                                const bool mouseOver, bool enabled,
+                                const bool windowActive,
+                                const AnimationMode mode,
+                                const qreal opacity) const
     {
-
         painter->setRenderHint( QPainter::Antialiasing );
 
-        QRectF frameRect( rect.adjusted( Metrics::Frame_FrameWidth, Metrics::Frame_FrameWidth, -Metrics::Frame_FrameWidth, -Metrics::Frame_FrameWidth ) );
-        qreal radius( frameRadius( PenWidth::NoPen, -1 ) );
-        
-        painter->setPen( Qt::NoPen );
-        if (enabled)
-        {
-            // draw shadow
-            if( hasFocus )
-            { 
-                frameRect.adjust(1, 1, -1, -1);
-                // focus in animation 
-                if( mode == 2 && opacity > 0 && opacity < 1) {
-                    
-                    // shadow opacity animation
-                    //old shadow
-                    //renderBoxShadow( painter, frameRect, 0, 1, 5, QColor(0,0,0,84*(1-opacity)), radius, windowActive );
-                    //renderOutline(painter, frameRect, radius, 6*(1-opacity));
-                    //painter->setPen( Qt::NoPen );
-                    // new shadow
-                    //renderBoxShadow( painter, frameRect, 0, 1, 6, alphaColor(outline.darker(120), opacity) , radius, windowActive ); 
-                    //renderBoxShadow( painter, frameRect, 0, 1, 4, alphaColor(outline.darker(120), opacity) , radius, windowActive );
+        QRectF frameRect( rect.adjusted(Metrics::Frame_FrameWidth,
+                                        Metrics::Frame_FrameWidth,
+                                        -Metrics::Frame_FrameWidth,
+                                        -Metrics::Frame_FrameWidth));
+        qreal radius(frameRadius(PenWidth::NoPen, -1));
 
-                    const qreal finalRadius ((frameRect.width()+Metrics::Frame_FrameWidth)*opacity);
-                    
-                    QPixmap mask = QPixmap(rect.width(), rect.height());	
-                    mask.fill( Qt::transparent );
+        const auto &background = palette.color(QPalette::Base);
+        painter->setPen(Qt::NoPen);
+        painter->setBrush(background.isValid() ? background : Qt::NoBrush);
+        painter->drawRoundedRect(frameRect, radius, radius);
 
-                    QPainter pmask( &mask );	
-                    pmask.setRenderHint( QPainter::Antialiasing );
-                    pmask.fillRect(rect, Qt::black);
-                    pmask.setPen( Qt::NoPen );
-                    pmask.setBrush( Qt::black );
-                    pmask.setCompositionMode(QPainter::CompositionMode_SourceOut);
-                    pmask.drawEllipse(QPointF(frameRect.x(), frameRect.y() + frameRect.height()/2), finalRadius, finalRadius);
-                    pmask.end();
-                    
-                    QPixmap pixmap = QPixmap(rect.width(), rect.height());	
-                    pixmap.fill( Qt::transparent );
-                    QPainter p( &pixmap );	
-                    p.setOpacity(0.3 + 0.7*opacity);
-                    p.setRenderHint( QPainter::Antialiasing );
-                    p.setCompositionMode(QPainter::CompositionMode_SourceOver);
-                    p.setPen(Qt::NoPen);
-                    renderBoxShadow( &p, frameRect, 0, 1, 6, outline.darker(120) , radius, windowActive ); // comment this out for only the outline animation
-                    renderBoxShadow( &p, frameRect, 0, 1, 4, outline.darker(130) , radius, windowActive ); // comment this out for only the outline animation
-                    renderBoxShadow( &p, frameRect, 0, 1, 4, outline.darker(140) , radius, windowActive ); // comment this out for only the outline animation
-                    p.setBrush( alphaColor( outline, 0.6 ) ) ;
-                    QRectF focusFrame = frameRect.adjusted( -2, -2, 2, 2 );
-                    p.drawRoundedRect( focusFrame, radius + 1, radius + 1); // outline around lineedit
-                    
-                    // mask
-                    //p.setOpacity(1);  // uncomment this for only outline animation
-                    p.setCompositionMode(QPainter::CompositionMode_DestinationOut);
-                    p.drawPixmap(rect, mask);
-                    p.end();
-                    
-                    painter->drawPixmap( rect, pixmap );
-                }
-                
-                // focus animation done
-                else {
-                    renderBoxShadow( painter, frameRect, 0, 1, 7, outline.darker(120) , radius, windowActive ); 
-                    renderBoxShadow( painter, frameRect, 0, 1, 5, outline.darker(130) , radius, windowActive );
-                    renderBoxShadow( painter, frameRect, 0, 1, 4, outline.darker(140) , radius, windowActive );
-                    painter->setBrush( alphaColor( outline, 0.6 ) ) ;
-                    QRectF focusFrame = frameRect.adjusted( -2, -2, 2, 2 );
-                    painter->drawRoundedRect( focusFrame, radius + 1, radius + 1);
-                }
-            }
-            
-            // mouse over or normal state
-            else {
-                
-                // focus out animation
-                if( mode == 2 && opacity > 0 && opacity < 1) {
-                    
-                    const qreal finalRadius ((frameRect.width()+Metrics::Frame_FrameWidth)*opacity);
-                    
-                    QPixmap mask = QPixmap(rect.width(), rect.height());	
-                    mask.fill( Qt::transparent );
+        QColor color = frameOutlineColor(palette, mouseOver, hasFocus,
+                                         opacity, mode);
 
-                    QPainter pmask( &mask );
-                    pmask.setOpacity(1);
-                    pmask.setRenderHint( QPainter::Antialiasing );
-                    pmask.fillRect(rect, Qt::black);
-                    pmask.setPen( Qt::NoPen );
-                    pmask.setBrush( Qt::black );
-                    pmask.setCompositionMode(QPainter::CompositionMode_SourceOut);
-                    pmask.drawEllipse(QPointF(frameRect.x(), frameRect.y() + frameRect.height()/2), finalRadius, finalRadius);
-                    pmask.end();
-                    
-                    QPixmap pixmap = QPixmap(rect.width(), rect.height());	
-                    pixmap.fill( Qt::transparent );
-                    QPainter p( &pixmap );	
-                    //p.setOpacity(0.3 + 0.6*opacity);
-                    p.setRenderHint( QPainter::Antialiasing );
-                    p.setCompositionMode(QPainter::CompositionMode_SourceOver);
-                    p.setPen(Qt::NoPen);
-                    renderBoxShadow( &p, frameRect, 0, 1, 6, outline.darker(120) , radius, windowActive ); 
-                    renderBoxShadow( &p, frameRect, 0, 1, 4, outline.darker(120) , radius, windowActive );
-                    p.setBrush( alphaColor( outline, 0.6 ) ) ;
-                    QRectF focusFrame = frameRect.adjusted( -1, -1, 1, 1 );
-                    p.drawRoundedRect( focusFrame, radius + 1, radius + 1);
-                    
-                    // mask
-                    p.setCompositionMode(QPainter::CompositionMode_DestinationOut);
-                    p.drawPixmap(rect, mask);
-                    p.end();
-                    
-                    painter->drawPixmap( rect, pixmap );
-                    
-                    // unfocused lineedit shadow effect
-                    renderBoxShadow( painter, frameRect, 0, 1, 5, QColor(0,0,0,84*(1-opacity)), radius, windowActive );
-                    renderOutline(painter, frameRect, radius, 6*(1-opacity));
-                    painter->setPen( Qt::NoPen );
-                    
-                }
-                
-                // normal or mouse over 
-                else {
-                    if ( mouseOver && !hasFocus ) renderBoxShadow( painter, frameRect, 0, 1, 6, QColor(0,0,0,160), radius, windowActive );
-                    else {
-                        renderBoxShadow( painter, frameRect, 0, 1, 5, QColor(0,0,0,84), radius, windowActive );
-                        renderOutline(painter, frameRect, radius, 6);
-                        painter->setPen( Qt::NoPen );
-                    }
-                }
-                
+        if(!mouseOver && !hasFocus) {
+            if (!enabled) {
+                color.setAlphaF(color.alphaF() * 0.125);
+            } else {
+                color.setAlphaF(color.alphaF() * 0.5);
             }
         }
-            
 
-        // set brush
-        if( background.isValid() ) painter->setBrush( background );
-        else painter->setBrush( Qt::NoBrush );
-        
-        if( hasFocus ) radius--;
+        if (mode == AnimationHover && opacity > 0)
+        {
+            QColor highlight = palette.color(QPalette::Highlight);
+            color = alphaColor(highlight, opacity);
+        }
 
-        // render
-        painter->drawRoundedRect( frameRect, radius, radius );
+        widgetOutline( painter, rect, radius, color);
     }
+
     
     //______________________________________________________________________________
     void Helper::renderGroupBox(
@@ -1259,7 +1126,7 @@ namespace Vinyl
                 } 
             }
 
-        if( darkTheme ) topHighlight( painter, frameRect, radius );
+        if( darkTheme ) widgetOutline( painter, frameRect, radius );
 
     }
 
@@ -1355,7 +1222,7 @@ namespace Vinyl
                 
             }
         }
-        if ( darkTheme ) topHighlight( painter, frameRect, frameRect.width()/2 );
+        if ( darkTheme ) widgetOutline( painter, frameRect, frameRect.width()/2 );
 
     }
 
@@ -1504,7 +1371,7 @@ namespace Vinyl
         // render
         painter->drawEllipse( frameRect );
         
-        topHighlight( painter, frameRect, frameRect.width()/2 );
+        widgetOutline( painter, frameRect, frameRect.width()/2 );
 
 
     }
