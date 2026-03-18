@@ -172,7 +172,7 @@ namespace Vinyl
             post some mouseRelease event to the target, in order to counter balance
             the mouse press that triggered the drag. Note that it triggers a resetDrag
             */
-            QMouseEvent mouseEvent( QEvent::MouseButtonRelease, _parent->_dragPoint, Qt::LeftButton, Qt::LeftButton, Qt::NoModifier );
+            QMouseEvent mouseEvent( QEvent::MouseButtonRelease, _parent->_dragPoint, QCursor::pos(), Qt::LeftButton, Qt::LeftButton, Qt::NoModifier );
             qApp->sendEvent( _parent->_target.data(), &mouseEvent );
 
             return false;
@@ -539,7 +539,7 @@ namespace Vinyl
 
                 } else resetDrag();
 
-            } else if( QPoint( mouseEvent->globalPos() - _globalDragPoint ).manhattanLength() >= _dragDistance ) {
+            } else if( QPoint( mouseEvent->globalPosition().toPoint() - _globalDragPoint ).manhattanLength() >= _dragDistance ) {
 
                 _dragTimer.start( 0, this );
 

@@ -185,7 +185,7 @@ namespace Vinyl
             QStringLiteral( "/VinylDecoration" ),
             QStringLiteral( "org.kde.Vinyl.Style" ),
             QStringLiteral( "reparseConfiguration" ), this, SLOT(configurationChanged()) );
-        connect(qApp, &QApplication::paletteChanged, this, &Style::configurationChanged);
+
         // call the slot directly; this initial call will set up things that also
         // need to be reset when the system palette changes
         loadConfiguration();
@@ -199,6 +199,15 @@ namespace Vinyl
         delete _helper;
     }
     
+    //______________________________________________________________
+    bool Style::event(QEvent *event)
+    {
+        if (event && event->type() == QEvent::ApplicationPaletteChange) {
+            configurationChanged();
+        }
+        return QCommonStyle::event(event);
+    }
+
     //______________________________________________________________
     void Style::polish(QApplication *app)
     {
@@ -1377,9 +1386,12 @@ namespace Vinyl
                     // copy event, send and return
                     QMouseEvent copy(
                         mouseEvent->type(),
-                        position,
+                        mouseEvent->position(),
+                        mouseEvent->globalPosition(),
                         mouseEvent->button(),
-                        mouseEvent->buttons(), mouseEvent->modifiers());
+                        mouseEvent->buttons(),
+                        mouseEvent->modifiers()
+                    );
 
                     QCoreApplication::sendEvent( scrollBar, &copy );
                     event->setAccepted( true );
@@ -3591,6 +3603,7 @@ namespace Vinyl
     //______________________________________________________________
     bool Style::drawFrameGroupBoxPrimitive( const QStyleOption* option, QPainter* painter, const QWidget* widget) const
     {
+        Q_UNUSED(widget)
 
         // cast option and check
         const auto frameOption( qstyleoption_cast<const QStyleOptionFrame*>( option ) );
@@ -5258,8 +5271,6 @@ namespace Vinyl
         const bool useStrongFocus( StyleConfigData::menuItemDrawStrongFocus() );
         
         _animations->inputWidgetEngine().updateState( widget, AnimationHover, selected );
-        const AnimationMode mode( _animations->inputWidgetEngine().buttonAnimationMode( widget ) );
-        const qreal opacity( _animations->inputWidgetEngine().buttonOpacity( widget ) );
 
         // render hover and focus
         if( selected || sunken )
@@ -5301,7 +5312,7 @@ namespace Vinyl
             // checkbox state
 
             CheckBoxState state( menuItemOption->checked ? CheckOn : CheckOff );
-            const bool active( menuItemOption->checked );
+            //const bool active( menuItemOption->checked );
             //const auto color( _helper->checkBoxIndicatorColor( palette, false, enabled && active ) );
             const auto background( state == CheckOn ? palette.color( QPalette::Highlight ) : palette.color( QPalette::Button ) );
             //_helper->renderCheckBoxBackground( painter, checkBoxRect, palette.color( QPalette::Window ), sunken );    //not needed
@@ -5312,9 +5323,6 @@ namespace Vinyl
             checkBoxRect = visualRect( option, checkBoxRect );
 
             const bool active( menuItemOption->checked );
-            //const auto shadow( _helper->shadowColor( palette ) );
-            //const auto color( _helper->checkBoxIndicatorColor( palette, false, enabled && active ) );
-            //_helper->renderRadioButtonBackground( painter, checkBoxRect, palette.color( QPalette::Window ), sunken ); //not needed
             _helper->renderRadioButton( painter, checkBoxRect, palette, ( selected || sunken ), sunken, active ? RadioOn:RadioOff, true );
 
         }
@@ -5835,7 +5843,7 @@ namespace Vinyl
         
         // define handle rect
         QRectF handleRect;
-        const qreal sliderWidth = Metrics::ScrollBar_SliderWidth / ( 2 - grooveAnimationOpacity ) ;
+        const qreal sliderWidth = static_cast<qreal>(Metrics::ScrollBar_SliderWidth) / ( 2 - grooveAnimationOpacity );
         if( horizontal ) handleRect = centerRectF( rect, rect.width(), sliderWidth );
         else handleRect = centerRectF( rect, sliderWidth, rect.height() );
 

@@ -1,21 +1,7 @@
-/*************************************************************************
- * Copyright (C) 2014 by Hugo Pereira Da Costa <hugo.pereira@free.fr>    *
- *                                                                       *
- * This program is free software; you can redistribute it and/or modify  *
- * it under the terms of the GNU General Public License as published by  *
- * the Free Software Foundation; either version 2 of the License, or     *
- * (at your option) any later version.                                   *
- *                                                                       *
- * This program is distributed in the hope that it will be useful,       *
- * but WITHOUT ANY WARRANTY; without even the implied warranty of        *
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the         *
- * GNU General Public License for more details.                          *
- *                                                                       *
- * You should have received a copy of the GNU General Public License     *
- * along with this program; if not, write to the                         *
- * Free Software Foundation, Inc.,                                       *
- * 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA .        *
- *************************************************************************/
+/* SPDX-FileCopyrightText: 2014 Hugo Pereira Da Costa <hugo.pereira@free.fr>
+ * SPDX-FileCopyrightText: 2026 Christian Tosta <7252968+christiantosta@users.noreply.github.com>
+ * SPDX-License-Identifier: GPL-2.0-or-later
+ */
 
 #include "vinylmdiwindowshadow.h"
 
@@ -62,10 +48,11 @@ namespace Vinyl
         QRectF boxRect(QPoint(0, 0), boxSize);
         boxRect.moveCenter(shadowRect.center());
 
-        const int topSize( boxRect.top() - shadowRect.top() - Metrics::Shadow_Overlap - params.offset.y() );
-        const int bottomSize( shadowRect.bottom() - boxRect.bottom() - Metrics::Shadow_Overlap + params.offset.y() );
-        const int leftSize( boxRect.left() - shadowRect.left() - Metrics::Shadow_Overlap - params.offset.x() );
-        const int rightSize( shadowRect.right() - boxRect.right() - Metrics::Shadow_Overlap + params.offset.x() );
+        const qreal overlap = static_cast<qreal>(Metrics::Shadow_Overlap);
+        const int topSize( boxRect.top() - shadowRect.top() - overlap - params.offset.y() );
+        const int bottomSize( shadowRect.bottom() - boxRect.bottom() - overlap + params.offset.y() );
+        const int leftSize( boxRect.left() - shadowRect.left() - overlap - params.offset.x() );
+        const int rightSize( shadowRect.right() - boxRect.right() - overlap + params.offset.x() );
 
         // get tileSet rect
         auto hole = _widget->frameGeometry();

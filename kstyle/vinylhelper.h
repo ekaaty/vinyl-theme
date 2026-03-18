@@ -1,10 +1,10 @@
-#ifndef vinyl_helper_h
-#define vinyl_helper_h
-
 /* SPDX-FileCopyrightText: 2014 Hugo Pereira Da Costa <hugo.pereira@free.fr>
  * SPDX-FileCopyrightText: 2026 Christian Tosta <7252968+christiantosta@users.noreply.github.com>
  * SPDX-License-Identifier: GPL-2.0-or-later
  */
+
+#ifndef vinyl_helper_h
+#define vinyl_helper_h
 
 #include "vinyl.h"
 #include "vinylstyleconfigdata.h"
@@ -36,8 +36,7 @@ namespace Vinyl
         explicit Helper( KSharedConfig::Ptr, QObject *parent = nullptr );
 
         //* destructor
-        virtual ~Helper()
-        {}
+        virtual ~Helper();
 
         //* load configuration
         virtual void loadConfig();
@@ -303,6 +302,8 @@ namespace Vinyl
 
         //* return rounded path in a given rect, with only selected corners rounded, and for a given radius
         QPainterPath roundedPath( const QRectF&, Corners, qreal ) const;
+
+        bool eventFilter(QObject *obj, QEvent *event) override;
 
         private:
 

@@ -37,21 +37,43 @@ namespace Vinyl
     Helper::Helper( KSharedConfig::Ptr config, QObject *parent ):
         _config( std::move( config ) )
     {
-        
-        if ( qApp ) {
-            connect(qApp, &QApplication::paletteChanged, this, [=]() {
-                if (qApp->property("KDE_COLOR_SCHEME_PATH").isValid()) {
-                    const auto path = qApp->property("KDE_COLOR_SCHEME_PATH").toString();
-                    KConfig config(path, KConfig::SimpleConfig);
-                    KConfigGroup group( config.group("WM") );
-                    const QPalette palette( QApplication::palette() );
-                    _activeTitleBarColor = group.readEntry( "activeBackground", palette.color( QPalette::Active, QPalette::Highlight ) );
-                    _activeTitleBarTextColor = group.readEntry( "activeForeground", palette.color( QPalette::Active, QPalette::HighlightedText ) );
-                    _inactiveTitleBarColor = group.readEntry( "inactiveBackground", palette.color( QPalette::Disabled, QPalette::Highlight ) );
-                    _inactiveTitleBarTextColor = group.readEntry( "inactiveForeground", palette.color( QPalette::Disabled, QPalette::HighlightedText ) );
-                }
-            });
+        Q_UNUSED(*parent)
+
+        if (qApp) {
+            // Install the filter to heard application events
+            qApp->installEventFilter(this);
+
+            // Loads initial palette
+            loadConfig();
         }
+    }
+
+    //____________________________________________________________________
+    Helper::~Helper()
+    {
+        if (qApp) {
+            qApp->removeEventFilter(this);
+        }
+    }
+
+    //____________________________________________________________________
+    bool Helper::eventFilter(QObject *obj, QEvent *event)
+    {
+        if (obj == qApp && event->type() == QEvent::ApplicationPaletteChange) {
+            if (qApp->property("KDE_COLOR_SCHEME_PATH").isValid()) {
+                const auto path = qApp->property("KDE_COLOR_SCHEME_PATH").toString();
+                KConfig config(path, KConfig::SimpleConfig);
+                KConfigGroup group(config.group("WM"));
+                const QPalette palette(QApplication::palette());
+
+                _activeTitleBarColor = group.readEntry("activeBackground", palette.color(QPalette::Active, QPalette::Highlight));
+                _activeTitleBarTextColor = group.readEntry("activeForeground", palette.color(QPalette::Active, QPalette::HighlightedText));
+                _inactiveTitleBarColor = group.readEntry("inactiveBackground", palette.color(QPalette::Disabled, QPalette::Highlight));
+                _inactiveTitleBarTextColor = group.readEntry("inactiveForeground", palette.color(QPalette::Disabled, QPalette::HighlightedText));
+            }
+            return false; // Permite que o evento continue sendo processado por outros
+        }
+        return QObject::eventFilter(obj, event);
     }
 
     //____________________________________________________________________
@@ -117,6 +139,9 @@ namespace Vinyl
     //____________________________________________________________________
     QColor Helper::sidePanelOutlineColor( const QPalette& palette, bool hasFocus, qreal opacity, AnimationMode mode ) const
     {
+        Q_UNUSED(hasFocus);
+        Q_UNUSED(opacity);
+        Q_UNUSED(mode);
 
         QColor outline( qGray(palette.color( QPalette::Window ).rgb()) > 150 ? QColor(0,0,0,20) : QColor(0,0,0,50) );
         return outline;
@@ -440,7 +465,7 @@ namespace Vinyl
         QPainter* painter, const QRect& rect,
         const QColor& color, const QPalette& palette, const bool windowActive, const bool enabled ) const
     {
-
+        Q_UNUSED(palette);
         painter->setRenderHint( QPainter::Antialiasing );
 
         //QRectF frameRect( rect.adjusted( 1, 1, -1, -1 ) );
@@ -892,6 +917,7 @@ namespace Vinyl
                                 const AnimationMode mode,
                                 const qreal opacity) const
     {
+        Q_UNUSED(windowActive);
         painter->setRenderHint( QPainter::Antialiasing );
 
         QRectF frameRect( rect.adjusted(Metrics::Frame_FrameWidth,
@@ -1236,7 +1262,7 @@ namespace Vinyl
         painter->setRenderHint( QPainter::Antialiasing, true );
 
         const QRectF baseRect( rect );
-        const qreal radius( 0.5*Metrics::Slider_GrooveThickness );
+        const qreal radius( 0.5 * static_cast<qreal>(Metrics::Slider_GrooveThickness) );
 
         // content
         if( color.isValid() )
@@ -1381,15 +1407,16 @@ namespace Vinyl
         QPainter* painter, const QRect& rect,
         const QColor& color, const bool isContent ) const
     {
+        Q_UNUSED(isContent);
 
         // setup painter
         painter->setRenderHint( QPainter::Antialiasing, true );
 
         const QRectF baseRect( rect );
         
-        int thickness = Metrics::ProgressBar_Thickness;
-        if( !isContent ) thickness = qMax(Metrics::ProgressBar_Thickness-2, 0);
-        const qreal radius( 0.5*Metrics::ProgressBar_Thickness);
+        //int thickness = Metrics::ProgressBar_Thickness;
+        //if( !isContent ) thickness = qMax(Metrics::ProgressBar_Thickness-2, 0);
+        const qreal radius( 0.5 * static_cast<qreal>(Metrics::ProgressBar_Thickness) );
 
         // content
         if( color.isValid() )
@@ -1418,7 +1445,7 @@ namespace Vinyl
         painter->setRenderHint( QPainter::Antialiasing, true );
 
         const QRectF baseRect( rect );
-        const qreal radius( 0.5*Metrics::ProgressBar_Thickness );
+        const qreal radius( 0.5 * static_cast<qreal>(Metrics::ProgressBar_Thickness) );
 
         // setup brush
         QPixmap pixmap( horizontal ? 2*Metrics::ProgressBar_BusyIndicatorSize : 1, horizontal ? 1:2*Metrics::ProgressBar_BusyIndicatorSize );

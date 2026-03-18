@@ -1,22 +1,7 @@
-/*************************************************************************
- * Copyright (C) 2014 by Hugo Pereira Da Costa <hugo.pereira@free.fr>    *
- * Copyright (C) 2018, 2020 by Vlad Zahorodnii <vlad.zahorodnii@kde.org> *
- *                                                                       *
- * This program is free software; you can redistribute it and/or modify  *
- * it under the terms of the GNU General Public License as published by  *
- * the Free Software Foundation; either version 2 of the License, or     *
- * (at your option) any later version.                                   *
- *                                                                       *
- * This program is distributed in the hope that it will be useful,       *
- * but WITHOUT ANY WARRANTY; without even the implied warranty of        *
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the         *
- * GNU General Public License for more details.                          *
- *                                                                       *
- * You should have received a copy of the GNU General Public License     *
- * along with this program; if not, write to the                         *
- * Free Software Foundation, Inc.,                                       *
- * 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA .        *
- *************************************************************************/
+/* SPDX-FileCopyrightText: 2014 Hugo Pereira Da Costa <hugo.pereira@free.fr>
+ * SPDX-FileCopyrightText: 2026 Christian Tosta <7252968+christiantosta@users.noreply.github.com>
+ * SPDX-License-Identifier: GPL-2.0-or-later
+ */
 
 #include "vinylshadowhelper.h"
 
@@ -255,11 +240,12 @@ namespace Vinyl
         QPainter painter(&shadowTexture);
         painter.setRenderHint(QPainter::Antialiasing);
 
+        const qreal overlap = static_cast<qreal>(Metrics::Shadow_Overlap);
         const QMargins margins = QMargins(
-            boxRect.left() - outerRect.left() - Metrics::Shadow_Overlap - params.offset.x(),
-            boxRect.top() - outerRect.top() - Metrics::Shadow_Overlap - params.offset.y(),
-            outerRect.right() - boxRect.right() - Metrics::Shadow_Overlap + params.offset.x(),
-            outerRect.bottom() - boxRect.bottom() - Metrics::Shadow_Overlap + params.offset.y());
+            boxRect.left() - outerRect.left() - overlap - params.offset.x(),
+            boxRect.top() - outerRect.top() - overlap - params.offset.y(),
+            outerRect.right() - boxRect.right() - overlap + params.offset.x(),
+            outerRect.bottom() - boxRect.bottom() - overlap + params.offset.y());
 
         painter.setPen(Qt::NoPen);
         painter.setBrush(Qt::black);
@@ -299,11 +285,11 @@ namespace Vinyl
             return TileSet();
         } 
 
-        auto withOpacity = [](const QColor &color, qreal opacity) -> QColor {
+        /*auto withOpacity = [](const QColor &color, qreal opacity) -> QColor {
             QColor c(color);
             c.setAlphaF(opacity);
             return c;
-        };
+        };*/
 
         //const QColor color = StyleConfigData::shadowColor();
         //const qreal strength = static_cast<qreal>(StyleConfigData::shadowStrength()) / 255.0;
@@ -333,11 +319,12 @@ namespace Vinyl
             QPainter painter(&shadowTexture);
             painter.setRenderHint(QPainter::Antialiasing);
 
+            const qreal overlap = static_cast<qreal>(Metrics::Shadow_Overlap);
             const QMargins margins = QMargins(
-                boxRect.left() - outerRect.left() - Metrics::Shadow_Overlap,
-                boxRect.top() - outerRect.top() - Metrics::Shadow_Overlap,
-                outerRect.right() - boxRect.right() - Metrics::Shadow_Overlap,
-                outerRect.bottom() - boxRect.bottom() - Metrics::Shadow_Overlap);
+                boxRect.left() - outerRect.left() - overlap,
+                boxRect.top() - outerRect.top() - overlap,
+                outerRect.right() - boxRect.right() - overlap,
+                outerRect.bottom() - boxRect.bottom() - overlap);
 
             painter.setPen(Qt::NoPen);
             painter.setBrush(Qt::black);
@@ -530,11 +517,12 @@ namespace Vinyl
         QRectF boxRect(QPoint(0, 0), boxSize);
         boxRect.moveCenter(shadowRect.center());
 
+        const qreal overlap = static_cast<qreal>(Metrics::Shadow_Overlap);
         QMargins margins(
-            boxRect.left() - shadowRect.left() - Metrics::Shadow_Overlap - params.offset.x(),
-            boxRect.top() - shadowRect.top() - Metrics::Shadow_Overlap - params.offset.y(),
-            shadowRect.right() - boxRect.right() - Metrics::Shadow_Overlap + params.offset.x(),
-            shadowRect.bottom() - boxRect.bottom() - Metrics::Shadow_Overlap + params.offset.y());
+            boxRect.left() - shadowRect.left() - overlap - params.offset.x(),
+            boxRect.top() - shadowRect.top() - overlap - params.offset.y(),
+            shadowRect.right() - boxRect.right() - overlap + params.offset.x(),
+            shadowRect.bottom() - boxRect.bottom() - overlap + params.offset.y());
 
         if (widget->inherits("QBalloonTip")) {
             // Balloon tip needs special margins to deal with the arrow.
