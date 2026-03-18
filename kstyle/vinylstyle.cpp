@@ -1513,27 +1513,6 @@ namespace Vinyl
                     // side shadow
                     if( StyleConfigData::dolphinSidebarOpacity() < ( palette.color( QPalette::Window ).alpha()/255 )*100 )
                     {
-                        /*painter.setBrush( Qt::NoBrush );
-                        QLinearGradient gradient( rect.topLeft(), rect.bottomLeft() );
-                        gradient.setColorAt( 0, QColor(0,0,0,0) );
-                        gradient.setColorAt( 0.1, QColor(0,0,0,40) );
-                        gradient.setColorAt( 1, QColor(0,0,0,40) );
-                        //painter.setPen( QPen(gradient, 1) );
-                        painter.setPen( QColor(0,0,0,40) );
-                        painter.drawLine( rect.topRight(), rect.bottomRight() );
-                        
-                        gradient.setColorAt( 0.1, QColor(0,0,0,12) );
-                        gradient.setColorAt(1, QColor(0,0,0,12) );
-                        //painter.setPen( QPen(gradient, 1) );
-                        painter.setPen( QColor(0,0,0,12) );
-                        painter.drawLine( rect.topRight() - QPoint(1, 0), rect.bottomRight() - QPoint(1, 0) );
-                        
-                        gradient.setColorAt( 0.1, QColor(0,0,0,3) );
-                        gradient.setColorAt(1, QColor(0,0,0,3) );
-                        //painter.setPen( QPen(gradient, 1) );
-                        painter.setPen( QColor(0,0,0,3) );
-                        painter.drawLine( rect.topRight() - QPoint(2, 0), rect.bottomRight() - QPoint(2, 0) );*/
-                        
                         QRect shadowRect ( rect.topRight(), QSize(30, rect.height() ) );
                         
                         const QWidget* tabWidget = dockWidget->window()->findChild<const QWidget *>( "tabWidget", Qt::FindDirectChildrenOnly );
@@ -3470,15 +3449,6 @@ namespace Vinyl
 
         } else {
 
-            /*if( _frameShadowFactory->isRegistered( widget ) ) // WHAT does this do??
-            {
-
-                // update frame shadow factory
-                _frameShadowFactory->updateShadowsGeometry( widget, rect );
-                _frameShadowFactory->updateState( widget, hasFocus, mouseOver, opacity, mode );
-
-            }*/
-
             const auto background( isTitleWidget ? palette.color( widget->backgroundRole() ) : palette.color( QPalette::Base ) );
             _helper->renderFrame( painter, rect, background, palette, windowActive, enabled );
 
@@ -3615,12 +3585,6 @@ namespace Vinyl
         // normal frame
         const auto& palette( option->palette );
         const auto background( _helper->frameBackgroundColor( palette ) );
-        //const auto outline( _helper->frameOutlineColor( palette ) );
-        
-        //const State& state( option->state );
-        //const bool mouseOver ( widget->property("HOVER").toBool() );  // can cause crashes
-        
-        //qDebug() << mouseOver;
 
         /*
          * need to reset painter's clip region in order to paint behind textbox label
@@ -5099,29 +5063,8 @@ namespace Vinyl
                 gradient.setColorAt( 1, QColor(0,0,0,3) );
                 painter->setPen( QPen(gradient, 1) );
                 //painter->setPen(QColor(0,0,0,3) );
-                painter->drawLine( widgetRect.bottomLeft() - QPoint(0, 2), widgetRect.bottomRight() - QPoint(0, 2) ); 
-                    
-                
-                
-                /*painter->setBrush( Qt::NoBrush );
-                QLinearGradient gradient( shadowRect.bottomLeft(), shadowRect.bottomRight() );
-                gradient.setColorAt( 0, QColor(0,0,0, shadow_xoffset > 0 ? 0 : 40/2) );
-                gradient.setColorAt( 0.05, QColor(0,0,0,40) );
-                gradient.setColorAt( 1, QColor(0,0,0,40) );
-                painter->setPen( QPen(gradient, 1) );
-                painter->drawLine( shadowRect.bottomLeft(), shadowRect.bottomRight() );
-                
-                gradient.setColorAt( 0, QColor(0,0,0,shadow_xoffset > 0 ? 0 : 12/2) );
-                gradient.setColorAt( 0.05, QColor(0,0,0,12) );
-                gradient.setColorAt( 1, QColor(0,0,0,12) );
-                painter->setPen( QPen(gradient, 1) );
-                painter->drawLine( shadowRect.bottomLeft() - QPoint(0, 1), shadowRect.bottomRight() - QPoint(0, 1) );
-                
-                gradient.setColorAt( 0, QColor(0,0,0,shadow_xoffset > 0 ? 0 : 3/2) );
-                gradient.setColorAt( 0.05, QColor(0,0,0,3) );
-                gradient.setColorAt( 1, QColor(0,0,0,3/2) );
-                painter->setPen( QPen(gradient, 1) );
-                painter->drawLine( shadowRect.bottomLeft() - QPoint(0, 2), shadowRect.bottomRight() - QPoint(0, 2) );*/
+                painter->drawLine( widgetRect.bottomLeft() - QPoint(0, 2), widgetRect.bottomRight() - QPoint(0, 2) );
+
             }
         }
 
@@ -8269,9 +8212,6 @@ namespace Vinyl
         if( !_helper->compositingActive() ) return;
 
         widget->setAttribute(Qt::WA_TranslucentBackground);
-        /* distinguish forced translucency from hard-coded translucency */
-        //forcedTranslucency_.insert(widget);
-        //connect(widget, &QObject::destroyed, this, &Style::noTranslucency); // needed?
     }
     
     //____________________________________________________________________
