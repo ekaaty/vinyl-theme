@@ -1,5 +1,5 @@
 #!/bin/bash
-set -eu -o pipefail
+set -eu $(set -o | sed -n 's/pipefail.*/-o pipefail/p')
 
 curdir=$(dirname $(realpath -e ${0}))
 # Set the name of your icon theme
