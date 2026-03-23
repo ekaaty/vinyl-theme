@@ -4178,18 +4178,20 @@ namespace Vinyl
         else if( state & State_On ) checkBoxState = CheckOn;
 
         // animation state
-        _animations->widgetStateEngine().updateState( widget, AnimationHover, mouseOver );
-        _animations->widgetStateEngine().updateState( widget, AnimationPressed, checkBoxState != CheckOff );
-        if( _animations->widgetStateEngine().isAnimated( widget, AnimationPressed ) ) checkBoxState = CheckAnimated;
-        const qreal animation( _animations->widgetStateEngine().opacity( widget, AnimationPressed ) );
+	// Disables animation for now (Bug #10)
+        //_animations->widgetStateEngine().updateState( widget, AnimationHover, mouseOver );
+        //_animations->widgetStateEngine().updateState( widget, AnimationPressed, checkBoxState != CheckOff );
+        //if( _animations->widgetStateEngine().isAnimated( widget, AnimationPressed ) ) checkBoxState = CheckAnimated;
+        //const qreal animation( _animations->widgetStateEngine().opacity( widget, AnimationPressed ) );
 
         // colors
         //const AnimationMode mode( _animations->widgetStateEngine().isAnimated( widget, AnimationHover ) ? AnimationHover:AnimationNone );
         //const qreal opacity( _animations->widgetStateEngine().opacity( widget, AnimationHover ) );
 
         // render
-        //_helper->renderCheckBoxBackground( painter, rect, background, sunken );   // needed??
-        _helper->renderCheckBox( painter, rect, palette, false, sunken, mouseOver, checkBoxState, false, animation );
+	// Disables animation for now (Bug #10)
+        //_helper->renderCheckBox( painter, rect, palette, false, sunken, mouseOver, checkBoxState, false, animation );
+        _helper->renderCheckBox( painter, rect, palette, false, sunken, mouseOver, checkBoxState, false);
         return true;
 
     }
@@ -5255,10 +5257,7 @@ namespace Vinyl
             // checkbox state
 
             CheckBoxState state( menuItemOption->checked ? CheckOn : CheckOff );
-            //const bool active( menuItemOption->checked );
-            //const auto color( _helper->checkBoxIndicatorColor( palette, false, enabled && active ) );
             const auto background( state == CheckOn ? palette.color( QPalette::Highlight ) : palette.color( QPalette::Button ) );
-            //_helper->renderCheckBoxBackground( painter, checkBoxRect, palette.color( QPalette::Window ), sunken );    //not needed
             _helper->renderCheckBox( painter, checkBoxRect, palette, true, sunken, ( selected || sunken ), state, windowActive );
 
         } else if( menuItemOption->checkType == QStyleOptionMenuItem::Exclusive ) {
