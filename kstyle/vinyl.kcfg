@@ -45,7 +45,7 @@
 
     <!-- button size -->
     <entry name="ButtonSize" type="Int">
-        <default>6</default>
+        <default>8</default>
     </entry>
   </group>
 

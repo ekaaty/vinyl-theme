@@ -1,24 +1,10 @@
+/* SPDX-FileCopyrightText: 2014 Hugo Pereira Da Costa <hugo.pereira@free.fr>
+ * SPDX-FileCopyrightText: 2026 Christian Tosta <7252968+christiantosta@users.noreply.github.com>
+ * SPDX-License-Identifier: GPL-2.0-or-later
+ */
+
 #ifndef vinylstyle_h
 #define vinylstyle_h
-
-/*************************************************************************
- * Copyright (C) 2014 by Hugo Pereira Da Costa <hugo.pereira@free.fr>    *
- *                                                                       *
- * This program is free software; you can redistribute it and/or modify  *
- * it under the terms of the GNU General Public License as published by  *
- * the Free Software Foundation; either version 2 of the License, or     *
- * (at your option) any later version.                                   *
- *                                                                       *
- * This program is distributed in the hope that it will be useful,       *
- * but WITHOUT ANY WARRANTY; without even the implied warranty of        *
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the         *
- * GNU General Public License for more details.                          *
- *                                                                       *
- * You should have received a copy of the GNU General Public License     *
- * along with this program; if not, write to the                         *
- * Free Software Foundation, Inc.,                                       *
- * 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA .        *
- *************************************************************************/
 
 #include "vinyl.h"
 #include "config-vinyl.h"
@@ -165,6 +151,8 @@ namespace Vinyl
         //* standard icons
         QIcon standardIcon( StandardPixmap pixmap, const QStyleOption* option = nullptr, const QWidget* widget = nullptr) const override
         { return standardIconImplementation( pixmap, option, widget ); }
+
+        bool event(QEvent *event) override;
 
         private:
 

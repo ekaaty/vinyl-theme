@@ -185,7 +185,7 @@ namespace Vinyl
             QStringLiteral( "/VinylDecoration" ),
             QStringLiteral( "org.kde.Vinyl.Style" ),
             QStringLiteral( "reparseConfiguration" ), this, SLOT(configurationChanged()) );
-        connect(qApp, &QApplication::paletteChanged, this, &Style::configurationChanged);
+
         // call the slot directly; this initial call will set up things that also
         // need to be reset when the system palette changes
         loadConfiguration();
@@ -199,6 +199,15 @@ namespace Vinyl
         delete _helper;
     }
     
+    //______________________________________________________________
+    bool Style::event(QEvent *event)
+    {
+        if (event && event->type() == QEvent::ApplicationPaletteChange) {
+            configurationChanged();
+        }
+        return QCommonStyle::event(event);
+    }
+
     //______________________________________________________________
     void Style::polish(QApplication *app)
     {
@@ -1377,9 +1386,12 @@ namespace Vinyl
                     // copy event, send and return
                     QMouseEvent copy(
                         mouseEvent->type(),
-                        position,
+                        mouseEvent->position(),
+                        mouseEvent->globalPosition(),
                         mouseEvent->button(),
-                        mouseEvent->buttons(), mouseEvent->modifiers());
+                        mouseEvent->buttons(),
+                        mouseEvent->modifiers()
+                    );
 
                     QCoreApplication::sendEvent( scrollBar, &copy );
                     event->setAccepted( true );
@@ -1501,27 +1513,6 @@ namespace Vinyl
                     // side shadow
                     if( StyleConfigData::dolphinSidebarOpacity() < ( palette.color( QPalette::Window ).alpha()/255 )*100 )
                     {
-                        /*painter.setBrush( Qt::NoBrush );
-                        QLinearGradient gradient( rect.topLeft(), rect.bottomLeft() );
-                        gradient.setColorAt( 0, QColor(0,0,0,0) );
-                        gradient.setColorAt( 0.1, QColor(0,0,0,40) );
-                        gradient.setColorAt( 1, QColor(0,0,0,40) );
-                        //painter.setPen( QPen(gradient, 1) );
-                        painter.setPen( QColor(0,0,0,40) );
-                        painter.drawLine( rect.topRight(), rect.bottomRight() );
-                        
-                        gradient.setColorAt( 0.1, QColor(0,0,0,12) );
-                        gradient.setColorAt(1, QColor(0,0,0,12) );
-                        //painter.setPen( QPen(gradient, 1) );
-                        painter.setPen( QColor(0,0,0,12) );
-                        painter.drawLine( rect.topRight() - QPoint(1, 0), rect.bottomRight() - QPoint(1, 0) );
-                        
-                        gradient.setColorAt( 0.1, QColor(0,0,0,3) );
-                        gradient.setColorAt(1, QColor(0,0,0,3) );
-                        //painter.setPen( QPen(gradient, 1) );
-                        painter.setPen( QColor(0,0,0,3) );
-                        painter.drawLine( rect.topRight() - QPoint(2, 0), rect.bottomRight() - QPoint(2, 0) );*/
-                        
                         QRect shadowRect ( rect.topRight(), QSize(30, rect.height() ) );
                         
                         const QWidget* tabWidget = dockWidget->window()->findChild<const QWidget *>( "tabWidget", Qt::FindDirectChildrenOnly );
@@ -2910,10 +2901,10 @@ namespace Vinyl
         if( !flat ) size = expandSize( size, frameWidth );
 
         // make sure there is enough height for the button
-        size.setHeight( qMax( size.height(), int(Metrics::MenuButton_IndicatorWidth) ) );
+        size.setHeight( qMax( size.height(), int(Metrics::MenuButton_IndicatorWidth) ) + StyleConfigData::buttonSize() );
 
         // add button width and spacing
-        size.rwidth() += Metrics::MenuButton_IndicatorWidth+2;
+        size.rwidth() += Metrics::MenuButton_IndicatorWidth;
         size.rwidth() += Metrics::Button_ItemSpacing;
 
         return size;
@@ -2938,7 +2929,7 @@ namespace Vinyl
         if( !flat ) size = expandSize( size, frameWidth );
 
         // make sure there is enough height for the button
-        size.setHeight( qMax( size.height(), int(Metrics::SpinBox_ArrowButtonWidth) ) + StyleConfigData::buttonSize() );
+        size.setHeight( qMax( size.height() - int(Metrics::SpinBox_FrameWidth), int(Metrics::SpinBox_ArrowButtonWidth) ) + StyleConfigData::buttonSize() );
 
         // add button width and spacing
         size.rwidth() += Metrics::SpinBox_ArrowButtonWidth;
@@ -3065,7 +3056,7 @@ namespace Vinyl
 
         // add padding to button from StyleConfigData
         size.rwidth() += StyleConfigData::buttonSize();
-        size.rheight() += int(StyleConfigData::buttonSize() / 2);
+        size.rheight() += StyleConfigData::buttonSize();
 
         // finally add frame margins
         return expandSize(size, Metrics::Frame_FrameWidth);
@@ -3458,15 +3449,6 @@ namespace Vinyl
 
         } else {
 
-            /*if( _frameShadowFactory->isRegistered( widget ) ) // WHAT does this do??
-            {
-
-                // update frame shadow factory
-                _frameShadowFactory->updateShadowsGeometry( widget, rect );
-                _frameShadowFactory->updateState( widget, hasFocus, mouseOver, opacity, mode );
-
-            }*/
-
             const auto background( isTitleWidget ? palette.color( widget->backgroundRole() ) : palette.color( QPalette::Base ) );
             _helper->renderFrame( painter, rect, background, palette, windowActive, enabled );
 
@@ -3514,9 +3496,9 @@ namespace Vinyl
             const qreal opacity( _animations->inputWidgetEngine().frameOpacity( widget ) );
 
             // render
-            const auto &background = palette.color( QPalette::Base );
-            const auto outline( palette.color( QPalette::Highlight ) );
-            _helper->renderLineEdit( painter, rect, background, outline, hasFocus, mouseOver, enabled, windowActive, mode, opacity );
+            //const auto &background = palette.color( QPalette::Base );
+            //const auto outline( palette.color( QPalette::Highlight ) );
+            _helper->renderLineEdit( painter, rect, palette, hasFocus, mouseOver, enabled, windowActive, mode, opacity );
 
         }
 
@@ -3591,6 +3573,7 @@ namespace Vinyl
     //______________________________________________________________
     bool Style::drawFrameGroupBoxPrimitive( const QStyleOption* option, QPainter* painter, const QWidget* widget) const
     {
+        Q_UNUSED(widget)
 
         // cast option and check
         const auto frameOption( qstyleoption_cast<const QStyleOptionFrame*>( option ) );
@@ -3602,12 +3585,6 @@ namespace Vinyl
         // normal frame
         const auto& palette( option->palette );
         const auto background( _helper->frameBackgroundColor( palette ) );
-        //const auto outline( _helper->frameOutlineColor( palette ) );
-        
-        //const State& state( option->state );
-        //const bool mouseOver ( widget->property("HOVER").toBool() );  // can cause crashes
-        
-        //qDebug() << mouseOver;
 
         /*
          * need to reset painter's clip region in order to paint behind textbox label
@@ -4201,18 +4178,20 @@ namespace Vinyl
         else if( state & State_On ) checkBoxState = CheckOn;
 
         // animation state
-        _animations->widgetStateEngine().updateState( widget, AnimationHover, mouseOver );
-        _animations->widgetStateEngine().updateState( widget, AnimationPressed, checkBoxState != CheckOff );
-        if( _animations->widgetStateEngine().isAnimated( widget, AnimationPressed ) ) checkBoxState = CheckAnimated;
-        const qreal animation( _animations->widgetStateEngine().opacity( widget, AnimationPressed ) );
+	// Disables animation for now (Bug #10)
+        //_animations->widgetStateEngine().updateState( widget, AnimationHover, mouseOver );
+        //_animations->widgetStateEngine().updateState( widget, AnimationPressed, checkBoxState != CheckOff );
+        //if( _animations->widgetStateEngine().isAnimated( widget, AnimationPressed ) ) checkBoxState = CheckAnimated;
+        //const qreal animation( _animations->widgetStateEngine().opacity( widget, AnimationPressed ) );
 
         // colors
         //const AnimationMode mode( _animations->widgetStateEngine().isAnimated( widget, AnimationHover ) ? AnimationHover:AnimationNone );
         //const qreal opacity( _animations->widgetStateEngine().opacity( widget, AnimationHover ) );
 
         // render
-        //_helper->renderCheckBoxBackground( painter, rect, background, sunken );   // needed??
-        _helper->renderCheckBox( painter, rect, palette, false, sunken, mouseOver, checkBoxState, false, animation );
+	// Disables animation for now (Bug #10)
+        //_helper->renderCheckBox( painter, rect, palette, false, sunken, mouseOver, checkBoxState, false, animation );
+        _helper->renderCheckBox( painter, rect, palette, false, sunken, mouseOver, checkBoxState, false);
         return true;
 
     }
@@ -5086,29 +5065,8 @@ namespace Vinyl
                 gradient.setColorAt( 1, QColor(0,0,0,3) );
                 painter->setPen( QPen(gradient, 1) );
                 //painter->setPen(QColor(0,0,0,3) );
-                painter->drawLine( widgetRect.bottomLeft() - QPoint(0, 2), widgetRect.bottomRight() - QPoint(0, 2) ); 
-                    
-                
-                
-                /*painter->setBrush( Qt::NoBrush );
-                QLinearGradient gradient( shadowRect.bottomLeft(), shadowRect.bottomRight() );
-                gradient.setColorAt( 0, QColor(0,0,0, shadow_xoffset > 0 ? 0 : 40/2) );
-                gradient.setColorAt( 0.05, QColor(0,0,0,40) );
-                gradient.setColorAt( 1, QColor(0,0,0,40) );
-                painter->setPen( QPen(gradient, 1) );
-                painter->drawLine( shadowRect.bottomLeft(), shadowRect.bottomRight() );
-                
-                gradient.setColorAt( 0, QColor(0,0,0,shadow_xoffset > 0 ? 0 : 12/2) );
-                gradient.setColorAt( 0.05, QColor(0,0,0,12) );
-                gradient.setColorAt( 1, QColor(0,0,0,12) );
-                painter->setPen( QPen(gradient, 1) );
-                painter->drawLine( shadowRect.bottomLeft() - QPoint(0, 1), shadowRect.bottomRight() - QPoint(0, 1) );
-                
-                gradient.setColorAt( 0, QColor(0,0,0,shadow_xoffset > 0 ? 0 : 3/2) );
-                gradient.setColorAt( 0.05, QColor(0,0,0,3) );
-                gradient.setColorAt( 1, QColor(0,0,0,3/2) );
-                painter->setPen( QPen(gradient, 1) );
-                painter->drawLine( shadowRect.bottomLeft() - QPoint(0, 2), shadowRect.bottomRight() - QPoint(0, 2) );*/
+                painter->drawLine( widgetRect.bottomLeft() - QPoint(0, 2), widgetRect.bottomRight() - QPoint(0, 2) );
+
             }
         }
 
@@ -5258,8 +5216,6 @@ namespace Vinyl
         const bool useStrongFocus( StyleConfigData::menuItemDrawStrongFocus() );
         
         _animations->inputWidgetEngine().updateState( widget, AnimationHover, selected );
-        const AnimationMode mode( _animations->inputWidgetEngine().buttonAnimationMode( widget ) );
-        const qreal opacity( _animations->inputWidgetEngine().buttonOpacity( widget ) );
 
         // render hover and focus
         if( selected || sunken )
@@ -5301,10 +5257,7 @@ namespace Vinyl
             // checkbox state
 
             CheckBoxState state( menuItemOption->checked ? CheckOn : CheckOff );
-            const bool active( menuItemOption->checked );
-            //const auto color( _helper->checkBoxIndicatorColor( palette, false, enabled && active ) );
             const auto background( state == CheckOn ? palette.color( QPalette::Highlight ) : palette.color( QPalette::Button ) );
-            //_helper->renderCheckBoxBackground( painter, checkBoxRect, palette.color( QPalette::Window ), sunken );    //not needed
             _helper->renderCheckBox( painter, checkBoxRect, palette, true, sunken, ( selected || sunken ), state, windowActive );
 
         } else if( menuItemOption->checkType == QStyleOptionMenuItem::Exclusive ) {
@@ -5312,9 +5265,6 @@ namespace Vinyl
             checkBoxRect = visualRect( option, checkBoxRect );
 
             const bool active( menuItemOption->checked );
-            //const auto shadow( _helper->shadowColor( palette ) );
-            //const auto color( _helper->checkBoxIndicatorColor( palette, false, enabled && active ) );
-            //_helper->renderRadioButtonBackground( painter, checkBoxRect, palette.color( QPalette::Window ), sunken ); //not needed
             _helper->renderRadioButton( painter, checkBoxRect, palette, ( selected || sunken ), sunken, active ? RadioOn:RadioOff, true );
 
         }
@@ -5835,7 +5785,7 @@ namespace Vinyl
         
         // define handle rect
         QRectF handleRect;
-        const qreal sliderWidth = Metrics::ScrollBar_SliderWidth / ( 2 - grooveAnimationOpacity ) ;
+        const qreal sliderWidth = static_cast<qreal>(Metrics::ScrollBar_SliderWidth) / ( 2 - grooveAnimationOpacity );
         if( horizontal ) handleRect = centerRectF( rect, rect.width(), sliderWidth );
         else handleRect = centerRectF( rect, sliderWidth, rect.height() );
 
@@ -8261,9 +8211,6 @@ namespace Vinyl
         if( !_helper->compositingActive() ) return;
 
         widget->setAttribute(Qt::WA_TranslucentBackground);
-        /* distinguish forced translucency from hard-coded translucency */
-        //forcedTranslucency_.insert(widget);
-        //connect(widget, &QObject::destroyed, this, &Style::noTranslucency); // needed?
     }
     
     //____________________________________________________________________

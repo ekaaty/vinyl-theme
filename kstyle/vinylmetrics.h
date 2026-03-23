@@ -38,8 +38,8 @@ struct Metrics {
     static constexpr int SmallArrowSize = 5;
 
     // frames
-    static constexpr int Frame_FrameWidth = 2;
-    static constexpr int Frame_FrameRadius = 5;
+    static constexpr int Frame_FrameWidth = 1;
+    static constexpr int Frame_FrameRadius = 4;
 
     // layout
     static constexpr int Layout_TopLevelMarginWidth = 10;
@@ -63,7 +63,7 @@ struct Metrics {
 
     // spinbox
     static constexpr int SpinBox_FrameWidth = LineEdit_FrameWidth;
-    static constexpr int SpinBox_ArrowButtonWidth = 20;
+    static constexpr int SpinBox_ArrowButtonWidth = 18;
 
     // groupbox title margin
     static constexpr int GroupBox_TitleMarginWidth = 4;
