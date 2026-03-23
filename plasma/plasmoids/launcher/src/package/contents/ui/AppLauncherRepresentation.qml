@@ -51,7 +51,9 @@ Item {
                 root.appLauncher.destroy();
             }
             root.appLauncher = null;
-            root.appLauncher = component.createObject(root);
+            root.appLauncher = component.createObject(root, {
+               visible: false
+            });
         } else if (component.status === Component.Error) {
             console.error("Error loading component:", component.errorString());
         }
@@ -80,16 +82,18 @@ Item {
         anchors.fill: parent
         hoverEnabled: true
         onClicked: {
-            appLauncher.visible = !appLauncher.visible;
-            plasmoid.expanded = appLauncher.visible;
+            plasmoid.activated();
         }
     }
 
     Component.onCompleted: {
         loadAppLauncher();
         plasmoid.activated.connect(function() {
-            appLauncher.visible = !appLauncher.visible;
-            plasmoid.expanded = appLauncher.visible;
+            if (appLauncher) {
+                const nextState = !appLauncher.visible;
+                appLauncher.visible = nextState;
+                plasmoid.expanded = nextState;
+            }
         });
     }
 }
