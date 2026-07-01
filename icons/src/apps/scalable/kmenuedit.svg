@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg inkscape:version="1.4.4 (dcaf3e7d9e, 2026-05-05)" sodipodi:docname="kmenuedit.svg" version="1.1" viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg" xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape" xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd" xmlns:xlink="http://www.w3.org/1999/xlink">
+ <sodipodi:namedview bordercolor="#000000" borderopacity="0.25" inkscape:current-layer="pencil" inkscape:cx="420.79607" inkscape:cy="261.66093" inkscape:deskcolor="#d1d1d1" inkscape:pagecheckerboard="0" inkscape:pageopacity="0.0" inkscape:showpageshadow="2" inkscape:window-height="1008" inkscape:window-maximized="1" inkscape:window-width="1920" inkscape:window-x="0" inkscape:window-y="0" inkscape:zoom="0.79492188" pagecolor="#ffffff"/>
+ <defs id="gradients">
+  <linearGradient id="linearGradient48" inkscape:collect="always">
+   <stop style="stop-color:#34495e" offset="0"/>
+   <stop style="stop-color:#34495e;stop-opacity:0" offset="1"/>
+  </linearGradient>
+  <linearGradient id="linearGradient948" x1="4.9267" x2="7.308" y1="8.7446" y2="8.7446" gradientTransform="matrix(117.58 0 0 137.33 -514.58 -1099.9)" gradientUnits="userSpaceOnUse">
+   <stop stop-color="#d5e5ff" offset="0"/>
+   <stop stop-color="#1abc9c" style="stop-color:#1abcaa" offset="1"/>
+  </linearGradient>
+  <linearGradient id="p-shadow" x1="5.6193" x2="6.7236" y1="7.1153" y2="8.2175" gradientTransform="matrix(53.165 0 0 50.725 3.8338 -1.2155)" gradientUnits="userSpaceOnUse" xlink:href="#pencil-shadow-7">
+   <stop stop-opacity=".1005" offset="0"/>
+   <stop stop-opacity="0" offset="1"/>
+  </linearGradient>
+  <linearGradient id="linearGradient49" x1="96.591" x2="283.88" y1="349.06" y2="349.06" gradientUnits="userSpaceOnUse" inkscape:collect="always" xlink:href="#linearGradient48"/>
+  <linearGradient id="linearGradient50" x1="96.591" x2="315.89" y1="287.06" y2="287.06" gradientUnits="userSpaceOnUse" inkscape:collect="always" xlink:href="#linearGradient48"/>
+  <linearGradient id="linearGradient51" x1="96.591" x2="342.39" y1="225.06" y2="225.06" gradientUnits="userSpaceOnUse" inkscape:collect="always" xlink:href="#linearGradient48"/>
+  <linearGradient id="linearGradient52" x1="96.591" x2="342.39" y1="163.06" y2="163.06" gradientUnits="userSpaceOnUse" inkscape:collect="always" xlink:href="#linearGradient48"/>
+  <linearGradient id="linearGradient53" x1="96.591" x2="342.32" y1="101.05" y2="101.05" gradientUnits="userSpaceOnUse" inkscape:collect="always" xlink:href="#linearGradient48"/>
+ </defs>
+ <g transform="translate(51.289 14.941)">
+  <g transform="translate(-14.746 -3)">
+   <path d="m67 51.062c-2.0963 0.14514-6.2897 1.2037-6.2897 7.3332v388.96c0 2.0051 1.8176 3.7059 3.6842 3.7059h326.02c2.1341 0 3.7861-1.7326 3.7861-3.6469v-392.59c0-2.0001-1.7973-3.7454-3.7451-3.7454h-322.3s-0.46144-0.04838-1.1602-2e-5z" fill="#1cdc9a" stroke-width=".097075" style="fill:#34495e;opacity:.6;paint-order:stroke fill markers" sodipodi:nodetypes="csssssssccc"/>
+   <path id="background" d="m59 43.062c-2.0963 0.14514-6.2897 1.2037-6.2897 7.3332v388.96c0 2.0051 1.8176 3.7059 3.6842 3.7059h326.02c2.1341 0 3.7861-1.7326 3.7861-3.6469v-392.59c0-2.0001-1.7973-3.7454-3.7451-3.7454h-322.3s-0.46144-0.04838-1.1602-2e-5z" fill="#1cdc9a" stroke-width=".097075" style="fill:#f2f2f2;paint-order:stroke fill markers" sodipodi:nodetypes="csssssssccc"/>
+   <path id="bg-shadow" d="m52.71 433.06v8.3906h0.12211c0.29976 2.0387 1.7646 3.6094 3.6232 3.6094h326c1.8584 0 3.3233-1.5706 3.6231-3.6094h0.12212v-8.3906h-329.75z" fill-opacity=".19598" style="paint-order:stroke fill markers;stroke-width:.26458"/>
+   <g id="pencil" transform="matrix(49.661 -23.996 -1.0243 62.763 -215.23 -146.45)" stroke="#2980b9" stroke-opacity=".59799" stroke-width=".00045032">
+    <path d="m11.518 11.812-0.42158 0.16376-0.41819 0.17088 0.0383-0.45197 0.03054-0.4531 0.38327 0.2882z" fill="#fdbc4b" stroke="none" style="paint-order:stroke fill markers;stroke-width:.00045032"/>
+    <path transform="matrix(.27503 -.17104 .19553 .28364 13.266 8.406)" d="m-10.425 5.7212-1.3602-0.24284-1.3641-0.22009 0.8904-1.0565 0.87263-1.0713 0.46979 1.2994z" fill="#fff" fill-opacity=".40201" stroke="none" style="paint-order:stroke fill markers;stroke-width:.00045032"/>
+    <path d="m12.14 9.3363 0.77147 0.56971-1.3996 1.9137-0.77147-0.56971zm-0.62976 2.4775c-0.02578 0.03511-0.21884-0.0623-0.43121-0.21756s-0.36363-0.30959-0.33785-0.34471c0.32912 0.0846 0.57468 0.31677 0.76906 0.56226" fill="#34495e" stroke-width="0" style="fill:#f55;paint-order:stroke fill markers"/>
+    <path d="m10.897 12.057-0.21931 0.08891 0.01897-0.24181c0.06221 0.07334 0.09715 0.10679 0.20031 0.15289z" fill="#34495e" stroke="none" style="paint-order:stroke fill markers;stroke-width:.00045032"/>
+    <path d="m12.14 9.3363 0.77147 0.56971-0.14066 0.18959-0.77147-0.56971zm0.62917 0.75337c-0.02578 0.03511-0.21884-0.0623-0.43121-0.21756s-0.36363-0.30959-0.33785-0.34471c0.32912 0.0846 0.57468 0.31677 0.76906 0.56227" fill="#fcfcfc" stroke-width="0" style="fill:#ccc;paint-order:stroke fill markers"/>
+    <ellipse transform="matrix(.78915 .6142 -.89349 .44908 0 0)" cx="15.745" cy="-.11239" rx=".47602" ry=".12985" fill="#eff0f1" stroke="none" style="paint-order:stroke fill markers;stroke-width:.00045032"/>
+   </g>
+   <rect x="96.591" y="85.055" width="245.73" height="32" fill="url(#linearGradient948)" stroke-width=".066036" style="fill:url(#linearGradient53);paint-order:stroke fill markers"/>
+   <path id="pencil-shadow" d="m303.94 358.36 55.835 53.251 1.6154 6.7516-60.087-57.379z" fill="url(#p-shadow)" stroke-width="1.1441" style="fill:url(#p-shadow);paint-order:stroke fill markers"/>
+   <rect x="96.624" y="147.06" width="245.73" height="32" fill="url(#linearGradient948)" stroke-width=".066036" style="fill:url(#linearGradient52);paint-order:stroke fill markers;stroke:#b3b3b3"/>
+   <rect x="96.624" y="209.06" width="245.73" height="32" fill="url(#linearGradient948)" stroke-width=".066036" style="fill:url(#linearGradient51);paint-order:stroke fill markers;stroke:#b3b3b3"/>
+   <rect x="96.624" y="271.06" width="219.24" height="32" fill="url(#linearGradient948)" stroke-width=".066036" style="fill:url(#linearGradient50);paint-order:stroke fill markers;stroke:#b3b3b3"/>
+   <rect x="96.624" y="333.06" width="187.22" height="32" fill="url(#linearGradient948)" stroke-width=".066036" style="fill:url(#linearGradient49);paint-order:stroke fill markers;stroke:#b3b3b3"/>
+  </g>
+ </g>
+</svg>
