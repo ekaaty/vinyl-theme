@@ -90,38 +90,38 @@
                   xlink:href="#shadow-side"/>
  </defs>
  <g id="normal">
-  <g id="center" class="ColorScheme-Background" fill="currentColor" opacity="1">
+  <g id="center" class="ColorScheme-Background" fill="currentColor" opacity=".65">
    <rect x="8" y="12" width="32" height="32"/>
   </g>
-  <g id="topleft" class="ColorScheme-Background" fill="currentColor" opacity="1">
+  <g id="topleft" class="ColorScheme-Background" fill="currentColor" opacity=".65">
    <path d="m6 9a1 1 0 0 0-1 1v2h3v-3h-1z"/>
    <path d="m6 8a2 2 0 0 0-2 2v2h1v-2a1 1 0 0 1 1-1h2v-1z"/>
   </g>
-  <g id="topright" class="ColorScheme-Background" fill="currentColor" opacity="1">
+  <g id="topright" class="ColorScheme-Background" fill="currentColor" opacity=".65">
    <path d="m43 10a1 1 0 0 0-1-1h-2v3h3v-1z"/>
    <path d="m44 10a2 2 0 0 0-2-2h-2v1h2a1 1 0 0 1 1 1v2h1z"/>
   </g>
-  <g id="bottomleft" class="ColorScheme-Background" fill="currentColor" opacity="1">
+  <g id="bottomleft" class="ColorScheme-Background" fill="currentColor" opacity=".65">
    <path d="m5 46a1 1 0 0 0 1 1h2v-3h-3v1z"/>
    <path d="m4 46a2 2 0 0 0 2 2h2v-1h-2a1 1 0 0 1-1-1v-2h-1z"/>
   </g>
-  <g id="bottomright" class="ColorScheme-Background" fill="currentColor" opacity="1">
+  <g id="bottomright" class="ColorScheme-Background" fill="currentColor" opacity=".65">
    <path d="m42 47a1 1 0 0 0 1-1v-2h-3v3h1z"/>
    <path d="m42 48a2 2 0 0 0 2-2v-2h-1v2a1 1 0 0 1-1 1h-2v1z"/>
   </g>
-  <g id="top" class="ColorScheme-Background" fill="currentColor" opacity="1">
+  <g id="top" class="ColorScheme-Background" fill="currentColor" opacity=".65">
    <rect x="8" y="9" width="32" height="3"/>
    <rect x="8" y="8" width="32" height="1"/>
   </g>
-  <g id="left" class="ColorScheme-Background" fill="currentColor" opacity="1">
+  <g id="left" class="ColorScheme-Background" fill="currentColor" opacity=".65">
    <rect x="5" y="12" width="3" height="32"/>
    <rect x="4" y="12" width="1" height="32"/>
   </g>
-  <g id="right" class="ColorScheme-Background" fill="currentColor" opacity="1">
+  <g id="right" class="ColorScheme-Background" fill="currentColor" opacity=".65">
    <rect x="40" y="12" width="3" height="32"/>
    <rect x="43" y="12" width="1" height="32"/>
   </g>
-  <g id="bottom" class="ColorScheme-Background" fill="currentColor" opacity="1">
+  <g id="bottom" class="ColorScheme-Background" fill="currentColor" opacity=".65">
    <rect x="8" y="44" width="32" height="3"/>
    <rect x="8" y="47" width="32" height="1"/>
   </g>
@@ -169,12 +169,5 @@
   <rect id="shadow-hint-left-inset" x="52" y="26" width="4" height="4" fill="#0f0"/>
   <rect id="shadow-hint-right-inset" x="88" y="26" width="4" height="4" fill="#0f0"/>
   <rect id="shadow-hint-bottom-inset" x="70" y="44" width="4" height="4" fill="#0f0"/>
- </g>
- <g id="thick">
-  <rect id="thick-center" class="ColorScheme-Background" x="152" y="16" width="24" height="24" fill="#ff0"/>
-  <rect id="thick-hint-right-margin" x="176" y="24" width="8" height="4" fill="#800080"/>
-  <rect id="thick-hint-left-margin" x="144" y="24" width="8" height="4" fill="#800080"/>
-  <rect id="thick-hint-top-margin" x="162" y="8" width="4" height="8" fill="#800080"/>
-  <rect id="thick-hint-bottom-margin" x="162" y="40" width="4" height="8" fill="#800080"/>
  </g>
 </svg>
