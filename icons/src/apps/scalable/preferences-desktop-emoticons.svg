@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+<svg width="512" height="512" inkscape:version="1.4.4 (dcaf3e7d9e, 2026-05-05)" sodipodi:docname="preferences-desktop-emoticons.svg" version="1.1" viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg" xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape" xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd" xmlns:xlink="http://www.w3.org/1999/xlink">
+  <sodipodi:namedview bordercolor="#000000" borderopacity="0.25" inkscape:current-layer="g3" inkscape:cx="229.15135" inkscape:cy="140.41615" inkscape:deskcolor="#d1d1d1" inkscape:document-units="px" inkscape:pagecheckerboard="0" inkscape:pageopacity="0.0" inkscape:showpageshadow="2" inkscape:window-height="1008" inkscape:window-maximized="1" inkscape:window-width="1920" inkscape:window-x="0" inkscape:window-y="0" inkscape:zoom="0.51276154" pagecolor="#ffffff"/>
+  <defs>
+    <radialGradient id="radialGradient4" cx="256" cy="256" r="238.5" gradientUnits="userSpaceOnUse" inkscape:collect="always">
+      <stop style="stop-color:#ffd42a" offset="0"/>
+      <stop style="stop-color:#ffbc2a;stop-opacity:.79932" offset="1"/>
+    </radialGradient>
+  </defs>
+  <g inkscape:groupmode="layer" inkscape:label="Camada 1">
+    <circle cx="256" cy="256" r="238.5" style="fill:url(#radialGradient4)"/>
+    <ellipse cx="186.27" cy="198.04" rx="28.766" ry="46.544" style="fill:#28220b;opacity:.6;stroke-linejoin:round;stroke-opacity:.20077;stroke-width:3;stroke:#a80"/>
+    <ellipse cx="325.73" cy="198.04" rx="28.766" ry="46.544" style="fill:#28220b;opacity:.6;stroke-linejoin:round;stroke-opacity:.20077;stroke-width:3;stroke:#a80"/>
+    <path transform="matrix(1.399 0 0 .93793 46.644 -22.996)" d="m219.99 378.13c-6.8873 37.451-45.01 60.953-81.726 53.862-28.952-5.5911-52.047-28.596-58.976-57.081" style="fill:none;opacity:.6;stroke-linecap:round;stroke-width:17.459;stroke:#28220b" sodipodi:argument="-18.505587" sodipodi:cx="157.20792" sodipodi:cy="361.3024" sodipodi:expansion="1" sodipodi:radius="79.094887" sodipodi:revolution="2.4177439" sodipodi:t0="0.8218084" sodipodi:type="spiral"/>
+    <circle cx="256" cy="256" r="231" style="fill:none;opacity:.099864;stroke-linejoin:round;stroke-width:15;stroke:#28220b"/>
+  </g>
+</svg>

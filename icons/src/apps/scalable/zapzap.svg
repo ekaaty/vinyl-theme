@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg inkscape:version="1.4.4 (dcaf3e7d9e, 2026-05-05)" sodipodi:docname="zapzap.svg" version="1.1" viewBox="0 0 256 256" xmlns="http://www.w3.org/2000/svg" xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape" xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd" xmlns:xlink="http://www.w3.org/1999/xlink">
+ <sodipodi:namedview bordercolor="#000000" borderopacity="0.25" inkscape:current-layer="g1" inkscape:cx="128.09231" inkscape:cy="128.09231" inkscape:deskcolor="#d1d1d1" inkscape:pagecheckerboard="0" inkscape:pageopacity="0.0" inkscape:showpageshadow="2" inkscape:window-height="1008" inkscape:window-maximized="1" inkscape:window-width="1920" inkscape:window-x="0" inkscape:window-y="0" inkscape:zoom="2.2483786" pagecolor="#ffffff"/>
+ <defs>
+  <linearGradient id="linearGradient15564" x1="33.867" x2="33.867" y1="51.861" y2="12.73" gradientTransform="matrix(4.9833 0 0 4.7276 -41.269 -31.905)" gradientUnits="userSpaceOnUse">
+   <stop style="stop-color:#20925b" offset="0"/>
+   <stop style="stop-color:#34c683" offset="1"/>
+  </linearGradient>
+ </defs>
+ <path d="m128 26.343c-63.512 0-115 48.5-115 108.33 0.017 18.477 5.051 36.643 14.624 52.77l-6.03 23.184c-2.166-0.289-4.102 1.298-4.098 3.36l0.033 13.051v0.289c-1e-3 0.081-1e-3 0.161 0 0.242l2e-3 0.785c6e-3 0.283 0.049 0.564 0.128 0.837 0.939 7.422 8.602 12.786 16.108 11.275l42.997-8.859c15.915 7.479 33.453 11.379 51.238 11.394 63.513 0 115-48.5 115-108.33 0-59.829-51.485-108.33-115-108.33z" style="fill-opacity:.3;stroke-width:.20843"/>
+ <path d="m128 13c-63.512 0-115 48.499-115 108.33 0.017 18.478 5.052 36.644 14.625 52.772l-8.596 33.043-1.161 4.461c-2.297 8.826 6.536 17.447 15.899 15.518h1e-3l42.996-8.86c15.914 7.48 33.452 11.38 51.237 11.395 63.513 0 115-48.501 115-108.33 0-59.828-51.486-108.33-115-108.33z" style="fill:#f9f9f9"/>
+ <path d="m127.5 28.277c-30.903 0.01-59.977 13.923-78.353 37.496l82.896 3.941-101.81 44.968c-0.151 2.028-0.231 4.061-0.239 6.095 0 51.087 43.653 92.5 97.502 92.5 35.084-6e-3 67.458-17.893 84.777-46.839l-82.734-3.934 95.455-42.162c-0.25-50.914-43.83-92.063-97.498-92.065z" style="fill:url(#linearGradient15564)"/>
+</svg>

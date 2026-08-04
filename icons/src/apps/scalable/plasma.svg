@@ -1,17 +1,28 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<svg version="1.1" viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg">
+<svg inkscape:version="1.4.4 (dcaf3e7d9e, 2026-05-05)" sodipodi:docname="plasma.svg" version="1.1" viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg" xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape" xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd" xmlns:xlink="http://www.w3.org/1999/xlink">
+ <sodipodi:namedview bordercolor="#000000" borderopacity="0.25" inkscape:current-layer="g5" inkscape:cx="255.6855" inkscape:cy="256" inkscape:deskcolor="#d1d1d1" inkscape:pagecheckerboard="0" inkscape:pageopacity="0.0" inkscape:showpageshadow="2" inkscape:window-height="1008" inkscape:window-maximized="1" inkscape:window-width="1920" inkscape:window-x="0" inkscape:window-y="0" inkscape:zoom="1.5898438" pagecolor="#ffffff"/>
  <defs>
-  <style id="current-color-scheme" type="text/css">
-    .ColorScheme-Text             { color: #7d7d7d; }
-    .ColorScheme-Highlight        { color: #00aaff; }
-  </style>
+  <linearGradient id="linearGradient7" inkscape:collect="always">
+   <stop style="stop-opacity:.3" offset="0"/>
+   <stop style="stop-opacity:0" offset="1"/>
+  </linearGradient>
+  <style id="current-color-scheme" type="text/css">.ColorScheme-Text             { color: #7d7d7d; }
+    .ColorScheme-Highlight        { color: #00aaff; }</style>
+  <linearGradient id="linearGradient8" x1="334.35" x2="335.41" y1="541.64" y2="541.64" gradientUnits="userSpaceOnUse" inkscape:collect="always" xlink:href="#linearGradient7"/>
+  <linearGradient id="linearGradient10" x1="332.76" x2="334.35" y1="545.09" y2="545.09" gradientUnits="userSpaceOnUse" inkscape:collect="always" xlink:href="#linearGradient7"/>
+  <linearGradient id="linearGradient12" x1="334.88" x2="337" y1="548.55" y2="548.55" gradientUnits="userSpaceOnUse" inkscape:collect="always" xlink:href="#linearGradient7"/>
+  <linearGradient id="linearGradient14" x1="337.54" x2="341.26" y1="543.77" y2="543.77" gradientUnits="userSpaceOnUse" inkscape:collect="always" xlink:href="#linearGradient7"/>
  </defs>
- <rect x="-2.10962" y="-2.1125" width="16.933" height="16.933" fill="none" stop-color="#000000" stroke-width=".51866"/>
- <rect x="-2.10962" y="-2.1125" width="512" height="512" rx="0" style="fill:none;stroke-linecap:round;stroke-linejoin:round;stroke-width:4"/>
- <g transform="matrix(47.0589 0 0 47.0588 -15603.1 -25408)" style="stroke-width:0">
-  <path class="ColorScheme-Highlight" d="m335.942 547.485c-0.58871 0-1.0625 0.47396-1.0625 1.0625 0 0.58871 0.47379 1.0625 1.0625 1.0625 0.58854 0 1.0625-0.47379 1.0625-1.0625 0-0.58854-0.47396-1.0625-1.0625-1.0625z" style="fill:currentColor;stroke-width:0"/>
-  <path class="ColorScheme-Highlight" d="m333.552 544.298c-0.44139 0-0.79679 0.35539-0.79679 0.79696 0 0.44139 0.35537 0.79679 0.79679 0.79679 0.44156 0 0.79696-0.35539 0.79696-0.79679 0-0.44159-0.35537-0.79696-0.79696-0.79696z" style="fill:currentColor;stroke-width:0"/>
-  <path class="ColorScheme-Highlight" d="m338.599 541.11-1.0625 1.0625 1.5938 1.5938-1.5938 1.5938 1.0625 1.0625 2.6562-2.6562z" style="fill:currentColor;stroke-width:0"/>
+ <rect x="-2.1096" y="-2.1125" width="16.933" height="16.933" fill="none" stop-color="#000000" stroke-width=".51866"/>
+ <rect x="-2.1096" y="-2.1125" width="512" height="512" rx="0" style="fill:none;stroke-linecap:round;stroke-linejoin:round;stroke-width:4"/>
+ <g transform="matrix(47.059 0 0 47.059 -15603 -25408)" style="stroke-width:0">
+  <path class="ColorScheme-Highlight" d="m335.94 547.48c-0.58871 0-1.0625 0.47396-1.0625 1.0625 0 0.58871 0.47379 1.0625 1.0625 1.0625 0.58854 0 1.0625-0.47379 1.0625-1.0625 0-0.58854-0.47396-1.0625-1.0625-1.0625z" style="fill:currentColor;stroke-width:0"/>
+  <path class="ColorScheme-Highlight" d="m333.55 544.3c-0.44139 0-0.79679 0.35539-0.79679 0.79696 0 0.44139 0.35537 0.79679 0.79679 0.79679 0.44156 0 0.79696-0.35539 0.79696-0.79679 0-0.44159-0.35537-0.79696-0.79696-0.79696z" style="fill:currentColor;stroke-width:0"/>
+  <path class="ColorScheme-Highlight" d="m338.6 541.11-1.0625 1.0625 1.5938 1.5938-1.5938 1.5938 1.0625 1.0625 2.6562-2.6562z" style="fill:currentColor;stroke-width:0"/>
   <path class="ColorScheme-Highlight" d="m334.88 541.11c-0.29425 0-0.53125 0.23698-0.53125 0.53125 0 0.29425 0.23698 0.53125 0.53125 0.53125 0.29425 0 0.53125-0.23695 0.53125-0.53125 0-0.29425-0.23698-0.53125-0.53125-0.53125z" style="fill:currentColor;stroke-width:0"/>
+  <path class="ColorScheme-Highlight" d="m334.88 541.11c-0.29425 0-0.53125 0.23698-0.53125 0.53125 0 0.29425 0.23698 0.53125 0.53125 0.53125 0.29425 0 0.53125-0.23695 0.53125-0.53125 0-0.29425-0.23698-0.53125-0.53125-0.53125z" style="fill:url(#linearGradient8);stroke-width:0"/>
+  <path class="ColorScheme-Highlight" d="m333.55 544.3c-0.44139 0-0.79679 0.35539-0.79679 0.79696 0 0.44139 0.35537 0.79679 0.79679 0.79679 0.44156 0 0.79696-0.35539 0.79696-0.79679 0-0.44159-0.35537-0.79696-0.79696-0.79696z" style="fill:url(#linearGradient10);stroke-width:0"/>
+  <path class="ColorScheme-Highlight" d="m335.94 547.48c-0.58871 0-1.0625 0.47396-1.0625 1.0625 0 0.58871 0.47379 1.0625 1.0625 1.0625 0.58854 0 1.0625-0.47379 1.0625-1.0625 0-0.58854-0.47396-1.0625-1.0625-1.0625z" style="fill:url(#linearGradient12);stroke-width:0"/>
+  <path class="ColorScheme-Highlight" d="m338.6 541.11-1.0625 1.0625 1.5938 1.5938-1.5938 1.5938 1.0625 1.0625 2.6562-2.6562z" style="fill:url(#linearGradient14);stroke-width:0"/>
  </g>
 </svg>

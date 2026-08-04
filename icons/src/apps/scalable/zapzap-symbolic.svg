@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="512" height="512" inkscape:version="1.4.4 (dcaf3e7d9e, 2026-05-05)" sodipodi:docname="zapzap-symbolic.svg" version="1.1" viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg" xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape" xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd">
+ <sodipodi:namedview bordercolor="#000000" borderopacity="0.25" inkscape:current-layer="svg3" inkscape:cx="128.98184" inkscape:cy="128.09231" inkscape:deskcolor="#d1d1d1" inkscape:pagecheckerboard="0" inkscape:pageopacity="0.0" inkscape:showpageshadow="2" inkscape:window-height="1008" inkscape:window-maximized="1" inkscape:window-width="1920" inkscape:window-x="0" inkscape:window-y="0" inkscape:zoom="0.56209465" pagecolor="#ffffff"/>
+ <defs>
+  <style id="current-color-scheme" type="text/css">.ColorScheme-Text             { color: #7d7d7d; }
+    .ColorScheme-Highlight        { color: #00aaff; }</style>
+ </defs>
+ <path d="m256 52.688c-127.02 0-230 96.999-230 216.66 0.034 36.954 10.102 73.285 29.248 105.54l-12.06 46.368c-4.332-0.57799-8.2039 2.596-8.1959 6.7199l0.066 26.102v0.57799c-2e-3 0.162-2e-3 0.322 0 0.484l4e-3 1.57c0.012 0.566 0.098 1.128 0.256 1.674 1.878 14.844 17.204 25.572 32.216 22.55l85.993-17.718c31.83 14.958 66.905 22.758 102.48 22.788 127.02 0 230-96.999 230-216.66 0-119.66-102.97-216.66-230-216.66z" style="fill-opacity:.3;stroke-width:.20843"/>
+ <path d="m256 26.002c-127.02 0-230 96.997-230 216.66 0.034 36.956 10.104 73.287 29.25 105.54l-17.192 66.085-2.322 8.9219c-4.594 17.652 13.072 34.894 31.798 31.036h2e-3l85.991-17.72c31.828 14.96 66.903 22.76 102.47 22.79 127.02 0 230-97.001 230-216.66 0-119.65-102.97-216.66-230-216.66z" style="fill:#f9f9f9"/>
+ <path class="ColorScheme-Text" d="m255 56.556c-61.805 0.02-119.95 27.846-156.7 74.991l165.79 7.8819-203.62 89.935c-0.302 4.056-0.462 8.1219-0.478 12.19 0 102.17 87.305 185 195 185 70.167-0.012 134.91-35.786 169.55-93.677l-165.47-7.8679 190.91-84.323c-0.49999-101.83-87.659-184.12-194.99-184.13z" fill="currentColor"/>
+</svg>

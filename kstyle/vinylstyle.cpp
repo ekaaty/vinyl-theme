@@ -327,7 +327,6 @@ namespace Vinyl
                 /* take all precautions */
                 if (!_subApp && !_isLibreoffice
                     && widget->isWindow()
-                    && widget->windowType() != Qt::Desktop
                     && !widget->testAttribute(Qt::WA_PaintOnScreen)
                     && !widget->testAttribute(Qt::WA_X11NetWmWindowTypeDesktop)
                     && !widget->inherits("KScreenSaver")
@@ -4158,7 +4157,7 @@ namespace Vinyl
     }
 
     //___________________________________________________________________________________
-    bool Style::drawIndicatorCheckBoxPrimitive( const QStyleOption* option, QPainter* painter, const QWidget* widget ) const
+    bool Style::drawIndicatorCheckBoxPrimitive( const QStyleOption* option, QPainter* painter, const QWidget* ) const
     {
 
         // copy rect and palette
@@ -8173,7 +8172,6 @@ namespace Vinyl
                 || widget->windowFlags().testFlag(Qt::FramelessWindowHint)
                 || widget->windowFlags().testFlag(Qt::X11BypassWindowManagerHint)
                 || qobject_cast<QFrame*>(widget) // a floating frame, as in Filelight
-                || widget->windowType() == Qt::Desktop
                 || widget->testAttribute(Qt::WA_PaintOnScreen)
                 || widget->testAttribute(Qt::WA_X11NetWmWindowTypeDesktop)
                 || widget->inherits("KScreenSaver")
