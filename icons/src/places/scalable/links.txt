@@ -23,4 +23,3 @@ folder-temp.svg ./folder-recent.svg
 folder-text.svg ./folder-txt.svg
 folder-videos.svg ./folder-video.svg
 network-workgroup.svg ./network-server.svg
-start-here-kde.svg ./start-here-kde-plasma.svg

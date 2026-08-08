@@ -194,6 +194,39 @@ sudo apk -U add 'build-base' 'kconfigwidgets-dev' 'kdecoration-dev' 'kguiaddons-
   'py3-cairosvg'
 ```
 
+#### 6\. NixOS
+
+Add the repo as a flake input:
+
+```nix
+inputs = {
+  vinyl-theme = {
+    url = "github:ekaaty/vinyl-theme";
+    inputs.nixpkgs.follows = "nixpkgs";
+  };
+};
+```
+
+And add it as a nixpkgs overlay:
+
+```nix
+outputs = { nixpkgs, vinyl-theme, ... }: {
+  nixosConfigurations.my-nixos = nixpkgs.lib.nixosSystem {
+    modules = [
+      vinyl-theme.nixosModules.nixpkgs-overlay
+      ./configuration.nix
+    ]
+  }
+}
+
+# configuration.nix:
+{
+  environment.systemPackages = [
+    pkgs.vinyl-theme
+  ];
+}
+```
+
 ### Building the source
 
 To build the code, do the following:
