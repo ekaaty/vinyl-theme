@@ -1,3 +1,9 @@
+# @file CPackConfig.cmake.in
+# @brief This file configures variables for CPack.
+#
+# SPDX-FileCopyrightText: 2026 Christian Tosta
+# SPDX-License-Identifier: MIT
+
 # This file will be configured to contain variables for CPack. These variables
 # should be set in the CMake list file of the project before CPack module is
 # included. Example variables are:

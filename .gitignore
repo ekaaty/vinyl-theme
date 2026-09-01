@@ -20,6 +20,7 @@ cmake_install.cmake
 install_manifest.txt
 Makefile
 *.cmake
+!cmake/*.cmake
 
 # --- clangd & Language Tools ---
 # clangd index folder
