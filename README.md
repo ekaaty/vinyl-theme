@@ -28,7 +28,7 @@ dnf install 'cmake' \
   'cmake(KF6WindowSystem)' 'cmake(KF6KirigamiPlatform)' 'cmake(KWayland)' 'cmake(KWin)' \
   'cmake(Plasma)' 'cmake(Qt6Core)' 'cmake(Qt6Core5Compat)' 'cmake(Qt6DBus)' 'cmake(Qt6Gui)' \
   'cmake(Qt6UiTools)' 'pkgconfig(epoxy)' 'python3dist(cairosvg)' 'python3dist(lxml)' \
-  'extra-cmake-modules' 'git' 'gcc-c++' 'ninja-build' \
+  'extra-cmake-modules' 'git' 'git-clang-format' 'gcc-c++' 'ninja-build' \
   'cargo' 'clippy' 'rust' 'rustfmt' \
   'xcursorgen' 'unzip'
 ```
@@ -104,29 +104,29 @@ KDE_PREFIX=$(pkg-config --variable=prefix KF6CoreAddons 2>/dev/null || echo "/us
 
 if [ $(id -u) -eq 0 ]; then
     export PREFIX="${KDE_PREFIX}"
-    CMD_PREFIX="PREFIX=${PREFIX} sudo -E"
+    export CMD_PREFIX="PREFIX=${PREFIX} sudo -E"
 else
     export PREFIX="$HOME/.local"
-    CMD_PREFIX=""
+    export CMD_PREFIX="PREFIX=${PREFIX}"
 fi
 ```
 
 Install the built files using CMake presets:
 
 ```shell
-${CMD_PREFIX} cmake --build --preset default-install
+eval "${CMD_PREFIX} cmake --build --preset default-install"
 ```
 
 Or using Ninja:
 
 ```shell
-${CMD_PREFIX} ninja -C build install
+eval "${CMD_PREFIX} ninja -C build install"
 ```
 
 If you prefer using pure cmake command:
 
 ```shell
-${CMD_PREFIX} cmake --install build
+eval "${CMD_PREFIX} cmake --install build"
 ```
 
 ### 5. Build using CMake workflows (optional)
@@ -137,15 +137,18 @@ To configure, build and install at once, using a cmake workflow preset, do the f
 # Your KDE_PREFIX variable must match your KDE instalation (eg. KDE_PREFIX=/usr/local)
 KDE_PREFIX=$(pkg-config --variable=prefix KF6CoreAddons 2>/dev/null || echo "/usr/local")
 
+# Prevent permission errors
+sudo find ../vinyl-next/ -user root -exec chown -R ${USER}: {} \+
+
 if [ $(id -u) -eq 0 ]; then
     export PREFIX="${KDE_PREFIX}"
-    CMD_PREFIX="PREFIX=${PREFIX} sudo -E"
+    export CMD_PREFIX="PREFIX=${PREFIX} sudo -E"
 else
     export PREFIX="$HOME/.local"
-    CMD_PREFIX=""
+    export CMD_PREFIX="PREFIX=${PREFIX}"
 fi
 
-${CMD_PREFIX} cmake --workflow --preset default-workflow --fresh
+eval "${CMD_PREFIX} cmake --workflow --preset default-workflow --fresh"
 ```
 
 ***
