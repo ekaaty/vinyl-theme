@@ -1,0 +1,430 @@
+diff --git a/kdecoration/breeze.h b/kdecoration/breeze.h
+index 54aaee0..20163f5 100644
+--- a/kdecoration/breeze.h
++++ b/kdecoration/breeze.h
+@@ -6,12 +6,13 @@
+ 
+ #pragma once
+ 
++#include "config.h"
+ #include "breezesettings.h"
+ 
+ #include <QList>
+ #include <QSharedPointer>
+ 
+-namespace Breeze
++namespace NAMESPACE
+ {
+ //* convenience typedefs
+ using InternalSettingsPtr = QSharedPointer<InternalSettings>;
+diff --git a/kdecoration/breezebutton.cpp b/kdecoration/breezebutton.cpp
+index bbdcf5f..faffc6c 100644
+--- a/kdecoration/breezebutton.cpp
++++ b/kdecoration/breezebutton.cpp
+@@ -14,7 +14,7 @@
+ #include <QPainterPath>
+ #include <QVariantAnimation>
+ 
+-namespace Breeze
++namespace NAMESPACE
+ {
+ using KDecoration3::ColorGroup;
+ using KDecoration3::ColorRole;
+@@ -59,27 +59,27 @@ Button *Button::create(DecorationButtonType type, KDecoration3::Decoration *deco
+         switch (type) {
+         case DecorationButtonType::Close:
+             b->setVisible(c->isCloseable());
+-            QObject::connect(c, &KDecoration3::DecoratedWindow::closeableChanged, b, &Breeze::Button::setVisible);
++            QObject::connect(c, &KDecoration3::DecoratedWindow::closeableChanged, b, &NAMESPACE::Button::setVisible);
+             break;
+ 
+         case DecorationButtonType::Maximize:
+             b->setVisible(c->isMaximizeable());
+-            QObject::connect(c, &KDecoration3::DecoratedWindow::maximizeableChanged, b, &Breeze::Button::setVisible);
++            QObject::connect(c, &KDecoration3::DecoratedWindow::maximizeableChanged, b, &NAMESPACE::Button::setVisible);
+             break;
+ 
+         case DecorationButtonType::Minimize:
+             b->setVisible(c->isMinimizeable());
+-            QObject::connect(c, &KDecoration3::DecoratedWindow::minimizeableChanged, b, &Breeze::Button::setVisible);
++            QObject::connect(c, &KDecoration3::DecoratedWindow::minimizeableChanged, b, &NAMESPACE::Button::setVisible);
+             break;
+ 
+         case DecorationButtonType::ContextHelp:
+             b->setVisible(c->providesContextHelp());
+-            QObject::connect(c, &KDecoration3::DecoratedWindow::providesContextHelpChanged, b, &Breeze::Button::setVisible);
++            QObject::connect(c, &KDecoration3::DecoratedWindow::providesContextHelpChanged, b, &NAMESPACE::Button::setVisible);
+             break;
+ 
+         case DecorationButtonType::Shade:
+             b->setVisible(c->isShadeable());
+-            QObject::connect(c, &KDecoration3::DecoratedWindow::shadeableChanged, b, &Breeze::Button::setVisible);
++            QObject::connect(c, &KDecoration3::DecoratedWindow::shadeableChanged, b, &NAMESPACE::Button::setVisible);
+             break;
+ 
+         case DecorationButtonType::Menu:
+diff --git a/kdecoration/breezebutton.h b/kdecoration/breezebutton.h
+index d5f6515..f0a681b 100644
+--- a/kdecoration/breezebutton.h
++++ b/kdecoration/breezebutton.h
+@@ -15,7 +15,7 @@
+ 
+ class QVariantAnimation;
+ 
+-namespace Breeze
++namespace NAMESPACE
+ {
+ class Button : public KDecoration3::DecorationButton
+ {
+diff --git a/kdecoration/breezedecoration.cpp b/kdecoration/breezedecoration.cpp
+index 82795ba..3fecf3b 100644
+--- a/kdecoration/breezedecoration.cpp
++++ b/kdecoration/breezedecoration.cpp
+@@ -34,7 +34,7 @@
+ #include <QTextStream>
+ #include <QTimer>
+ 
+-K_PLUGIN_FACTORY_WITH_JSON(BreezeDecoFactory, "breeze.json", registerPlugin<Breeze::Decoration>(); registerPlugin<Breeze::Button>();)
++K_PLUGIN_FACTORY_WITH_JSON(PLUGIN_FACTORY, JSON_FILE, registerPlugin<NAMESPACE::Decoration>(); registerPlugin<NAMESPACE::Button>();)
+ 
+ namespace
+ {
+@@ -94,15 +94,15 @@ const CompositeShadowParams s_shadowParams[] = {
+ inline CompositeShadowParams lookupShadowParams(int size)
+ {
+     switch (size) {
+-    case Breeze::InternalSettings::ShadowNone:
++    case NAMESPACE::InternalSettings::ShadowNone:
+         return s_shadowParams[0];
+-    case Breeze::InternalSettings::ShadowSmall:
++    case NAMESPACE::InternalSettings::ShadowSmall:
+         return s_shadowParams[1];
+-    case Breeze::InternalSettings::ShadowMedium:
++    case NAMESPACE::InternalSettings::ShadowMedium:
+         return s_shadowParams[2];
+-    case Breeze::InternalSettings::ShadowLarge:
++    case NAMESPACE::InternalSettings::ShadowLarge:
+         return s_shadowParams[3];
+-    case Breeze::InternalSettings::ShadowVeryLarge:
++    case NAMESPACE::InternalSettings::ShadowVeryLarge:
+         return s_shadowParams[4];
+     default:
+         // Fallback to the Large size.
+@@ -111,7 +111,7 @@ inline CompositeShadowParams lookupShadowParams(int size)
+ }
+ }
+ 
+-namespace Breeze
++namespace NAMESPACE
+ {
+ using KDecoration3::ColorGroup;
+ using KDecoration3::ColorRole;
+@@ -190,7 +190,7 @@ void Decoration::init()
+     // It is important start and end value are of the same type, hence 0.0 and not just 0
+     m_animation->setStartValue(0.0);
+     m_animation->setEndValue(1.0);
+-    // Linear to have the same easing as Breeze animations
++    // Linear to have the same easing as animations
+     m_animation->setEasingCurve(QEasingCurve::Linear);
+     connect(m_animation, &QVariantAnimation::valueChanged, this, [this](const QVariant &value) {
+         setOpacity(value.toReal());
+@@ -838,9 +838,9 @@ std::shared_ptr<KDecoration3::DecorationShadow> Decoration::createShadowObject(c
+     };
+ 
+     const QSize boxSize =
+-        BoxShadowRenderer::calculateMinimumBoxSize(params.shadow1.radius).expandedTo(BoxShadowRenderer::calculateMinimumBoxSize(params.shadow2.radius));
++        Breeze::BoxShadowRenderer::calculateMinimumBoxSize(params.shadow1.radius).expandedTo(Breeze::BoxShadowRenderer::calculateMinimumBoxSize(params.shadow2.radius));
+ 
+-    BoxShadowRenderer shadowRenderer;
++    Breeze::BoxShadowRenderer shadowRenderer;
+     shadowRenderer.setBorderRadius(m_scaledCornerRadius + 0.5);
+     shadowRenderer.setBoxSize(boxSize);
+ 
+diff --git a/kdecoration/breezedecoration.h b/kdecoration/breezedecoration.h
+index 64a958c..4e54896 100644
+--- a/kdecoration/breezedecoration.h
++++ b/kdecoration/breezedecoration.h
+@@ -24,7 +24,7 @@ class DecorationButton;
+ class DecorationButtonGroup;
+ }
+ 
+-namespace Breeze
++namespace NAMESPACE
+ {
+ class Decoration : public KDecoration3::Decoration
+ {
+diff --git a/kdecoration/breezeexceptionlist.cpp b/kdecoration/breezeexceptionlist.cpp
+index 4e5bd6b..792842a 100644
+--- a/kdecoration/breezeexceptionlist.cpp
++++ b/kdecoration/breezeexceptionlist.cpp
+@@ -10,7 +10,7 @@
+ 
+ #include "breezeexceptionlist.h"
+ 
+-namespace Breeze
++namespace NAMESPACE
+ {
+ //______________________________________________________________
+ void ExceptionList::readConfig(KSharedConfig::Ptr config)
+diff --git a/kdecoration/breezeexceptionlist.h b/kdecoration/breezeexceptionlist.h
+index c7859d5..fa2c35a 100644
+--- a/kdecoration/breezeexceptionlist.h
++++ b/kdecoration/breezeexceptionlist.h
+@@ -15,7 +15,7 @@
+ 
+ #include <KSharedConfig>
+ 
+-namespace Breeze
++namespace NAMESPACE
+ {
+ //! breeze exceptions list
+ class ExceptionList
+diff --git a/kdecoration/breezesettingsprovider.cpp b/kdecoration/breezesettingsprovider.cpp
+index f91b81f..ce3674d 100644
+--- a/kdecoration/breezesettingsprovider.cpp
++++ b/kdecoration/breezesettingsprovider.cpp
+@@ -11,13 +11,13 @@
+ #include <QRegularExpression>
+ #include <QTextStream>
+ 
+-namespace Breeze
++namespace NAMESPACE
+ {
+ SettingsProvider *SettingsProvider::s_self = nullptr;
+ 
+ //__________________________________________________________________
+ SettingsProvider::SettingsProvider()
+-    : m_config(KSharedConfig::openConfig(QStringLiteral("breezerc")))
++    : m_config(KSharedConfig::openConfig(QStringLiteral(RC_NAME)))
+ {
+     reconfigure();
+ }
+diff --git a/kdecoration/breezesettingsprovider.h b/kdecoration/breezesettingsprovider.h
+index 924668f..1f60c68 100644
+--- a/kdecoration/breezesettingsprovider.h
++++ b/kdecoration/breezesettingsprovider.h
+@@ -14,7 +14,7 @@
+ 
+ #include <QObject>
+ 
+-namespace Breeze
++namespace NAMESPACE
+ {
+ class SettingsProvider : public QObject
+ {
+diff --git a/kdecoration/config/breezeconfigwidget.cpp b/kdecoration/config/breezeconfigwidget.cpp
+index 2c273e9..f7a20f8 100644
+--- a/kdecoration/config/breezeconfigwidget.cpp
++++ b/kdecoration/config/breezeconfigwidget.cpp
+@@ -16,7 +16,7 @@
+ #include <QDBusMessage>
+ #include <QFontDatabase>
+ 
+-namespace Breeze
++namespace NAMESPACE
+ {
+ //_________________________________________________________
+ ConfigWidget::ConfigWidget(QObject *parent, const KPluginMetaData &data, const QVariantList & /*args*/)
+@@ -124,7 +124,11 @@ void ConfigWidget::save()
+ 
+     // needed for breeze style to reload shadows
+     {
+-        QDBusMessage message(QDBusMessage::createSignal("/BreezeDecoration", "org.kde.Breeze.Style", "reparseConfiguration"));
++	QDBusMessage message(QDBusMessage::createSignal(
++	    QStringLiteral("/%1Decoration").arg(NAMESPACE_STR),
++	    QStringLiteral("org.kde.%1.Style").arg(NAMESPACE_STR),
++	    QStringLiteral("reparseConfiguration")
++	));
+         QDBusConnection::sessionBus().send(message);
+     }
+ }
+diff --git a/kdecoration/config/breezeconfigwidget.h b/kdecoration/config/breezeconfigwidget.h
+index d1cadc1..c2af7b5 100644
+--- a/kdecoration/config/breezeconfigwidget.h
++++ b/kdecoration/config/breezeconfigwidget.h
+@@ -20,7 +20,7 @@
+ #include <QSharedPointer>
+ #include <QWidget>
+ 
+-namespace Breeze
++namespace NAMESPACE
+ {
+ //_____________________________________________
+ class ConfigWidget : public KCModule
+@@ -50,7 +50,7 @@ protected Q_SLOTS:
+ 
+ private:
+     //* ui
+-    Ui_BreezeConfigurationUI m_ui;
++    UI_CLASS(ConfigurationUI) m_ui;
+ 
+     //* kconfiguration object
+     KSharedConfig::Ptr m_configuration;
+diff --git a/kdecoration/config/breezedetectwidget.cpp b/kdecoration/config/breezedetectwidget.cpp
+index e6f9f96..97c316d 100644
+--- a/kdecoration/config/breezedetectwidget.cpp
++++ b/kdecoration/config/breezedetectwidget.cpp
+@@ -18,7 +18,7 @@
+ #include <QDBusPendingCallWatcher>
+ #include <QDBusPendingReply>
+ 
+-namespace Breeze
++namespace NAMESPACE
+ {
+ //_________________________________________________________
+ DetectDialog::DetectDialog(QObject *parent)
+diff --git a/kdecoration/config/breezedetectwidget.h b/kdecoration/config/breezedetectwidget.h
+index c8985a8..1face51 100644
+--- a/kdecoration/config/breezedetectwidget.h
++++ b/kdecoration/config/breezedetectwidget.h
+@@ -13,10 +13,11 @@
+ 
+ #pragma once
+ 
++#include "config.h"
+ #include <QObject>
+ #include <QVariantMap>
+ 
+-namespace Breeze
++namespace NAMESPACE
+ {
+ class DetectDialog : public QObject
+ {
+diff --git a/kdecoration/config/breezeexceptiondialog.cpp b/kdecoration/config/breezeexceptiondialog.cpp
+index 4336e8d..adf9b73 100644
+--- a/kdecoration/config/breezeexceptiondialog.cpp
++++ b/kdecoration/config/breezeexceptiondialog.cpp
+@@ -10,7 +10,7 @@
+ #include "breezeexceptiondialog.h"
+ #include "breezedetectwidget.h"
+ 
+-namespace Breeze
++namespace NAMESPACE
+ {
+ //___________________________________________
+ ExceptionDialog::ExceptionDialog(QWidget *parent)
+diff --git a/kdecoration/config/breezeexceptiondialog.h b/kdecoration/config/breezeexceptiondialog.h
+index 6ca8634..f096781 100644
+--- a/kdecoration/config/breezeexceptiondialog.h
++++ b/kdecoration/config/breezeexceptiondialog.h
+@@ -15,7 +15,7 @@
+ #include <QCheckBox>
+ #include <QMap>
+ 
+-namespace Breeze
++namespace NAMESPACE
+ {
+ class DetectDialog;
+ 
+@@ -75,7 +75,7 @@ private:
+     //* map mask and checkbox
+     using CheckBoxMap = QMap<ExceptionMask, QCheckBox *>;
+ 
+-    Ui::BreezeExceptionDialog m_ui;
++    UI_CLASS(ExceptionDialog) m_ui;
+ 
+     //* map mask and checkbox
+     CheckBoxMap m_checkboxes;
+diff --git a/kdecoration/config/breezeexceptionlistwidget.cpp b/kdecoration/config/breezeexceptionlistwidget.cpp
+index 70418a4..7b7e457 100644
+--- a/kdecoration/config/breezeexceptionlistwidget.cpp
++++ b/kdecoration/config/breezeexceptionlistwidget.cpp
+@@ -18,7 +18,7 @@
+ #include <QRegularExpression>
+ 
+ //__________________________________________________________
+-namespace Breeze
++namespace NAMESPACE
+ {
+ //__________________________________________________________
+ ExceptionListWidget::ExceptionListWidget(QWidget *parent)
+diff --git a/kdecoration/config/breezeexceptionlistwidget.h b/kdecoration/config/breezeexceptionlistwidget.h
+index 1b90fef..ccdae9f 100644
+--- a/kdecoration/config/breezeexceptionlistwidget.h
++++ b/kdecoration/config/breezeexceptionlistwidget.h
+@@ -13,7 +13,7 @@
+ #include "ui_breezeexceptionlistwidget.h"
+ 
+ //* QDialog used to commit selected files
+-namespace Breeze
++namespace NAMESPACE
+ {
+ class ExceptionListWidget : public QWidget
+ {
+@@ -96,7 +96,7 @@ private:
+     ExceptionModel m_model;
+ 
+     //* ui
+-    Ui_BreezeExceptionListWidget m_ui;
++    UI_CLASS(ExceptionListWidget) m_ui;
+ 
+     //* changed state
+     bool m_changed = false;
+diff --git a/kdecoration/config/breezeexceptionmodel.cpp b/kdecoration/config/breezeexceptionmodel.cpp
+index bc32d88..55236f1 100644
+--- a/kdecoration/config/breezeexceptionmodel.cpp
++++ b/kdecoration/config/breezeexceptionmodel.cpp
+@@ -11,7 +11,7 @@
+ 
+ #include <KLocalizedString>
+ 
+-namespace Breeze
++namespace NAMESPACE
+ {
+ //_______________________________________________
+ const QString ExceptionModel::m_columnTitles[ExceptionModel::nColumns] = {QStringLiteral(""), i18n("Exception Type"), i18n("Regular Expression")};
+diff --git a/kdecoration/config/breezeexceptionmodel.h b/kdecoration/config/breezeexceptionmodel.h
+index 8b0ea0c..6b6c888 100644
+--- a/kdecoration/config/breezeexceptionmodel.h
++++ b/kdecoration/config/breezeexceptionmodel.h
+@@ -13,7 +13,7 @@
+ #include "breezelistmodel.h"
+ #include "breezesettings.h"
+ 
+-namespace Breeze
++namespace NAMESPACE
+ {
+ //* qlistview for object counters
+ class ExceptionModel : public ListModel<InternalSettingsPtr>
+diff --git a/kdecoration/config/breezeitemmodel.cpp b/kdecoration/config/breezeitemmodel.cpp
+index 750b868..84645d1 100644
+--- a/kdecoration/config/breezeitemmodel.cpp
++++ b/kdecoration/config/breezeitemmodel.cpp
+@@ -9,7 +9,7 @@
+ 
+ #include "breezeitemmodel.h"
+ 
+-namespace Breeze
++namespace NAMESPACE
+ {
+ //_______________________________________________________________
+ ItemModel::ItemModel(QObject *parent)
+diff --git a/kdecoration/config/breezeitemmodel.h b/kdecoration/config/breezeitemmodel.h
+index d072889..57fb6a5 100644
+--- a/kdecoration/config/breezeitemmodel.h
++++ b/kdecoration/config/breezeitemmodel.h
+@@ -9,9 +9,10 @@
+ 
+ #pragma once
+ 
++#include "config.h"
+ #include <QAbstractItemModel>
+ 
+-namespace Breeze
++namespace NAMESPACE
+ {
+ //* Job model. Stores job information for display in lists
+ class ItemModel : public QAbstractItemModel
+diff --git a/kdecoration/config/breezelistmodel.h b/kdecoration/config/breezelistmodel.h
+index 113106d..8038ab1 100644
+--- a/kdecoration/config/breezelistmodel.h
++++ b/kdecoration/config/breezelistmodel.h
+@@ -16,7 +16,7 @@
+ 
+ #include <algorithm>
+ 
+-namespace Breeze
++namespace NAMESPACE
+ {
+ //! Job model. Stores job information for display in lists
+ template<class T>

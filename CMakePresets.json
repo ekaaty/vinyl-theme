@@ -1,0 +1,39 @@
+{
+  "version": 10,
+  "configurePresets": [
+    {
+      "name": "default-config",
+      "displayName": "Default Config",
+      "description": "Default build config using Ninja generator",
+      "generator": "Ninja",
+      "binaryDir": "${sourceDir}/build",
+      "cacheVariables": {
+        "CMAKE_BUILD_TYPE": "Release",
+        "CMAKE_INSTALL_PREFIX": "$env{PREFIX}"
+      }
+    }
+  ],
+  "buildPresets": [
+    {
+      "name": "default-build",
+      "configurePreset": "default-config"
+    },
+    {
+      "name": "default-install",
+      "configurePreset": "default-config",
+      "targets": ["install"]
+    }
+  ],
+  "workflowPresets": [
+    {
+      "name": "default-workflow",
+      "displayName": "Default Workflow",
+      "description": "Workflow to configure, build, and install",
+      "steps": [
+        { "type": "configure", "name": "default-config" },
+        { "type": "build", "name": "default-build" },
+        { "type": "build", "name": "default-install" }
+      ]
+    }
+  ]
+}

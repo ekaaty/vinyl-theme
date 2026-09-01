@@ -1,0 +1,19 @@
+{
+  "package": {
+    "name": "vinylnx",
+    "version": "6.7.4",
+    "release": "1",
+    "arch": [ "x86_64", "x86_64_v2" ],
+    "summary": "Next generation of Vinyl Theme",
+    "license": "GPL-3.0-only and BSD-3-Clause and MIT",
+    "url": "https://github.com/ekaaty/vinyl-theme.git",
+    "vendor": "br.com.ekaaty",
+    "description": [
+      "This theme is an *EXPERIMENTAL* aproach to refactor Vinyl without fork\n",
+      "Breeze or start from another base. It's writen from scratch expandind\n",
+      "the source-code of Breeze, but not including it. The common portion between\n",
+      "the Kdecoration and Kstyle is developed in Rust, providing a performance\n",
+      "and security focused core for the project."
+    ]
+  }
+}

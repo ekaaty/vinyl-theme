@@ -1,0 +1,16 @@
+{
+    "KPlugin": {
+        "Description": "Window decoration using the @PROJECT_NAME@ visual style for the Plasma Desktop",
+        "EnabledByDefault": true,
+        "Id": "@PROJECT_ID@",
+        "Name": "@PROJECT_NAME@",
+        "ServiceTypes": [
+            "org.kde.kdecoration3"
+        ]
+    },
+    "X-KDE-ConfigModule": "kcm_@PROJECT_ID@decoration",
+    "org.kde.kdecoration3": {
+        "blur": false,
+        "recommendedBorderSize": "Default"
+    }
+}

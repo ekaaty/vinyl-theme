@@ -1,0 +1,11 @@
+--- build/breeze/kstyle/breezehelper.cpp
++++ build/breeze/kstyle/breezehelper.cpp
+@@ -1329,6 +1329,8 @@ void Helper::renderStaticTabBarTab(QPainter *painter,
+                                    Corners corners,
+                                    qreal animation) const
+ {
++    Q_UNUSED(corners)
++
+     bool enabled = stateProperties.value("enabled", true);
+     bool hovered = stateProperties.value("hovered");
+     bool selected = stateProperties.value("selected");

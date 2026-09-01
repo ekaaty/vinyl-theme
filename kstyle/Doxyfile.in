@@ -1,0 +1,42 @@
+# --- Project Information ---
+PROJECT_NAME           = "Vinyl Application Style Engine"
+PROJECT_NUMBER         = "@PROJECT_VERSION@"
+OUTPUT_DIRECTORY       = doc
+OUTPUT_LANGUAGE        = English
+# Optimize output for C++ projects (KDE/Qt)
+OPTIMIZE_OUTPUT_FOR_C  = YES
+OPTIMIZE_OUTPUT_JAVA   = NO
+
+# --- Input Configuration ---
+# Scan current directory and subdirectories (such as the future widgets/ folder)
+INPUT                  = "@CMAKE_CURRENT_SOURCE_DIR@"
+RECURSIVE              = YES
+FILE_PATTERNS          = *.cpp *.h *.json
+EXCLUDE                = build/ .git/
+# Ensure @file and @namespace tags are processed correctly
+EXTRACT_ALL            = YES
+EXTRACT_PRIVATE        = YES
+EXTRACT_STATIC         = YES
+
+# --- Messages and Logs ---
+QUIET                  = YES
+WARNINGS               = YES
+WARN_IF_UNDOCUMENTED   = YES
+
+# --- Output Format ---
+GENERATE_HTML          = YES
+HTML_OUTPUT            = html
+# Disable LaTeX if not generating manual PDFs to save time
+GENERATE_LATEX         = NO
+
+# --- Diagrams (Requires 'graphviz' package installed) ---
+HAVE_DOT               = YES
+CLASS_GRAPH            = YES
+COLLABORATION_GRAPH    = YES
+GROUP_GRAPHS           = YES
+INCLUDE_GRAPH          = YES
+INCLUDED_BY_GRAPH      = YES
+GRAPHICAL_HIERARCHY    = YES
+DIRECTORY_GRAPH        = YES
+DOT_IMAGE_FORMAT       = svg
+INTERACTIVE_SVG        = YES

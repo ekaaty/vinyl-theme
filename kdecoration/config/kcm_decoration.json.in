@@ -1,0 +1,15 @@
+{
+    "KPlugin": {
+        "Category": "Window Management",
+        "Description": "Modify the appearance of window decorations",
+        "Icon": "preferences-system-windows",
+        "Id": "kcm_@PROJECT_ID@decoration",
+        "Name": "@PROJECT_NAME@ Window Decoration",
+        "ServiceTypes": [
+            "KCModule"
+        ]
+    },
+    "X-KDE-Keywords": "@PROJECT_ID@,decoration",
+    "X-KDE-ParentApp": "kcontrol",
+    "X-KDE-Weight": 60
+}

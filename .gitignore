@@ -1,0 +1,54 @@
+# --- Build and Compilation ---
+# Ignore the entire build directory (executables, object files, etc.)
+build/
+bin/
+obj/
+# Local cache used by clangd and other tools
+.cache/
+
+# --- Rust (Cargo) ---
+# Ignore Cargo build artifacts and target directories
+target/
+Cargo.lock
+
+# --- CMake ---
+# In case CMake files are generated outside the build folder by accident
+CMakeCache.txt
+CMakeFiles/
+CMakeScripts/
+cmake_install.cmake
+install_manifest.txt
+Makefile
+*.cmake
+
+# --- clangd & Language Tools ---
+# clangd index folder
+.clangd/
+# Compilation database (generated locally by CMake)
+compile_commands.json
+
+# --- VSCodium / VS Code ---
+# Ignore local editor history and internal caches
+.vscode/
+.vscode/*
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+.history/
+
+# --- Supermaven & AI ---
+.supermaven/
+
+# --- System Files ---
+.DS_Store
+Thumbs.db
+
+# --- Binaries & Libraries (General) ---
+*.exe
+*.out
+*.app
+*.so
+*.a
+*.dll
+*.o
+*.obj
