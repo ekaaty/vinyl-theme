@@ -8,6 +8,7 @@
 
 #include "vinylframeprimitive.h"
 #include "../vinylhelper.h"
+#include "vinyldolphinurlnavigator.h"
 
 namespace Vinyl
 {
@@ -15,7 +16,11 @@ namespace Vinyl
                                            const QWidget* widget, const Helper* helper)
     {
         Q_UNUSED(element);
-        Q_UNUSED(widget);
+
+        // Delegate custom DolphinUrlNavigator handling if applicable
+        if (DolphinUrlNavigator::draw(option, painter, widget)) {
+            return true;
+        }
 
         painter->save();
         painter->setRenderHint(QPainter::Antialiasing);

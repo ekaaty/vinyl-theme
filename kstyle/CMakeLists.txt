@@ -91,6 +91,7 @@ set(vinyl_appstyle_SRCS
     "elements/vinylcomboboxcontrol.cpp"
     "elements/vinylcomboboxcomplex.cpp"
     "elements/vinylframeprimitive.cpp"
+    "elements/vinyldolphinurlnavigator.cpp"
     "vinylhelper.cpp"
     "vinylstyle.cpp"
     "vinylstyleplugin.cpp"
