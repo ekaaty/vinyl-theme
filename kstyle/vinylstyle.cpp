@@ -601,47 +601,37 @@ namespace Vinyl
 
             // frame width
             case PM_DefaultFrameWidth:
-            // Vinyl Bug Fix: Korner Bug on Fedora 41 #6
-            // if( qobject_cast<const QMenu*>( widget ) ) return StyleConfigData::cornerRadius() > 1 ? 4 : 0;
-            if( qobject_cast<const QMenu*>( widget ) ) return Metrics::Menu_FrameWidth;
-	    // End Bug fix
-            if( qobject_cast<const QLineEdit*>( widget ) ) return Metrics::LineEdit_FrameWidth;
-            else if( isQtQuickControl( option, widget ) )
-            {
-                const QString &elementType = option->styleObject->property( "elementType" ).toString();
-                if( elementType == QLatin1String( "edit" ) || elementType == QLatin1String( "spinbox" ) )
-                {
+                if (qobject_cast<const QMenu *>(widget))
+                    return Metrics::Menu_FrameWidth;
 
+                if (qobject_cast<const QLineEdit *>(widget))
                     return Metrics::LineEdit_FrameWidth;
-
-                } else if( elementType == QLatin1String( "combobox" ) ) {
-
-                    return Metrics::ComboBox_FrameWidth;
+                else if (isQtQuickControl(option, widget)) {
+                    const QString &elementType = option->styleObject->property("elementType").toString();
+                    if (elementType == QLatin1String("edit") || elementType == QLatin1String("spinbox")) {
+                        return Metrics::LineEdit_FrameWidth;
+                    } else if (elementType == QLatin1String("combobox")) {
+                        return Metrics::ComboBox_FrameWidth;
+                    }
+                } else if (widget && widget->inherits("KTextEditor::View") && !StyleConfigData::kTextEditDrawFrame() && !_isKdevelop) {
+                    return 0;
                 }
-
-            }
-            
-            else if( widget && widget->inherits( "KTextEditor::View" ) && !StyleConfigData::kTextEditDrawFrame() && !_isKdevelop ) return 0;
-            
-            // from kvantum
-            else if ( widget && _isDolphin )
-            {
-                if (QWidget *pw = widget->parentWidget())
-                {
-                    if (StyleConfigData::transparentDolphinView()
-                        // not renaming area
-                        && !qobject_cast<QAbstractScrollArea*>(pw)
-                        // only Dolphin's view
-                        && QString(pw->metaObject()->className()).startsWith("Dolphin"))
-                    {
-                        // for the top and bottom separators
-                        return 1;
+                // from kvantum
+                else if (widget && _isDolphin) {
+                    if (QWidget *pw = widget->parentWidget()) {
+                        if (StyleConfigData::transparentDolphinView()
+                            // not renaming area
+                            && !qobject_cast<QAbstractScrollArea *>(pw)
+                            // only Dolphin's view
+                            && QString(pw->metaObject()->className()).startsWith("Dolphin")) {
+                            // for the top and bottom separators
+                            return 1;
+                        }
                     }
                 }
-            }
 
-            // fallback
-            return Metrics::Frame_FrameWidth;
+                // fallback
+                return Metrics::Frame_FrameWidth;
 
             case PM_ComboBoxFrameWidth:
             {
@@ -3458,51 +3448,68 @@ namespace Vinyl
     }
 
     //______________________________________________________________
-    bool Style::drawFrameLineEditPrimitive( const QStyleOption* option, QPainter* painter, const QWidget* widget ) const
+    bool Style::drawFrameLineEditPrimitive(const QStyleOption *option, QPainter *painter, const QWidget *widget) const
     {
-        // copy palette and rect
-        const auto& palette( option->palette );
-        const auto& rect( option->rect );
-        
-        // store window state
-        const bool windowActive( widget && widget->isActiveWindow() );
+        const auto &palette(option->palette);
+        const auto &rect(option->rect);
+        const bool windowActive(widget && widget->isActiveWindow());
 
-        // make sure there is enough room to render frame
-        if( rect.height() < 2*Metrics::LineEdit_FrameWidth + option->fontMetrics.height())
-        {
+        auto background = palette.color(QPalette::Base);
+        auto outline(palette.color(QPalette::Highlight));
 
-            const auto &background = palette.color( QPalette::Base );
+        bool isVisible = false;
+        const auto isControl = isQtQuickControl(option, widget);
 
-            painter->setPen( Qt::NoPen );
-            painter->setBrush( background );
-            painter->drawRect( rect );
+        // Dolphin UrlNavigator custom handling
+        if (_isDolphin && !isControl && widget && widget->inherits("DolphinUrlNavigator")) {
+            if (auto comboBox = widget->findChild<QComboBox *>()) {
+                isVisible = comboBox->isVisible();
+
+                // Breadcrumbs view (non-editable mode)
+                if (!isVisible) {
+                    // Fill with window background color to seamlessly blend with the toolbar
+                    painter->fillRect(rect, palette.color(QPalette::Window));
+
+                    if (QLineEdit *dolphinLineEdit = widget->findChild<QLineEdit *>()) {
+                        QPalette pal(dolphinLineEdit->palette());
+                        pal.setColor(QPalette::Window, palette.color(QPalette::Window));
+                        dolphinLineEdit->setPalette(pal);
+                    }
+                    return true;
+                }
+            }
+        }
+
+        // Ensure there is enough space to render the frame
+        if (rect.height() < 2 * Metrics::LineEdit_FrameWidth + option->fontMetrics.height()) {
+            painter->setPen(Qt::NoPen);
+            painter->setBrush(background);
+            painter->drawRect(rect);
             return true;
-
         } else {
+            const State &state(option->state);
+            const bool enabled(state & State_Enabled);
+            const bool mouseOver(enabled && (state & State_MouseOver));
+            const bool hasFocus(enabled && (state & State_HasFocus));
 
-            // copy state
-            const State& state( option->state );
-            const bool enabled( state & State_Enabled );
-            const bool mouseOver( enabled && ( state & State_MouseOver ) );
-            const bool hasFocus( enabled && ( state & State_HasFocus ) );
+            _animations->inputWidgetEngine().updateState(widget, AnimationHover, mouseOver && !hasFocus);
 
-            // focus takes precedence over mouse over
-            //_animations->inputWidgetEngine().updateState( widget, AnimationFocus, hasFocus, AnimationLongDuration );
-            _animations->inputWidgetEngine().updateState( widget, AnimationHover, mouseOver && !hasFocus );
+            AnimationMode mode(_animations->inputWidgetEngine().frameAnimationMode(widget));
+            qreal opacity(_animations->inputWidgetEngine().frameOpacity(widget));
 
-            // retrieve animation mode and opacity
-            const AnimationMode mode( _animations->inputWidgetEngine().frameAnimationMode( widget ) );
-            const qreal opacity( _animations->inputWidgetEngine().frameOpacity( widget ) );
-
-            // render
-            //const auto &background = palette.color( QPalette::Base );
-            //const auto outline( palette.color( QPalette::Highlight ) );
-            _helper->renderLineEdit( painter, rect, palette, hasFocus, mouseOver, enabled, windowActive, mode, opacity );
-
+            // Editable mode (text input focused/open)
+            if (isVisible) {
+                if (QLineEdit *dolphinLineEdit = widget->findChild<QLineEdit *>()) {
+                    if (dolphinLineEdit->isVisible()) {
+                        _helper->renderLineEdit(painter, rect, palette, hasFocus, mouseOver, enabled, windowActive, mode, opacity);
+                    }
+                }
+            } else {
+                _helper->renderLineEdit(painter, rect, palette, hasFocus, mouseOver, enabled, windowActive, mode, opacity);
+            }
         }
 
         return true;
-
     }
 
     //___________________________________________________________________________________
