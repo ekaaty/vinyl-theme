@@ -18,7 +18,7 @@ inline constexpr int TrackRadius = 3;
 
 // Sliders
 inline constexpr int SliderHandleSize = 14;
-inline constexpr int SliderHandleRadius = 7;
+inline constexpr int SliderHandleRadius = SliderHandleSize / 2;
 
 // ScrollBars
 inline constexpr int ScrollBarExtent = 8;
