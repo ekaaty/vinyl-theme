@@ -22,29 +22,24 @@ namespace Vinyl
             return true;
         }
 
-        painter->save();
-        painter->setRenderHint(QPainter::Antialiasing);
-
         // Delegate border rendering to the helper for consistency
-        helper->drawBorderPrimitive(option, painter);
+        if (helper) {
+            helper->drawBorderPrimitive(option, painter);
+        }
 
-        painter->restore();
         return true;
     }
 
-    /*
-    void FramePrimitive::drawFrame(const QStyleOption* option, QPainter* painter, const QColor& borderColor)
+    bool FramePrimitive::drawFrame(int element, const QStyleOption *option, QPainter *painter, const QWidget *widget, const Helper *helper)
     {
-        const qreal radius = 4.0;
-        const QRectF frameRect = QRectF(option->rect).adjusted(0.5, 0.5, -0.5, -0.5);
+        Q_UNUSED(element);
+        Q_UNUSED(widget);
 
-        painter->save();
-        painter->setRenderHint(QPainter::Antialiasing);
-        painter->setBrush(Qt::NoBrush);
-        painter->setPen(QPen(borderColor, 1.0));
-        painter->drawRoundedRect(frameRect, radius, radius);
-        painter->restore();
+        if (helper) {
+            helper->drawBorderPrimitive(option, painter);
+        }
+
+        return true;
     }
-    */
 
 } // namespace Vinyl

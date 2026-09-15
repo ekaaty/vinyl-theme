@@ -33,9 +33,9 @@ namespace Vinyl
 
     private:
         /**
-         * @brief Internal helper to draw a generic rounded frame with a specific border color.
+         * @brief Draws a generic frame primitive using the style helper.
          */
-        static void drawFrame(const QStyleOption* option, QPainter* painter, const QColor& borderColor);
+        static bool drawFrame(int element, const QStyleOption *option, QPainter *painter, const QWidget *widget, const Helper *helper);
     };
 
 } // namespace Vinyl
