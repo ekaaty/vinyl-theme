@@ -9,8 +9,8 @@
 #ifndef VINYLBUTTONPRIMITIVE_H
 #define VINYLBUTTONPRIMITIVE_H
 
-#include <QStyleOption>
 #include <QPainter>
+#include <QStyleOption>
 #include <QWidget>
 
 namespace Vinyl {
@@ -20,7 +20,8 @@ namespace Vinyl {
     /**
      * @class ButtonPrimitive
      * @brief Static provider for PushButton and ToolButton backgrounds.
-     * * This class implements the low-level visual appearance (panels) of
+     *
+     * This class implements the low-level visual appearance (panels) of
      * button-like elements according to the Vinyl "stable" specifications.
      */
     class ButtonPrimitive {
@@ -58,6 +59,13 @@ namespace Vinyl {
         static bool drawIndicatorButtonDropDown(const QStyleOption *option, QPainter *painter,
                                                 const QWidget *widget, const Helper *helper);
 
+    private:
+        /**
+         * @brief Checks if the given widget resides within a status bar container.
+         * @param widget Pointer to the widget being inspected.
+         * @return true if an ancestor matches a status bar class, false otherwise.
+         */
+        static bool isStatusBar(const QWidget *widget);
     };
 
 } // namespace Vinyl
