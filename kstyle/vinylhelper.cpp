@@ -7,19 +7,22 @@
  */
 
 #include "vinylhelper.h"
+#include "vinylmetrics.h"
 
 #include <QPainter>
 #include <QStyleOptionButton>
 #include <QAbstractButton>
 #include <QApplication>
 
-#include "elements/vinylbuttonprimitive.h"
 #include "elements/vinylbuttoncontrol.h"
-#include "elements/vinylcomboboxprimitive.h"
-#include "elements/vinylcomboboxcontrol.h"
+#include "elements/vinylbuttonprimitive.h"
 #include "elements/vinylcomboboxcomplex.h"
+#include "elements/vinylcomboboxcontrol.h"
+#include "elements/vinylcomboboxprimitive.h"
 #include "elements/vinylframeprimitive.h"
-
+#include "elements/vinylprogressbar.h"
+#include "elements/vinylscrollbar.h"
+#include "elements/vinylslider.h"
 
 namespace Vinyl
 {
@@ -121,9 +124,10 @@ namespace Vinyl
                 // return MenuControl::draw(element, option, painter, widget, this);
 
             // FAMILY: PROGRESS
-            case QStyle::CE_ProgressBar:         break;
-            case QStyle::CE_ProgressBarContents: break;
-            case QStyle::CE_ProgressBarGroove:   break;
+            case QStyle::CE_ProgressBar:
+            case QStyle::CE_ProgressBarContents:
+            case QStyle::CE_ProgressBarGroove:
+                return ProgressBarElement::drawControl(element, option, painter, widget, this);
             case QStyle::CE_ProgressBarLabel:    break;
                 // return ProgressControl::draw(element, option, painter, widget, this);
 
@@ -177,10 +181,12 @@ namespace Vinyl
                 ComboBoxComplex::drawComboBoxComplexControl(option, painter, widget, this);
             case QStyle::CC_SpinBox:                        break;
             // FAMILY: SLIDERS / DIALS
-            case QStyle::CC_Slider:                         break;
+            case QStyle::CC_Slider:
+                return SliderElement::drawComplexControl(option, painter, widget, this);
             case QStyle::CC_Dial:                           break;
             // FAMILY: SCROLL
-            case QStyle::CC_ScrollBar:                      break;
+            case QStyle::CC_ScrollBar:
+                return ScrollBarElement::drawComplexControl(option, painter, widget, this);
             // FAMILY: SYSTEM
             case QStyle::CC_TitleBar:                       break;
 
@@ -320,6 +326,5 @@ namespace Vinyl
 
         painter->restore();
     }
-
 
 } // namespace Vinyl

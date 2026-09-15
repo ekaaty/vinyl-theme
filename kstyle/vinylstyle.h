@@ -77,6 +77,10 @@ namespace Vinyl
          */
         void drawComplexControl(QStyle::ComplexControl element, const QStyleOptionComplex* option,
                                 QPainter* painter, const QWidget* widget) const override;
+
+        int pixelMetric(PixelMetric metric, const QStyleOption *option = nullptr, const QWidget *widget = nullptr) const override;
+
+        QRect subControlRect(ComplexControl cc, const QStyleOptionComplex *opt, SubControl sc, const QWidget *widget = nullptr) const override;
         ///@}
 
     private:

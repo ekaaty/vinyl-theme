@@ -7,7 +7,10 @@
  */
 
 #include "vinylstyle.h"
+#include "elements/vinylscrollbar.h"
+#include "elements/vinylslider.h"
 #include "vinylhelper.h"
+#include "vinylmetrics.h"
 
 #include <KSharedConfig>
 #include <QLoggingCategory>
@@ -86,6 +89,47 @@ namespace Vinyl
         if (handled) return;
 
         this->Breeze::Style::drawPrimitive(element, option, painter, widget);    
+    }
+
+    int Style::pixelMetric(QStyle::PixelMetric metric, const QStyleOption *option, const QWidget *widget) const
+    {
+        switch (metric) {
+        case QStyle::PM_ScrollBarExtent:
+            return Vinyl::Metrics::ScrollBarExtent;
+
+        case QStyle::PM_ScrollBarSliderMin:
+            return Vinyl::Metrics::ScrollBarMinSpace;
+
+        default:
+            break;
+        }
+
+        return this->Breeze::Style::pixelMetric(metric, option, widget);
+    }
+
+    QRect Style::subControlRect(ComplexControl cc, const QStyleOptionComplex *opt, SubControl sc, const QWidget *widget) const
+    {
+        if (!opt) {
+            return Breeze::Style::subControlRect(cc, opt, sc, widget);
+        }
+
+        switch (cc) {
+        case CC_ScrollBar: {
+            QRect r = ScrollBarElement::subControlRect(opt, sc, widget);
+            if (!r.isNull())
+                return r;
+            break;
+        }
+        case CC_Slider: {
+            QRect r = SliderElement::subControlRect(opt, sc, widget);
+            if (!r.isNull())
+                return r;
+            break;
+        }
+        default:
+            break;
+        }
+        return Breeze::Style::subControlRect(cc, opt, sc, widget);
     }
 
     // =================================================================
