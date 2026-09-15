@@ -3,7 +3,7 @@
  * @brief ScrollBar element rendering implementation.
  *
  * SPDX-FileCopyrightText: 2026 Christian Tosta
- * SPDX-License-Identifier: GPL-2.0-or-later
+ * SPDX-License-Identifier: GPL-3.0-only
  */
 
 #include "vinylscrollbar.h"
@@ -16,16 +16,24 @@ namespace Vinyl
 
 QRect ScrollBarElement::subControlRect(const QStyleOptionComplex *option, QStyle::SubControl subControl, const QWidget *widget)
 {
-    Q_UNUSED(widget);
     const auto *scrollBarOpt = qstyleoption_cast<const QStyleOptionSlider *>(option);
-    if (!scrollBarOpt)
+    if (!scrollBarOpt) {
         return QRect();
+    }
 
     const int margin = Metrics::ScrollBarMargin;
     QRect rect = option->rect;
 
+    // Detect KTextEditor Minimap scrollbar via widget property or geometry width
+    const bool isMinimap = (scrollBarOpt->orientation == Qt::Vertical)
+        && ((widget && widget->property("minimap").toBool()) || (option->rect.width() > (Metrics::TrackThickness * 2)));
+
     switch (subControl) {
     case QStyle::SC_ScrollBarGroove: {
+        if (isMinimap) {
+            return option->rect;
+        }
+
         if (scrollBarOpt->orientation == Qt::Vertical) {
             rect.adjust(0, margin, 0, -margin);
             rect.setWidth(Metrics::TrackThickness);
@@ -48,10 +56,13 @@ QRect ScrollBarElement::subControlRect(const QStyleOptionComplex *option, QStyle
         }
 
         if (scrollBarOpt->orientation == Qt::Vertical) {
-            rect.setRect(0, option->rect.top() + margin + sliderPos, Metrics::TrackThickness, sliderLen);
-            rect.moveCenter(QPoint(option->rect.center().x(), rect.center().y()));
+            const int width = isMinimap ? option->rect.width() : Metrics::TrackThickness;
+            rect.setRect(option->rect.left(), option->rect.top() + margin + sliderPos, width, sliderLen);
+            if (!isMinimap) {
+                rect.moveCenter(QPoint(option->rect.center().x(), rect.center().y()));
+            }
         } else {
-            rect.setRect(option->rect.left() + margin + sliderPos, 0, sliderLen, Metrics::TrackThickness);
+            rect.setRect(option->rect.left() + margin + sliderPos, option->rect.top(), sliderLen, Metrics::TrackThickness);
             rect.moveCenter(QPoint(rect.center().x(), option->rect.center().y()));
         }
         return rect;
@@ -66,15 +77,21 @@ bool ScrollBarElement::drawComplexControl(const QStyleOptionComplex *option, QPa
 {
     Q_UNUSED(helper);
     const auto *scrollBarOpt = qstyleoption_cast<const QStyleOptionSlider *>(option);
-    if (!scrollBarOpt)
+    if (!scrollBarOpt) {
         return false;
+    }
+
+    // Identify if the scrollbar belongs to KTextEditor minimap
+    const bool isMinimap = (scrollBarOpt->orientation == Qt::Vertical)
+        && ((widget && widget->property("minimap").toBool()) || (option->rect.width() > (Metrics::TrackThickness * 2)));
 
     const bool isHover = option->state & QStyle::State_MouseOver;
 
     painter->save();
     painter->setRenderHint(QPainter::Antialiasing);
 
-    if ((scrollBarOpt->subControls & QStyle::SC_ScrollBarGroove) && isHover) {
+    // Suppress track groove background when rendering inside the minimap area
+    if (!isMinimap && (scrollBarOpt->subControls & QStyle::SC_ScrollBarGroove) && isHover) {
         QRect grooveRect = subControlRect(option, QStyle::SC_ScrollBarGroove, widget);
         QColor grooveColor = option->palette.color(QPalette::WindowText);
         grooveColor.setAlphaF(0.15);
@@ -84,18 +101,25 @@ bool ScrollBarElement::drawComplexControl(const QStyleOptionComplex *option, QPa
         painter->drawRoundedRect(grooveRect, Metrics::TrackRadius, Metrics::TrackRadius);
     }
 
+    // Render the slider handle
     if (scrollBarOpt->subControls & QStyle::SC_ScrollBarSlider) {
         QRect handleRect = subControlRect(option, QStyle::SC_ScrollBarSlider, widget);
 
         QColor handleColor = isHover ? option->palette.color(QPalette::Highlight) : option->palette.color(QPalette::ButtonText);
 
         if (!isHover) {
-            handleColor.setAlphaF(0.35);
+            handleColor.setAlphaF(isMinimap ? 0.20 : 0.35);
         }
 
         painter->setPen(Qt::NoPen);
         painter->setBrush(handleColor);
-        painter->drawRoundedRect(handleRect, Metrics::TrackRadius, Metrics::TrackRadius);
+
+        if (isMinimap) {
+            // Draw simple flat overlay for minimap slider selection area
+            painter->drawRect(handleRect);
+        } else {
+            painter->drawRoundedRect(handleRect, Metrics::TrackRadius, Metrics::TrackRadius);
+        }
     }
 
     painter->restore();
