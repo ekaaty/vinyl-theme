@@ -11,13 +11,6 @@ if(NOT CMAKE_GENERATOR)
     set(CMAKE_GENERATOR "Ninja" CACHE STRING "Set build generator" FORCE)
 endif()
 
-if(NOT CMAKE_GENERATOR MATCHES "Ninja")
-    message(
-        WARNING "This project requires Ninja. Configure it with:
-        cmake --preset default"
-    )
-endif()
-
 # Populates all PACKAGE_* variables based on metadata.json
 include(cmake/ParseMetadata.cmake)
 
