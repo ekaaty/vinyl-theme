@@ -14,15 +14,26 @@ namespace Vinyl
 bool FrameControl::drawShapedFrame(int element, const QStyleOption *option, QPainter *painter, const QWidget *widget, const Helper *helper)
 {
     Q_UNUSED(element);
-    Q_UNUSED(helper);
-    Q_UNUSED(option);
     Q_UNUSED(painter);
+    Q_UNUSED(helper);
 
-    if (widget->inherits("DolphinUrlNavigator")) {
-        return true;
+    const auto frameOpt = qstyleoption_cast<const QStyleOptionFrame *>(option);
+    if (!frameOpt) {
+        return false;
+    }
+
+    switch (frameOpt->frameShape) {
+    case QFrame::StyledPanel: {
+        if (widget && widget->inherits("DolphinUrlNavigator")) {
+            return true;
+        }
+        break;
+    }
+
+    default:
+        break;
     }
 
     return false;
 }
-
 } // namespace Vinyl
