@@ -8,7 +8,7 @@
 
 #include "vinylframeprimitive.h"
 #include "../vinylhelper.h"
-#include "vinyldolphinurlnavigator.h"
+#include "vinylbreadcrumbs.h"
 
 namespace Vinyl
 {

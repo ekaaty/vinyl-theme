@@ -85,13 +85,14 @@ set(breeze_appstyle_SRCS
 
 set(vinyl_appstyle_SRCS
     "${breeze_appstyle_SRCS}"
+    "elements/vinylbreadcrumbs.cpp"
     "elements/vinylbuttonprimitive.cpp"
     "elements/vinylbuttoncontrol.cpp"
     "elements/vinylcomboboxprimitive.cpp"
     "elements/vinylcomboboxcontrol.cpp"
     "elements/vinylcomboboxcomplex.cpp"
+    "elements/vinylframecontrol.cpp"
     "elements/vinylframeprimitive.cpp"
-    "elements/vinyldolphinurlnavigator.cpp"
     "elements/vinylscrollbar.cpp"
     "elements/vinylprogressbar.cpp"
     "elements/vinylslider.cpp"

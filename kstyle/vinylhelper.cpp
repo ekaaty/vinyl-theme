@@ -19,6 +19,7 @@
 #include "elements/vinylcomboboxcomplex.h"
 #include "elements/vinylcomboboxcontrol.h"
 #include "elements/vinylcomboboxprimitive.h"
+#include "elements/vinylframecontrol.h"
 #include "elements/vinylframeprimitive.h"
 #include "elements/vinylprogressbar.h"
 #include "elements/vinylscrollbar.h"
@@ -68,7 +69,8 @@ namespace Vinyl
             case QStyle::PE_IndicatorTabTear:               break;
             case QStyle::PE_IndicatorBranch:                break;
             case QStyle::PE_IndicatorToolBarHandle:         break;
-            case QStyle::PE_IndicatorToolBarSeparator:      break;
+            case QStyle::PE_IndicatorToolBarSeparator:
+                return true;
 
             // FAMILY: ARROWS
             case QStyle::PE_IndicatorArrowUp:               break;
@@ -148,7 +150,8 @@ namespace Vinyl
 
             // FAMILY: SYSTEM / FRAMES
             case QStyle::CE_ToolBar:             break;
-            case QStyle::CE_ShapedFrame:         break;
+            case QStyle::CE_ShapedFrame:
+                return FrameControl::drawShapedFrame(element, option, painter, widget, this);
             case QStyle::CE_RubberBand:          break;
             case QStyle::CE_SizeGrip:            break; // stable: emptyControl
             case QStyle::CE_HeaderSection:       break;

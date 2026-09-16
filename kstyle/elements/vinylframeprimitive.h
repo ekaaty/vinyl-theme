@@ -31,7 +31,6 @@ namespace Vinyl
         static bool drawFrameLineEdit(int element, const QStyleOption* option, QPainter* painter,
                                       const QWidget* widget, const Helper* helper);
 
-    private:
         /**
          * @brief Draws a generic frame primitive using the style helper.
          */

@@ -1,13 +1,13 @@
 /**
- * @file vinyldolphinurlnavigator.h
- * @brief Header for DolphinUrlNavigator custom rendering in the Vinyl style.
+ * @file vinylbreadcrumbs.h
+ * @brief Header for Breadcrumbs rendering in the Vinyl style.
  *
  * SPDX-FileCopyrightText: 2026 Christian Tosta
  * SPDX-License-Identifier: GPL-3.0-only
  */
 
-#ifndef VINYLDOLPHINURLNAVIGATOR_H
-#define VINYLDOLPHINURLNAVIGATOR_H
+#ifndef VINYLBREADCRUMBS_H
+#define VINYLBREADCRUMBS_H
 
 #include <QPainter>
 #include <QStyleOption>
@@ -27,4 +27,4 @@ public:
 
 } // namespace Vinyl
 
-#endif // VINYLDOLPHINURLNAVIGATOR_H
+#endif // VINYLBREADCRUMBS_H
