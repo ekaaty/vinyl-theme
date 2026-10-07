@@ -12,6 +12,12 @@
 #define VINYLNXSTYLE_H
 
 #include "breezestyle.h"
+#include "config-vinyl.h"
+
+#if VINYL_HAVE_KSTYLE
+#include <KStyle>
+#endif
+
 #include <functional>
 #include <memory>
 
@@ -83,6 +89,11 @@ namespace Vinyl
         QRect subControlRect(ComplexControl cc, const QStyleOptionComplex *opt, SubControl sc, const QWidget *widget = nullptr) const override;
         ///@}
 
+        QStyle::ControlElement capacityBarElement() const
+        {
+            return CE_CapacityBar;
+        }
+
     private:
         /** @brief Pointer to the helper class that handles specific widget rendering. */
         std::shared_ptr<Vinyl::Helper> _vinylHelper;
@@ -103,6 +114,7 @@ namespace Vinyl
         bool delegateToHelper(const OptionType* option, QPainter* painter,
                               const QWidget* widget, HelperFunc helperFunc, Args... args) const;
 
+        QStyle::ControlElement CE_CapacityBar = QStyle::CE_ProgressBar;
     };
 }
 

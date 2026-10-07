@@ -8,6 +8,7 @@ find_package(Qt${QT_MAJOR_VERSION} ${QT${QT_MAJOR_VERSION}_MIN_VERSION} REQUIRED
     Core
     DBus
     Gui
+    Quick
     Widgets
 )
 
@@ -19,6 +20,19 @@ find_package(KF${QT_MAJOR_VERSION} ${KF${QT_MAJOR_VERSION}_MIN_VERSION} REQUIRED
     IconThemes
     WindowSystem
 )
+
+find_package(KF${QT_MAJOR_VERSION}FrameworkIntegration ${KF${QT_MAJOR_VERSION}_MIN_VERSION}
+    REQUIRED CONFIG
+)
+set_package_properties(KF${QT_MAJOR_VERSION}FrameworkIntegration PROPERTIES
+    DESCRIPTION "KF${QT_MAJOR_VERSION} Framework Integration"
+    URL "https://projects.kde.org/projects/frameworks/frameworkintegration"
+    TYPE OPTIONAL
+    PURPOSE "Required to use KStyle convenience functionalities in style")
+
+set(BREEZE_HAVE_KSTYLE ${KF${QT_MAJOR_VERSION}FrameworkIntegration_FOUND})
+set(HAVE_QTDBUS Qt${QT_MAJOR_VERSION}DBus_FOUND)
+#set(BREEZE_HAVE_QTQUICK Qt${QT_MAJOR_VERSION}Quick_FOUND)
 
 include_directories(
     "${CMAKE_CURRENT_SOURCE_DIR}"
@@ -36,10 +50,10 @@ configure_file(
     "${CMAKE_CURRENT_BINARY_DIR}/config-breeze.h"
 )
 
-#configure_file(
-#    "config-vinyl.h.cmake"
-#    "${CMAKE_CURRENT_BINARY_DIR}/config-vinyl.h"
-#)
+configure_file(
+    "${CMAKE_CURRENT_SOURCE_DIR}/config-vinyl.h.in"
+    "${CMAKE_CURRENT_BINARY_DIR}/config-vinyl.h"
+)
 
 set(breeze_appstyle_SRCS
     "${BREEZE_SOURCE_DIR}/kstyle/animations/breezeanimation.cpp"
@@ -146,6 +160,7 @@ target_link_libraries(vinylnxappstyle${QT_MAJOR_VERSION}
         KF${QT_MAJOR_VERSION}::GuiAddons
         KF${QT_MAJOR_VERSION}::I18n
         KF${QT_MAJOR_VERSION}::IconThemes
+        KF${QT_MAJOR_VERSION}::Style
         KF${QT_MAJOR_VERSION}::WindowSystem
         Qt${QT_MAJOR_VERSION}::DBus
         Qt${QT_MAJOR_VERSION}::Widgets

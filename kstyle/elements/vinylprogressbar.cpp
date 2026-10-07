@@ -10,6 +10,7 @@
 #include "../vinylhelper.h"
 #include "../vinylmetrics.h"
 #include <QStyleOptionProgressBar>
+#include <algorithm>
 
 namespace Vinyl
 {
@@ -17,26 +18,56 @@ namespace Vinyl
 QRect ProgressBarElement::subElementRect(int element, const QStyleOption *option, const QWidget *widget)
 {
     Q_UNUSED(widget);
+
     const auto *barOpt = qstyleoption_cast<const QStyleOptionProgressBar *>(option);
     if (!barOpt)
         return QRect();
 
     QRect rect = option->rect;
 
+    int textWidth = 0;
     if (barOpt->textVisible && !barOpt->text.isEmpty()) {
-        const int fontMetricsWidth = option->fontMetrics.horizontalAdvance(barOpt->text) + 8;
+        textWidth = option->fontMetrics.horizontalAdvance(barOpt->text) + 8;
+    }
 
-        switch (element) {
-        case QStyle::SE_ProgressBarLabel:
-            return QRect(rect.right() - fontMetricsWidth, rect.top(), fontMetricsWidth, rect.height());
-        case QStyle::SE_ProgressBarContents:
-        case QStyle::SE_ProgressBarGroove:
-            rect.setRight(rect.right() - fontMetricsWidth - 4);
+    switch (element) {
+    case QStyle::SE_ProgressBarLabel:
+        if (textWidth > 0) {
+            return QRect(rect.right() - textWidth + 1, rect.top(), textWidth, rect.height());
+        }
+        return QRect();
+
+    case QStyle::SE_ProgressBarGroove:
+        if (textWidth > 0) {
+            rect.setRight(rect.right() - textWidth);
+        }
+        return rect;
+
+    case QStyle::SE_ProgressBarContents: {
+        if (textWidth > 0) {
+            rect.setRight(rect.right() - textWidth);
+        }
+
+        const qint64 span = barOpt->maximum - barOpt->minimum;
+        if (span <= 0) {
             return rect;
+        }
+
+        const double ratio = static_cast<double>(barOpt->progress - barOpt->minimum) / static_cast<double>(span);
+        const double clampedRatio = std::clamp(ratio, 0.0, 1.0);
+
+        const bool isHorizontal = (barOpt->state & QStyle::State_Horizontal);
+        if (isHorizontal) {
+            rect.setWidth(static_cast<int>(rect.width() * clampedRatio));
+        } else {
+            const int fillHeight = static_cast<int>(rect.height() * clampedRatio);
+            rect.setTop(rect.bottom() - fillHeight + 1);
+        }
+        return rect;
+    }
         default:
             break;
         }
-    }
 
     return rect;
 }
@@ -50,78 +81,80 @@ bool ProgressBarElement::drawControl(int element, const QStyleOption *option, QP
     if (!barOpt)
         return false;
 
-    const bool isHorizontal = (barOpt->state & QStyle::State_Horizontal);
-    const QRect contentRect = subElementRect(QStyle::SE_ProgressBarContents, option, widget);
-
-    QRect grooveRect = contentRect;
-    QRect highlightRect = contentRect;
-
-    if (isHorizontal) {
-        grooveRect.setHeight(Metrics::GrooveThickness);
-        grooveRect.moveCenter(QPoint(grooveRect.center().x(), contentRect.center().y()));
-
-        highlightRect.setHeight(Metrics::TrackThickness);
-        highlightRect.moveCenter(QPoint(highlightRect.center().x(), contentRect.center().y()));
-    } else {
-        grooveRect.setWidth(Metrics::GrooveThickness);
-        grooveRect.moveCenter(QPoint(contentRect.center().x(), grooveRect.center().y()));
-
-        highlightRect.setWidth(Metrics::TrackThickness);
-        highlightRect.moveCenter(QPoint(contentRect.center().x(), highlightRect.center().y()));
-    }
-
-    painter->save();
-    painter->setRenderHint(QPainter::Antialiasing);
-
     switch (element) {
     case QStyle::CE_ProgressBarGroove: {
+        painter->save();
+        painter->setRenderHint(QPainter::Antialiasing);
+
         QColor grooveColor = option->palette.color(QPalette::WindowText);
         grooveColor.setAlphaF(0.2);
+
+        QRect grooveRect = option->rect;
+        grooveRect.setHeight(Metrics::GrooveThickness);
+        grooveRect.moveCenter(QPoint(grooveRect.center().x(), option->rect.center().y()));
 
         painter->setPen(Qt::NoPen);
         painter->setBrush(grooveColor);
         painter->drawRoundedRect(grooveRect, Metrics::TrackRadius, Metrics::TrackRadius);
-        break;
+
+        painter->restore();
+        return true;
     }
     case QStyle::CE_ProgressBarContents: {
-        const double progress = static_cast<double>(barOpt->progress - barOpt->minimum) / std::max(1, barOpt->maximum - barOpt->minimum);
+        painter->save();
+        painter->setRenderHint(QPainter::Antialiasing);
 
-        QRect progressRect = highlightRect;
-        if (isHorizontal) {
-            progressRect.setWidth(static_cast<int>(highlightRect.width() * progress));
-        } else {
-            int fillHeight = static_cast<int>(highlightRect.height() * progress);
-            progressRect.setTop(highlightRect.bottom() - fillHeight);
+        QRect contentsRect = option->rect;
+        if (contentsRect.width() <= 0 || contentsRect.height() <= 0) {
+            painter->restore();
+            return true;
         }
 
+        const bool isHorizontal = (barOpt->state & QStyle::State_Horizontal);
+        if (isHorizontal) {
+            contentsRect.setHeight(Metrics::TrackThickness);
+            contentsRect.moveCenter(QPoint(contentsRect.center().x(), option->rect.center().y()));
+        } else {
+            contentsRect.setWidth(Metrics::TrackThickness);
+            contentsRect.moveCenter(QPoint(option->rect.center().x(), contentsRect.center().y()));
+        }
+
+        const QColor contentsColor =
+            option->state.testFlag(QStyle::State_Selected) ? option->palette.color(QPalette::HighlightedText) : option->palette.color(QPalette::Highlight);
+
         painter->setPen(Qt::NoPen);
-        painter->setBrush(option->palette.color(QPalette::Highlight));
-        painter->drawRoundedRect(progressRect, Metrics::TrackRadius, Metrics::TrackRadius);
-        break;
+        painter->setBrush(contentsColor);
+        painter->drawRoundedRect(contentsRect, Metrics::TrackRadius, Metrics::TrackRadius);
+
+        painter->restore();
+        return true;
     }
     case QStyle::CE_ProgressBarLabel: {
         if (barOpt->textVisible && !barOpt->text.isEmpty()) {
-            const QRect labelRect = subElementRect(QStyle::SE_ProgressBarLabel, option, widget);
+            painter->save();
             painter->setPen(option->palette.color(QPalette::Text));
-            painter->drawText(labelRect, Qt::AlignRight | Qt::AlignVCenter, barOpt->text);
+            painter->drawText(option->rect, Qt::AlignRight | Qt::AlignVCenter, barOpt->text);
+            painter->restore();
         }
-        break;
+        return true;
     }
-    case QStyle::CE_ProgressBar: {
-        drawControl(QStyle::CE_ProgressBarGroove, option, painter, widget, helper);
-        drawControl(QStyle::CE_ProgressBarContents, option, painter, widget, helper);
-        if (barOpt->textVisible) {
-            drawControl(QStyle::CE_ProgressBarLabel, option, painter, widget, helper);
-        }
-        break;
-    }
-    default:
-        painter->restore();
-        return false;
-    }
+    case QStyle::CE_ProgressBar:
+    default: {
+        QStyleOptionProgressBar optCopy = *barOpt;
 
-    painter->restore();
-    return true;
+        optCopy.rect = subElementRect(QStyle::SE_ProgressBarGroove, barOpt, widget);
+        drawControl(QStyle::CE_ProgressBarGroove, &optCopy, painter, widget, helper);
+
+        optCopy.rect = subElementRect(QStyle::SE_ProgressBarContents, barOpt, widget);
+        drawControl(QStyle::CE_ProgressBarContents, &optCopy, painter, widget, helper);
+
+        if (barOpt->textVisible) {
+            optCopy.rect = subElementRect(QStyle::SE_ProgressBarLabel, barOpt, widget);
+            drawControl(QStyle::CE_ProgressBarLabel, &optCopy, painter, widget, helper);
+        }
+        return true;
+    }
+    }
 }
 
 } // namespace Vinyl

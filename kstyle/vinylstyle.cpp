@@ -26,7 +26,11 @@ namespace Vinyl
     Style::Style() : Breeze::Style()
     {
         auto config = KSharedConfig::openConfig();
-        _vinylHelper = std::make_shared<Vinyl::Helper>(config);
+        _vinylHelper = std::make_shared<Vinyl::Helper>(config, this);
+
+#if VINYL_HAVE_KSTYLE
+        CE_CapacityBar = newControlElement(QStringLiteral("CE_CapacityBar"));
+#endif
     }
 
     // =================================================================

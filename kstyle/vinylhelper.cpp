@@ -8,6 +8,7 @@
 
 #include "vinylhelper.h"
 #include "vinylmetrics.h"
+#include "vinylstyle.h"
 
 #include <QPainter>
 #include <QStyleOptionButton>
@@ -101,6 +102,13 @@ namespace Vinyl
     bool Helper::vinylDrawControl(const QStyleOption* option, QPainter* painter,
                                   const QWidget* widget, int element) const
     {
+        const auto vinylStyle = qobject_cast<const Vinyl::Style *>(widget ? widget->style() : nullptr);
+        const int capacityBarId = vinylStyle ? static_cast<int>(vinylStyle->capacityBarElement()) : -1;
+
+        if (element == static_cast<int>(QStyle::CE_ProgressBar) || (capacityBarId != -1 && element == capacityBarId)) {
+            return ProgressBarElement::drawControl(element, option, painter, widget, this);
+        }
+
         switch (element) {
             // FAMILY: BUTTONS
             case QStyle::CE_PushButton:
