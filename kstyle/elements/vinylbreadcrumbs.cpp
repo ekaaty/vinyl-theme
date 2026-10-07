@@ -44,7 +44,7 @@ bool DolphinUrlNavigator::draw(const QStyleOption *option, QPainter *painter, co
     painter->setRenderHint(QPainter::Antialiasing);
 
     // Fine-tuned rectangle to align height perfectly with standard dialogs
-    const QRectF rect = QRectF(option->rect).adjusted(1.0, 3.0, -2.0, -2.0);
+    const QRectF rect = QRectF(option->rect).adjusted(2.0, 2.0, -2.0, -2.0);
 
     painter->setPen(QPen(outlineColor, Metrics::BorderWidth));
     painter->setBrush(Qt::NoBrush);

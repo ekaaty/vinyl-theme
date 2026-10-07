@@ -65,7 +65,14 @@ namespace Vinyl {
          * @param widget Pointer to the widget being inspected.
          * @return true if an ancestor matches a status bar class, false otherwise.
          */
-        static bool isStatusBar(const QWidget *widget);
+        static bool inStatusBar(const QWidget *widget);
+
+        /**
+         * @brief Checks if the given widget resides within a breadcrumb container.
+         * @param widget Pointer to the widget being inspected.
+         * @return true if an ancestor matches a breadcrumb class, false otherwise.
+         */
+        static bool inBreadcrumb(const QWidget *widget);
     };
 
 } // namespace Vinyl
