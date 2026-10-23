@@ -36,7 +36,7 @@ if(DEFINED ENV{PREFIX} AND NOT "$ENV{PREFIX}" STREQUAL "")
 endif()
 
 # Look for required Breeze source (TODO [?]: Migrate this to metadata.json)
-set(BREEZE_COMMIT_HASH "ca217f12ce16a28e601c78b7f2fdceca586725b2") # 6.7.5
+set(BREEZE_COMMIT_HASH "23c317d08b38b160fadd3aeb21a463cb89d12fce") # 6.8.1
 include(cmake/BreezeCheckOut.cmake)
 
 include(GenerateExportHeader)
