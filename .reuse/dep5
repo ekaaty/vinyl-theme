@@ -21,6 +21,9 @@ Files: common/rust/src/lib.rs
  common/vinylopticalhelper.h
  kdecoration/config.h.in
  kdecoration/config/kcm_decoration.cpp.in
+ kstyle/config-vinyl.h.in
+ kstyle/elements/vinylbreadcrumbs.cpp
+ kstyle/elements/vinylbreadcrumbs.h
  kstyle/elements/vinylbuttoncontrol.cpp
  kstyle/elements/vinylbuttoncontrol.h
  kstyle/elements/vinylbuttonprimitive.cpp
@@ -31,10 +34,19 @@ Files: common/rust/src/lib.rs
  kstyle/elements/vinylcomboboxcontrol.h
  kstyle/elements/vinylcomboboxprimitive.cpp
  kstyle/elements/vinylcomboboxprimitive.h
+ kstyle/elements/vinylframecontrol.cpp
+ kstyle/elements/vinylframecontrol.h
  kstyle/elements/vinylframeprimitive.cpp
  kstyle/elements/vinylframeprimitive.h
+ kstyle/elements/vinylprogressbar.cpp
+ kstyle/elements/vinylprogressbar.h
+ kstyle/elements/vinylscrollbar.cpp
+ kstyle/elements/vinylscrollbar.h
+ kstyle/elements/vinylslider.cpp
+ kstyle/elements/vinylslider.h
  kstyle/vinylhelper.cpp
  kstyle/vinylhelper.h
+ kstyle/vinylmetrics.h
  kstyle/vinylstyle.cpp
  kstyle/vinylstyle.h
  kstyle/vinylstyleplugin.cpp
